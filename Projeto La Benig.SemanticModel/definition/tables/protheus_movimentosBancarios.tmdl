@@ -1,0 +1,411 @@
+table protheus_movimentosBancarios
+	lineageTag: da554400-d777-4977-8bd5-023e535e7bc4
+
+	column pk
+		dataType: string
+		lineageTag: 6e9b3a98-dccb-45f3-9956-9202e3cbc9aa
+		summarizeBy: none
+		sourceColumn: pk
+
+		annotation SummarizationSetBy = Automatic
+
+	column filial
+		dataType: string
+		lineageTag: ef4253df-80ab-40e5-b820-19b0ab03c3eb
+		summarizeBy: none
+		sourceColumn: filial
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_movimento
+		dataType: string
+		lineageTag: 4bdda892-8c48-4be8-a77f-0248b10b46e6
+		summarizeBy: none
+		sourceColumn: data_movimento
+
+		annotation SummarizationSetBy = Automatic
+
+	column tipo
+		dataType: string
+		lineageTag: 574c4f03-33ab-48c8-b1aa-e6732ab480fd
+		summarizeBy: none
+		sourceColumn: tipo
+
+		annotation SummarizationSetBy = Automatic
+
+	column moeda
+		dataType: string
+		lineageTag: c8185b7d-553e-4d51-af97-37b70ed1b323
+		summarizeBy: none
+		sourceColumn: moeda
+
+		annotation SummarizationSetBy = Automatic
+
+	column valor
+		dataType: double
+		lineageTag: b6f8229f-07ec-40b5-ac58-ef7046db7a32
+		summarizeBy: sum
+		sourceColumn: valor
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column natureza
+		dataType: string
+		lineageTag: 4fc58f1b-702e-4b24-a79f-eca2c9f2a6c6
+		summarizeBy: none
+		sourceColumn: natureza
+
+		annotation SummarizationSetBy = Automatic
+
+	column banco
+		dataType: string
+		lineageTag: e968c4df-6bf7-4d1f-9460-eb0d665b4fcd
+		summarizeBy: none
+		sourceColumn: banco
+
+		annotation SummarizationSetBy = Automatic
+
+	column agencia
+		dataType: string
+		lineageTag: 33cd155d-bd1c-4993-b327-33d0d7888088
+		summarizeBy: none
+		sourceColumn: agencia
+
+		annotation SummarizationSetBy = Automatic
+
+	column conta
+		dataType: string
+		lineageTag: c09d5a77-5a55-4cc0-82d8-d37061e65c6e
+		summarizeBy: none
+		sourceColumn: conta
+
+		annotation SummarizationSetBy = Automatic
+
+	column num_cheque
+		dataType: string
+		lineageTag: 206b4102-71e2-41f8-b940-03b64898b624
+		summarizeBy: none
+		sourceColumn: num_cheque
+
+		annotation SummarizationSetBy = Automatic
+
+	column documento
+		dataType: string
+		lineageTag: 260fffdc-2703-4b5d-901c-37eda3cf8113
+		summarizeBy: none
+		sourceColumn: documento
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_vencimento
+		dataType: string
+		lineageTag: f88e7edc-4267-4d98-8e54-513cd5074bc7
+		summarizeBy: none
+		sourceColumn: data_vencimento
+
+		annotation SummarizationSetBy = Automatic
+
+	column receb_pagto
+		dataType: string
+		lineageTag: a9ed99fa-9f8d-4200-b543-eec322798945
+		summarizeBy: none
+		sourceColumn: receb_pagto
+
+		annotation SummarizationSetBy = Automatic
+
+	column beneficiario
+		dataType: string
+		lineageTag: 63332e5b-e3f3-43a1-aa9f-cdd6e5eac4a2
+		summarizeBy: none
+		sourceColumn: beneficiario
+
+		annotation SummarizationSetBy = Automatic
+
+	column historico
+		dataType: string
+		lineageTag: ac3c3de7-29b5-419d-bd76-0203cb96347f
+		summarizeBy: none
+		sourceColumn: historico
+
+		annotation SummarizationSetBy = Automatic
+
+	column tipo_doc
+		dataType: string
+		lineageTag: 489d26d8-af59-451f-b261-83c7b5351b1b
+		summarizeBy: none
+		sourceColumn: tipo_doc
+
+		annotation SummarizationSetBy = Automatic
+
+	column situacao_doc
+		dataType: string
+		lineageTag: c6d74fd6-18c3-4233-afa1-ee029d19ddfa
+		summarizeBy: none
+		sourceColumn: situacao_doc
+
+		annotation SummarizationSetBy = Automatic
+
+	column lote
+		dataType: string
+		lineageTag: dbf57207-4520-4ed2-abad-f6d5d3f46279
+		summarizeBy: none
+		sourceColumn: lote
+
+		annotation SummarizationSetBy = Automatic
+
+	column prefixo
+		dataType: string
+		lineageTag: 5f8cb3a2-8122-43bf-b416-0a284bb13ea7
+		summarizeBy: none
+		sourceColumn: prefixo
+
+		annotation SummarizationSetBy = Automatic
+
+	column numero
+		dataType: string
+		lineageTag: beb7a30d-6560-451a-be9d-2a710cc921b4
+		summarizeBy: none
+		sourceColumn: numero
+
+		annotation SummarizationSetBy = Automatic
+
+	column num_parcela
+		dataType: string
+		lineageTag: 24aab99b-d7e1-4d26-9c10-34d3d83bf164
+		summarizeBy: none
+		sourceColumn: num_parcela
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_cliente_fornecedor
+		dataType: string
+		lineageTag: 4d42c84c-7519-49e1-84f8-f528d5fe26dc
+		summarizeBy: none
+		sourceColumn: cod_cliente_fornecedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column loja_cliente_fornecedor
+		dataType: string
+		lineageTag: da86b100-d8aa-4a6b-9cc5-0fd462a476e1
+		summarizeBy: none
+		sourceColumn: loja_cliente_fornecedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_digitacao
+		dataType: string
+		lineageTag: 466b9c67-1f29-44b4-9f1c-460c267df181
+		summarizeBy: none
+		sourceColumn: data_digitacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column tipo_lanc_contabil
+		dataType: string
+		lineageTag: 9eb96be4-dbd3-4349-8f3b-7470e80f675b
+		summarizeBy: none
+		sourceColumn: tipo_lanc_contabil
+
+		annotation SummarizationSetBy = Automatic
+
+	column conta_debito
+		dataType: string
+		lineageTag: 87adc236-14b4-49ea-97dc-d20d71e7a903
+		summarizeBy: none
+		sourceColumn: conta_debito
+
+		annotation SummarizationSetBy = Automatic
+
+	column conta_credito
+		dataType: string
+		lineageTag: 4fc0371a-d5e6-4903-b466-3cee81430459
+		summarizeBy: none
+		sourceColumn: conta_credito
+
+		annotation SummarizationSetBy = Automatic
+
+	column motivo_baixa
+		dataType: string
+		lineageTag: aabdf822-09b7-4951-b48b-9c39430515bb
+		summarizeBy: none
+		sourceColumn: motivo_baixa
+
+		annotation SummarizationSetBy = Automatic
+
+	column rateio_centro_custo
+		dataType: string
+		lineageTag: c70bc242-5f34-44c2-97f8-b86fde6a8df7
+		summarizeBy: none
+		sourceColumn: rateio_centro_custo
+
+		annotation SummarizationSetBy = Automatic
+
+	column centro_custo_debito
+		dataType: string
+		lineageTag: 056c6b1b-de0b-4e80-b2a5-325611587c70
+		summarizeBy: none
+		sourceColumn: centro_custo_debito
+
+		annotation SummarizationSetBy = Automatic
+
+	column centro_custo_credito
+		dataType: string
+		lineageTag: ff9ab4b6-5bfd-44b1-b37d-2f36537f5086
+		summarizeBy: none
+		sourceColumn: centro_custo_credito
+
+		annotation SummarizationSetBy = Automatic
+
+	column filial_origem
+		dataType: string
+		lineageTag: bada581b-6b1a-4661-afa1-da9043fd7c8e
+		summarizeBy: none
+		sourceColumn: filial_origem
+
+		annotation SummarizationSetBy = Automatic
+
+	column valor_juros
+		dataType: double
+		lineageTag: 875c23e1-0503-40be-8bfe-faa153cdaa7c
+		summarizeBy: sum
+		sourceColumn: valor_juros
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column valor_multa
+		dataType: double
+		lineageTag: f59d499a-debf-44fb-82d5-f0f0e6d15556
+		summarizeBy: sum
+		sourceColumn: valor_multa
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column valor_correcao
+		dataType: double
+		lineageTag: 229ef536-65dc-488c-9825-7655d9037a81
+		summarizeBy: sum
+		sourceColumn: valor_correcao
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column valor_desconto
+		dataType: double
+		lineageTag: 6354657c-c530-461d-9dd2-dadd41bef50f
+		summarizeBy: sum
+		sourceColumn: valor_desconto
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column codigo_orcamento
+		dataType: string
+		lineageTag: 69d232c8-caf3-4016-836f-11c931af6bbe
+		summarizeBy: none
+		sourceColumn: codigo_orcamento
+
+		annotation SummarizationSetBy = Automatic
+
+	column situacao_cobranca
+		dataType: string
+		lineageTag: 024c0a1a-51a7-42cd-8f7f-b9547722ec14
+		summarizeBy: none
+		sourceColumn: situacao_cobranca
+
+		annotation SummarizationSetBy = Automatic
+
+	column cliente
+		dataType: string
+		lineageTag: 5c5df414-f0ec-43db-b467-d86cc29bfc7d
+		summarizeBy: none
+		sourceColumn: cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column fornecedor
+		dataType: string
+		lineageTag: 1b1f6814-ee65-4243-8275-22eea321071a
+		summarizeBy: none
+		sourceColumn: fornecedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column movimento_do_dia
+		dataType: string
+		lineageTag: c305be98-6ea9-4afe-92d3-331f730c45a4
+		summarizeBy: none
+		sourceColumn: movimento_do_dia
+
+		annotation SummarizationSetBy = Automatic
+
+	column origem
+		dataType: string
+		lineageTag: 3abf223e-cf1c-4d5e-8c6e-e148fdaf42e9
+		summarizeBy: none
+		sourceColumn: origem
+
+		annotation SummarizationSetBy = Automatic
+
+	column centro_custo
+		dataType: string
+		lineageTag: 78bf4e8c-cd85-41dd-8e9b-e2f0bdded9e7
+		summarizeBy: none
+		sourceColumn: centro_custo
+
+		annotation SummarizationSetBy = Automatic
+
+	column forma_pagamento
+		dataType: string
+		lineageTag: a9678398-a94b-4748-b6f8-99d4894b9702
+		summarizeBy: none
+		sourceColumn: forma_pagamento
+
+		annotation SummarizationSetBy = Automatic
+
+	column serie_recibo
+		dataType: string
+		lineageTag: 99e24d0c-d47c-400f-8167-8f6abe8ff897
+		summarizeBy: none
+		sourceColumn: serie_recibo
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_atualizacao_warehouse
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 6cc67cdf-7cea-4ba5-b563-2f24041703de
+		summarizeBy: none
+		sourceColumn: data_atualizacao_warehouse
+
+		variation Variation
+			isDefault
+			relationship: eec62af2-1278-4025-a449-c430e449fa17
+			defaultHierarchy: LocalDateTable_b29f0275-1101-4bbb-9a53-c9f11e5ee9fc.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition protheus_movimentosBancarios = m
+		mode: import
+		queryGroup: datalake
+		source =
+				let
+				    Fonte = GoogleBigQuery.Database([Implementation="2.0"]),
+				    #"coherent-window-444219-c1_Database" = Fonte{[Name="coherent-window-444219-c1",Kind="Database"]}[Data],
+				    datalake_Schema = #"coherent-window-444219-c1_Database"{[Name="datalake",Kind="Schema"]}[Data],
+				    protheus_movimentosBancarios_Table = datalake_Schema{[Name="protheus_movimentosBancarios",Kind="Table"]}[Data]
+				in
+				    protheus_movimentosBancarios_Table
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,303 @@
+table protheus_contasPagar
+	lineageTag: 9a8386ee-1731-43f9-a602-1f0e80ebeda1
+
+	column pk
+		dataType: string
+		lineageTag: 1de35a2c-634e-4b78-a545-a2d0b781ce89
+		summarizeBy: none
+		sourceColumn: pk
+
+		annotation SummarizationSetBy = Automatic
+
+	column filial
+		dataType: string
+		lineageTag: 4344e091-d814-48a1-a0de-c6883ecdf3e5
+		summarizeBy: none
+		sourceColumn: filial
+
+		annotation SummarizationSetBy = Automatic
+
+	column prefixo
+		dataType: string
+		lineageTag: fd8726c4-f56c-4502-889b-07271c4029b5
+		summarizeBy: none
+		sourceColumn: prefixo
+
+		annotation SummarizationSetBy = Automatic
+
+	column numero_titulo
+		dataType: string
+		lineageTag: 5977117a-9ea6-4ea4-acfa-8ae761c6cdb7
+		summarizeBy: none
+		sourceColumn: numero_titulo
+
+		annotation SummarizationSetBy = Automatic
+
+	column parcela
+		dataType: string
+		lineageTag: e460bb91-82d5-4904-8bde-21edbe2de09b
+		summarizeBy: none
+		sourceColumn: parcela
+
+		annotation SummarizationSetBy = Automatic
+
+	column tipo
+		dataType: string
+		lineageTag: 1f253a6c-bd35-45a9-aad2-ae5f0271730a
+		summarizeBy: none
+		sourceColumn: tipo
+
+		annotation SummarizationSetBy = Automatic
+
+	column natureza
+		dataType: string
+		lineageTag: 2d025142-bb5a-426f-898d-1c3bc16ad580
+		summarizeBy: none
+		sourceColumn: natureza
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_fornecedor
+		dataType: string
+		lineageTag: 461f12a7-53f1-4722-a881-460d34623ad3
+		summarizeBy: none
+		sourceColumn: cod_fornecedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column loja_fornecedor
+		dataType: string
+		lineageTag: 0c6a74d9-6827-43b3-9ef2-794e302b0e42
+		summarizeBy: none
+		sourceColumn: loja_fornecedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column nome_fornecedor
+		dataType: string
+		lineageTag: fe2b767f-f063-468f-9fb2-4dcdfe2aaac6
+		summarizeBy: none
+		sourceColumn: nome_fornecedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_emissao
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 450b750f-5a7f-4734-85d8-2ecaac7a9564
+		summarizeBy: none
+		sourceColumn: data_emissao
+
+		variation Variation
+			isDefault
+			relationship: 259cfc75-d627-4def-b888-15316b1e9686
+			defaultHierarchy: LocalDateTable_b519e84d-9581-4c72-9812-aa12a9ef6e20.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column data_vencimento
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 5cfa4b93-27ac-4716-9e3e-14a2362a7391
+		summarizeBy: none
+		sourceColumn: data_vencimento
+
+		variation Variation
+			isDefault
+			relationship: a8a7d4c8-b5c1-46d4-ad2a-51c79e8f4b6e
+			defaultHierarchy: LocalDateTable_7f471689-e567-4191-92e5-442838f78efa.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column data_vencimento_real
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8e4e4329-a051-4cf1-b8e6-e9b5520f16d3
+		summarizeBy: none
+		sourceColumn: data_vencimento_real
+
+		variation Variation
+			isDefault
+			relationship: 6bc0306e-a942-4025-9edf-4d62a9b18118
+			defaultHierarchy: LocalDateTable_e2853529-6db9-4b2d-a00c-e9b84b67a8de.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column valor_titulo
+		dataType: double
+		lineageTag: 502677c0-937a-4129-882b-2c99ede7d688
+		summarizeBy: sum
+		sourceColumn: valor_titulo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column valor_iss
+		dataType: double
+		lineageTag: 7b0bc490-4d76-4a5c-9cad-4fdc50f6e69f
+		summarizeBy: sum
+		sourceColumn: valor_iss
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column valor_irrf
+		dataType: double
+		lineageTag: 109cb086-700e-4dba-850e-bef1a53e1d22
+		summarizeBy: sum
+		sourceColumn: valor_irrf
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column saldo
+		dataType: double
+		lineageTag: 0904be95-364a-4534-8eda-4f58789732b7
+		summarizeBy: sum
+		sourceColumn: saldo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column data_baixa
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ef4b7571-029e-4c1d-b465-34494203c15b
+		summarizeBy: none
+		sourceColumn: data_baixa
+
+		variation Variation
+			isDefault
+			relationship: 389e14e1-218d-47bb-8846-d7e73becdde0
+			defaultHierarchy: LocalDateTable_64bf4b89-8d97-45a0-b90d-789842ad8ae2.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column historico
+		dataType: string
+		lineageTag: f4f61703-ad1a-4aac-8421-c84bb3265475
+		summarizeBy: none
+		sourceColumn: historico
+
+		annotation SummarizationSetBy = Automatic
+
+	column portador
+		dataType: string
+		lineageTag: 6598fdc9-b881-4ebc-9782-883e77299ad4
+		summarizeBy: none
+		sourceColumn: portador
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_ult_movimentacao
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 03bf5448-7258-46c3-bec0-fa7b19c97e33
+		summarizeBy: none
+		sourceColumn: data_ult_movimentacao
+
+		variation Variation
+			isDefault
+			relationship: 58f3c5ee-1e35-4b00-bb75-9e97e51d833a
+			defaultHierarchy: LocalDateTable_8fb9b101-a095-42ef-a771-47a6283028c6.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column numero_do_cheque
+		dataType: string
+		lineageTag: 1b52d423-125b-447b-88fc-acf6af02b7eb
+		summarizeBy: none
+		sourceColumn: numero_do_cheque
+
+		annotation SummarizationSetBy = Automatic
+
+	column conta_contabil
+		dataType: string
+		lineageTag: 67a3ddb3-6e76-4e77-95da-b42ec5281bae
+		summarizeBy: none
+		sourceColumn: conta_contabil
+
+		annotation SummarizationSetBy = Automatic
+
+	column valor_multa
+		dataType: double
+		lineageTag: d7ea746d-f83c-4364-832b-dfa9df85127d
+		summarizeBy: sum
+		sourceColumn: valor_multa
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column valor_juros
+		dataType: double
+		lineageTag: cb37e4fa-ce96-4afe-a5de-ca6f0de82116
+		summarizeBy: sum
+		sourceColumn: valor_juros
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column moeda
+		dataType: int64
+		formatString: 0
+		lineageTag: cc49341b-e2fb-487c-a8df-0cc4700a1eaf
+		summarizeBy: sum
+		sourceColumn: moeda
+
+		annotation SummarizationSetBy = Automatic
+
+	column numero_fatura
+		dataType: string
+		lineageTag: 59224a75-f2cf-4cec-af8d-b97f8f657bde
+		summarizeBy: none
+		sourceColumn: numero_fatura
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_atualizacao_warehouse
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b2d5b9b7-6dab-4b70-b4fd-c46eb1499021
+		summarizeBy: none
+		sourceColumn: data_atualizacao_warehouse
+
+		variation Variation
+			isDefault
+			relationship: cdad9899-11c5-430c-9d6a-c7b50025c5a1
+			defaultHierarchy: LocalDateTable_ebd51af6-3978-4e54-80df-d6ec24ec41c2.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition protheus_contasPagar = m
+		mode: import
+		queryGroup: datalake
+		source =
+				let
+				    Fonte = GoogleBigQuery.Database([Implementation="2.0"]),
+				    #"coherent-window-444219-c1_Database" = Fonte{[Name="coherent-window-444219-c1",Kind="Database"]}[Data],
+				    datalake_Schema = #"coherent-window-444219-c1_Database"{[Name="datalake",Kind="Schema"]}[Data],
+				    protheus_contasPagar_Table = datalake_Schema{[Name="protheus_contasPagar",Kind="Table"]}[Data],
+				    #"Tipo Alterado" = Table.TransformColumnTypes(protheus_contasPagar_Table,{{"data_emissao", type date}, {"data_vencimento", type date}, {"data_vencimento_real", type date}, {"data_baixa", type date}, {"data_ult_movimentacao", type date}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

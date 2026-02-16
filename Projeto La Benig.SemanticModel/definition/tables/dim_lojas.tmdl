@@ -37,6 +37,7 @@ table dim_lojas
 
 	partition Partition = m
 		mode: import
+		queryGroup: mocks
 		source =
 				let
 				    Fonte = Table.FromRecords({

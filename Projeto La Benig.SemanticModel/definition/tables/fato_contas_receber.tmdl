@@ -145,6 +145,7 @@ table fato_contas_receber
 
 	partition Partition = m
 		mode: import
+		queryGroup: mocks
 		source =
 				let
 				    Fonte = Table.FromRecords({

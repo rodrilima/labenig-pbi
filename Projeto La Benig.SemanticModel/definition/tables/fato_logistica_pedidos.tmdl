@@ -163,6 +163,7 @@ table fato_logistica_pedidos
 
 	partition Partition = m
 		mode: import
+		queryGroup: mocks
 		source =
 				let
 				    Fonte = Table.FromRecords({
@@ -196,4 +197,6 @@ table fato_logistica_pedidos
 				    TiposDefinidos
 
 	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
 

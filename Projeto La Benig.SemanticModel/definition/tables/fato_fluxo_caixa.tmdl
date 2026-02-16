@@ -100,6 +100,7 @@ table fato_fluxo_caixa
 
 	partition Partition = m
 		mode: import
+		queryGroup: mocks
 		source =
 				let
 				    Fonte = Table.FromRecords({
