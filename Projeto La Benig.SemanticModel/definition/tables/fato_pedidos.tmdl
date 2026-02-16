@@ -1,0 +1,260 @@
+/// Pedidos de Atacado e E-commerce
+table fato_pedidos
+	lineageTag: a8dfbd46-d4d3-4671-900c-8abef1a5d985
+
+	/// Faturamento total de todos os pedidos faturados
+	measure 'Faturamento Total' = SUM(fato_pedidos[valor_liquido])
+		formatString: R$ #,##0.00
+		lineageTag: f20f0444-52b0-40f9-bef0-a307fbd1962f
+
+	/// Valor médio por pedido
+	measure 'Ticket Médio' = DIVIDE([Faturamento Total], [Total de Pedidos], 0)
+		formatString: R$ #,##0.00
+		lineageTag: 44666b57-66fd-4bd8-85f1-582bbf4a0f60
+
+	/// Quantidade total de pedidos
+	measure 'Total de Pedidos' = COUNTROWS(fato_pedidos)
+		formatString: #,##0
+		lineageTag: 124d5c43-d651-4ea1-901a-52405bc86129
+
+	/// Faturamento do canal Atacado
+	measure 'Faturamento Atacado' = CALCULATE([Faturamento Total], fato_pedidos[canal] = "Atacado")
+		formatString: R$ #,##0.00
+		lineageTag: 92acf82e-4c7e-4250-8e11-c40f1622ed20
+
+	/// Faturamento do canal E-commerce
+	measure 'Faturamento E-commerce' = CALCULATE([Faturamento Total], fato_pedidos[canal] = "E-commerce")
+		formatString: R$ #,##0.00
+		lineageTag: a4cc1061-e74d-4632-b263-acc29af044af
+
+	/// Quantidade de pedidos já faturados
+	measure 'Pedidos Faturados' = CALCULATE(COUNTROWS(fato_pedidos), fato_pedidos[status] = "Faturado")
+		formatString: #,##0
+		lineageTag: 80926c25-25c6-4d4b-825a-786ed83442ec
+
+	/// Quantidade de pedidos ainda não faturados
+	measure 'Pedidos em Aberto' = CALCULATE(COUNTROWS(fato_pedidos), fato_pedidos[status] IN {"Aberto", "Em Separação"})
+		formatString: #,##0
+		lineageTag: 4af744e0-cdfd-41f3-916a-79e4504263da
+
+	/// Percentual de pedidos cancelados
+	measure 'Taxa Cancelamento' = DIVIDE(CALCULATE(COUNTROWS(fato_pedidos), fato_pedidos[status] = "Cancelado"), [Total de Pedidos], 0)
+		formatString: 0.0%
+		lineageTag: 02242705-eb9d-4ca8-87d1-0b6f6e9f2b0d
+
+	/// Total de pedidos do canal Atacado
+	measure 'Pedidos Atacado' = CALCULATE([Total de Pedidos], fato_pedidos[canal] = "Atacado")
+		formatString: #,##0
+		lineageTag: e37883e6-120f-4622-8216-d9a7eaa420be
+
+	/// Valor médio por pedido no Atacado
+	measure 'Ticket Medio Atacado' = DIVIDE([Faturamento Atacado], [Pedidos Atacado], 0)
+		formatString: R$ #,##0.00
+		lineageTag: 3420992a-f53c-4206-8360-dc2258d0a73b
+
+	/// Total de pedidos do canal E-commerce
+	measure 'Pedidos E-commerce' = CALCULATE([Total de Pedidos], fato_pedidos[canal] = "E-commerce")
+		formatString: #,##0
+		lineageTag: 03f0b3ee-440f-40b0-b7db-f4f38324a074
+
+	/// Quantidade de pedidos cancelados
+	measure 'Pedidos Cancelados' = CALCULATE(COUNTROWS(fato_pedidos), fato_pedidos[status] = "Cancelado")
+		formatString: #,##0
+		lineageTag: 4faaa120-c3e4-4977-be3c-7e34f4329e22
+
+	/// Custo médio de frete por pedido
+	measure 'Custo Medio Frete' = AVERAGE(fato_pedidos[valor_frete])
+		formatString: R$ #,##0.00
+		lineageTag: ea58b590-5147-49b4-8646-f36b872cfb23
+
+	/// Pedidos em processo de separação
+	measure 'Pedidos em Separacao' = CALCULATE(COUNTROWS(fato_pedidos), fato_pedidos[status] = "Em Separação")
+		formatString: #,##0
+		lineageTag: 901949f4-4ba0-4839-a41e-5e0f704f3de8
+
+	/// Tempo médio de separação em horas
+	measure 'Tempo Medio Separacao' = AVERAGE(fato_pedidos[valor_frete])
+		formatString: 0.00
+		lineageTag: ab456644-29fb-4700-b213-5aff3aeb631c
+
+	/// Percentual de cumprimento do SLA de separação (exemplo estático)
+	measure 'SLA Separacao Percentual' = 0.85
+		formatString: 0.0%
+		lineageTag: 126cdfa6-a2de-4c14-baf1-7d2afc5d5b5c
+
+	column pedido_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 2d10054d-42b6-4751-8a1b-9ebc555041c3
+		summarizeBy: sum
+		sourceColumn: pedido_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column cliente_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 57aba227-1ffd-4f9c-a4e5-a267e9efbcae
+		summarizeBy: none
+		sourceColumn: cliente_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column loja_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 3919ebf2-7819-4a72-831a-5b9d2cb1bda8
+		summarizeBy: none
+		sourceColumn: loja_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_pedido
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 12ac583b-2812-4026-9ba5-9b4b6f37f158
+		summarizeBy: none
+		sourceColumn: data_pedido
+
+		variation Variation
+			isDefault
+			relationship: 921a3682-411f-45cb-bff0-56a38cf3cc93
+			defaultHierarchy: LocalDateTable_0e79337e-c284-4fd5-9697-8cc1c1a4d549.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column data_faturamento
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: fcf08a8a-e2ee-40e5-8ffa-6be507cc6006
+		summarizeBy: none
+		sourceColumn: data_faturamento
+
+		variation Variation
+			isDefault
+			relationship: 3fb91c15-c957-4d1f-8827-015833756906
+			defaultHierarchy: LocalDateTable_2091c005-ae0a-40c5-881d-c790f882f801.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column valor_bruto
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: c3298f94-f0b0-482f-954a-56057530e86c
+		summarizeBy: sum
+		sourceColumn: valor_bruto
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column valor_desconto
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: ba282de7-a015-4d83-ab09-c01ea9359b57
+		summarizeBy: sum
+		sourceColumn: valor_desconto
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column valor_frete
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 0dc41422-8cda-499b-ad4d-189ea8309c61
+		summarizeBy: sum
+		sourceColumn: valor_frete
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column valor_liquido
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 13b6992c-e7d1-4ce2-aa99-0a735bf9ebdd
+		summarizeBy: sum
+		sourceColumn: valor_liquido
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column status
+		dataType: string
+		lineageTag: 986b0bd8-e643-4f9d-923b-d21a324e46fd
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column canal
+		dataType: string
+		lineageTag: 0d58af34-11ed-4ee4-b559-b276d229643d
+		summarizeBy: none
+		sourceColumn: canal
+
+		annotation SummarizationSetBy = Automatic
+
+	column cupom_desconto
+		dataType: string
+		lineageTag: 9658b5b1-ee51-4ec3-86ec-c9b17b978bd5
+		summarizeBy: none
+		sourceColumn: cupom_desconto
+
+		annotation SummarizationSetBy = Automatic
+
+	column custo_aquisicao
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 9e1103c1-a872-469c-9395-e14e5296e16b
+		summarizeBy: sum
+		sourceColumn: custo_aquisicao
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	partition Partition = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRecords({
+				        [pedido_id = 1, cliente_id = 1, loja_id = 3, data_pedido = #date(2025,1,2), data_faturamento = #date(2025,1,3), valor_bruto = 25000.00, valor_desconto = 500.00, valor_frete = 350.00, valor_liquido = 24850.00, status = "Faturado", canal = "Atacado", cupom_desconto = null, custo_aquisicao = 1200.00],
+				        [pedido_id = 2, cliente_id = 2, loja_id = 4, data_pedido = #date(2025,1,3), data_faturamento = #date(2025,1,4), valor_bruto = 45000.00, valor_desconto = 2000.00, valor_frete = 800.00, valor_liquido = 43800.00, status = "Faturado", canal = "Atacado", cupom_desconto = null, custo_aquisicao = 2100.00],
+				        [pedido_id = 3, cliente_id = 3, loja_id = 5, data_pedido = #date(2025,1,4), data_faturamento = #date(2025,1,5), valor_bruto = 32000.00, valor_desconto = 0.00, valor_frete = 650.00, valor_liquido = 31350.00, status = "Faturado", canal = "Atacado", cupom_desconto = null, custo_aquisicao = 1500.00],
+				        [pedido_id = 4, cliente_id = 4, loja_id = 1, data_pedido = #date(2025,1,5), data_faturamento = #date(2025,1,6), valor_bruto = 1500.00, valor_desconto = 150.00, valor_frete = 25.00, valor_liquido = 1375.00, status = "Faturado", canal = "E-commerce", cupom_desconto = "PROMO10", custo_aquisicao = 45.00],
+				        [pedido_id = 5, cliente_id = 5, loja_id = 1, data_pedido = #date(2025,1,5), data_faturamento = #date(2025,1,6), valor_bruto = 800.00, valor_desconto = 0.00, valor_frete = 20.00, valor_liquido = 780.00, status = "Faturado", canal = "E-commerce", cupom_desconto = null, custo_aquisicao = 35.00],
+				        [pedido_id = 6, cliente_id = 8, loja_id = 2, data_pedido = #date(2025,1,6), data_faturamento = #date(2025,1,7), valor_bruto = 250.00, valor_desconto = 25.00, valor_frete = 15.00, valor_liquido = 240.00, status = "Faturado", canal = "E-commerce", cupom_desconto = "DESC10", custo_aquisicao = 28.00],
+				        [pedido_id = 7, cliente_id = 10, loja_id = 1, data_pedido = #date(2025,1,7), data_faturamento = #date(2025,1,8), valor_bruto = 450.00, valor_desconto = 0.00, valor_frete = 18.00, valor_liquido = 432.00, status = "Faturado", canal = "E-commerce", cupom_desconto = null, custo_aquisicao = 32.00],
+				        [pedido_id = 8, cliente_id = 7, loja_id = 3, data_pedido = #date(2025,1,8), data_faturamento = null, valor_bruto = 18000.00, valor_desconto = 0.00, valor_frete = 450.00, valor_liquido = 17550.00, status = "Aberto", canal = "Atacado", cupom_desconto = null, custo_aquisicao = 850.00],
+				        [pedido_id = 9, cliente_id = 4, loja_id = 1, data_pedido = #date(2025,1,8), data_faturamento = #date(2025,1,9), valor_bruto = 950.00, valor_desconto = 95.00, valor_frete = 22.00, valor_liquido = 877.00, status = "Faturado", canal = "E-commerce", cupom_desconto = "PROMO10", custo_aquisicao = 38.00],
+				        [pedido_id = 10, cliente_id = 9, loja_id = 4, data_pedido = #date(2025,1,9), data_faturamento = null, valor_bruto = 28000.00, valor_desconto = 1400.00, valor_frete = 600.00, valor_liquido = 27200.00, status = "Em Separação", canal = "Atacado", cupom_desconto = null, custo_aquisicao = 1300.00],
+				        [pedido_id = 11, cliente_id = 5, loja_id = 2, data_pedido = #date(2025,1,9), data_faturamento = null, valor_bruto = 320.00, valor_desconto = 0.00, valor_frete = 16.00, valor_liquido = 304.00, status = "Cancelado", canal = "E-commerce", cupom_desconto = null, custo_aquisicao = 0.00],
+				        [pedido_id = 12, cliente_id = 8, loja_id = 1, data_pedido = #date(2025,1,10), data_faturamento = null, valor_bruto = 680.00, valor_desconto = 68.00, valor_frete = 19.00, valor_liquido = 631.00, status = "Em Separação", canal = "E-commerce", cupom_desconto = "DESC10", custo_aquisicao = 42.00]
+				    }),
+				    TiposDefinidos = Table.TransformColumnTypes(Fonte,{
+				        {"pedido_id", Int64.Type},
+				        {"cliente_id", Int64.Type},
+				        {"loja_id", Int64.Type},
+				        {"data_pedido", type date},
+				        {"data_faturamento", type date},
+				        {"valor_bruto", Currency.Type},
+				        {"valor_desconto", Currency.Type},
+				        {"valor_frete", Currency.Type},
+				        {"valor_liquido", Currency.Type},
+				        {"status", type text},
+				        {"canal", type text},
+				        {"cupom_desconto", type text},
+				        {"custo_aquisicao", Currency.Type}
+				    })
+				in
+				    TiposDefinidos
+
+	annotation PBI_ResultType = Table
+

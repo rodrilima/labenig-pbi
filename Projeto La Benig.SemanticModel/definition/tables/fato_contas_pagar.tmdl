@@ -1,0 +1,178 @@
+/// Contas a Pagar - Despesas e pagamentos
+table fato_contas_pagar
+	lineageTag: cdf007e0-8241-4c20-bd74-c8be357fcfa4
+
+	/// Valor total de contas em aberto
+	measure 'Total a Pagar' = CALCULATE(SUM(fato_contas_pagar[valor_original]), fato_contas_pagar[status] IN {"Aberto", "Atrasado"})
+		formatString: R$ #,##0.00
+		lineageTag: cd434d01-b2dc-4a0a-88d8-d8a5d8c4b8bd
+
+	/// Valor total já pago
+	measure 'Total Pago' = SUM(fato_contas_pagar[valor_pago])
+		formatString: R$ #,##0.00
+		lineageTag: 4daead5c-45a2-4b09-b982-29b09b43fd70
+
+	/// Valor de pagamentos em atraso
+	measure 'Pagamentos Atrasados' = CALCULATE(SUM(fato_contas_pagar[valor_original]), fato_contas_pagar[status] = "Atrasado")
+		formatString: R$ #,##0.00
+		lineageTag: 27e9eede-7b70-40f2-a5f2-ff9a441ee49e
+
+	/// Prazo médio de pagamento em dias
+	measure 'Prazo Medio Pagamento' = CALCULATE(AVERAGE(fato_contas_pagar[dias_atraso]), fato_contas_pagar[status] = "Pago")
+		formatString: 0
+		lineageTag: 4a5c1f89-e8d4-41fe-b37a-4fd0ee3bceed
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 42bc344a-6e64-4624-be9b-f1c38d66d625
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column fornecedor
+		dataType: string
+		lineageTag: a7e2e556-bd92-4f84-91e7-a871f95e0916
+		summarizeBy: none
+		sourceColumn: fornecedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column categoria
+		dataType: string
+		lineageTag: 3cac3aca-329b-4625-a6d3-02f12a8d02dd
+		summarizeBy: none
+		sourceColumn: categoria
+
+		annotation SummarizationSetBy = Automatic
+
+	column numero_documento
+		dataType: string
+		lineageTag: e18ed031-4f1e-4cef-97e7-7fbe46db716f
+		summarizeBy: none
+		sourceColumn: numero_documento
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_emissao
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d9fcc647-4fd5-4787-a7fc-669ec622c7c9
+		summarizeBy: none
+		sourceColumn: data_emissao
+
+		variation Variation
+			isDefault
+			relationship: c5fe6b48-9a21-4cdd-8850-8024e9f67e62
+			defaultHierarchy: LocalDateTable_e28827f2-1fbc-435b-8094-d1ba91d4d272.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column data_vencimento
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 143ec603-e3a0-4316-8cb8-83283c44d60d
+		summarizeBy: none
+		sourceColumn: data_vencimento
+
+		variation Variation
+			isDefault
+			relationship: aa57dfa6-a43d-441b-8e85-c12031cf3d34
+			defaultHierarchy: LocalDateTable_fcd32919-4c9f-495a-b7dc-e907a60bbf59.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column data_pagamento
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 11d0e5cd-e206-490e-a11c-8dd3c06c3ff3
+		summarizeBy: none
+		sourceColumn: data_pagamento
+
+		variation Variation
+			isDefault
+			relationship: 36fbcbfd-031b-45e9-8ab4-3fb2afd96575
+			defaultHierarchy: LocalDateTable_293c8d7a-b138-43de-85b5-194c186ca028.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column valor_original
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: e35360b1-f73d-4914-8df5-c279b365be99
+		summarizeBy: sum
+		sourceColumn: valor_original
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column valor_pago
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: b3f41e04-2cb3-4a7e-a93f-cd8ea9701a78
+		summarizeBy: sum
+		sourceColumn: valor_pago
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column status
+		dataType: string
+		lineageTag: 477c4a47-16b0-4df0-85cd-127acd5ace8d
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column dias_atraso
+		dataType: int64
+		formatString: 0
+		lineageTag: 22a3978b-748f-410e-91bd-58278d2854bf
+		summarizeBy: sum
+		sourceColumn: dias_atraso
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Partition = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRecords({
+				        [id = 1, fornecedor = "Fornecedor A", categoria = "Aluguel", numero_documento = "FAT-001", data_emissao = #date(2024,12,20), data_vencimento = #date(2025,1,20), data_pagamento = null, valor_original = 8000.00, valor_pago = 0.00, status = "Aberto", dias_atraso = 0],
+				        [id = 2, fornecedor = "Fornecedor B", categoria = "Salários", numero_documento = "FAT-002", data_emissao = #date(2024,12,25), data_vencimento = #date(2025,1,10), data_pagamento = #date(2025,1,8), valor_original = 45000.00, valor_pago = 45000.00, status = "Pago", dias_atraso = 0],
+				        [id = 3, fornecedor = "Fornecedor C", categoria = "Comissões", numero_documento = "FAT-003", data_emissao = #date(2024,12,15), data_vencimento = #date(2025,1,5), data_pagamento = null, valor_original = 12000.00, valor_pago = 0.00, status = "Atrasado", dias_atraso = 6],
+				        [id = 4, fornecedor = "Fornecedor D", categoria = "Marketing", numero_documento = "FAT-004", data_emissao = #date(2025,1,2), data_vencimento = #date(2025,1,25), data_pagamento = null, valor_original = 18000.00, valor_pago = 0.00, status = "Aberto", dias_atraso = 0],
+				        [id = 5, fornecedor = "Fornecedor E", categoria = "Frete", numero_documento = "FAT-005", data_emissao = #date(2024,12,28), data_vencimento = #date(2025,1,15), data_pagamento = null, valor_original = 22000.00, valor_pago = 0.00, status = "Aberto", dias_atraso = 0],
+				        [id = 6, fornecedor = "Fornecedor F", categoria = "Energia", numero_documento = "FAT-006", data_emissao = #date(2024,12,30), data_vencimento = #date(2025,1,18), data_pagamento = null, valor_original = 3500.00, valor_pago = 0.00, status = "Aberto", dias_atraso = 0],
+				        [id = 7, fornecedor = "Fornecedor G", categoria = "Telefonia", numero_documento = "FAT-007", data_emissao = #date(2025,1,5), data_vencimento = #date(2025,2,5), data_pagamento = null, valor_original = 1200.00, valor_pago = 0.00, status = "Aberto", dias_atraso = 0],
+				        [id = 8, fornecedor = "Fornecedor H", categoria = "Material", numero_documento = "FAT-008", data_emissao = #date(2024,12,10), data_vencimento = #date(2024,12,28), data_pagamento = null, valor_original = 800.00, valor_pago = 0.00, status = "Atrasado", dias_atraso = 14],
+				        [id = 9, fornecedor = "Fornecedor I", categoria = "Salários", numero_documento = "FAT-009", data_emissao = #date(2025,1,1), data_vencimento = #date(2025,1,30), data_pagamento = null, valor_original = 48000.00, valor_pago = 0.00, status = "Aberto", dias_atraso = 0],
+				        [id = 10, fornecedor = "Fornecedor J", categoria = "Impostos", numero_documento = "FAT-010", data_emissao = #date(2024,12,22), data_vencimento = #date(2025,1,12), data_pagamento = #date(2025,1,10), valor_original = 15000.00, valor_pago = 15000.00, status = "Pago", dias_atraso = 0]
+				    }),
+				    TiposDefinidos = Table.TransformColumnTypes(Fonte,{
+				        {"id", Int64.Type},
+				        {"fornecedor", type text},
+				        {"categoria", type text},
+				        {"numero_documento", type text},
+				        {"data_emissao", type date},
+				        {"data_vencimento", type date},
+				        {"data_pagamento", type date},
+				        {"valor_original", Currency.Type},
+				        {"valor_pago", Currency.Type},
+				        {"status", type text},
+				        {"dias_atraso", Int64.Type}
+				    })
+				in
+				    TiposDefinidos
+
+	annotation PBI_ResultType = Table
+

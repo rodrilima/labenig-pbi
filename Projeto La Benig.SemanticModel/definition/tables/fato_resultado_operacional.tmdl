@@ -1,0 +1,118 @@
+/// Resultado Operacional - Receitas e Despesas
+table fato_resultado_operacional
+	lineageTag: 4bf442a7-aeb3-48a9-8b08-78e803a25c1c
+
+	/// Total de receitas
+	measure 'Receita Total' = CALCULATE(SUM(fato_resultado_operacional[valor]), fato_resultado_operacional[tipo] = "Receita")
+		formatString: R$ #,##0.00
+		lineageTag: 4ae80508-ef27-4bbb-bf55-a72666f8656d
+
+	/// Total de despesas fixas
+	measure 'Despesas Fixas' = CALCULATE(SUM(fato_resultado_operacional[valor]), fato_resultado_operacional[tipo] = "Despesa Fixa")
+		formatString: R$ #,##0.00
+		lineageTag: 4b66437b-4f76-4db5-b6eb-d09d97ebfe87
+
+	/// Total de despesas variáveis
+	measure 'Despesas Variaveis' = CALCULATE(SUM(fato_resultado_operacional[valor]), fato_resultado_operacional[tipo] = "Despesa Variável")
+		formatString: R$ #,##0.00
+		lineageTag: 0e228a79-95ce-45a2-b423-04528e0f0975
+
+	/// Resultado operacional líquido
+	measure 'Resultado Operacional' = SUM(fato_resultado_operacional[valor])
+		formatString: R$ #,##0.00
+		lineageTag: fdef4d1a-86ca-4435-bc7c-64623ed5ddb7
+
+	/// Total de despesas (valor absoluto)
+	measure 'Total Despesas' = CALCULATE(ABS(SUM(fato_resultado_operacional[valor])), fato_resultado_operacional[tipo] IN {"Despesa Fixa", "Despesa Variável"})
+		formatString: R$ #,##0.00
+		lineageTag: ec56aa27-e72c-429f-b55d-c009c64bd081
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 710411dd-abce-448b-9863-a11db9d7a68d
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column data
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a0e9ac15-4d18-4ee8-ad7b-55706f13ec70
+		summarizeBy: none
+		sourceColumn: data
+
+		variation Variation
+			isDefault
+			relationship: 57639155-4280-4b6f-b76a-527e45b68366
+			defaultHierarchy: LocalDateTable_de6ea0ea-855c-4627-9613-83c8b930143f.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column conta
+		dataType: string
+		lineageTag: 5427ac00-9dc6-4d0e-8e6c-c0902ac538a6
+		summarizeBy: none
+		sourceColumn: conta
+
+		annotation SummarizationSetBy = Automatic
+
+	column tipo
+		dataType: string
+		lineageTag: 4afb8971-8b8b-4cfa-af7c-670792a4159b
+		summarizeBy: none
+		sourceColumn: tipo
+
+		annotation SummarizationSetBy = Automatic
+
+	column categoria
+		dataType: string
+		lineageTag: 1954801b-8c11-4264-b2a8-31bfd58bcc5d
+		summarizeBy: none
+		sourceColumn: categoria
+
+		annotation SummarizationSetBy = Automatic
+
+	column valor
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 2c12a65c-5cb5-42bd-8ee1-b0739115cdff
+		summarizeBy: sum
+		sourceColumn: valor
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	partition Partition = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRecords({
+				        [id = 1, data = #date(2025,1,31), conta = "Receita de Vendas", tipo = "Receita", categoria = "Operacional", valor = 320000.00],
+				        [id = 2, data = #date(2025,1,31), conta = "Aluguel", tipo = "Despesa Fixa", categoria = "Administrativa", valor = -8000.00],
+				        [id = 3, data = #date(2025,1,31), conta = "Salários", tipo = "Despesa Fixa", categoria = "Pessoal", valor = -45000.00],
+				        [id = 4, data = #date(2025,1,31), conta = "Comissões", tipo = "Despesa Variável", categoria = "Vendas", valor = -18000.00],
+				        [id = 5, data = #date(2025,1,31), conta = "Marketing Digital", tipo = "Despesa Variável", categoria = "Marketing", valor = -22000.00],
+				        [id = 6, data = #date(2025,1,31), conta = "Frete e Logística", tipo = "Despesa Variável", categoria = "Operacional", valor = -35000.00],
+				        [id = 7, data = #date(2025,1,31), conta = "Impostos", tipo = "Despesa Variável", categoria = "Tributária", valor = -48000.00],
+				        [id = 8, data = #date(2025,1,31), conta = "Energia Elétrica", tipo = "Despesa Fixa", categoria = "Administrativa", valor = -3500.00],
+				        [id = 9, data = #date(2025,1,31), conta = "Telefonia", tipo = "Despesa Fixa", categoria = "Administrativa", valor = -1200.00],
+				        [id = 10, data = #date(2025,1,31), conta = "Material Escritório", tipo = "Despesa Variável", categoria = "Administrativa", valor = -2800.00]
+				    }),
+				    TiposDefinidos = Table.TransformColumnTypes(Fonte,{
+				        {"id", Int64.Type},
+				        {"data", type date},
+				        {"conta", type text},
+				        {"tipo", type text},
+				        {"categoria", type text},
+				        {"valor", Currency.Type}
+				    })
+				in
+				    TiposDefinidos
+
+	annotation PBI_ResultType = Table
+

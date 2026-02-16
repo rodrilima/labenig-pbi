@@ -1,0 +1,50 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["MCP-PBIModeling","DevMode"]
+
+annotation PBI_QueryOrder = ["dim_clientes","dim_produtos","dim_lojas","dim_data","fato_fluxo_caixa","fato_pedidos","fato_sac","fato_contas_receber","fato_contas_pagar","fato_resultado_operacional","fato_comportamento_cliente","fato_logistica_pedidos"]
+
+ref table dim_clientes
+ref table dim_produtos
+ref table dim_lojas
+ref table dim_data
+ref table fato_fluxo_caixa
+ref table fato_pedidos
+ref table fato_sac
+ref table DateTableTemplate_63bae9ea-5091-4a4b-a9d1-35ccc1586d47
+ref table LocalDateTable_a2fc2df0-961a-4a27-90cc-757dadd2e093
+ref table LocalDateTable_ce94daa7-725f-4e78-83d0-4ea685cbe3ef
+ref table LocalDateTable_b92a3258-0434-487e-a920-b050c97bbbda
+ref table LocalDateTable_0e79337e-c284-4fd5-9697-8cc1c1a4d549
+ref table LocalDateTable_2091c005-ae0a-40c5-881d-c790f882f801
+ref table LocalDateTable_5d258021-cfe8-491f-8653-2dec7187d0fa
+ref table LocalDateTable_f886aefa-7298-4190-b87e-8d97277a8f4e
+ref table fato_contas_receber
+ref table LocalDateTable_946785b6-7017-483a-9de3-61fa64a04300
+ref table LocalDateTable_088d4d06-68bf-4328-a864-b2f4fb598a12
+ref table LocalDateTable_39250373-7f28-4f06-b891-2c6e7f0a5939
+ref table fato_contas_pagar
+ref table fato_resultado_operacional
+ref table LocalDateTable_e28827f2-1fbc-435b-8094-d1ba91d4d272
+ref table LocalDateTable_fcd32919-4c9f-495a-b7dc-e907a60bbf59
+ref table LocalDateTable_293c8d7a-b138-43de-85b5-194c186ca028
+ref table LocalDateTable_de6ea0ea-855c-4627-9613-83c8b930143f
+ref table fato_comportamento_cliente
+ref table LocalDateTable_3487d53c-59fc-4cdf-9512-29e1d903f5b2
+ref table LocalDateTable_1585e211-a4d0-4b83-a84a-842fc1c5bad0
+ref table fato_logistica_pedidos
+ref table LocalDateTable_d296fdeb-93e0-4e9b-9aa8-28b48ea1118f
+ref table LocalDateTable_087242aa-6058-4e87-beaf-1b30cd20a138
+ref table LocalDateTable_7784a5ae-8d40-48f6-a9c5-8796f655a9f6
+ref table LocalDateTable_dc2dc54f-9c45-458c-aec4-c5cfeffc9e6f
+
+ref cultureInfo pt-BR
+

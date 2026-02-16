@@ -1,0 +1,129 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.1.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY25SU12",
+      "reportVersionAtImport": {
+        "visual": "2.5.0",
+        "report": "3.1.0",
+        "page": "2.3.0"
+      },
+      "type": "SharedResources"
+    }
+  },
+  "objects": {
+    "section": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "resourcePackages": [
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "CY25SU12",
+          "path": "BaseThemes/CY25SU12.json",
+          "type": "BaseTheme"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "Tela_Opcao_1_La_Benig.png1179185690456045.png",
+          "path": "Tela_Opcao_1_La_Benig.png1179185690456045.png",
+          "type": "Image"
+        },
+        {
+          "name": "Tela_Opcao_3_La_Benig.png0011068031963178404.png",
+          "path": "Tela_Opcao_3_La_Benig.png0011068031963178404.png",
+          "type": "Image"
+        },
+        {
+          "name": "Tela_Opcao_2_La_Benig7462225877835805.png",
+          "path": "Tela_Opcao_2_La_Benig7462225877835805.png",
+          "type": "Image"
+        },
+        {
+          "name": "Tela_Opcao_3_La_Benig.png5915763148300801.png",
+          "path": "Tela_Opcao_3_La_Benig.png5915763148300801.png",
+          "type": "Image"
+        },
+        {
+          "name": "Tela_Opcao_2_La_Benig6163748108086201.png",
+          "path": "Tela_Opcao_2_La_Benig6163748108086201.png",
+          "type": "Image"
+        },
+        {
+          "name": "Tela_Opcao_1_La_Benig.png5700061033121215.png",
+          "path": "Tela_Opcao_1_La_Benig.png5700061033121215.png",
+          "type": "Image"
+        },
+        {
+          "name": "Tela_Opcao_3_La_Benig.png21457210795561465.png",
+          "path": "Tela_Opcao_3_La_Benig.png21457210795561465.png",
+          "type": "Image"
+        },
+        {
+          "name": "5020011858902290514.png",
+          "path": "5020011858902290514.png",
+          "type": "Image"
+        },
+        {
+          "name": "44369935497980133.png",
+          "path": "44369935497980133.png",
+          "type": "Image"
+        },
+        {
+          "name": "301179190545317954.png",
+          "path": "301179190545317954.png",
+          "type": "Image"
+        },
+        {
+          "name": "28413451467149907.png",
+          "path": "28413451467149907.png",
+          "type": "Image"
+        },
+        {
+          "name": "hhh3755977678695146.png",
+          "path": "hhh3755977678695146.png",
+          "type": "Image"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "exportDataMode": "AllowSummarized",
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": true,
+    "useDefaultAggregateDisplayName": true
+  }
+}

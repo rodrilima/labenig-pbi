@@ -1,0 +1,160 @@
+/// Dimensão de Clientes - Cadastro de clientes Atacado e E-commerce
+table dim_clientes
+	lineageTag: 550d7af7-d6f3-4909-8146-b1e07e9dc4c9
+
+	/// Quantidade de clientes ativos no Atacado
+	measure 'Clientes Ativos Atacado' = CALCULATE(COUNTROWS(dim_clientes), dim_clientes[tipo_cliente] = "Atacado", dim_clientes[status] = "Ativo")
+		formatString: #,##0
+		lineageTag: 14e980d8-b063-4e3b-9cc9-3a6647b61b26
+
+	/// Contagem distinta de clientes
+	measure 'Clientes por Regiao' = DISTINCTCOUNT(dim_clientes[cliente_id])
+		formatString: #,##0
+		lineageTag: 9f3df466-daca-4b41-b4b7-d9bdb5d64677
+
+	/// Quantidade de estados com clientes atacado
+	measure 'Estados Atendidos' = CALCULATE(DISTINCTCOUNT(dim_clientes[estado]), dim_clientes[tipo_cliente] = "Atacado")
+		formatString: #,##0
+		lineageTag: 3f6e7d44-8de2-4102-8eb4-9d53fa358596
+
+	/// Total de clientes e-commerce
+	measure 'Clientes Ecommerce Total' = CALCULATE(COUNTROWS(dim_clientes), dim_clientes[tipo_cliente] = "E-commerce")
+		formatString: #,##0
+		lineageTag: 1943f28c-e3a1-48b6-9530-97d5b7e6ca6b
+
+	column cliente_id
+		dataType: int64
+		formatString: 0
+		lineageTag: c4a1b7bf-ef34-4687-a7bd-65dbe2e37ee5
+		summarizeBy: none
+		sourceColumn: cliente_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column nome_cliente
+		dataType: string
+		lineageTag: 456831be-263f-472f-af49-97dd4ea221a3
+		summarizeBy: none
+		sourceColumn: nome_cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column tipo_cliente
+		dataType: string
+		lineageTag: ea32a826-34eb-44a3-a831-a247b52a5158
+		summarizeBy: none
+		sourceColumn: tipo_cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column classificacao_atacado
+		dataType: string
+		lineageTag: be8173a8-639d-4ab2-b97c-8acd9309f5f7
+		summarizeBy: none
+		sourceColumn: classificacao_atacado
+
+		annotation SummarizationSetBy = Automatic
+
+	column cidade
+		dataType: string
+		lineageTag: a730c509-4448-43d0-a3d3-81f77a4efed8
+		summarizeBy: none
+		sourceColumn: cidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column estado
+		dataType: string
+		lineageTag: cb8fa28f-9b0a-4f96-9460-0542312dcd39
+		summarizeBy: none
+		sourceColumn: estado
+
+		annotation SummarizationSetBy = Automatic
+
+	column pais
+		dataType: string
+		lineageTag: d0f53a4c-d016-4c02-be14-fa515ffe92d1
+		summarizeBy: none
+		sourceColumn: pais
+
+		annotation SummarizationSetBy = Automatic
+
+	column latitude
+		dataType: double
+		lineageTag: 4a4e1c31-0438-41b7-8514-1ed1fb2e9f9b
+		summarizeBy: sum
+		sourceColumn: latitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column longitude
+		dataType: double
+		lineageTag: d871698c-f642-4f08-9b97-f7b5bd568511
+		summarizeBy: sum
+		sourceColumn: longitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column data_cadastro
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 190509e9-daf7-4d11-8648-dfd82c804368
+		summarizeBy: none
+		sourceColumn: data_cadastro
+
+		variation Variation
+			isDefault
+			relationship: 794c494e-1e2a-43b7-81d6-7232cdfefc0b
+			defaultHierarchy: LocalDateTable_a2fc2df0-961a-4a27-90cc-757dadd2e093.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column status
+		dataType: string
+		lineageTag: a87f9d46-60a2-4c6b-b240-ccd94975c43f
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Partition = m
+		mode: import
+		source = ```
+				let
+				    Fonte = Table.FromRecords({
+				        [cliente_id = 1, nome_cliente = "Loja Modelo Centro", tipo_cliente = "Atacado", classificacao_atacado = "Lojista", cidade = "São Paulo", estado = "SP", pais = "Brasil", latitude = -23.550520, longitude = -46.633308, data_cadastro = #date(2024,1,15), status = "Ativo"],
+				        [cliente_id = 2, nome_cliente = "Distribuidora Nacional", tipo_cliente = "Atacado", classificacao_atacado = "Distribuidor", cidade = "Rio de Janeiro", estado = "RJ", pais = "Brasil", latitude = -22.906847, longitude = -43.172896, data_cadastro = #date(2024,2,20), status = "Ativo"],
+				        [cliente_id = 3, nome_cliente = "Mega Varejo Sul", tipo_cliente = "Atacado", classificacao_atacado = "Grandes Contas", cidade = "Curitiba", estado = "PR", pais = "Brasil", latitude = -25.428954, longitude = -49.267137, data_cadastro = #date(2024,3,10), status = "Ativo"],
+				        [cliente_id = 4, nome_cliente = "João Silva", tipo_cliente = "E-commerce", classificacao_atacado = null, cidade = "Brasília", estado = "DF", pais = "Brasil", latitude = -15.826691, longitude = -47.921822, data_cadastro = #date(2024,6,5), status = "Ativo"],
+				        [cliente_id = 5, nome_cliente = "Maria Santos", tipo_cliente = "E-commerce", classificacao_atacado = null, cidade = "Belo Horizonte", estado = "MG", pais = "Brasil", latitude = -19.916681, longitude = -43.934493, data_cadastro = #date(2024,7,12), status = "Ativo"],
+				        [cliente_id = 6, nome_cliente = "Pedro Oliveira", tipo_cliente = "E-commerce", classificacao_atacado = null, cidade = "Porto Alegre", estado = "RS", pais = "Brasil", latitude = -30.034647, longitude = -51.217658, data_cadastro = #date(2024,8,22), status = "Inativo"],
+				        [cliente_id = 7, nome_cliente = "Rede Varejista Norte", tipo_cliente = "Atacado", classificacao_atacado = "Lojista", cidade = "Manaus", estado = "AM", pais = "Brasil", latitude = -3.119028, longitude = -60.021731, data_cadastro = #date(2024,4,18), status = "Ativo"],
+				        [cliente_id = 8, nome_cliente = "Ana Costa", tipo_cliente = "E-commerce", classificacao_atacado = null, cidade = "Salvador", estado = "BA", pais = "Brasil", latitude = -12.971599, longitude = -38.501295, data_cadastro = #date(2024,9,30), status = "Ativo"],
+				        [cliente_id = 9, nome_cliente = "Distribuidora Express", tipo_cliente = "Atacado", classificacao_atacado = "Distribuidor", cidade = "Recife", estado = "PE", pais = "Brasil", latitude = -8.047562, longitude = -34.877001, data_cadastro = #date(2024,5,25), status = "Ativo"],
+				        [cliente_id = 10, nome_cliente = "Carlos Mendes", tipo_cliente = "E-commerce", classificacao_atacado = null, cidade = "Fortaleza", estado = "CE", pais = "Brasil", latitude = -3.731862, longitude = -38.526670, data_cadastro = #date(2024,10,15), status = "Ativo"]
+				    }),
+				    TiposDefinidos = Table.TransformColumnTypes(Fonte,{
+				        {"cliente_id", Int64.Type}, 
+				        {"nome_cliente", type text}, 
+				        {"tipo_cliente", type text}, 
+				        {"classificacao_atacado", type text}, 
+				        {"cidade", type text}, 
+				        {"estado", type text}, 
+				        {"pais", type text}, 
+				        {"latitude", type number}, 
+				        {"longitude", type number}, 
+				        {"data_cadastro", type date}, 
+				        {"status", type text}
+				    })
+				in
+				    TiposDefinidos
+				```
+
+	annotation PBI_ResultType = Table
+

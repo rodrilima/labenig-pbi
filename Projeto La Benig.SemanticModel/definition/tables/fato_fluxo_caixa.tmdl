@@ -1,0 +1,129 @@
+/// Fluxo de Caixa Diário
+table fato_fluxo_caixa
+	lineageTag: c9e2e0d2-8517-4d64-a28b-d97ecb2f11fd
+
+	/// Saldo de caixa mais recente
+	measure 'Saldo Caixa Atual' = CALCULATE(MAX(fato_fluxo_caixa[saldo_final]), LASTDATE(fato_fluxo_caixa[data]))
+		formatString: R$ #,##0.00
+		lineageTag: 6f5a2569-95f5-4af7-842b-d2a93206ce71
+
+	/// Saldo inicial do último dia registrado
+	measure 'Saldo Inicial' = CALCULATE(MIN(fato_fluxo_caixa[saldo_inicial]), LASTDATE(fato_fluxo_caixa[data]))
+		formatString: R$ #,##0.00
+		lineageTag: f591dfe8-5b5f-41aa-8b73-e8018d9ae912
+
+	/// Soma de todas as entradas de caixa
+	measure 'Total Entradas' = SUM(fato_fluxo_caixa[entradas])
+		formatString: R$ #,##0.00
+		lineageTag: 120f7154-574c-463a-81f7-869ffd308cf1
+
+	/// Soma de todas as saídas de caixa
+	measure 'Total Saidas' = SUM(fato_fluxo_caixa[saidas])
+		formatString: R$ #,##0.00
+		lineageTag: ca4f86ac-e4d7-4648-9a7f-fba3a046019b
+
+	/// Diferença entre entradas e saídas
+	measure 'Resultado Caixa' = [Total Entradas] - [Total Saidas]
+		formatString: R$ #,##0.00
+		lineageTag: d937756b-d5b0-46b5-ab6e-674dd3afbe45
+
+	column data
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 5985fc4a-c032-4be9-bbe7-63b7674d289e
+		summarizeBy: none
+		sourceColumn: data
+
+		variation Variation
+			isDefault
+			relationship: 95591935-b5d4-4d3d-b86b-9f025a201f35
+			defaultHierarchy: LocalDateTable_b92a3258-0434-487e-a920-b050c97bbbda.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column saldo_inicial
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 81350dcd-afe5-48d7-93e6-73c2ce9a57a0
+		summarizeBy: sum
+		sourceColumn: saldo_inicial
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column entradas
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 7bd98e0d-41d3-4070-abc6-63faa36ecf25
+		summarizeBy: sum
+		sourceColumn: entradas
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column saidas
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: a6ff509e-448d-4ea2-af27-c3cd320c798c
+		summarizeBy: sum
+		sourceColumn: saidas
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column saldo_final
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: daf50804-0c16-4576-b938-6f4257f308df
+		summarizeBy: sum
+		sourceColumn: saldo_final
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column fluxo_projetado
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 526b4698-1e1e-4020-a87c-7b5960bf67e3
+		summarizeBy: sum
+		sourceColumn: fluxo_projetado
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	partition Partition = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRecords({
+				        [data = #date(2025,1,1), saldo_inicial = 150000.00, entradas = 45000.00, saidas = 32000.00, saldo_final = 163000.00, fluxo_projetado = 165000.00],
+				        [data = #date(2025,1,2), saldo_inicial = 163000.00, entradas = 52000.00, saidas = 28000.00, saldo_final = 187000.00, fluxo_projetado = 180000.00],
+				        [data = #date(2025,1,3), saldo_inicial = 187000.00, entradas = 38000.00, saidas = 41000.00, saldo_final = 184000.00, fluxo_projetado = 175000.00],
+				        [data = #date(2025,1,4), saldo_inicial = 184000.00, entradas = 29000.00, saidas = 18000.00, saldo_final = 195000.00, fluxo_projetado = 190000.00],
+				        [data = #date(2025,1,5), saldo_inicial = 195000.00, entradas = 61000.00, saidas = 35000.00, saldo_final = 221000.00, fluxo_projetado = 210000.00],
+				        [data = #date(2025,1,6), saldo_inicial = 221000.00, entradas = 48000.00, saidas = 52000.00, saldo_final = 217000.00, fluxo_projetado = 215000.00],
+				        [data = #date(2025,1,7), saldo_inicial = 217000.00, entradas = 55000.00, saidas = 29000.00, saldo_final = 243000.00, fluxo_projetado = 235000.00],
+				        [data = #date(2025,1,8), saldo_inicial = 243000.00, entradas = 42000.00, saidas = 38000.00, saldo_final = 247000.00, fluxo_projetado = 245000.00],
+				        [data = #date(2025,1,9), saldo_inicial = 247000.00, entradas = 58000.00, saidas = 44000.00, saldo_final = 261000.00, fluxo_projetado = 255000.00],
+				        [data = #date(2025,1,10), saldo_inicial = 261000.00, entradas = 49000.00, saidas = 31000.00, saldo_final = 279000.00, fluxo_projetado = 270000.00]
+				    }),
+				    TiposDefinidos = Table.TransformColumnTypes(Fonte,{
+				        {"data", type date},
+				        {"saldo_inicial", Currency.Type},
+				        {"entradas", Currency.Type},
+				        {"saidas", Currency.Type},
+				        {"saldo_final", Currency.Type},
+				        {"fluxo_projetado", Currency.Type}
+				    })
+				in
+				    TiposDefinidos
+
+	annotation PBI_ResultType = Table
+

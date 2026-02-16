@@ -1,0 +1,104 @@
+/// Dimensão de Tempo/Calendário
+table dim_data
+	lineageTag: 71695600-1a0a-47cd-949f-976dab967cc5
+
+	column data_id
+		dataType: int64
+		formatString: 0
+		lineageTag: fec9368c-b5e2-4dec-b494-1044bdec0f50
+		summarizeBy: sum
+		sourceColumn: data_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Data
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: fc624801-1963-453e-af6e-3f226b305577
+		summarizeBy: none
+		sourceColumn: Data
+
+		variation Variation
+			isDefault
+			relationship: dc32a7e0-9b3e-4394-9f49-82a5cf3a424a
+			defaultHierarchy: LocalDateTable_ce94daa7-725f-4e78-83d0-4ea685cbe3ef.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Ano
+		dataType: int64
+		formatString: 0
+		lineageTag: 1d784819-5b1a-4817-9044-163f2b764368
+		summarizeBy: sum
+		sourceColumn: Ano
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mes
+		dataType: int64
+		formatString: 0
+		lineageTag: b31a3a2e-5678-4398-b9a1-b912bb1fcbc9
+		summarizeBy: sum
+		sourceColumn: Mes
+
+		annotation SummarizationSetBy = Automatic
+
+	column NomeMes
+		dataType: string
+		lineageTag: b782e1d4-d61a-4106-91f7-2e0df9557860
+		summarizeBy: none
+		sourceColumn: NomeMes
+
+		annotation SummarizationSetBy = Automatic
+
+	column Trimestre
+		dataType: int64
+		formatString: 0
+		lineageTag: 456e9bb9-27b8-4dab-81f6-cd24af9a2018
+		summarizeBy: sum
+		sourceColumn: Trimestre
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiaSemana
+		dataType: int64
+		formatString: 0
+		lineageTag: a8d362c6-d1e5-4401-91b1-3bc52a042a99
+		summarizeBy: sum
+		sourceColumn: DiaSemana
+
+		annotation SummarizationSetBy = Automatic
+
+	column NomeDiaSemana
+		dataType: string
+		lineageTag: 601e8b47-ed6f-4a9d-a59b-230fb9d7a624
+		summarizeBy: none
+		sourceColumn: NomeDiaSemana
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Partition = m
+		mode: import
+		source =
+				let
+				    DataInicio = #date(2024, 11, 1),
+				    DataFim = #date(2025, 2, 10),
+				    NumeroDias = Duration.Days(DataFim - DataInicio) + 1,
+				    ListaDatas = List.Dates(DataInicio, NumeroDias, #duration(1,0,0,0)),
+				    TabelaDatas = Table.FromList(ListaDatas, Splitter.SplitByNothing(), {"Data"}),
+				    TipoData = Table.TransformColumnTypes(TabelaDatas,{{"Data", type date}}),
+				    AdicionarAno = Table.AddColumn(TipoData, "Ano", each Date.Year([Data]), Int64.Type),
+				    AdicionarMes = Table.AddColumn(AdicionarAno, "Mes", each Date.Month([Data]), Int64.Type),
+				    AdicionarNomeMes = Table.AddColumn(AdicionarMes, "NomeMes", each Date.MonthName([Data], "pt-BR"), type text),
+				    AdicionarTrimestre = Table.AddColumn(AdicionarNomeMes, "Trimestre", each Date.QuarterOfYear([Data]), Int64.Type),
+				    AdicionarDiaSemana = Table.AddColumn(AdicionarTrimestre, "DiaSemana", each Date.DayOfWeek([Data], Day.Monday) + 1, Int64.Type),
+				    AdicionarNomeDia = Table.AddColumn(AdicionarDiaSemana, "NomeDiaSemana", each Date.DayOfWeekName([Data], "pt-BR"), type text),
+				    AdicionarDataID = Table.AddColumn(AdicionarNomeDia, "data_id", each Date.Year([Data]) * 10000 + Date.Month([Data]) * 100 + Date.Day([Data]), Int64.Type),
+				    ReordenarColunas = Table.ReorderColumns(AdicionarDataID,{"data_id", "Data", "Ano", "Mes", "NomeMes", "Trimestre", "DiaSemana", "NomeDiaSemana"})
+				in
+				    ReordenarColunas
+
+	annotation PBI_ResultType = Table
+
