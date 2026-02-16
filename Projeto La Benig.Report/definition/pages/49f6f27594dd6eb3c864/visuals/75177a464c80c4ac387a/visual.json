@@ -20,14 +20,14 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fato_contas_receber"
+                      "Entity": "medidas_financeiro"
                     }
                   },
-                  "Property": "Total a Receber"
+                  "Property": "01_total_a_receber"
                 }
               },
-              "queryRef": "fato_contas_receber.Total a Receber",
-              "nativeQueryRef": "Total a Receber"
+              "queryRef": "Medidas.01_Total_a_Receber",
+              "nativeQueryRef": "01_total_a_receber"
             }
           ]
         }
@@ -39,10 +39,10 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "fato_contas_receber"
+                    "Entity": "medidas_financeiro"
                   }
                 },
-                "Property": "Total a Receber"
+                "Property": "01_total_a_receber"
               }
             },
             "direction": "Descending"

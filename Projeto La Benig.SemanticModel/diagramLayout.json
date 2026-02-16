@@ -1,0 +1,341 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 2414,
+        "y": 305
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 432.65862914287817,
+            "y": 303.70738260670441
+          },
+          "nodeIndex": "dim_clientes",
+          "nodeLineageTag": "550d7af7-d6f3-4909-8146-b1e07e9dc4c9",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1314.6991657030962,
+            "y": 367.29583200817706
+          },
+          "nodeIndex": "dim_data",
+          "nodeLineageTag": "71695600-1a0a-47cd-949f-976dab967cc5",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1005.5833290133191,
+            "y": 271.46385118387855
+          },
+          "nodeIndex": "dim_lojas",
+          "nodeLineageTag": "13babba5-d172-4088-bda1-c19dabec9463",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1598.6991657030962,
+            "y": 391.29583200817706
+          },
+          "nodeIndex": "dim_produtos",
+          "nodeLineageTag": "762ddf5a-6367-40b3-b710-b8306d3d4485",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 316.82673866721609,
+            "y": 656.59166401635412
+          },
+          "nodeIndex": "fato_comportamento_cliente",
+          "nodeLineageTag": "94ca9d1b-12bc-4b3e-8bed-a494ec094d4a",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1882.6991657030962,
+            "y": 353.29583200817706
+          },
+          "nodeIndex": "fato_contas_pagar",
+          "nodeLineageTag": "cdf007e0-8241-4c20-bd74-c8be357fcfa4",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 203.11680115188216,
+            "y": -50
+          },
+          "nodeIndex": "fato_contas_receber",
+          "nodeLineageTag": "d06afc41-d882-436a-aaf1-64a1702e6f3e",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2166.6991657030962,
+            "y": 353.29583200817706
+          },
+          "nodeIndex": "fato_fluxo_caixa",
+          "nodeLineageTag": "c9e2e0d2-8517-4d64-a28b-d97ecb2f11fd",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1080.6991657030962,
+            "y": 500.49096484641211
+          },
+          "nodeIndex": "fato_logistica_pedidos",
+          "nodeLineageTag": "912e5ee9-efe6-41ba-ab0e-5cd7697600b2",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 718.55532658633092,
+            "y": 373.85225182113732
+          },
+          "nodeIndex": "fato_pedidos",
+          "nodeLineageTag": "a8dfbd46-d4d3-4671-900c-8abef1a5d985",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2450.6991657030962,
+            "y": 353.29583200817706
+          },
+          "nodeIndex": "fato_resultado_operacional",
+          "nodeLineageTag": "4bf442a7-aeb3-48a9-8b08-78e803a25c1c",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 303.73741077900331
+          },
+          "nodeIndex": "fato_sac",
+          "nodeLineageTag": "0b6730ba-cf50-4cf2-9955-e97f8e42ba5b",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3537.08221571779,
+            "y": 345.08465751821581
+          },
+          "nodeIndex": "protheus_contasBancarias",
+          "nodeLineageTag": "83cc781d-51c8-4279-861d-29a3d8f96882",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3303.08221571779,
+            "y": 278.66230853829336
+          },
+          "nodeIndex": "protheus_contasPagar",
+          "nodeLineageTag": "9a8386ee-1731-43f9-a602-1f0e80ebeda1",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2734.6991657030962,
+            "y": 308.64741931789121
+          },
+          "nodeIndex": "protheus_contasReceber",
+          "nodeLineageTag": "0ee1a42c-97d5-4cbb-8b09-1d141a580f2a",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3018.9007268962814,
+            "y": 311.50700649813837
+          },
+          "nodeIndex": "protheus_movimentosBancarios",
+          "nodeLineageTag": "da554400-d777-4977-8bd5-023e535e7bc4",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 4005.08221571779,
+            "y": 403.29583200817706
+          },
+          "nodeIndex": "calendario",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3771.08221571779,
+            "y": 451.29583200817706
+          },
+          "nodeIndex": "medidas_financeiro",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {},
+          "nodeIndex": "protheus_contatos",
+          "nodeLineageTag": "c69578b1-8090-43df-94f4-8663358270a9",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {},
+          "nodeIndex": "dim_clientes_contas_a_receber",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas as tabelas",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 1,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 134,
+            "y": 130
+          },
+          "nodeIndex": "calendario",
+          "nodeLineageTag": "963ae7f1-a55a-45f0-a5f7-69c609f6cb45",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 513,
+            "y": 115
+          },
+          "nodeIndex": "protheus_contasReceber",
+          "nodeLineageTag": "0ee1a42c-97d5-4cbb-8b09-1d141a580f2a",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 836,
+            "y": 94
+          },
+          "nodeIndex": "protheus_contatos",
+          "nodeLineageTag": "c69578b1-8090-43df-94f4-8663358270a9",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "ContasAReceber",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 2,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [],
+      "name": "Contatos",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "ContasAReceber",
+  "defaultDiagram": "Todas as tabelas"
+}

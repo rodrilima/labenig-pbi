@@ -20,14 +20,14 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fato_contas_receber"
+                      "Entity": "medidas_financeiro"
                     }
                   },
-                  "Property": "Prazo Medio Recebimento"
+                  "Property": "06_pmr_dias"
                 }
               },
-              "queryRef": "fato_contas_receber.Prazo Medio Recebimento",
-              "nativeQueryRef": "Prazo Medio Recebimento"
+              "queryRef": "medidas_financeiro.06_pmr_dias",
+              "nativeQueryRef": "06_pmr_dias"
             }
           ]
         }
@@ -39,10 +39,10 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "fato_contas_receber"
+                    "Entity": "medidas_financeiro"
                   }
                 },
-                "Property": "Prazo Medio Recebimento"
+                "Property": "06_pmr_dias"
               }
             },
             "direction": "Descending"
@@ -322,7 +322,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Prazo de Recebimento'"
+                  "Value": "' PMR - Prazo Médio de Recebimento'"
                 }
               }
             },
@@ -476,5 +476,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "645c136c2902226368b1",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "medidas_financeiro"
+              }
+            },
+            "Property": "06_pmr_dias"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

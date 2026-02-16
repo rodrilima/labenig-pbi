@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fato_contas_receber"
+                      "Entity": "protheus_contasReceber"
                     }
                   },
-                  "Property": "faixa_vencimento"
+                  "Property": "faixa_aging"
                 }
               },
-              "queryRef": "fato_contas_receber.faixa_vencimento",
-              "nativeQueryRef": "faixa_vencimento",
+              "queryRef": "protheus_contasReceber.faixa_aging",
+              "nativeQueryRef": "faixa_aging",
               "active": true
             }
           ]
@@ -39,14 +39,14 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fato_contas_receber"
+                      "Entity": "medidas_financeiro"
                     }
                   },
-                  "Property": "Total a Receber"
+                  "Property": "09_valor_aging"
                 }
               },
-              "queryRef": "fato_contas_receber.Total a Receber",
-              "nativeQueryRef": "Total a Receber"
+              "queryRef": "medidas_financeiro.09_valor_aging",
+              "nativeQueryRef": "09_valor_aging"
             }
           ]
         }
@@ -58,10 +58,10 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "fato_contas_receber"
+                    "Entity": "medidas_financeiro"
                   }
                 },
-                "Property": "Total a Receber"
+                "Property": "09_valor_aging"
               }
             },
             "direction": "Descending"
@@ -131,11 +131,36 @@
                   "Value": "true"
                 }
               }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Aging dos Recebíveis'"
+                }
+              }
             }
           }
         }
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "7ab850902ce3abbc7436",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "medidas_financeiro"
+              }
+            },
+            "Property": "09_valor_aging"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

@@ -20,14 +20,14 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fato_contas_receber"
+                      "Entity": "medidas_financeiro"
                     }
                   },
-                  "Property": "Total Recebido"
+                  "Property": "02_recebido_no_periodo"
                 }
               },
-              "queryRef": "fato_contas_receber.Total Recebido",
-              "nativeQueryRef": "Total Recebido"
+              "queryRef": "Medidas.02_Total_Recebido",
+              "nativeQueryRef": "02_recebido_no_periodo"
             }
           ]
         }
@@ -39,10 +39,10 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "fato_contas_receber"
+                    "Entity": "medidas_financeiro"
                   }
                 },
-                "Property": "Total Recebido"
+                "Property": "02_recebido_no_periodo"
               }
             },
             "direction": "Descending"
@@ -212,7 +212,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Total a Recebido'"
+                  "Value": "'Recebido no Período'"
                 }
               }
             },
@@ -412,5 +412,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "5a38d2ebf3774197d58f",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "medidas_financeiro"
+              }
+            },
+            "Property": "02_recebido_no_periodo"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

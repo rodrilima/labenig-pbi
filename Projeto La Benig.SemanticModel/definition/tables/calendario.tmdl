@@ -1,0 +1,152 @@
+table calendario
+	lineageTag: 963ae7f1-a55a-45f0-a5f7-69c609f6cb45
+	dataCategory: Time
+
+	column Date
+		isKey
+		formatString: General Date
+		lineageTag: e079afc2-4d5d-482b-9812-c1ccdf645ce0
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+	column ano
+		formatString: 0
+		lineageTag: 9c8e05a9-57eb-4bc7-975b-609c96a62484
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [ano]
+
+		annotation SummarizationSetBy = Automatic
+
+	column mes_numero
+		formatString: 0
+		lineageTag: ec94066a-1e05-4dd4-9f12-cf7b6f5cc11e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [mes_numero]
+
+		annotation SummarizationSetBy = Automatic
+
+	column mes_nome
+		lineageTag: 4d53fe57-9ecc-4350-beaf-c1f065083ad0
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [mes_nome]
+
+		annotation SummarizationSetBy = Automatic
+
+	column mes_abreviado
+		lineageTag: cc64108a-41cd-4a44-8c2a-b81cf471e6aa
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [mes_abreviado]
+
+		annotation SummarizationSetBy = Automatic
+
+	column ano_mes
+		lineageTag: c812dc46-552c-4b8a-ba1c-496f6f793ffb
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [ano_mes]
+
+		annotation SummarizationSetBy = Automatic
+
+	column ano_mes_ordenacao
+		formatString: 0
+		lineageTag: 61928c03-87f0-453f-918c-845e9352a4e7
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [ano_mes_ordenacao]
+
+		annotation SummarizationSetBy = Automatic
+
+	column trimestre
+		lineageTag: 48f9b83f-dcaf-4101-85da-1a7307aaa5fa
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [trimestre]
+
+		annotation SummarizationSetBy = Automatic
+
+	column ano_trimestre
+		lineageTag: fc4f027f-b1ef-4b4a-989c-70e8c65e02f3
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [ano_trimestre]
+
+		annotation SummarizationSetBy = Automatic
+
+	column dia
+		formatString: 0
+		lineageTag: 15a9ab5d-0146-4d56-9be7-8eda06c80f2b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [dia]
+
+		annotation SummarizationSetBy = Automatic
+
+	column dia_semana_numero
+		formatString: 0
+		lineageTag: a15439b0-e90d-4fb9-9b3f-81882da2e79f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [dia_semana_numero]
+
+		annotation SummarizationSetBy = Automatic
+
+	column dia_semana_nome
+		lineageTag: 8a5340ec-3b30-4c14-9ba4-08272f65d194
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [dia_semana_nome]
+
+		annotation SummarizationSetBy = Automatic
+
+	column fim_de_mes
+		formatString: General Date
+		lineageTag: b27d3df9-c9c5-4bb8-b43f-ddf64f92386c
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [fim_de_mes]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition calendario = calculated
+		mode: import
+		source = ```
+				
+				VAR data_min =
+				    MINX(
+				        protheus_contasReceber,
+				        protheus_contasReceber[data_emissao]
+				    )
+				VAR data_max =
+				    MAXX(
+				        protheus_contasReceber,
+				        protheus_contasReceber[data_vencimento]
+				    )
+				RETURN
+				ADDCOLUMNS(
+				    CALENDAR(data_min, data_max),
+				    
+				    "ano", YEAR([Date]),
+				    "mes_numero", MONTH([Date]),
+				    "mes_nome", FORMAT([Date], "mmmm"),
+				    "mes_abreviado", FORMAT([Date], "mmm"),
+				    "ano_mes", FORMAT([Date], "yyyy-MM"),
+				    "ano_mes_ordenacao", YEAR([Date]) * 100 + MONTH([Date]),
+				    "trimestre", "T" & FORMAT([Date], "Q"),
+				    "ano_trimestre", YEAR([Date]) & "-T" & FORMAT([Date], "Q"),
+				    "dia", DAY([Date]),
+				    "dia_semana_numero", WEEKDAY([Date], 2),
+				    "dia_semana_nome", FORMAT([Date], "dddd"),
+				    "fim_de_mes", EOMONTH([Date], 0)
+				)
+				
+				```
+
+	annotation PBI_Id = 92f27ba2174947c0bf0e8646a205716f
+
