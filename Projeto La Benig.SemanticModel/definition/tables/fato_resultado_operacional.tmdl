@@ -89,6 +89,7 @@ table fato_resultado_operacional
 
 	partition Partition = m
 		mode: import
+		queryGroup: mocks
 		source =
 				let
 				    Fonte = Table.FromRecords({

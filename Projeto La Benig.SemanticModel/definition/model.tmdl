@@ -6,11 +6,23 @@ model Model
 		legacyRedirects
 		returnErrorValuesAsNull
 
+queryGroup datalake
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup mocks
+
+	annotation PBI_QueryGroupOrder = 1
+
+queryGroup dw
+
+	annotation PBI_QueryGroupOrder = 2
+
 annotation __PBI_TimeIntelligenceEnabled = 1
 
 annotation PBI_ProTooling = ["MCP-PBIModeling","DevMode"]
 
-annotation PBI_QueryOrder = ["dim_clientes","dim_produtos","dim_lojas","dim_data","fato_fluxo_caixa","fato_pedidos","fato_sac","fato_contas_receber","fato_contas_pagar","fato_resultado_operacional","fato_comportamento_cliente","fato_logistica_pedidos"]
+annotation PBI_QueryOrder = ["protheus_contasBancarias","protheus_contasPagar","protheus_contasReceber","protheus_movimentosBancarios","dim_clientes","dim_produtos","dim_lojas","dim_data","fato_fluxo_caixa","fato_pedidos","fato_sac","fato_contas_receber","fato_contas_pagar","fato_resultado_operacional","fato_comportamento_cliente","fato_logistica_pedidos"]
 
 ref table dim_clientes
 ref table dim_produtos
@@ -45,6 +57,24 @@ ref table LocalDateTable_d296fdeb-93e0-4e9b-9aa8-28b48ea1118f
 ref table LocalDateTable_087242aa-6058-4e87-beaf-1b30cd20a138
 ref table LocalDateTable_7784a5ae-8d40-48f6-a9c5-8796f655a9f6
 ref table LocalDateTable_dc2dc54f-9c45-458c-aec4-c5cfeffc9e6f
+ref table protheus_contasBancarias
+ref table LocalDateTable_d846c162-cd31-4113-b127-17808b8e2812
+ref table protheus_contasPagar
+ref table LocalDateTable_b519e84d-9581-4c72-9812-aa12a9ef6e20
+ref table LocalDateTable_7f471689-e567-4191-92e5-442838f78efa
+ref table LocalDateTable_e2853529-6db9-4b2d-a00c-e9b84b67a8de
+ref table LocalDateTable_64bf4b89-8d97-45a0-b90d-789842ad8ae2
+ref table LocalDateTable_8fb9b101-a095-42ef-a771-47a6283028c6
+ref table LocalDateTable_ebd51af6-3978-4e54-80df-d6ec24ec41c2
+ref table protheus_contasReceber
+ref table LocalDateTable_43d02457-0394-44b8-a4c0-b9afd925f2c1
+ref table LocalDateTable_6fc32c8d-adc0-4006-8b81-beec3a8c5154
+ref table LocalDateTable_5e526ff1-0d33-4d25-80f9-785b220914d6
+ref table LocalDateTable_e9feb545-339c-4cfa-9342-1b87e1d2de53
+ref table LocalDateTable_0b27bd4a-1e19-4ddb-90f4-cfcb7d2b4e72
+ref table LocalDateTable_e4666247-b35c-4df4-9a7f-e834f81e9a7c
+ref table protheus_movimentosBancarios
+ref table LocalDateTable_b29f0275-1101-4bbb-9a53-c9f11e5ee9fc
 
 ref cultureInfo pt-BR
 

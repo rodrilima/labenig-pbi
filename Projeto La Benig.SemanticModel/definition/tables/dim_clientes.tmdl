@@ -125,6 +125,7 @@ table dim_clientes
 
 	partition Partition = m
 		mode: import
+		queryGroup: mocks
 		source = ```
 				let
 				    Fonte = Table.FromRecords({
@@ -157,4 +158,6 @@ table dim_clientes
 				```
 
 	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
 

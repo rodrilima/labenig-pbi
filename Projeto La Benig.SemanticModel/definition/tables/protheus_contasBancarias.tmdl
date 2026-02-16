@@ -1,0 +1,199 @@
+table protheus_contasBancarias
+	lineageTag: 83cc781d-51c8-4279-861d-29a3d8f96882
+
+	column pk
+		dataType: string
+		lineageTag: 64750a59-ce12-4490-a8c5-61dd54dc7e76
+		summarizeBy: none
+		sourceColumn: pk
+
+		annotation SummarizationSetBy = Automatic
+
+	column filial
+		dataType: string
+		lineageTag: fb1861d2-eff8-41d1-9d8d-2203b158bb2f
+		summarizeBy: none
+		sourceColumn: filial
+
+		annotation SummarizationSetBy = Automatic
+
+	column codigo
+		dataType: string
+		lineageTag: 2a1805e3-8ae1-4dbe-b6d1-9c25972b2386
+		summarizeBy: none
+		sourceColumn: codigo
+
+		annotation SummarizationSetBy = Automatic
+
+	column agencia
+		dataType: string
+		lineageTag: d63f61fc-79be-447d-a748-9f0f02ab3fd5
+		summarizeBy: none
+		sourceColumn: agencia
+
+		annotation SummarizationSetBy = Automatic
+
+	column digito_agencia
+		dataType: string
+		lineageTag: cf6ba49f-9203-466e-937b-2e592b3da25a
+		summarizeBy: none
+		sourceColumn: digito_agencia
+
+		annotation SummarizationSetBy = Automatic
+
+	column nome
+		dataType: string
+		lineageTag: 3eea2248-3091-4910-a712-0d4da9fe83b1
+		summarizeBy: none
+		sourceColumn: nome
+
+		annotation SummarizationSetBy = Automatic
+
+	column nome_reduzido
+		dataType: string
+		lineageTag: d557ee5a-3b4b-4e2e-a72b-d1b733919089
+		summarizeBy: none
+		sourceColumn: nome_reduzido
+
+		annotation SummarizationSetBy = Automatic
+
+	column saldo_anterior
+		dataType: double
+		lineageTag: ea118926-e7a8-40bd-837f-01863df1a391
+		summarizeBy: sum
+		sourceColumn: saldo_anterior
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column saldo_atual
+		dataType: double
+		lineageTag: 92f75fe8-2562-474e-a8da-2f27ae70a11e
+		summarizeBy: sum
+		sourceColumn: saldo_atual
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column fluxo_caixa
+		dataType: string
+		lineageTag: e6fd6c7a-5dd1-4b79-99ce-b4cfb7076202
+		summarizeBy: none
+		sourceColumn: fluxo_caixa
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_fech_caixa
+		dataType: string
+		lineageTag: 28df6c95-1d01-4a7c-864b-5f683be6c07f
+		summarizeBy: none
+		sourceColumn: data_fech_caixa
+
+		annotation SummarizationSetBy = Automatic
+
+	column limite_credito
+		dataType: double
+		lineageTag: 84bba6e4-6328-4dad-84d7-4834e27ebd94
+		summarizeBy: sum
+		sourceColumn: limite_credito
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cod_bc
+		dataType: string
+		lineageTag: 2ca3c5b7-8737-45e3-8704-f6b82d33c15f
+		summarizeBy: none
+		sourceColumn: cod_bc
+
+		annotation SummarizationSetBy = Automatic
+
+	column cliente
+		dataType: string
+		lineageTag: a40c10c4-de95-48f6-a82e-a1cad77d456d
+		summarizeBy: none
+		sourceColumn: cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column loja
+		dataType: string
+		lineageTag: 654d5a8d-f9f2-4c58-9c34-890be33a1b0f
+		summarizeBy: none
+		sourceColumn: loja
+
+		annotation SummarizationSetBy = Automatic
+
+	column numero_banco
+		dataType: string
+		lineageTag: 1eacdd6d-5a23-40a8-ad15-425d890ef4a0
+		summarizeBy: none
+		sourceColumn: numero_banco
+
+		annotation SummarizationSetBy = Automatic
+
+	column nome_correntista
+		dataType: string
+		lineageTag: e9deac2f-32a8-48c2-8b08-073a27c687a9
+		summarizeBy: none
+		sourceColumn: nome_correntista
+
+		annotation SummarizationSetBy = Automatic
+
+	column cnpj
+		dataType: string
+		lineageTag: 9b689725-16c8-4109-ab57-baef717be7d5
+		summarizeBy: none
+		sourceColumn: cnpj
+
+		annotation SummarizationSetBy = Automatic
+
+	column tipo_conta
+		dataType: string
+		lineageTag: 78e42767-ac48-43fc-b8f1-4238e1439832
+		summarizeBy: none
+		sourceColumn: tipo_conta
+
+		annotation SummarizationSetBy = Automatic
+
+	column titularidade_conta
+		dataType: string
+		lineageTag: 336702b8-e4e9-4831-a5a0-780ae01a1045
+		summarizeBy: none
+		sourceColumn: titularidade_conta
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_atualizacao_warehouse
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4f890426-b5fb-47d1-9aaf-8ff0b6531101
+		summarizeBy: none
+		sourceColumn: data_atualizacao_warehouse
+
+		variation Variation
+			isDefault
+			relationship: 7f29ed70-543f-4e29-8301-a1c2c36a7b56
+			defaultHierarchy: LocalDateTable_d846c162-cd31-4113-b127-17808b8e2812.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition protheus_contasBancarias = m
+		mode: import
+		queryGroup: datalake
+		source =
+				let
+				    Fonte = GoogleBigQuery.Database([Implementation="2.0"]),
+				    #"coherent-window-444219-c1_Database" = Fonte{[Name="coherent-window-444219-c1",Kind="Database"]}[Data],
+				    datalake_Schema = #"coherent-window-444219-c1_Database"{[Name="datalake",Kind="Schema"]}[Data],
+				    protheus_contasBancarias_Table = datalake_Schema{[Name="protheus_contasBancarias",Kind="Table"]}[Data]
+				in
+				    protheus_contasBancarias_Table
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

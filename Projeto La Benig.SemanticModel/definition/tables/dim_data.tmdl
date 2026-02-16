@@ -81,6 +81,7 @@ table dim_data
 
 	partition Partition = m
 		mode: import
+		queryGroup: mocks
 		source =
 				let
 				    DataInicio = #date(2024, 11, 1),

@@ -131,3 +131,81 @@ relationship AutoDetected_783b8d81-1a87-4683-b74a-349664cd9ee2
 	fromColumn: fato_logistica_pedidos.pedido_id
 	toColumn: fato_pedidos.pedido_id
 
+relationship 7f29ed70-543f-4e29-8301-a1c2c36a7b56
+	joinOnDateBehavior: datePartOnly
+	fromColumn: protheus_contasBancarias.data_atualizacao_warehouse
+	toColumn: LocalDateTable_d846c162-cd31-4113-b127-17808b8e2812.Date
+
+relationship 259cfc75-d627-4def-b888-15316b1e9686
+	joinOnDateBehavior: datePartOnly
+	fromColumn: protheus_contasPagar.data_emissao
+	toColumn: LocalDateTable_b519e84d-9581-4c72-9812-aa12a9ef6e20.Date
+
+relationship a8a7d4c8-b5c1-46d4-ad2a-51c79e8f4b6e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: protheus_contasPagar.data_vencimento
+	toColumn: LocalDateTable_7f471689-e567-4191-92e5-442838f78efa.Date
+
+relationship 6bc0306e-a942-4025-9edf-4d62a9b18118
+	joinOnDateBehavior: datePartOnly
+	fromColumn: protheus_contasPagar.data_vencimento_real
+	toColumn: LocalDateTable_e2853529-6db9-4b2d-a00c-e9b84b67a8de.Date
+
+relationship 389e14e1-218d-47bb-8846-d7e73becdde0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: protheus_contasPagar.data_baixa
+	toColumn: LocalDateTable_64bf4b89-8d97-45a0-b90d-789842ad8ae2.Date
+
+relationship 58f3c5ee-1e35-4b00-bb75-9e97e51d833a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: protheus_contasPagar.data_ult_movimentacao
+	toColumn: LocalDateTable_8fb9b101-a095-42ef-a771-47a6283028c6.Date
+
+relationship cdad9899-11c5-430c-9d6a-c7b50025c5a1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: protheus_contasPagar.data_atualizacao_warehouse
+	toColumn: LocalDateTable_ebd51af6-3978-4e54-80df-d6ec24ec41c2.Date
+
+relationship 486f7dc5-e809-4867-8024-9b2b4fdc8c11
+	joinOnDateBehavior: datePartOnly
+	fromColumn: protheus_contasReceber.data_emissao
+	toColumn: LocalDateTable_43d02457-0394-44b8-a4c0-b9afd925f2c1.Date
+
+relationship e2ee5f4b-0ce2-44f9-b133-f7f2b233e863
+	joinOnDateBehavior: datePartOnly
+	fromColumn: protheus_contasReceber.data_vencimento
+	toColumn: LocalDateTable_6fc32c8d-adc0-4006-8b81-beec3a8c5154.Date
+
+relationship 767e2fcf-bf6d-4e45-9a4e-942827c4b80a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: protheus_contasReceber.data_vencimento_real
+	toColumn: LocalDateTable_5e526ff1-0d33-4d25-80f9-785b220914d6.Date
+
+relationship 235679f9-a500-447e-ad62-9bd4023f567d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: protheus_contasReceber.data_ult_movimentacao
+	toColumn: LocalDateTable_e9feb545-339c-4cfa-9342-1b87e1d2de53.Date
+
+relationship 9498bd84-5081-483f-ae35-7dc3e26824ef
+	joinOnDateBehavior: datePartOnly
+	fromColumn: protheus_contasReceber.data_baixa
+	toColumn: LocalDateTable_0b27bd4a-1e19-4ddb-90f4-cfcb7d2b4e72.Date
+
+relationship 8f23a2a0-4142-43e6-9248-99921f8acba8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: protheus_contasReceber.data_atualizacao_warehouse
+	toColumn: LocalDateTable_e4666247-b35c-4df4-9a7f-e834f81e9a7c.Date
+
+relationship eec62af2-1278-4025-a449-c430e449fa17
+	joinOnDateBehavior: datePartOnly
+	fromColumn: protheus_movimentosBancarios.data_atualizacao_warehouse
+	toColumn: LocalDateTable_b29f0275-1101-4bbb-9a53-c9f11e5ee9fc.Date
+
+relationship AutoDetected_e0d50292-a577-46c4-80ed-5a316895e366
+	fromColumn: protheus_contasPagar.tipo
+	toColumn: protheus_movimentosBancarios.tipo
+
+relationship AutoDetected_d5de09ec-0cdf-412d-a9cf-ae09ca4a2de7
+	fromColumn: protheus_contasReceber.tipo
+	toColumn: protheus_movimentosBancarios.tipo
+
