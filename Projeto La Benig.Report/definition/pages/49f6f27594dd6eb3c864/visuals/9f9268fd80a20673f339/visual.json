@@ -1,0 +1,275 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "9f9268fd80a20673f339",
+  "position": {
+    "x": 158.04878048780489,
+    "y": 469.7560975609756,
+    "z": 4000,
+    "height": 223.90243902439025,
+    "width": 802.53658536585374,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fato_contas_receber"
+                    }
+                  },
+                  "Property": "numero_documento"
+                }
+              },
+              "queryRef": "fato_contas_receber.numero_documento",
+              "nativeQueryRef": "NF",
+              "displayName": "NF"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_clientes"
+                    }
+                  },
+                  "Property": "nome_cliente"
+                }
+              },
+              "queryRef": "dim_clientes.nome_cliente",
+              "nativeQueryRef": "Cliente",
+              "displayName": "Cliente"
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "fato_contas_receber"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "data_emissao"
+                        }
+                      },
+                      "Hierarchy": "Hierarquia de datas"
+                    }
+                  },
+                  "Level": "Ano"
+                }
+              },
+              "queryRef": "fato_contas_receber.data_emissao.Variation.Hierarquia de datas.Ano",
+              "nativeQueryRef": "data_emissao Ano"
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "fato_contas_receber"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "data_emissao"
+                        }
+                      },
+                      "Hierarchy": "Hierarquia de datas"
+                    }
+                  },
+                  "Level": "Mês"
+                }
+              },
+              "queryRef": "fato_contas_receber.data_emissao.Variation.Hierarquia de datas.Mês",
+              "nativeQueryRef": "data_emissao Mês"
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "fato_contas_receber"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "data_emissao"
+                        }
+                      },
+                      "Hierarchy": "Hierarquia de datas"
+                    }
+                  },
+                  "Level": "Dia"
+                }
+              },
+              "queryRef": "fato_contas_receber.data_emissao.Variation.Hierarquia de datas.Dia",
+              "nativeQueryRef": "data_emissao Dia"
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "fato_contas_receber"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "data_vencimento"
+                        }
+                      },
+                      "Hierarchy": "Hierarquia de datas"
+                    }
+                  },
+                  "Level": "Ano"
+                }
+              },
+              "queryRef": "fato_contas_receber.data_vencimento.Variation.Hierarquia de datas.Ano",
+              "nativeQueryRef": "data_vencimento Ano"
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "fato_contas_receber"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "data_vencimento"
+                        }
+                      },
+                      "Hierarchy": "Hierarquia de datas"
+                    }
+                  },
+                  "Level": "Mês"
+                }
+              },
+              "queryRef": "fato_contas_receber.data_vencimento.Variation.Hierarquia de datas.Mês",
+              "nativeQueryRef": "data_vencimento Mês"
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "fato_contas_receber"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "data_vencimento"
+                        }
+                      },
+                      "Hierarchy": "Hierarquia de datas"
+                    }
+                  },
+                  "Level": "Dia"
+                }
+              },
+              "queryRef": "fato_contas_receber.data_vencimento.Variation.Hierarquia de datas.Dia",
+              "nativeQueryRef": "data_vencimento Dia"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fato_contas_receber"
+                        }
+                      },
+                      "Property": "valor_original"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fato_contas_receber.valor_original)",
+              "nativeQueryRef": "Soma de valor_original"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fato_contas_receber"
+                    }
+                  },
+                  "Property": "status"
+                }
+              },
+              "queryRef": "fato_contas_receber.status",
+              "nativeQueryRef": "Status",
+              "displayName": "Status"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fato_contas_receber"
+                        }
+                      },
+                      "Property": "dias_atraso"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fato_contas_receber.dias_atraso)",
+              "nativeQueryRef": "Dias de Atraso",
+              "displayName": "Dias de Atraso"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dim_clientes"
+                  }
+                },
+                "Property": "nome_cliente"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

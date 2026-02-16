@@ -1,0 +1,133 @@
+relationship 794c494e-1e2a-43b7-81d6-7232cdfefc0b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_clientes.data_cadastro
+	toColumn: LocalDateTable_a2fc2df0-961a-4a27-90cc-757dadd2e093.Date
+
+relationship dc32a7e0-9b3e-4394-9f49-82a5cf3a424a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_data.Data
+	toColumn: LocalDateTable_ce94daa7-725f-4e78-83d0-4ea685cbe3ef.Date
+
+relationship 95591935-b5d4-4d3d-b86b-9f025a201f35
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fato_fluxo_caixa.data
+	toColumn: LocalDateTable_b92a3258-0434-487e-a920-b050c97bbbda.Date
+
+relationship 921a3682-411f-45cb-bff0-56a38cf3cc93
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fato_pedidos.data_pedido
+	toColumn: LocalDateTable_0e79337e-c284-4fd5-9697-8cc1c1a4d549.Date
+
+relationship 3fb91c15-c957-4d1f-8827-015833756906
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fato_pedidos.data_faturamento
+	toColumn: LocalDateTable_2091c005-ae0a-40c5-881d-c790f882f801.Date
+
+relationship 1fd91099-35fd-41ce-bb18-f17fe2b87385
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fato_sac.data_abertura
+	toColumn: LocalDateTable_5d258021-cfe8-491f-8653-2dec7187d0fa.Date
+
+relationship 1247eb99-f37a-4d80-8b53-afcbc9b17ba8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fato_sac.data_fechamento
+	toColumn: LocalDateTable_f886aefa-7298-4190-b87e-8d97277a8f4e.Date
+
+relationship AutoDetected_f9e21199-dba2-4b69-b209-7f982e7ef3c3
+	fromColumn: fato_pedidos.cliente_id
+	toColumn: dim_clientes.cliente_id
+
+relationship AutoDetected_e378e167-d942-442a-8dc0-86dff44c683d
+	fromColumn: fato_sac.cliente_id
+	toColumn: dim_clientes.cliente_id
+
+relationship AutoDetected_a5227dbb-289a-4ea2-a544-07fde6f5d5b2
+	fromColumn: fato_pedidos.loja_id
+	toColumn: dim_lojas.loja_id
+
+relationship 26b13fce-6984-4357-9e3b-55f2a4b48a4e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fato_contas_receber.data_emissao
+	toColumn: LocalDateTable_946785b6-7017-483a-9de3-61fa64a04300.Date
+
+relationship bd742a95-5939-4ac4-a0a7-e2d4abe0c383
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fato_contas_receber.data_vencimento
+	toColumn: LocalDateTable_088d4d06-68bf-4328-a864-b2f4fb598a12.Date
+
+relationship 8fb27411-7fb5-4edb-8c4e-9d2458b68ad5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fato_contas_receber.data_recebimento
+	toColumn: LocalDateTable_39250373-7f28-4f06-b891-2c6e7f0a5939.Date
+
+relationship AutoDetected_8b946c89-a3f3-4190-bb05-757d9d41099c
+	fromColumn: fato_contas_receber.cliente_id
+	toColumn: dim_clientes.cliente_id
+
+relationship c5fe6b48-9a21-4cdd-8850-8024e9f67e62
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fato_contas_pagar.data_emissao
+	toColumn: LocalDateTable_e28827f2-1fbc-435b-8094-d1ba91d4d272.Date
+
+relationship aa57dfa6-a43d-441b-8e85-c12031cf3d34
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fato_contas_pagar.data_vencimento
+	toColumn: LocalDateTable_fcd32919-4c9f-495a-b7dc-e907a60bbf59.Date
+
+relationship 36fbcbfd-031b-45e9-8ab4-3fb2afd96575
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fato_contas_pagar.data_pagamento
+	toColumn: LocalDateTable_293c8d7a-b138-43de-85b5-194c186ca028.Date
+
+relationship 57639155-4280-4b6f-b76a-527e45b68366
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fato_resultado_operacional.data
+	toColumn: LocalDateTable_de6ea0ea-855c-4627-9613-83c8b930143f.Date
+
+relationship a5b93c4f-0b7d-4adb-b704-7527b2a86e3c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fato_comportamento_cliente.data_referencia
+	toColumn: LocalDateTable_3487d53c-59fc-4cdf-9512-29e1d903f5b2.Date
+
+relationship 7f91096a-0ebb-4bfe-9763-836045d6dfce
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fato_comportamento_cliente.ultima_compra
+	toColumn: LocalDateTable_1585e211-a4d0-4b83-a84a-842fc1c5bad0.Date
+
+relationship AutoDetected_7d88eb3c-b089-4ed1-8c34-3f5ff9b709af
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: fato_comportamento_cliente.cliente_id
+	toColumn: dim_clientes.cliente_id
+
+relationship 5e9aa45c-d2f1-4993-a7b1-3627bae75613
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fato_logistica_pedidos.data_pedido
+	toColumn: LocalDateTable_d296fdeb-93e0-4e9b-9aa8-28b48ea1118f.Date
+
+relationship ab7e204c-eaba-4627-bb8f-daec12796973
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fato_logistica_pedidos.data_separacao
+	toColumn: LocalDateTable_087242aa-6058-4e87-beaf-1b30cd20a138.Date
+
+relationship 0820783c-d029-4a6d-a3e9-da62e501996a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fato_logistica_pedidos.data_faturamento
+	toColumn: LocalDateTable_7784a5ae-8d40-48f6-a9c5-8796f655a9f6.Date
+
+relationship 735ad2bd-ab9a-4447-b63a-c1adc9e9c3bf
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fato_logistica_pedidos.data_coleta
+	toColumn: LocalDateTable_dc2dc54f-9c45-458c-aec4-c5cfeffc9e6f.Date
+
+relationship AutoDetected_7a2b162f-5ad2-4976-b157-7622eb47d3b7
+	fromColumn: fato_logistica_pedidos.loja_id
+	toColumn: dim_lojas.loja_id
+
+relationship AutoDetected_783b8d81-1a87-4683-b74a-349664cd9ee2
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: fato_logistica_pedidos.pedido_id
+	toColumn: fato_pedidos.pedido_id
+

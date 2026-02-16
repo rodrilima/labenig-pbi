@@ -1,0 +1,177 @@
+/// Contas a Receber - Títulos e pagamentos
+table fato_contas_receber
+	lineageTag: d06afc41-d882-436a-aaf1-64a1702e6f3e
+
+	/// Valor total de títulos em aberto
+	measure 'Total a Receber' = CALCULATE(SUM(fato_contas_receber[valor_original]), fato_contas_receber[status] IN {"Aberto", "Vencido"})
+		formatString: R$ #,##0.00
+		lineageTag: 03f5018e-81a0-4cb0-bdad-b8cdc50a7429
+
+	/// Valor total já recebido
+	measure 'Total Recebido' = SUM(fato_contas_receber[valor_recebido])
+		formatString: R$ #,##0.00
+		lineageTag: b80b8e16-cf45-4fe3-b29f-558a2d406416
+
+	/// Percentual de inadimplência
+	measure 'Taxa Inadimplencia' = DIVIDE(CALCULATE(SUM(fato_contas_receber[valor_original]), fato_contas_receber[status] = "Vencido"), SUM(fato_contas_receber[valor_original]), 0)
+		formatString: 0.0%
+		lineageTag: 41612b3a-e100-4b91-8b9c-b901598f9a35
+
+	/// Prazo médio de recebimento em dias
+	measure 'Prazo Medio Recebimento' = CALCULATE(AVERAGE(fato_contas_receber[dias_atraso]), fato_contas_receber[status] = "Recebido")
+		formatString: 0
+		lineageTag: 92971c90-390d-479c-9a47-b41695b6b7d9
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 801494f5-3636-4078-af02-b9bc2ebee362
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column cliente_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 6226f345-3706-4be5-8bd1-ee4998900dae
+		summarizeBy: none
+		sourceColumn: cliente_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column numero_documento
+		dataType: string
+		lineageTag: 4f1912b9-22e6-41b9-bf25-fd8b6d89d429
+		summarizeBy: none
+		sourceColumn: numero_documento
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_emissao
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 3c8382b2-92e0-42fe-8983-1802d1c4f5c4
+		summarizeBy: none
+		sourceColumn: data_emissao
+
+		variation Variation
+			isDefault
+			relationship: 26b13fce-6984-4357-9e3b-55f2a4b48a4e
+			defaultHierarchy: LocalDateTable_946785b6-7017-483a-9de3-61fa64a04300.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column data_vencimento
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: db5809c5-ba5a-4de7-8392-34467b4d7280
+		summarizeBy: none
+		sourceColumn: data_vencimento
+
+		variation Variation
+			isDefault
+			relationship: bd742a95-5939-4ac4-a0a7-e2d4abe0c383
+			defaultHierarchy: LocalDateTable_088d4d06-68bf-4328-a864-b2f4fb598a12.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column data_recebimento
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d1c7366a-7846-4444-a9d9-383275dc0621
+		summarizeBy: none
+		sourceColumn: data_recebimento
+
+		variation Variation
+			isDefault
+			relationship: 8fb27411-7fb5-4edb-8c4e-9d2458b68ad5
+			defaultHierarchy: LocalDateTable_39250373-7f28-4f06-b891-2c6e7f0a5939.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column valor_original
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: a9084ee3-e995-4a72-8279-1e6e49652b2c
+		summarizeBy: sum
+		sourceColumn: valor_original
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column valor_recebido
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 1b00063f-b74c-4323-9ada-d79e97bcc853
+		summarizeBy: sum
+		sourceColumn: valor_recebido
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column status
+		dataType: string
+		lineageTag: 56f0d9b8-6da0-4b08-9fdd-a45aa85c36b8
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column dias_atraso
+		dataType: int64
+		formatString: 0
+		lineageTag: 0148062a-8730-483e-8d36-806cba2fb143
+		summarizeBy: sum
+		sourceColumn: dias_atraso
+
+		annotation SummarizationSetBy = Automatic
+
+	column faixa_vencimento
+		dataType: string
+		lineageTag: c4b76985-5506-435c-adf3-f7c7a525fd60
+		summarizeBy: none
+		sourceColumn: faixa_vencimento
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Partition = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRecords({
+				        [id = 1, cliente_id = 1, numero_documento = "NF-001", data_emissao = #date(2024,12,15), data_vencimento = #date(2025,1,15), data_recebimento = #date(2025,1,10), valor_original = 25000.00, valor_recebido = 25000.00, status = "Recebido", dias_atraso = 0, faixa_vencimento = "0-30"],
+				        [id = 2, cliente_id = 2, numero_documento = "NF-002", data_emissao = #date(2024,12,20), data_vencimento = #date(2025,1,20), data_recebimento = null, valor_original = 45000.00, valor_recebido = 0.00, status = "Aberto", dias_atraso = 0, faixa_vencimento = "0-30"],
+				        [id = 3, cliente_id = 3, numero_documento = "NF-003", data_emissao = #date(2024,11,25), data_vencimento = #date(2024,12,25), data_recebimento = null, valor_original = 32000.00, valor_recebido = 0.00, status = "Vencido", dias_atraso = 47, faixa_vencimento = "31-60"],
+				        [id = 4, cliente_id = 7, numero_documento = "NF-004", data_emissao = #date(2024,12,28), data_vencimento = #date(2025,1,28), data_recebimento = null, valor_original = 18000.00, valor_recebido = 0.00, status = "Aberto", dias_atraso = 0, faixa_vencimento = "0-30"],
+				        [id = 5, cliente_id = 9, numero_documento = "NF-005", data_emissao = #date(2024,10,15), data_vencimento = #date(2024,11,15), data_recebimento = null, valor_original = 28000.00, valor_recebido = 0.00, status = "Vencido", dias_atraso = 87, faixa_vencimento = "61-90"],
+				        [id = 6, cliente_id = 1, numero_documento = "NF-006", data_emissao = #date(2025,1,5), data_vencimento = #date(2025,2,5), data_recebimento = null, valor_original = 35000.00, valor_recebido = 0.00, status = "Aberto", dias_atraso = 0, faixa_vencimento = "0-30"],
+				        [id = 7, cliente_id = 2, numero_documento = "NF-007", data_emissao = #date(2024,9,20), data_vencimento = #date(2024,10,20), data_recebimento = null, valor_original = 15000.00, valor_recebido = 0.00, status = "Vencido", dias_atraso = 113, faixa_vencimento = "90+"],
+				        [id = 8, cliente_id = 3, numero_documento = "NF-008", data_emissao = #date(2025,1,8), data_vencimento = #date(2025,2,8), data_recebimento = null, valor_original = 42000.00, valor_recebido = 0.00, status = "Aberto", dias_atraso = 0, faixa_vencimento = "0-30"]
+				    }),
+				    TiposDefinidos = Table.TransformColumnTypes(Fonte,{
+				        {"id", Int64.Type},
+				        {"cliente_id", Int64.Type},
+				        {"numero_documento", type text},
+				        {"data_emissao", type date},
+				        {"data_vencimento", type date},
+				        {"data_recebimento", type date},
+				        {"valor_original", Currency.Type},
+				        {"valor_recebido", Currency.Type},
+				        {"status", type text},
+				        {"dias_atraso", Int64.Type},
+				        {"faixa_vencimento", type text}
+				    })
+				in
+				    TiposDefinidos
+
+	annotation PBI_ResultType = Table
+

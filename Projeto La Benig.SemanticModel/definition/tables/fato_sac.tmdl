@@ -1,0 +1,151 @@
+/// Chamados de SAC e Atendimento ao Cliente
+table fato_sac
+	lineageTag: 0b6730ba-cf50-4cf2-9955-e97f8e42ba5b
+
+	/// Nota média de atendimento do SAC
+	measure 'Nota Média SAC' = AVERAGE(fato_sac[nota_atendimento])
+		formatString: 0.0
+		lineageTag: a7b96c5f-b933-422a-9269-53773abfccb7
+
+	/// Total de chamados SAC
+	measure 'Total Chamados' = COUNTROWS(fato_sac)
+		formatString: #,##0
+		lineageTag: deaf45f9-c220-4d49-8ed6-d4da432b03e3
+
+	/// Chamados ainda não finalizados
+	measure 'Chamados Abertos' = CALCULATE(COUNTROWS(fato_sac), fato_sac[status] IN {"Aberto", "Em Espera"})
+		formatString: #,##0
+		lineageTag: 306563b9-8181-4d8b-8020-fb0efb8a2678
+
+	/// Chamados já finalizados
+	measure 'Chamados Finalizados' = CALCULATE(COUNTROWS(fato_sac), fato_sac[status] = "Finalizado")
+		formatString: #,##0
+		lineageTag: 8794baa7-5333-43e6-9f09-8f4689a34f7a
+
+	/// Percentual de chamados que cumpriram o SLA
+	measure 'Percentual SLA Cumprido' = DIVIDE(CALCULATE(COUNTROWS(fato_sac), fato_sac[sla_cumprido] = TRUE), CALCULATE(COUNTROWS(fato_sac), NOT(ISBLANK(fato_sac[sla_cumprido]))), 0)
+		formatString: 0.0%
+		lineageTag: 918cac4b-dd43-43b6-81e9-2666a92705e7
+
+	column chamado_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 64b6e5da-5e13-4028-85d8-0caf2705ead5
+		summarizeBy: sum
+		sourceColumn: chamado_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column cliente_id
+		dataType: int64
+		formatString: 0
+		lineageTag: e2b553d5-f143-470f-9064-50fe6345358a
+		summarizeBy: none
+		sourceColumn: cliente_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_abertura
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 46c844c7-c73d-4cb7-9ff6-6c55c3a6429e
+		summarizeBy: none
+		sourceColumn: data_abertura
+
+		variation Variation
+			isDefault
+			relationship: 1fd91099-35fd-41ce-bb18-f17fe2b87385
+			defaultHierarchy: LocalDateTable_5d258021-cfe8-491f-8653-2dec7187d0fa.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_fechamento
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b7e232bc-de3a-4b2d-acba-33786288d69e
+		summarizeBy: none
+		sourceColumn: data_fechamento
+
+		variation Variation
+			isDefault
+			relationship: 1247eb99-f37a-4d80-8b53-afcbc9b17ba8
+			defaultHierarchy: LocalDateTable_f886aefa-7298-4190-b87e-8d97277a8f4e.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: 37c97624-cc33-4b20-b506-4edcb0d7878b
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column categoria
+		dataType: string
+		lineageTag: b46dbfa3-a96b-4b64-a255-10869a494bbf
+		summarizeBy: none
+		sourceColumn: categoria
+
+		annotation SummarizationSetBy = Automatic
+
+	column nota_atendimento
+		dataType: int64
+		formatString: 0
+		lineageTag: 804ffc38-f218-4cb6-b47b-a464c372db29
+		summarizeBy: sum
+		sourceColumn: nota_atendimento
+
+		annotation SummarizationSetBy = Automatic
+
+	column tempo_resolucao_horas
+		dataType: double
+		lineageTag: 6bbf08a7-d803-4cd7-a2ac-3543e996e685
+		summarizeBy: sum
+		sourceColumn: tempo_resolucao_horas
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column sla_cumprido
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 4acf8fdc-9399-456c-8ebd-bd024e6785b4
+		summarizeBy: none
+		sourceColumn: sla_cumprido
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Partition = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRecords({
+				        [chamado_id = 1, cliente_id = 4, data_abertura = #datetime(2025,1,5,9,30,0), data_fechamento = #datetime(2025,1,5,11,45,0), status = "Finalizado", categoria = "Dúvida sobre produto", nota_atendimento = 5, tempo_resolucao_horas = 2.25, sla_cumprido = true],
+				        [chamado_id = 2, cliente_id = 5, data_abertura = #datetime(2025,1,6,14,20,0), data_fechamento = #datetime(2025,1,6,16,10,0), status = "Finalizado", categoria = "Rastreamento", nota_atendimento = 4, tempo_resolucao_horas = 1.83, sla_cumprido = true],
+				        [chamado_id = 3, cliente_id = 8, data_abertura = #datetime(2025,1,7,10,15,0), data_fechamento = null, status = "Aberto", categoria = "Reclamação", nota_atendimento = null, tempo_resolucao_horas = null, sla_cumprido = null],
+				        [chamado_id = 4, cliente_id = 10, data_abertura = #datetime(2025,1,7,11,0,0), data_fechamento = #datetime(2025,1,8,9,30,0), status = "Finalizado", categoria = "Troca de produto", nota_atendimento = 3, tempo_resolucao_horas = 22.50, sla_cumprido = false],
+				        [chamado_id = 5, cliente_id = 4, data_abertura = #datetime(2025,1,8,15,45,0), data_fechamento = #datetime(2025,1,8,16,30,0), status = "Finalizado", categoria = "Dúvida sobre frete", nota_atendimento = 5, tempo_resolucao_horas = 0.75, sla_cumprido = true],
+				        [chamado_id = 6, cliente_id = 6, data_abertura = #datetime(2025,1,9,8,0,0), data_fechamento = null, status = "Em Espera", categoria = "Cancelamento", nota_atendimento = null, tempo_resolucao_horas = null, sla_cumprido = null],
+				        [chamado_id = 7, cliente_id = 5, data_abertura = #datetime(2025,1,9,13,20,0), data_fechamento = #datetime(2025,1,9,14,45,0), status = "Finalizado", categoria = "Elogio", nota_atendimento = 5, tempo_resolucao_horas = 1.42, sla_cumprido = true],
+				        [chamado_id = 8, cliente_id = 8, data_abertura = #datetime(2025,1,10,9,10,0), data_fechamento = null, status = "Aberto", categoria = "Problema com pagamento", nota_atendimento = null, tempo_resolucao_horas = null, sla_cumprido = null],
+				        [chamado_id = 9, cliente_id = 1, data_abertura = #datetime(2025,1,8,16,30,0), data_fechamento = #datetime(2025,1,9,10,15,0), status = "Finalizado", categoria = "Informação comercial", nota_atendimento = 4, tempo_resolucao_horas = 17.75, sla_cumprido = false],
+				        [chamado_id = 10, cliente_id = 2, data_abertura = #datetime(2025,1,9,11,50,0), data_fechamento = #datetime(2025,1,9,13,20,0), status = "Finalizado", categoria = "Dúvida sobre prazo", nota_atendimento = 4, tempo_resolucao_horas = 1.50, sla_cumprido = true]
+				    }),
+				    TiposDefinidos = Table.TransformColumnTypes(Fonte,{
+				        {"chamado_id", Int64.Type},
+				        {"cliente_id", Int64.Type},
+				        {"data_abertura", type datetime},
+				        {"data_fechamento", type datetime},
+				        {"status", type text},
+				        {"categoria", type text},
+				        {"nota_atendimento", Int64.Type},
+				        {"tempo_resolucao_horas", type number},
+				        {"sla_cumprido", type logical}
+				    })
+				in
+				    TiposDefinidos
+
+	annotation PBI_ResultType = Table
+

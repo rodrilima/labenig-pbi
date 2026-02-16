@@ -1,0 +1,199 @@
+/// Logística de Pedidos - SLAs e status
+table fato_logistica_pedidos
+	lineageTag: 912e5ee9-efe6-41ba-ab0e-5cd7697600b2
+
+	/// Tempo médio de separação em horas
+	measure 'SLA Separacao Media' = AVERAGE(fato_logistica_pedidos[sla_separacao_horas])
+		formatString: 0.00
+		lineageTag: f213fa81-198b-42ec-b36b-983a98d36ee3
+
+	/// Tempo médio de coleta em horas
+	measure 'SLA Coleta Media' = AVERAGE(fato_logistica_pedidos[sla_coleta_horas])
+		formatString: 0.00
+		lineageTag: 6e085edb-0c04-4f7f-8e24-5f7aed699255
+
+	/// Percentual de SLA de separação cumprido
+	measure 'Percentual SLA Separacao' = DIVIDE(CALCULATE(COUNTROWS(fato_logistica_pedidos), fato_logistica_pedidos[sla_separacao_cumprido] = TRUE), CALCULATE(COUNTROWS(fato_logistica_pedidos), NOT(ISBLANK(fato_logistica_pedidos[sla_separacao_cumprido]))), 0)
+		formatString: 0.0%
+		lineageTag: ff6fd857-de50-4657-af02-960531dbd201
+
+	/// Percentual de SLA de coleta cumprido
+	measure 'Percentual SLA Coleta' = DIVIDE(CALCULATE(COUNTROWS(fato_logistica_pedidos), fato_logistica_pedidos[sla_coleta_cumprido] = TRUE), CALCULATE(COUNTROWS(fato_logistica_pedidos), NOT(ISBLANK(fato_logistica_pedidos[sla_coleta_cumprido]))), 0)
+		formatString: 0.0%
+		lineageTag: bbad859c-3dcd-4c95-8408-f9efa702c9cd
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: b4933f02-b023-4a26-afe8-92a93481bc80
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column pedido_id
+		dataType: int64
+		formatString: 0
+		lineageTag: fa007293-0850-4b62-a455-42529347dba0
+		summarizeBy: sum
+		sourceColumn: pedido_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column loja_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 91f883e9-892b-49eb-ba7b-d743acbb43bb
+		summarizeBy: none
+		sourceColumn: loja_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column transportadora
+		dataType: string
+		lineageTag: 79e97b1d-53da-44bb-b1d5-3f9892d116ec
+		summarizeBy: none
+		sourceColumn: transportadora
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_pedido
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c2e23f4d-a1f2-4e49-9e18-8b34030ef491
+		summarizeBy: none
+		sourceColumn: data_pedido
+
+		variation Variation
+			isDefault
+			relationship: 5e9aa45c-d2f1-4993-a7b1-3627bae75613
+			defaultHierarchy: LocalDateTable_d296fdeb-93e0-4e9b-9aa8-28b48ea1118f.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column data_separacao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a4f86cd3-db66-4994-a4ad-d9ca9428c4a6
+		summarizeBy: none
+		sourceColumn: data_separacao
+
+		variation Variation
+			isDefault
+			relationship: ab7e204c-eaba-4627-bb8f-daec12796973
+			defaultHierarchy: LocalDateTable_087242aa-6058-4e87-beaf-1b30cd20a138.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_faturamento
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: f29e611c-8286-4d42-9a5d-b5b787132e6e
+		summarizeBy: none
+		sourceColumn: data_faturamento
+
+		variation Variation
+			isDefault
+			relationship: 0820783c-d029-4a6d-a3e9-da62e501996a
+			defaultHierarchy: LocalDateTable_7784a5ae-8d40-48f6-a9c5-8796f655a9f6.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_coleta
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 1f5c6d8f-f8e1-44e0-b867-88936821c1f9
+		summarizeBy: none
+		sourceColumn: data_coleta
+
+		variation Variation
+			isDefault
+			relationship: 735ad2bd-ab9a-4447-b63a-c1adc9e9c3bf
+			defaultHierarchy: LocalDateTable_dc2dc54f-9c45-458c-aec4-c5cfeffc9e6f.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column status_atual
+		dataType: string
+		lineageTag: 0114776f-1929-49de-8ec6-ca92150144ac
+		summarizeBy: none
+		sourceColumn: status_atual
+
+		annotation SummarizationSetBy = Automatic
+
+	column sla_separacao_horas
+		dataType: double
+		lineageTag: 74e5befc-41ac-4801-861d-a2fc8e730ec9
+		summarizeBy: sum
+		sourceColumn: sla_separacao_horas
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column sla_coleta_horas
+		dataType: double
+		lineageTag: c2c4fbdf-ce0a-4779-884b-d41a16034561
+		summarizeBy: sum
+		sourceColumn: sla_coleta_horas
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column sla_separacao_cumprido
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 652ca178-8679-46d9-bcc8-f96af34eb413
+		summarizeBy: none
+		sourceColumn: sla_separacao_cumprido
+
+		annotation SummarizationSetBy = Automatic
+
+	column sla_coleta_cumprido
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e2e0719b-9891-4e9a-9df6-8287743d5ce4
+		summarizeBy: none
+		sourceColumn: sla_coleta_cumprido
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Partition = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRecords({
+				        [id = 1, pedido_id = 1, loja_id = 3, transportadora = "Correios", data_pedido = #date(2025,1,2), data_separacao = #datetime(2025,1,2,14,30,0), data_faturamento = #datetime(2025,1,3,9,0,0), data_coleta = #datetime(2025,1,3,15,20,0), status_atual = "Coletado", sla_separacao_horas = 2.25, sla_coleta_horas = 6.33, sla_separacao_cumprido = true, sla_coleta_cumprido = true],
+				        [id = 2, pedido_id = 2, loja_id = 4, transportadora = "Jadlog", data_pedido = #date(2025,1,3), data_separacao = #datetime(2025,1,3,10,15,0), data_faturamento = #datetime(2025,1,4,8,30,0), data_coleta = #datetime(2025,1,4,14,45,0), status_atual = "Coletado", sla_separacao_horas = 3.08, sla_coleta_horas = 6.25, sla_separacao_cumprido = true, sla_coleta_cumprido = true],
+				        [id = 3, pedido_id = 3, loja_id = 5, transportadora = "Total Express", data_pedido = #date(2025,1,4), data_separacao = #datetime(2025,1,4,11,0,0), data_faturamento = #datetime(2025,1,5,9,15,0), data_coleta = #datetime(2025,1,5,16,30,0), status_atual = "Coletado", sla_separacao_horas = 3.50, sla_coleta_horas = 7.25, sla_separacao_cumprido = true, sla_coleta_cumprido = false],
+				        [id = 4, pedido_id = 4, loja_id = 1, transportadora = "Correios", data_pedido = #date(2025,1,5), data_separacao = #datetime(2025,1,5,9,30,0), data_faturamento = #datetime(2025,1,6,8,0,0), data_coleta = #datetime(2025,1,6,11,20,0), status_atual = "Coletado", sla_separacao_horas = 1.25, sla_coleta_horas = 3.33, sla_separacao_cumprido = true, sla_coleta_cumprido = true],
+				        [id = 5, pedido_id = 5, loja_id = 1, transportadora = "Loggi", data_pedido = #date(2025,1,5), data_separacao = #datetime(2025,1,5,10,0,0), data_faturamento = #datetime(2025,1,6,9,0,0), data_coleta = #datetime(2025,1,6,12,30,0), status_atual = "Coletado", sla_separacao_horas = 1.25, sla_coleta_horas = 3.50, sla_separacao_cumprido = true, sla_coleta_cumprido = true],
+				        [id = 6, pedido_id = 6, loja_id = 2, transportadora = "Jadlog", data_pedido = #date(2025,1,6), data_separacao = #datetime(2025,1,6,13,20,0), data_faturamento = #datetime(2025,1,7,8,45,0), data_coleta = #datetime(2025,1,7,13,15,0), status_atual = "Coletado", sla_separacao_horas = 1.17, sla_coleta_horas = 4.50, sla_separacao_cumprido = true, sla_coleta_cumprido = true],
+				        [id = 7, pedido_id = 7, loja_id = 1, transportadora = "Correios", data_pedido = #date(2025,1,7), data_separacao = #datetime(2025,1,7,14,15,0), data_faturamento = #datetime(2025,1,8,9,30,0), data_coleta = #datetime(2025,1,8,14,0,0), status_atual = "Coletado", sla_separacao_horas = 1.25, sla_coleta_horas = 4.50, sla_separacao_cumprido = true, sla_coleta_cumprido = true],
+				        [id = 8, pedido_id = 8, loja_id = 3, transportadora = "Transportadora Regional", data_pedido = #date(2025,1,8), data_separacao = #datetime(2025,1,8,10,0,0), data_faturamento = null, data_coleta = null, status_atual = "Em Conferência", sla_separacao_horas = 3.75, sla_coleta_horas = null, sla_separacao_cumprido = true, sla_coleta_cumprido = null],
+				        [id = 9, pedido_id = 9, loja_id = 1, transportadora = "Loggi", data_pedido = #date(2025,1,8), data_separacao = #datetime(2025,1,8,15,30,0), data_faturamento = #datetime(2025,1,9,8,15,0), data_coleta = null, status_atual = "Faturado", sla_separacao_horas = 0.83, sla_coleta_horas = null, sla_separacao_cumprido = true, sla_coleta_cumprido = null],
+				        [id = 10, pedido_id = 10, loja_id = 4, transportadora = "Jadlog", data_pedido = #date(2025,1,9), data_separacao = #datetime(2025,1,9,9,45,0), data_faturamento = null, data_coleta = null, status_atual = "Em Separação", sla_separacao_horas = null, sla_coleta_horas = null, sla_separacao_cumprido = null, sla_coleta_cumprido = null]
+				    }),
+				    TiposDefinidos = Table.TransformColumnTypes(Fonte,{
+				        {"id", Int64.Type},
+				        {"pedido_id", Int64.Type},
+				        {"loja_id", Int64.Type},
+				        {"transportadora", type text},
+				        {"data_pedido", type date},
+				        {"data_separacao", type datetime},
+				        {"data_faturamento", type datetime},
+				        {"data_coleta", type datetime},
+				        {"status_atual", type text},
+				        {"sla_separacao_horas", type number},
+				        {"sla_coleta_horas", type number},
+				        {"sla_separacao_cumprido", type logical},
+				        {"sla_coleta_cumprido", type logical}
+				    })
+				in
+				    TiposDefinidos
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,88 @@
+/// Dimensão de Produtos - Catálogo de produtos
+table dim_produtos
+	lineageTag: 762ddf5a-6367-40b3-b710-b8306d3d4485
+
+	column produto_id
+		dataType: int64
+		formatString: 0
+		lineageTag: ed382efd-718b-4c4f-84d8-12ac99736dd8
+		summarizeBy: sum
+		sourceColumn: produto_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column nome_produto
+		dataType: string
+		lineageTag: 424d9cde-6c26-4ee9-bcc3-1b3fef8484fc
+		summarizeBy: none
+		sourceColumn: nome_produto
+
+		annotation SummarizationSetBy = Automatic
+
+	column categoria
+		dataType: string
+		lineageTag: a55883ef-7a8a-4d30-b9fa-cda73be6aa47
+		summarizeBy: none
+		sourceColumn: categoria
+
+		annotation SummarizationSetBy = Automatic
+
+	column subcategoria
+		dataType: string
+		lineageTag: d5389a3e-8ec7-4641-86a8-9e0621daea7b
+		summarizeBy: none
+		sourceColumn: subcategoria
+
+		annotation SummarizationSetBy = Automatic
+
+	column preco_unitario
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 27d3aa2a-e726-4b54-863f-88775b9ff92a
+		summarizeBy: sum
+		sourceColumn: preco_unitario
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column custo_unitario
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 0502573b-f4df-40a3-a0c4-78864ea47f91
+		summarizeBy: sum
+		sourceColumn: custo_unitario
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	partition Partition = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRecords({
+				        [produto_id = 1, nome_produto = "Produto A - Premium", categoria = "Eletrônicos", subcategoria = "Smartphones", preco_unitario = 1500.00, custo_unitario = 900.00],
+				        [produto_id = 2, nome_produto = "Produto B - Standard", categoria = "Eletrônicos", subcategoria = "Tablets", preco_unitario = 800.00, custo_unitario = 500.00],
+				        [produto_id = 3, nome_produto = "Produto C - Básico", categoria = "Acessórios", subcategoria = "Cases", preco_unitario = 50.00, custo_unitario = 20.00],
+				        [produto_id = 4, nome_produto = "Produto D - Pro", categoria = "Informática", subcategoria = "Notebooks", preco_unitario = 3500.00, custo_unitario = 2200.00],
+				        [produto_id = 5, nome_produto = "Produto E - Home", categoria = "Casa", subcategoria = "Decoração", preco_unitario = 120.00, custo_unitario = 60.00],
+				        [produto_id = 6, nome_produto = "Produto F - Tech", categoria = "Eletrônicos", subcategoria = "Fones", preco_unitario = 200.00, custo_unitario = 100.00],
+				        [produto_id = 7, nome_produto = "Produto G - Style", categoria = "Moda", subcategoria = "Roupas", preco_unitario = 80.00, custo_unitario = 35.00],
+				        [produto_id = 8, nome_produto = "Produto H - Fit", categoria = "Esportes", subcategoria = "Equipamentos", preco_unitario = 250.00, custo_unitario = 140.00],
+				        [produto_id = 9, nome_produto = "Produto I - Kids", categoria = "Infantil", subcategoria = "Brinquedos", preco_unitario = 90.00, custo_unitario = 45.00],
+				        [produto_id = 10, nome_produto = "Produto J - Beauty", categoria = "Beleza", subcategoria = "Cosméticos", preco_unitario = 150.00, custo_unitario = 70.00]
+				    }),
+				    TiposDefinidos = Table.TransformColumnTypes(Fonte,{
+				        {"produto_id", Int64.Type},
+				        {"nome_produto", type text},
+				        {"categoria", type text},
+				        {"subcategoria", type text},
+				        {"preco_unitario", Currency.Type},
+				        {"custo_unitario", Currency.Type}
+				    })
+				in
+				    TiposDefinidos
+
+	annotation PBI_ResultType = Table
+

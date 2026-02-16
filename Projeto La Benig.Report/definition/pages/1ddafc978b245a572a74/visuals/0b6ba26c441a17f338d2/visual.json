@@ -1,0 +1,94 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "0b6ba26c441a17f338d2",
+  "position": {
+    "x": 45,
+    "y": 523,
+    "z": 5000,
+    "height": 150,
+    "width": 805,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_lojas"
+                    }
+                  },
+                  "Property": "nome_loja"
+                }
+              },
+              "queryRef": "dim_lojas.nome_loja",
+              "nativeQueryRef": "nome_loja"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fato_logistica_pedidos"
+                    }
+                  },
+                  "Property": "SLA Separacao Media"
+                }
+              },
+              "queryRef": "fato_logistica_pedidos.SLA Separacao Media",
+              "nativeQueryRef": "SLA Separacao Media"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fato_logistica_pedidos"
+                    }
+                  },
+                  "Property": "SLA Coleta Media"
+                }
+              },
+              "queryRef": "fato_logistica_pedidos.SLA Coleta Media",
+              "nativeQueryRef": "SLA Coleta Media"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fato_logistica_pedidos"
+                    }
+                  },
+                  "Property": "Percentual SLA Separacao"
+                }
+              },
+              "queryRef": "fato_logistica_pedidos.Percentual SLA Separacao",
+              "nativeQueryRef": "Percentual SLA Separacao"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fato_logistica_pedidos"
+                    }
+                  },
+                  "Property": "Percentual SLA Coleta"
+                }
+              },
+              "queryRef": "fato_logistica_pedidos.Percentual SLA Coleta",
+              "nativeQueryRef": "Percentual SLA Coleta"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,120 @@
+/// Comportamento de Clientes - Recorrência e inatividade
+table fato_comportamento_cliente
+	lineageTag: 94ca9d1b-12bc-4b3e-8bed-a494ec094d4a
+
+	/// Clientes com 2+ pedidos em 45 dias
+	measure 'Clientes Recorrentes' = CALCULATE(COUNTROWS(fato_comportamento_cliente), fato_comportamento_cliente[classificacao] = "Recorrente")
+		formatString: #,##0
+		lineageTag: a01c8efb-896f-4852-ac99-6dae52ac2019
+
+	/// Clientes com +30 dias sem compra
+	measure 'Clientes Inativos' = CALCULATE(COUNTROWS(fato_comportamento_cliente), fato_comportamento_cliente[classificacao] = "Inativo")
+		formatString: #,##0
+		lineageTag: a801e88b-ef68-4374-aeaa-7cdf1d0a3cc5
+
+	/// Percentual de clientes recorrentes
+	measure 'Taxa Recompra' = DIVIDE([Clientes Recorrentes], COUNTROWS(fato_comportamento_cliente), 0)
+		formatString: 0.0%
+		lineageTag: 159bb9ee-0647-485e-8114-9a133a2f803d
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: a5df05e1-779b-4cb9-a5cf-505c2174316f
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column cliente_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 35aad319-243c-4e04-9bc9-9c0717b335dc
+		summarizeBy: none
+		sourceColumn: cliente_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_referencia
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 800e1d71-dcc6-4afa-8d30-2addf808d44c
+		summarizeBy: none
+		sourceColumn: data_referencia
+
+		variation Variation
+			isDefault
+			relationship: a5b93c4f-0b7d-4adb-b704-7527b2a86e3c
+			defaultHierarchy: LocalDateTable_3487d53c-59fc-4cdf-9512-29e1d903f5b2.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column total_pedidos_45dias
+		dataType: int64
+		formatString: 0
+		lineageTag: c5715eb3-9abd-49ef-b7b0-6d207af3e171
+		summarizeBy: sum
+		sourceColumn: total_pedidos_45dias
+
+		annotation SummarizationSetBy = Automatic
+
+	column ultima_compra
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2af0e188-2fc6-49fc-97b6-15c1b710172b
+		summarizeBy: none
+		sourceColumn: ultima_compra
+
+		variation Variation
+			isDefault
+			relationship: 7f91096a-0ebb-4bfe-9763-836045d6dfce
+			defaultHierarchy: LocalDateTable_1585e211-a4d0-4b83-a84a-842fc1c5bad0.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column dias_sem_compra
+		dataType: int64
+		formatString: 0
+		lineageTag: 7b71311f-4298-43bd-8a9d-0c03fbddc225
+		summarizeBy: sum
+		sourceColumn: dias_sem_compra
+
+		annotation SummarizationSetBy = Automatic
+
+	column classificacao
+		dataType: string
+		lineageTag: 4fe8e6b9-f506-477e-a344-30b66808921c
+		summarizeBy: none
+		sourceColumn: classificacao
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Partition = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRecords({
+				        [id = 1, cliente_id = 4, data_referencia = #date(2025,1,10), total_pedidos_45dias = 2, ultima_compra = #date(2025,1,9), dias_sem_compra = 1, classificacao = "Recorrente"],
+				        [id = 2, cliente_id = 5, data_referencia = #date(2025,1,10), total_pedidos_45dias = 2, ultima_compra = #date(2025,1,9), dias_sem_compra = 1, classificacao = "Recorrente"],
+				        [id = 3, cliente_id = 6, data_referencia = #date(2025,1,10), total_pedidos_45dias = 0, ultima_compra = #date(2024,11,25), dias_sem_compra = 46, classificacao = "Inativo"],
+				        [id = 4, cliente_id = 8, data_referencia = #date(2025,1,10), total_pedidos_45dias = 2, ultima_compra = #date(2025,1,10), dias_sem_compra = 0, classificacao = "Recorrente"],
+				        [id = 5, cliente_id = 10, data_referencia = #date(2025,1,10), total_pedidos_45dias = 1, ultima_compra = #date(2025,1,7), dias_sem_compra = 3, classificacao = "Normal"]
+				    }),
+				    TiposDefinidos = Table.TransformColumnTypes(Fonte,{
+				        {"id", Int64.Type},
+				        {"cliente_id", Int64.Type},
+				        {"data_referencia", type date},
+				        {"total_pedidos_45dias", Int64.Type},
+				        {"ultima_compra", type date},
+				        {"dias_sem_compra", Int64.Type},
+				        {"classificacao", type text}
+				    })
+				in
+				    TiposDefinidos
+
+	annotation PBI_ResultType = Table
+

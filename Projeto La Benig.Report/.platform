@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Projeto La Benig"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "a317f8f5-52f9-4e73-9994-2dcf24e45111"
+  }
+}

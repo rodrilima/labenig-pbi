@@ -1,0 +1,59 @@
+/// Dimensão de Lojas/Canais
+table dim_lojas
+	lineageTag: 13babba5-d172-4088-bda1-c19dabec9463
+
+	column loja_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 2ab1ed8a-484e-4e6c-a2bb-d981aeabfdb3
+		summarizeBy: none
+		sourceColumn: loja_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column nome_loja
+		dataType: string
+		lineageTag: 0839c539-a36e-4fca-a775-ccf501b6def3
+		summarizeBy: none
+		sourceColumn: nome_loja
+
+		annotation SummarizationSetBy = Automatic
+
+	column tipo_canal
+		dataType: string
+		lineageTag: 3ca0727c-ca99-4f7a-8900-aaeeb650c8a3
+		summarizeBy: none
+		sourceColumn: tipo_canal
+
+		annotation SummarizationSetBy = Automatic
+
+	column regiao
+		dataType: string
+		lineageTag: d08e4538-24ae-495f-9762-2e433208f815
+		summarizeBy: none
+		sourceColumn: regiao
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Partition = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRecords({
+				        [loja_id = 1, nome_loja = "Loja Virtual Principal", tipo_canal = "E-commerce", regiao = "Nacional"],
+				        [loja_id = 2, nome_loja = "Loja Virtual Outlet", tipo_canal = "E-commerce", regiao = "Nacional"],
+				        [loja_id = 3, nome_loja = "Atacado SP", tipo_canal = "Atacado", regiao = "Sudeste"],
+				        [loja_id = 4, nome_loja = "Atacado RJ", tipo_canal = "Atacado", regiao = "Sudeste"],
+				        [loja_id = 5, nome_loja = "Atacado Sul", tipo_canal = "Atacado", regiao = "Sul"]
+				    }),
+				    TiposDefinidos = Table.TransformColumnTypes(Fonte,{
+				        {"loja_id", Int64.Type},
+				        {"nome_loja", type text},
+				        {"tipo_canal", type text},
+				        {"regiao", type text}
+				    })
+				in
+				    TiposDefinidos
+
+	annotation PBI_ResultType = Table
+
