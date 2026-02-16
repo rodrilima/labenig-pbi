@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
   "name": "9f9268fd80a20673f339",
   "position": {
-    "x": 158.04878048780489,
-    "y": 469.7560975609756,
+    "x": 157.89473684210526,
+    "y": 463.15789473684214,
     "z": 4000,
-    "height": 223.90243902439025,
-    "width": 802.53658536585374,
+    "height": 230.5263157894737,
+    "width": 1098.9473684210527,
     "tabOrder": 4000
   },
   "visual": {
@@ -20,234 +20,75 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fato_contas_receber"
+                      "Entity": "protheus_contasReceber"
                     }
                   },
-                  "Property": "numero_documento"
+                  "Property": "cod_cliente"
                 }
               },
-              "queryRef": "fato_contas_receber.numero_documento",
-              "nativeQueryRef": "NF",
-              "displayName": "NF"
+              "queryRef": "protheus_contasReceber.cod_cliente",
+              "nativeQueryRef": "Código do Cliente",
+              "displayName": "Código do Cliente"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "dim_clientes"
+                      "Entity": "protheus_contasReceber"
                     }
                   },
                   "Property": "nome_cliente"
                 }
               },
-              "queryRef": "dim_clientes.nome_cliente",
-              "nativeQueryRef": "Cliente",
-              "displayName": "Cliente"
+              "queryRef": "protheus_contasReceber.nome_cliente",
+              "nativeQueryRef": "Nome",
+              "displayName": "Nome"
             },
             {
               "field": {
-                "HierarchyLevel": {
-                  "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "fato_contas_receber"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "data_emissao"
-                        }
-                      },
-                      "Hierarchy": "Hierarquia de datas"
-                    }
-                  },
-                  "Level": "Ano"
-                }
-              },
-              "queryRef": "fato_contas_receber.data_emissao.Variation.Hierarquia de datas.Ano",
-              "nativeQueryRef": "data_emissao Ano"
-            },
-            {
-              "field": {
-                "HierarchyLevel": {
-                  "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "fato_contas_receber"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "data_emissao"
-                        }
-                      },
-                      "Hierarchy": "Hierarquia de datas"
-                    }
-                  },
-                  "Level": "Mês"
-                }
-              },
-              "queryRef": "fato_contas_receber.data_emissao.Variation.Hierarquia de datas.Mês",
-              "nativeQueryRef": "data_emissao Mês"
-            },
-            {
-              "field": {
-                "HierarchyLevel": {
-                  "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "fato_contas_receber"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "data_emissao"
-                        }
-                      },
-                      "Hierarchy": "Hierarquia de datas"
-                    }
-                  },
-                  "Level": "Dia"
-                }
-              },
-              "queryRef": "fato_contas_receber.data_emissao.Variation.Hierarquia de datas.Dia",
-              "nativeQueryRef": "data_emissao Dia"
-            },
-            {
-              "field": {
-                "HierarchyLevel": {
-                  "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "fato_contas_receber"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "data_vencimento"
-                        }
-                      },
-                      "Hierarchy": "Hierarquia de datas"
-                    }
-                  },
-                  "Level": "Ano"
-                }
-              },
-              "queryRef": "fato_contas_receber.data_vencimento.Variation.Hierarquia de datas.Ano",
-              "nativeQueryRef": "data_vencimento Ano"
-            },
-            {
-              "field": {
-                "HierarchyLevel": {
-                  "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "fato_contas_receber"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "data_vencimento"
-                        }
-                      },
-                      "Hierarchy": "Hierarquia de datas"
-                    }
-                  },
-                  "Level": "Mês"
-                }
-              },
-              "queryRef": "fato_contas_receber.data_vencimento.Variation.Hierarquia de datas.Mês",
-              "nativeQueryRef": "data_vencimento Mês"
-            },
-            {
-              "field": {
-                "HierarchyLevel": {
-                  "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "fato_contas_receber"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "data_vencimento"
-                        }
-                      },
-                      "Hierarchy": "Hierarquia de datas"
-                    }
-                  },
-                  "Level": "Dia"
-                }
-              },
-              "queryRef": "fato_contas_receber.data_vencimento.Variation.Hierarquia de datas.Dia",
-              "nativeQueryRef": "data_vencimento Dia"
-            },
-            {
-              "field": {
-                "Aggregation": {
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "fato_contas_receber"
-                        }
-                      },
-                      "Property": "valor_original"
-                    }
-                  },
-                  "Function": 0
-                }
-              },
-              "queryRef": "Sum(fato_contas_receber.valor_original)",
-              "nativeQueryRef": "Soma de valor_original"
-            },
-            {
-              "field": {
-                "Column": {
+                "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fato_contas_receber"
+                      "Entity": "medidas_financeiro"
                     }
                   },
-                  "Property": "status"
+                  "Property": "20_valor_em_aberto"
                 }
               },
-              "queryRef": "fato_contas_receber.status",
-              "nativeQueryRef": "Status",
-              "displayName": "Status"
+              "queryRef": "medidas_financeiro.20_valor_em_aberto",
+              "nativeQueryRef": "Valor em Aberto",
+              "displayName": "Valor em Aberto"
             },
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "fato_contas_receber"
-                        }
-                      },
-                      "Property": "dias_atraso"
+                    "SourceRef": {
+                      "Entity": "medidas_financeiro"
                     }
                   },
-                  "Function": 0
+                  "Property": "21_dias_em_atraso"
                 }
               },
-              "queryRef": "Sum(fato_contas_receber.dias_atraso)",
-              "nativeQueryRef": "Dias de Atraso",
-              "displayName": "Dias de Atraso"
+              "queryRef": "medidas_financeiro.21_dias_em_atraso",
+              "nativeQueryRef": "Dias em Atraso",
+              "displayName": "Dias em Atraso"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "medidas_financeiro"
+                    }
+                  },
+                  "Property": "22_status_cliente"
+                }
+              },
+              "queryRef": "medidas_financeiro.22_status_cliente",
+              "nativeQueryRef": "Status do Cliente",
+              "displayName": "Status do Cliente"
             }
           ]
         }
@@ -256,20 +97,258 @@
         "sort": [
           {
             "field": {
-              "Column": {
+              "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "dim_clientes"
+                    "Entity": "medidas_financeiro"
                   }
                 },
-                "Property": "nome_cliente"
+                "Property": "20_valor_em_aberto"
               }
             },
-            "direction": "Ascending"
+            "direction": "Descending"
           }
         ]
       }
     },
+    "objects": {
+      "grid": [
+        {
+          "properties": {
+            "gridVertical": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "outlineStyle": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "columnAdjustment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'growToFit'"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Left'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "total": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Maiores Devedores'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "532ccb48a59e4465707e",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "medidas_financeiro"
+              }
+            },
+            "Property": "20_valor_em_aberto"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "ecc8ff1400e9eb02577a",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "medidas_financeiro"
+              }
+            },
+            "Property": "21_dias_em_atraso"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "f06b19ff39da2699046e",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "medidas_financeiro"
+              }
+            },
+            "Property": "22_status_cliente"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "62acb95df09293d8a17f",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_contasReceber"
+              }
+            },
+            "Property": "nome_cliente"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "417360322eeaf090ca13",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_contasReceber"
+              }
+            },
+            "Property": "cod_cliente"
+          }
+        },
+        "type": "TopN",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "subquery",
+              "Expression": {
+                "Subquery": {
+                  "Query": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "p1",
+                        "Entity": "protheus_contasReceber",
+                        "Type": 0
+                      },
+                      {
+                        "Name": "m",
+                        "Entity": "medidas_financeiro",
+                        "Type": 0
+                      }
+                    ],
+                    "Select": [
+                      {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Source": "p1"
+                            }
+                          },
+                          "Property": "cod_cliente"
+                        },
+                        "Name": "field"
+                      }
+                    ],
+                    "OrderBy": [
+                      {
+                        "Direction": 2,
+                        "Expression": {
+                          "Measure": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "m"
+                              }
+                            },
+                            "Property": "20_valor_em_aberto"
+                          }
+                        }
+                      }
+                    ],
+                    "Top": 10
+                  }
+                }
+              },
+              "Type": 2
+            },
+            {
+              "Name": "p1",
+              "Entity": "protheus_contasReceber",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "p1"
+                          }
+                        },
+                        "Property": "cod_cliente"
+                      }
+                    }
+                  ],
+                  "Table": {
+                    "SourceRef": {
+                      "Source": "subquery"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
   }
 }

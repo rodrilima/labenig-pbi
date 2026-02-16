@@ -186,11 +186,6 @@ relationship 235679f9-a500-447e-ad62-9bd4023f567d
 	fromColumn: protheus_contasReceber.data_ult_movimentacao
 	toColumn: LocalDateTable_e9feb545-339c-4cfa-9342-1b87e1d2de53.Date
 
-relationship 9498bd84-5081-483f-ae35-7dc3e26824ef
-	joinOnDateBehavior: datePartOnly
-	fromColumn: protheus_contasReceber.data_baixa
-	toColumn: LocalDateTable_0b27bd4a-1e19-4ddb-90f4-cfcb7d2b4e72.Date
-
 relationship 8f23a2a0-4142-43e6-9248-99921f8acba8
 	joinOnDateBehavior: datePartOnly
 	fromColumn: protheus_contasReceber.data_atualizacao_warehouse
@@ -208,4 +203,17 @@ relationship AutoDetected_e0d50292-a577-46c4-80ed-5a316895e366
 relationship AutoDetected_d5de09ec-0cdf-412d-a9cf-ae09ca4a2de7
 	fromColumn: protheus_contasReceber.tipo
 	toColumn: protheus_movimentosBancarios.tipo
+
+relationship ec38ecec-e4d7-97fc-e3a8-f474295d1c55
+	fromColumn: protheus_contasReceber.data_baixa
+	toColumn: calendario.Date
+
+relationship 452dc0fd-8da9-45cc-b918-40a5cf7a9b22
+	joinOnDateBehavior: datePartOnly
+	fromColumn: protheus_contatos.data_atualizacao_warehouse
+	toColumn: LocalDateTable_63a31d30-5033-4537-a4f8-f622ebf0bfb3.Date
+
+relationship 97234551-54ec-2aa5-ccb8-8cfd1728d73e
+	fromColumn: protheus_contasReceber.cod_cliente
+	toColumn: protheus_contatos.codigo
 

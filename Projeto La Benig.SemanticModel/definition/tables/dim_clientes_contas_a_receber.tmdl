@@ -1,0 +1,31 @@
+table dim_clientes_contas_a_receber
+	lineageTag: afae4ea1-4f6a-4f85-a12f-4e4f94f1f425
+
+	column cod_cliente
+		lineageTag: 7c50b137-993d-445f-ab1a-812d86d62f3d
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: protheus_contasReceber[cod_cliente]
+
+		annotation SummarizationSetBy = Automatic
+
+	column nome_cliente
+		lineageTag: 2aae7ee1-ecf3-4bb1-9fed-04ff5d1633ab
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: protheus_contasReceber[nome_cliente]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_clientes_contas_a_receber = calculated
+		mode: import
+		source =
+				
+				SUMMARIZE(
+				    protheus_contasReceber,
+				    protheus_contasReceber[cod_cliente],
+				    protheus_contasReceber[nome_cliente]
+				)
+
+	annotation PBI_Id = 8ed9baae5fd64f96976104a2e8d0ef1f
+
