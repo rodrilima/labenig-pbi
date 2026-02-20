@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
-  "name": "22d0a51fde05d754e3a7",
+  "name": "6f7fb55bcf6650240a1e",
   "position": {
     "x": 720,
     "y": 212.48780487804879,
-    "z": 6000,
+    "z": 4002,
     "height": 209.85365853658539,
     "width": 537.36585365853659,
-    "tabOrder": 6000
+    "tabOrder": 4002
   },
   "visual": {
-    "visualType": "donutChart",
+    "visualType": "lineChart",
     "query": {
       "queryState": {
         "Category": {
@@ -20,15 +20,16 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fato_contas_receber"
+                      "Entity": "calendario"
                     }
                   },
-                  "Property": "status"
+                  "Property": "ano_mes"
                 }
               },
-              "queryRef": "fato_contas_receber.status",
-              "nativeQueryRef": "status",
-              "active": true
+              "queryRef": "calendario.ano_mes",
+              "nativeQueryRef": "Ano-Mês",
+              "active": true,
+              "displayName": "Ano-Mês"
             }
           ]
         },
@@ -39,14 +40,15 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fato_contas_receber"
+                      "Entity": "medidas_financeiro"
                     }
                   },
-                  "Property": "Total a Receber"
+                  "Property": "13_inadimplencia_percentual_mes"
                 }
               },
-              "queryRef": "fato_contas_receber.Total a Receber",
-              "nativeQueryRef": "Total a Receber"
+              "queryRef": "medidas_financeiro.13_inadimplencia_percentual_mes",
+              "nativeQueryRef": "Inadimplência",
+              "displayName": "Inadimplência"
             }
           ]
         }
@@ -58,10 +60,10 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "fato_contas_receber"
+                    "Entity": "medidas_financeiro"
                   }
                 },
-                "Property": "Total a Receber"
+                "Property": "13_inadimplencia_percentual_mes"
               }
             },
             "direction": "Descending"
@@ -217,7 +219,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Total a Receber'"
+                  "Value": "'Evolução da Inadimplência'"
                 }
               }
             },
@@ -258,5 +260,92 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "1025ca1a6c0b4c30b145",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "calendario"
+              }
+            },
+            "Property": "Date"
+          }
+        },
+        "type": "RelativeTime",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "c",
+              "Entity": "calendario",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Between": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Source": "c"
+                        }
+                      },
+                      "Property": "Date"
+                    }
+                  },
+                  "LowerBound": {
+                    "DateAdd": {
+                      "Expression": {
+                        "Now": {}
+                      },
+                      "Amount": -8640,
+                      "TimeUnit": 7
+                    }
+                  },
+                  "UpperBound": {
+                    "Now": {}
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User"
+      },
+      {
+        "name": "61570333abc231a0124f",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "calendario"
+              }
+            },
+            "Property": "ano_mes"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "a3e397f5514f29ee0f55",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "medidas_financeiro"
+              }
+            },
+            "Property": "13_inadimplencia_percentual_mes"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }
