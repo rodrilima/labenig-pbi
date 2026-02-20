@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
-  "name": "dec158b90ac667260f00",
+  "name": "213fcabb2da191cecc6d",
   "position": {
     "x": 158.04878048780489,
     "y": 212.48780487804879,
-    "z": 5000,
+    "z": 4001,
     "height": 209.85365853658539,
     "width": 539.1219512195122,
-    "tabOrder": 5000
+    "tabOrder": 4001
   },
   "visual": {
     "visualType": "clusteredColumnChart",
@@ -20,15 +20,16 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fato_contas_receber"
+                      "Entity": "protheus_contasReceber"
                     }
                   },
-                  "Property": "faixa_vencimento"
+                  "Property": "faixa_aging"
                 }
               },
-              "queryRef": "fato_contas_receber.faixa_vencimento",
-              "nativeQueryRef": "faixa_vencimento",
-              "active": true
+              "queryRef": "protheus_contasReceber.faixa_aging",
+              "nativeQueryRef": "Faixa de Aging",
+              "active": true,
+              "displayName": "Faixa de Aging"
             }
           ]
         },
@@ -39,14 +40,15 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fato_contas_receber"
+                      "Entity": "medidas_financeiro"
                     }
                   },
-                  "Property": "Total a Receber"
+                  "Property": "09_valor_aging"
                 }
               },
-              "queryRef": "fato_contas_receber.Total a Receber",
-              "nativeQueryRef": "Total a Receber"
+              "queryRef": "medidas_financeiro.09_valor_aging",
+              "nativeQueryRef": "Valor",
+              "displayName": "Valor"
             }
           ]
         }
@@ -58,10 +60,10 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "fato_contas_receber"
+                    "Entity": "medidas_financeiro"
                   }
                 },
-                "Property": "Total a Receber"
+                "Property": "09_valor_aging"
               }
             },
             "direction": "Descending"
@@ -105,7 +107,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#1B3042'"
+                      "Value": "'#E4A34B'"
                     }
                   }
                 }
@@ -135,7 +137,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Total a Receber Por Faixa de Vencimento'"
+                  "Value": "'Aging dos Recebíveis'"
                 }
               }
             }
@@ -144,5 +146,37 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "5de72d992f18dec9b5e9",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_contasReceber"
+              }
+            },
+            "Property": "faixa_aging"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "26b4d413d670db93120d",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "medidas_financeiro"
+              }
+            },
+            "Property": "09_valor_aging"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }
