@@ -95,8 +95,6 @@ relationship 7f91096a-0ebb-4bfe-9763-836045d6dfce
 	toColumn: LocalDateTable_1585e211-a4d0-4b83-a84a-842fc1c5bad0.Date
 
 relationship AutoDetected_7d88eb3c-b089-4ed1-8c34-3f5ff9b709af
-	crossFilteringBehavior: bothDirections
-	fromCardinality: one
 	fromColumn: fato_comportamento_cliente.cliente_id
 	toColumn: dim_clientes.cliente_id
 
@@ -195,14 +193,6 @@ relationship eec62af2-1278-4025-a449-c430e449fa17
 	joinOnDateBehavior: datePartOnly
 	fromColumn: protheus_movimentosBancarios.data_atualizacao_warehouse
 	toColumn: LocalDateTable_b29f0275-1101-4bbb-9a53-c9f11e5ee9fc.Date
-
-relationship AutoDetected_e0d50292-a577-46c4-80ed-5a316895e366
-	fromColumn: protheus_contasPagar.tipo
-	toColumn: protheus_movimentosBancarios.tipo
-
-relationship AutoDetected_d5de09ec-0cdf-412d-a9cf-ae09ca4a2de7
-	fromColumn: protheus_contasReceber.tipo
-	toColumn: protheus_movimentosBancarios.tipo
 
 relationship ec38ecec-e4d7-97fc-e3a8-f474295d1c55
 	fromColumn: protheus_contasReceber.data_baixa

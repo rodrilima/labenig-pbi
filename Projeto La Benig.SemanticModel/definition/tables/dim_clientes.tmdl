@@ -123,6 +123,33 @@ table dim_clientes
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Classificação ABC do cliente baseada no faturamento acumulado (A=top 80%, B=80-95%, C=demais)
+	column 'Classificacao ABC' =
+			VAR FatCliente = CALCULATE(SUM(fato_pedidos[valor_liquido]), fato_pedidos[canal] = "Atacado")
+			VAR FatTotal = CALCULATE(SUM(fato_pedidos[valor_liquido]), ALL(dim_clientes), fato_pedidos[canal] = "Atacado")
+			VAR Ranking = RANKX(ALL(dim_clientes), CALCULATE(SUM(fato_pedidos[valor_liquido]), fato_pedidos[canal] = "Atacado"),, DESC, DENSE)
+			VAR FatAcumulado = CALCULATE(
+			    SUM(fato_pedidos[valor_liquido]),
+			    FILTER(
+			        ALL(dim_clientes),
+			        RANKX(ALL(dim_clientes), CALCULATE(SUM(fato_pedidos[valor_liquido]), fato_pedidos[canal] = "Atacado"),, DESC, DENSE) <= Ranking
+			    ),
+			    fato_pedidos[canal] = "Atacado"
+			)
+			VAR PctAcumulado = DIVIDE(FatAcumulado, FatTotal)
+			RETURN
+			IF(
+			    FatCliente = 0 || ISBLANK(FatCliente), "C",
+			    SWITCH(
+			        TRUE(),
+			        PctAcumulado <= 0.80, "A",
+			        PctAcumulado <= 0.95, "B",
+			        "C"
+			    )
+			)
+		dataType: string
+		lineageTag: 18601e68-5cd3-49e2-bba4-5a7f2508e0bc
+
 	partition Partition = m
 		mode: import
 		queryGroup: mocks

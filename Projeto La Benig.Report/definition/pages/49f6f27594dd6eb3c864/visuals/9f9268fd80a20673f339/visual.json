@@ -4,10 +4,10 @@
   "position": {
     "x": 157.89473684210526,
     "y": 463.15789473684214,
-    "z": 4000,
+    "z": 3000,
     "height": 230.5263157894737,
     "width": 1098.9473684210527,
-    "tabOrder": 4000
+    "tabOrder": 3000
   },
   "visual": {
     "visualType": "tableEx",
@@ -192,62 +192,6 @@
   },
   "filterConfig": {
     "filters": [
-      {
-        "name": "532ccb48a59e4465707e",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "medidas_financeiro"
-              }
-            },
-            "Property": "20_valor_em_aberto"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "ecc8ff1400e9eb02577a",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "medidas_financeiro"
-              }
-            },
-            "Property": "21_dias_em_atraso"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "f06b19ff39da2699046e",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "medidas_financeiro"
-              }
-            },
-            "Property": "22_status_cliente"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "62acb95df09293d8a17f",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "protheus_contasReceber"
-              }
-            },
-            "Property": "nome_cliente"
-          }
-        },
-        "type": "Categorical"
-      },
       {
         "name": "417360322eeaf090ca13",
         "field": {

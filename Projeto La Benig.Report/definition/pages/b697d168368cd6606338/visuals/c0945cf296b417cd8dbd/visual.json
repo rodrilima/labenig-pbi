@@ -1,0 +1,80 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "c0945cf296b417cd8dbd",
+  "position": {
+    "x": 158.61671469740634,
+    "y": 464.78386167146971,
+    "z": 0,
+    "height": 213.94812680115271,
+    "width": 527.492795389049,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_lojas"
+                    }
+                  },
+                  "Property": "nome_loja"
+                }
+              },
+              "queryRef": "dim_lojas.nome_loja",
+              "nativeQueryRef": "nome_loja"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fato_pedidos"
+                    }
+                  },
+                  "Property": "Total de Pedidos"
+                }
+              },
+              "queryRef": "fato_pedidos.Total de Pedidos",
+              "nativeQueryRef": "Total de Pedidos"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fato_pedidos"
+                    }
+                  },
+                  "Property": "Faturamento Total"
+                }
+              },
+              "queryRef": "fato_pedidos.Faturamento Total",
+              "nativeQueryRef": "Faturamento Total"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fato_pedidos"
+                    }
+                  },
+                  "Property": "Ticket Médio"
+                }
+              },
+              "queryRef": "fato_pedidos.Ticket Médio",
+              "nativeQueryRef": "Ticket Médio"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

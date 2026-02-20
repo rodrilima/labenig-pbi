@@ -4,10 +4,10 @@
   "position": {
     "x": 158.04878048780489,
     "y": 64.975609756097569,
-    "z": 6000,
+    "z": 4000,
     "height": 116.78048780487805,
     "width": 266.04878048780489,
-    "tabOrder": 6000
+    "tabOrder": 4000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -412,23 +412,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "5a38d2ebf3774197d58f",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "medidas_financeiro"
-              }
-            },
-            "Property": "02_recebido_no_periodo"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

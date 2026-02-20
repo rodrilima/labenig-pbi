@@ -14,7 +14,7 @@
               "name": {
                 "expr": {
                   "Literal": {
-                    "Value": "'5.png'"
+                    "Value": "'ResultadoOperacional.png'"
                   }
                 }
               },
@@ -23,7 +23,7 @@
                   "ResourcePackageItem": {
                     "PackageName": "RegisteredResources",
                     "PackageType": 1,
-                    "ItemName": "5020011858902290514.png"
+                    "ItemName": "ResultadoOperacional21505130878478085.png"
                   }
                 }
               },

@@ -14,7 +14,7 @@
               "name": {
                 "expr": {
                   "Literal": {
-                    "Value": "'4.png'"
+                    "Value": "'ContasPagar.png'"
                   }
                 }
               },
@@ -23,7 +23,7 @@
                   "ResourcePackageItem": {
                     "PackageName": "RegisteredResources",
                     "PackageType": 1,
-                    "ItemName": "44369935497980133.png"
+                    "ItemName": "ContasPagar9906363811216021.png"
                   }
                 }
               },

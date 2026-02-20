@@ -82,6 +82,424 @@ table fato_pedidos
 		formatString: 0.0%
 		lineageTag: 126cdfa6-a2de-4c14-baf1-7d2afc5d5b5c
 
+	/// Faturamento do mesmo período no mês anterior
+	measure 'Faturamento Periodo Anterior' = CALCULATE([Faturamento Total], DATEADD(dim_data[Data], -1, MONTH))
+		formatString: R$ #,##0.00
+		lineageTag: b7b4031b-45dd-4ad0-9c1c-8ece3496c474
+
+	/// Variação percentual do faturamento vs período anterior
+	measure 'Variacao Faturamento %' =
+			VAR Atual = [Faturamento Total]
+			VAR Anterior = [Faturamento Periodo Anterior]
+			RETURN
+			IF(
+			    Anterior <> 0,
+			    DIVIDE(Atual - Anterior, Anterior),
+			    BLANK()
+			)
+		formatString: +0.0%;-0.0%;0.0%
+		lineageTag: 7c3491b5-9050-4776-973d-d58eef259a6d
+
+	/// Faturamento Atacado do período anterior
+	measure 'Faturamento Atacado Periodo Anterior' = CALCULATE([Faturamento Atacado], DATEADD(dim_data[Data], -1, MONTH))
+		formatString: R$ #,##0.00
+		lineageTag: d9067692-24b6-426c-884c-054bd6aa6501
+
+	/// Variação % do faturamento Atacado vs período anterior
+	measure 'Variacao Faturamento Atacado %' =
+			VAR Atual = [Faturamento Atacado]
+			VAR Anterior = [Faturamento Atacado Periodo Anterior]
+			RETURN
+			IF(
+			    Anterior <> 0,
+			    DIVIDE(Atual - Anterior, Anterior),
+			    BLANK()
+			)
+		formatString: +0.0%;-0.0%;0.0%
+		lineageTag: c14f269c-1c96-40f8-a8f4-fd5eb62dae3e
+
+	/// Faturamento E-commerce do período anterior
+	measure 'Faturamento Ecommerce Periodo Anterior' = CALCULATE([Faturamento E-commerce], DATEADD(dim_data[Data], -1, MONTH))
+		formatString: R$ #,##0.00
+		lineageTag: 08dde918-a526-468f-94eb-b51877504da7
+
+	/// Variação % do faturamento E-commerce vs período anterior
+	measure 'Variacao Faturamento Ecommerce %' =
+			VAR Atual = [Faturamento E-commerce]
+			VAR Anterior = [Faturamento Ecommerce Periodo Anterior]
+			RETURN
+			IF(
+			    Anterior <> 0,
+			    DIVIDE(Atual - Anterior, Anterior),
+			    BLANK()
+			)
+		formatString: +0.0%;-0.0%;0.0%
+		lineageTag: a3bf0678-c49b-4804-985e-aeaa63999aeb
+
+	/// Variação % do total de pedidos vs período anterior
+	measure 'Variacao Pedidos %' =
+			VAR Atual = [Total de Pedidos]
+			VAR Anterior = CALCULATE([Total de Pedidos], DATEADD(dim_data[Data], -1, MONTH))
+			RETURN
+			IF(Anterior <> 0, DIVIDE(Atual - Anterior, Anterior), BLANK())
+		formatString: +0.0%;-0.0%;0.0%
+		lineageTag: b448691c-6a3e-4840-a35b-15602775362d
+
+	/// Variação % do ticket médio vs período anterior
+	measure 'Variacao Ticket Medio %' =
+			VAR Atual = [Ticket Médio]
+			VAR Anterior = CALCULATE([Ticket Médio], DATEADD(dim_data[Data], -1, MONTH))
+			RETURN
+			IF(Anterior <> 0, DIVIDE(Atual - Anterior, Anterior), BLANK())
+		formatString: +0.0%;-0.0%;0.0%
+		lineageTag: 17896c57-2b4a-41f7-b445-d10513d70aec
+
+	/// Faturamento acumulado dos últimos 12 meses
+	measure 'Faturamento Ultimos 12 Meses' =
+			CALCULATE(
+			    [Faturamento Total],
+			    DATESINPERIOD(dim_data[Data], LASTDATE(dim_data[Data]), -12, MONTH)
+			)
+		formatString: R$ #,##0.00
+		lineageTag: 8c5bccfc-8701-4cda-92e4-07739c6e8c14
+
+	/// Faturamento dos 12 meses anteriores ao período atual (para comparação anual)
+	measure 'Faturamento 12 Meses Anteriores' =
+			VAR UltimaData = LASTDATE(dim_data[Data])
+			VAR InicioJanela = EDATE(UltimaData, -24)
+			VAR FimJanela = EDATE(UltimaData, -13)
+			RETURN
+			CALCULATE(
+			    [Faturamento Total],
+			    FILTER(
+			        ALL(dim_data),
+			        dim_data[Data] >= InicioJanela && dim_data[Data] <= FimJanela
+			    )
+			)
+		formatString: R$ #,##0.00
+		lineageTag: 6dec9b63-f411-4e7e-b93b-4a16fb0a5072
+
+	/// Variação % entre os últimos 12 meses vs os 12 meses anteriores
+	measure 'Variacao Anual Faturamento %' =
+			VAR Ultimos12 = [Faturamento Ultimos 12 Meses]
+			VAR Anteriores12 = [Faturamento 12 Meses Anteriores]
+			RETURN
+			IF(
+			    Anteriores12 <> 0,
+			    DIVIDE(Ultimos12 - Anteriores12, Anteriores12),
+			    BLANK()
+			)
+		formatString: +0.0%;-0.0%;0.0%
+		lineageTag: 02629e8b-c6fb-471f-805a-25d2fe24e842
+
+	/// Média mensal do faturamento no período selecionado
+	measure 'Media Mensal Faturamento' =
+			AVERAGEX(
+			    VALUES(dim_data[AnoMes]),
+			    [Faturamento Total]
+			)
+		formatString: R$ #,##0.00
+		lineageTag: 766407b8-c42d-47b0-af66-f4dc9e4cebf7
+
+	/// Faturamento agrupado por mês para gráfico de linha
+	measure 'Faturamento Mensal' =
+			CALCULATE(
+			    [Faturamento Total],
+			    ALLEXCEPT(dim_data, dim_data[AnoMes])
+			)
+		formatString: R$ #,##0.00
+		lineageTag: 09aa4adc-7634-41bf-bf7a-a32751014889
+
+	/// Faturamento Atacado por mês para gráfico de linha
+	measure 'Faturamento Atacado Mensal' =
+			CALCULATE(
+			    [Faturamento Atacado],
+			    ALLEXCEPT(dim_data, dim_data[AnoMes])
+			)
+		formatString: R$ #,##0.00
+		lineageTag: 14041796-dea3-4af0-a680-df068253c274
+
+	/// Faturamento E-commerce por mês para gráfico de linha
+	measure 'Faturamento Ecommerce Mensal' =
+			CALCULATE(
+			    [Faturamento E-commerce],
+			    ALLEXCEPT(dim_data, dim_data[AnoMes])
+			)
+		formatString: R$ #,##0.00
+		lineageTag: 7b18c46d-ba8b-4f0c-92be-768b5bc3f2b8
+
+	/// Faturamento total por cliente para cálculo da Curva ABC
+	measure 'Faturamento por Cliente' =
+			CALCULATE(
+			    [Faturamento Total],
+			    ALLEXCEPT(fato_pedidos, fato_pedidos[cliente_id])
+			)
+		formatString: R$ #,##0.00
+		lineageTag: f10f93ac-81cb-455b-b5a1-57a985cec4c0
+
+	/// Ranking do cliente por faturamento (1 = maior faturamento)
+	measure 'Ranking Cliente Faturamento' =
+			RANKX(
+			    ALL(dim_clientes[cliente_id]),
+			    [Faturamento Total],
+			    ,
+			    DESC,
+			    DENSE
+			)
+		formatString: 0
+		lineageTag: d7225e8d-1709-4772-837b-1f2e0c736874
+
+	/// Faturamento acumulado até o cliente atual para cálculo da Curva ABC
+	measure 'Faturamento Acumulado ABC' =
+			VAR RankAtual = [Ranking Cliente Faturamento]
+			VAR FatTotal = CALCULATE([Faturamento Total], ALL(dim_clientes))
+			RETURN
+			DIVIDE(
+			    CALCULATE(
+			        [Faturamento Total],
+			        FILTER(
+			            ALL(dim_clientes[cliente_id]),
+			            [Ranking Cliente Faturamento] <= RankAtual
+			        )
+			    ),
+			    FatTotal
+			)
+		formatString: 0.0%
+		lineageTag: 6b945859-fcb9-4eef-89b8-32d1912fc299
+
+	/// DESCONTINUADA - use a coluna dim_clientes[Classificacao ABC]
+	measure 'Classificacao ABC' = "use dim_clientes[Classificacao ABC]"
+		lineageTag: 16671fb9-67fe-485c-ad2c-9c235b635e04
+
+	/// Custo de Aquisição de Cliente (investimento em marketing dividido por novos clientes)
+	measure CAC =
+			VAR TotalCustoAquisicao = SUM(fato_pedidos[custo_aquisicao])
+			VAR NovosClientes = CALCULATE(
+			    DISTINCTCOUNT(fato_pedidos[cliente_id]),
+			    fato_pedidos[custo_aquisicao] > 0
+			)
+			RETURN
+			DIVIDE(TotalCustoAquisicao, NovosClientes)
+		formatString: R$ #,##0.00
+		lineageTag: bc3047ff-fb88-4628-a0b1-4f6da21da125
+
+	/// Custo total de frete no período
+	measure 'Custo Total Frete' = SUM(fato_pedidos[valor_frete])
+		formatString: R$ #,##0.00
+		lineageTag: f0587a39-dad2-4998-aecf-701e3524db26
+
+	/// Percentual do custo de frete sobre o faturamento total
+	measure 'Frete sobre Faturamento %' = DIVIDE([Custo Total Frete], [Faturamento Total])
+		formatString: 0.0%
+		lineageTag: 4ed8d80c-578f-4dd6-963f-3856fcd4f397
+
+	/// Variação % do custo de frete vs período anterior
+	measure 'Variacao Frete %' =
+			VAR Atual = [Custo Total Frete]
+			VAR Anterior = CALCULATE([Custo Total Frete], DATEADD(dim_data[Data], -1, MONTH))
+			RETURN IF(Anterior <> 0, DIVIDE(Atual - Anterior, Anterior), BLANK())
+		formatString: +0.0%;-0.0%;0.0%
+		lineageTag: a5f403b7-c31d-44c9-b431-b6763c575a82
+
+	/// Clientes que compraram nos últimos 60 dias (baseado na data máxima do modelo)
+	measure 'Clientes Ativos 60 Dias' =
+			VAR UltimaData = CALCULATE(MAX(fato_pedidos[data_pedido]), ALL(fato_pedidos))
+			VAR DataCorte = UltimaData - 60
+			RETURN
+			CALCULATE(
+			    DISTINCTCOUNT(fato_pedidos[cliente_id]),
+			    fato_pedidos[data_pedido] >= DataCorte
+			)
+		formatString: 0
+		lineageTag: 2b79b07f-767f-4e1c-a05b-d70d6b58c1bd
+
+	/// Variação % de clientes ativos vs período anterior (baseado na data máxima do modelo)
+	measure 'Variacao Clientes Ativos %' =
+			VAR UltimaData = CALCULATE(MAX(fato_pedidos[data_pedido]), ALL(fato_pedidos))
+			VAR DataCorte = UltimaData - 60
+			VAR DataCortePrev = UltimaData - 120
+			VAR Atual = CALCULATE(
+			    DISTINCTCOUNT(fato_pedidos[cliente_id]),
+			    fato_pedidos[data_pedido] >= DataCorte
+			)
+			VAR Anterior = CALCULATE(
+			    DISTINCTCOUNT(fato_pedidos[cliente_id]),
+			    fato_pedidos[data_pedido] >= DataCortePrev,
+			    fato_pedidos[data_pedido] < DataCorte
+			)
+			RETURN
+			IF(
+			    Anterior <> 0,
+			    DIVIDE(Atual - Anterior, Anterior),
+			    BLANK()
+			)
+		formatString: +0.0%;-0.0%;0.0%
+		lineageTag: 2fddbec6-2e81-46da-b107-3283f316a0e9
+
+	/// Faturamento agrupado por estado do cliente para o mapa geográfico
+	measure 'Faturamento por Estado' =
+			CALCULATE(
+			    [Faturamento Total],
+			    ALLEXCEPT(dim_clientes, dim_clientes[estado])
+			)
+		formatString: R$ #,##0.00
+		lineageTag: 3f3f3345-0543-4cb5-8f0e-f420ea2f0d2e
+
+	/// Quantidade de clientes distintos por estado
+	measure 'Clientes por Estado' =
+			CALCULATE(
+			    DISTINCTCOUNT(fato_pedidos[cliente_id]),
+			    ALLEXCEPT(dim_clientes, dim_clientes[estado])
+			)
+		formatString: 0
+		lineageTag: 18273bc6-95ff-4a28-b772-a051675a2ad3
+
+	/// Participacao percentual do estado no faturamento total
+	measure 'Participacao Estado %' =
+			DIVIDE(
+			    [Faturamento Total],
+			    CALCULATE([Faturamento Total], ALL(dim_clientes))
+			)
+		formatString: 0.0%
+		lineageTag: c87425f0-b6ca-4fcb-9669-48529970331b
+
+	/// Ticket médio por pedido filtrado pelo estado do cliente
+	measure 'Ticket Medio por Estado' =
+			DIVIDE(
+			    [Faturamento Total],
+			    [Total de Pedidos]
+			)
+		formatString: R$ #,##0.00
+		lineageTag: 8aca8879-574b-42fa-b684-25e888df9c21
+
+	/// Total de pedidos do canal E-commerce
+	measure 'Pedidos Ecommerce' =
+			CALCULATE(
+			    COUNTROWS(fato_pedidos),
+			    fato_pedidos[canal] = "E-commerce"
+			)
+		formatString: 0
+		lineageTag: 0caa8e39-3aa7-45d7-80fb-575fa3db651a
+
+	/// Percentual de pedidos E-commerce sobre o total de pedidos
+	measure 'Taxa Conversao Ecommerce' = DIVIDE([Pedidos Ecommerce], [Total de Pedidos])
+		formatString: 0.0%
+		lineageTag: fd33136e-be45-4971-899f-d33e24021f7c
+
+	/// Ticket médio por pedido no canal E-commerce
+	measure 'Ticket Medio Ecommerce' =
+			DIVIDE(
+			    [Faturamento E-commerce],
+			    [Pedidos Ecommerce]
+			)
+		formatString: R$ #,##0.00
+		lineageTag: ac58bbe1-230c-4598-9f28-97f9b6c82ba4
+
+	/// Variação anual do faturamento E-commerce vs ano anterior
+	measure 'Variacao Faturamento Ecommerce Anual %' =
+			VAR Atual = CALCULATE([Faturamento E-commerce], YEAR(dim_data[Data]) = YEAR(TODAY()))
+			VAR Anterior = CALCULATE([Faturamento E-commerce], YEAR(dim_data[Data]) = YEAR(TODAY()) - 1)
+			RETURN IF(Anterior <> 0, DIVIDE(Atual - Anterior, Anterior), BLANK())
+		formatString: +0.0%;-0.0%;0.0%
+		lineageTag: e8a11adf-82ba-4113-945d-e3bfb73622cf
+
+	/// Quantidade de pedidos cancelados no canal E-commerce
+	measure 'Pedidos Cancelados Ecommerce' =
+			CALCULATE(
+			    COUNTROWS(fato_pedidos),
+			    fato_pedidos[canal] = "E-commerce",
+			    fato_pedidos[status] = "Cancelado"
+			)
+		formatString: 0
+		lineageTag: 922e9435-7878-4796-9a01-c320e198965d
+
+	/// Taxa de cancelamento do canal E-commerce
+	measure 'Taxa Cancelamento Ecommerce %' = DIVIDE([Pedidos Cancelados Ecommerce], [Pedidos Ecommerce])
+		formatString: 0.0%
+		lineageTag: 6c0ab0cd-3b05-4565-87bc-82de76d1ac26
+
+	/// Pedidos E-commerce por mês para gráfico de evolução
+	measure 'Pedidos Ecommerce Mensal' =
+			CALCULATE(
+			    [Pedidos Ecommerce],
+			    ALLEXCEPT(dim_data, dim_data[AnoMes])
+			)
+		formatString: 0
+		lineageTag: 5020a7f1-8b47-4b5f-879f-0f1cb1fb25dc
+
+	/// Variação % de pedidos E-commerce vs período anterior
+	measure 'Variacao Pedidos Ecommerce %' =
+			VAR Atual = [Pedidos Ecommerce]
+			VAR Anterior = CALCULATE([Pedidos Ecommerce], DATEADD(dim_data[Data], -1, MONTH))
+			RETURN
+			IF(Anterior <> 0, DIVIDE(Atual - Anterior, Anterior), BLANK())
+		formatString: +0.0%;-0.0%;0.0%
+		lineageTag: d5e1a99f-25fa-4191-88cb-7f506ac47a96
+
+	/// Variação % do ticket médio E-commerce vs período anterior
+	measure 'Ticket Medio Ecommerce Variacao %' =
+			VAR Atual = [Ticket Medio Ecommerce]
+			VAR Anterior = CALCULATE([Ticket Medio Ecommerce], DATEADD(dim_data[Data], -1, MONTH))
+			RETURN
+			IF(Anterior <> 0, DIVIDE(Atual - Anterior, Anterior), BLANK())
+		formatString: +0.0%;-0.0%;0.0%
+		lineageTag: 287806be-1706-4d22-bd4e-bae22a00d830
+
+	/// Faturamento agrupado por loja para gráfico E-commerce
+	measure 'Faturamento por Loja' =
+			CALCULATE(
+			    SUM(fato_pedidos[valor_liquido]),
+			    ALLEXCEPT(dim_lojas, dim_lojas[nome_loja])
+			)
+		formatString: R$ #,##0.00
+		lineageTag: 6ca0bd02-64ec-4ba6-8924-9a34a058d4ca
+
+	/// Pedidos cancelados agrupados por loja
+	measure 'Pedidos Cancelados por Loja' =
+			CALCULATE(
+			    DISTINCTCOUNT(fato_pedidos[pedido_id]),
+			    fato_pedidos[status] = "Cancelado",
+			    ALLEXCEPT(dim_lojas, dim_lojas[nome_loja])
+			)
+		formatString: 0
+		lineageTag: c319519b-4c9e-487d-a384-b525f9ebcf4c
+
+	/// Taxa de cancelamento por loja
+	measure 'Taxa Cancelamento por Loja %' =
+			DIVIDE(
+			    CALCULATE(DISTINCTCOUNT(fato_pedidos[pedido_id]), fato_pedidos[status] = "Cancelado"),
+			    DISTINCTCOUNT(fato_pedidos[pedido_id])
+			)
+		formatString: 0.0%
+		lineageTag: 50c06ceb-10eb-412e-9f12-6d4c8fa6d9bd
+
+	/// Receita líquida associada a cada cupom de desconto
+	measure 'Receita por Cupom' =
+			CALCULATE(
+			    SUM(fato_pedidos[valor_liquido]),
+			    ALLEXCEPT(fato_pedidos, fato_pedidos[cupom_desconto])
+			)
+		formatString: R$ #,##0.00
+		lineageTag: dd2a8f24-d8a3-4965-a942-b89c349dbf5d
+
+	/// Valor total de desconto concedido por cupom
+	measure 'Desconto Total por Cupom' =
+			CALCULATE(
+			    SUM(fato_pedidos[valor_desconto]),
+			    ALLEXCEPT(fato_pedidos, fato_pedidos[cupom_desconto])
+			)
+		formatString: R$ #,##0.00
+		lineageTag: e34d8074-8759-44da-9c04-efc7064479a5
+
+	/// Quantidade de pedidos que utilizaram cada cupom
+	measure 'Utilizacoes por Cupom' =
+			CALCULATE(
+			    DISTINCTCOUNT(fato_pedidos[pedido_id]),
+			    ALLEXCEPT(fato_pedidos, fato_pedidos[cupom_desconto])
+			)
+		formatString: 0
+		lineageTag: 327e6e87-4f2c-4079-8b8f-c0c70f2d3b77
+
 	column pedido_id
 		dataType: int64
 		formatString: 0

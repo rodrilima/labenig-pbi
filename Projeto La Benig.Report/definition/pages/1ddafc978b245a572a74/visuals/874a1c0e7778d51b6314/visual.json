@@ -1,0 +1,76 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "874a1c0e7778d51b6314",
+  "position": {
+    "x": 151.23919308357347,
+    "y": 486.91642651296826,
+    "z": 4000,
+    "height": 232.39193083573485,
+    "width": 1080.8069164265128,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Columns": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fato_logistica_pedidos"
+                    }
+                  },
+                  "Property": "transportadora"
+                }
+              },
+              "queryRef": "fato_logistica_pedidos.transportadora",
+              "nativeQueryRef": "transportadora",
+              "active": true
+            }
+          ]
+        },
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_lojas"
+                    }
+                  },
+                  "Property": "nome_loja"
+                }
+              },
+              "queryRef": "dim_lojas.nome_loja",
+              "nativeQueryRef": "nome_loja",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fato_logistica_pedidos"
+                    }
+                  },
+                  "Property": "SLA Separacao %"
+                }
+              },
+              "queryRef": "fato_logistica_pedidos.SLA Separacao %",
+              "nativeQueryRef": "SLA Separacao %"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

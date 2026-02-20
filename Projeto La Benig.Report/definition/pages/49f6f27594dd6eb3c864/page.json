@@ -14,7 +14,7 @@
               "name": {
                 "expr": {
                   "Literal": {
-                    "Value": "'3.png'"
+                    "Value": "'ContaReceber.png'"
                   }
                 }
               },
@@ -23,7 +23,7 @@
                   "ResourcePackageItem": {
                     "PackageName": "RegisteredResources",
                     "PackageType": 1,
-                    "ItemName": "301179190545317954.png"
+                    "ItemName": "ContaReceber8722927707351386.png"
                   }
                 }
               },

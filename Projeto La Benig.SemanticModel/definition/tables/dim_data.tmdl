@@ -79,6 +79,16 @@ table dim_data
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Ano e mês formatado (ex: 2025-01) para ordenação correta no eixo X dos gráficos
+	column AnoMes = FORMAT(dim_data[Data], "YYYY-MM")
+		dataType: string
+		lineageTag: da64efe9-7c7d-4fd4-908f-c2e4cabcbc05
+
+	/// Nome do mês abreviado + ano (ex: Jan/25) para exibição nos gráficos
+	column NomeMesAno = FORMAT(dim_data[Data], "MMM/YY")
+		dataType: string
+		lineageTag: e9f3693b-a753-4437-a651-e4aa917e2ad4
+
 	partition Partition = m
 		mode: import
 		queryGroup: mocks

@@ -1,0 +1,99 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "c2653e950d0fe66a9ea6",
+  "position": {
+    "x": 907.44079449961794,
+    "y": 361.80290297937353,
+    "z": 0,
+    "height": 331.48968678380442,
+    "width": 355.93582887700535,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_clientes"
+                    }
+                  },
+                  "Property": "nome_cliente"
+                }
+              },
+              "queryRef": "dim_clientes.nome_cliente",
+              "nativeQueryRef": "Cliente",
+              "displayName": "Cliente"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_clientes"
+                    }
+                  },
+                  "Property": "classificacao_atacado"
+                }
+              },
+              "queryRef": "dim_clientes.classificacao_atacado",
+              "nativeQueryRef": "Classificacao",
+              "displayName": "Classificacao"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_clientes"
+                    }
+                  },
+                  "Property": "Classificacao ABC"
+                }
+              },
+              "queryRef": "dim_clientes.Classificacao ABC",
+              "nativeQueryRef": "ABC",
+              "displayName": "ABC"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_clientes"
+                    }
+                  },
+                  "Property": "estado"
+                }
+              },
+              "queryRef": "dim_clientes.estado",
+              "nativeQueryRef": "UF",
+              "displayName": "UF"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fato_pedidos"
+                    }
+                  },
+                  "Property": "Faturamento Total"
+                }
+              },
+              "queryRef": "fato_pedidos.Faturamento Total",
+              "nativeQueryRef": "Faturamento",
+              "displayName": "Faturamento"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
