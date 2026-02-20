@@ -27,6 +27,99 @@ table fato_sac
 		formatString: 0.0%
 		lineageTag: 918cac4b-dd43-43b6-81e9-2666a92705e7
 
+	/// Variação da nota média SAC vs período anterior
+	measure 'Variacao Nota SAC' =
+			VAR Atual = [Nota Média SAC]
+			VAR Anterior = CALCULATE([Nota Média SAC], DATEADD(dim_data[Data], -1, MONTH))
+			RETURN IF(Anterior <> 0, Atual - Anterior, BLANK())
+		formatString: +0.00;-0.00;0.00
+		lineageTag: 91296fa9-7a8e-4e9c-a283-bb04c1d686a0
+
+	/// Variação % de chamados abertos vs período anterior
+	measure 'Variacao Chamados Abertos %' =
+			VAR Atual = [Chamados Abertos]
+			VAR Anterior = CALCULATE([Chamados Abertos], DATEADD(dim_data[Data], -1, MONTH))
+			RETURN IF(Anterior <> 0, DIVIDE(Atual - Anterior, Anterior), BLANK())
+		formatString: +0.0%;-0.0%;0.0%
+		lineageTag: 0efb4669-3632-4a3c-9965-cb7e6cb8208d
+
+	/// Variação em pontos percentuais do SLA SAC vs período anterior
+	measure 'Variacao SLA SAC %' =
+			VAR Atual = [Percentual SLA Cumprido]
+			VAR Anterior = CALCULATE([Percentual SLA Cumprido], DATEADD(dim_data[Data], -1, MONTH))
+			RETURN IF(Anterior <> 0, Atual - Anterior, BLANK())
+		formatString: +0.0%;-0.0%;0.0%
+		lineageTag: 8830f58a-18ce-48aa-bd27-76b2d79ec272
+
+	/// Quantidade de chamados com nota 5
+	measure 'Notas Nota 5' = CALCULATE(COUNTROWS(fato_sac), fato_sac[nota_atendimento] = 5)
+		formatString: 0
+		lineageTag: d5e7707f-2237-415a-ade4-7180e5250909
+
+	/// Quantidade de chamados com nota 4
+	measure 'Notas Nota 4' = CALCULATE(COUNTROWS(fato_sac), fato_sac[nota_atendimento] = 4)
+		formatString: 0
+		lineageTag: 97842eab-cbcd-4d01-a53b-fda27b7ef7bc
+
+	/// Quantidade de chamados com nota 3
+	measure 'Notas Nota 3' = CALCULATE(COUNTROWS(fato_sac), fato_sac[nota_atendimento] = 3)
+		formatString: 0
+		lineageTag: 48bc3683-f346-4d2e-9998-1b740ed10f27
+
+	/// Quantidade de chamados com nota 2
+	measure 'Notas Nota 2' = CALCULATE(COUNTROWS(fato_sac), fato_sac[nota_atendimento] = 2)
+		formatString: 0
+		lineageTag: c4e8f737-1406-4ac8-b3dc-a371f3fc93f9
+
+	/// Quantidade de chamados com nota 1
+	measure 'Notas Nota 1' = CALCULATE(COUNTROWS(fato_sac), fato_sac[nota_atendimento] = 1)
+		formatString: 0
+		lineageTag: 97defaae-7bc9-494f-a6bf-3e78991b826c
+
+	/// Net Promoter Score calculado a partir das notas (5=Promotor, 4=Neutro, 1-3=Detrator)
+	measure 'NPS Score' =
+			VAR TotalAvaliacoes = COUNTROWS(FILTER(fato_sac, fato_sac[nota_atendimento] <> BLANK()))
+			VAR Promotores = CALCULATE(COUNTROWS(fato_sac), fato_sac[nota_atendimento] = 5)
+			VAR Detratores = CALCULATE(COUNTROWS(fato_sac), fato_sac[nota_atendimento] <= 3)
+			RETURN
+			IF(
+			    TotalAvaliacoes > 0,
+			    DIVIDE(Promotores - Detratores, TotalAvaliacoes) * 100,
+			    BLANK()
+			)
+		formatString: 0
+		lineageTag: 826b773d-bba4-4e36-bfdc-2dd5ceb287cc
+
+	/// Total de chamados agrupado por categoria (usar no gráfico de rosca)
+	measure 'Chamados por Categoria' = COUNTROWS(fato_sac)
+		formatString: 0
+		lineageTag: 1fd98ce2-59f5-424f-bdcf-b0b80a0c9177
+
+	/// Tempo médio de resolução de chamados em horas
+	measure 'Tempo Medio Resolucao' = AVERAGE(fato_sac[tempo_resolucao_horas])
+		formatString: 0.0
+		lineageTag: 308241e6-16ee-4fcd-a03b-ee11e5e3f9ee
+
+	/// Chamados com status Em Espera
+	measure 'Chamados Em Espera' = CALCULATE(COUNTROWS(fato_sac), fato_sac[status] = "Em Espera")
+		formatString: 0
+		lineageTag: 361a6c2f-3dbc-4632-b2af-3fe812f0df09
+
+	/// Chamados com status Finalizado
+	measure 'Chamados Finalizados Total' = CALCULATE(COUNTROWS(fato_sac), fato_sac[status] = "Finalizado")
+		formatString: 0
+		lineageTag: 13c7ef11-06fb-45b6-b15d-34dbbb141920
+
+	/// Nota média SAC agrupada por mês para gráfico de evolução
+	measure 'Nota Media Mensal' = CALCULATE(AVERAGE(fato_sac[nota_atendimento]), ALLEXCEPT(dim_data, dim_data[AnoMes]))
+		formatString: 0.0
+		lineageTag: f2b66902-fb0d-46c9-99b7-cc9f35f2f719
+
+	/// SLA SAC agrupado por mês para gráfico de evolução
+	measure 'SLA Mensal SAC' = CALCULATE([Percentual SLA Cumprido], ALLEXCEPT(dim_data, dim_data[AnoMes]))
+		formatString: 0.0%
+		lineageTag: 3426a0ed-8aaa-4665-a284-114e95e41b96
+
 	column chamado_id
 		dataType: int64
 		formatString: 0

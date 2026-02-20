@@ -22,6 +22,24 @@ table fato_contas_receber
 		formatString: 0
 		lineageTag: 92971c90-390d-479c-9a47-b41695b6b7d9
 
+	/// Variação em pontos percentuais da inadimplência vs período anterior
+	measure 'Variacao Inadimplencia pp' =
+			VAR Atual = [Taxa Inadimplencia]
+			VAR Anterior = CALCULATE([Taxa Inadimplencia], DATEADD(dim_data[Data], -1, MONTH))
+			RETURN IF(Anterior <> 0, Atual - Anterior, BLANK())
+		formatString: +0.0%;-0.0%;0.0%
+		lineageTag: 07fcfa36-209d-4f21-a16a-a0b16c657561
+
+	/// Cor dinâmica para semáforo de inadimplência
+	measure 'Cor Inadimplencia' =
+			SWITCH(
+			    TRUE(),
+			    [Taxa Inadimplencia] < 0.03, "#27AE60",
+			    [Taxa Inadimplencia] < 0.05, "#F39C12",
+			    "#E74C3C"
+			)
+		lineageTag: 2b46a397-caef-4e9c-a813-064873cf6687
+
 	column id
 		dataType: int64
 		formatString: 0

@@ -27,6 +27,14 @@ table fato_resultado_operacional
 		formatString: R$ #,##0.00
 		lineageTag: ec56aa27-e72c-429f-b55d-c009c64bd081
 
+	/// Variação % do resultado operacional vs período anterior
+	measure 'Variacao Resultado Operacional %' =
+			VAR Atual = [Resultado Operacional]
+			VAR Anterior = CALCULATE([Resultado Operacional], DATEADD(dim_data[Data], -1, MONTH))
+			RETURN IF(Anterior <> 0, DIVIDE(Atual - Anterior, Anterior), BLANK())
+		formatString: +0.0%;-0.0%;0.0%
+		lineageTag: 95a974aa-2af2-43a5-8ab5-28dc8b704383
+
 	column id
 		dataType: int64
 		formatString: 0

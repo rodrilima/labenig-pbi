@@ -1,0 +1,204 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "ad29b8305e4dac109f64",
+  "position": {
+    "x": 154.9279538904899,
+    "y": 435.27377521613829,
+    "z": 0,
+    "height": 250.83573487031697,
+    "width": 1080.8069164265128,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_clientes"
+                    }
+                  },
+                  "Property": "nome_cliente"
+                }
+              },
+              "queryRef": "dim_clientes.nome_cliente",
+              "nativeQueryRef": "nome_cliente"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_clientes"
+                    }
+                  },
+                  "Property": "estado"
+                }
+              },
+              "queryRef": "dim_clientes.estado",
+              "nativeQueryRef": "estado"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fato_comportamento_cliente"
+                    }
+                  },
+                  "Property": "classificacao"
+                }
+              },
+              "queryRef": "fato_comportamento_cliente.classificacao",
+              "nativeQueryRef": "classificacao"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fato_comportamento_cliente"
+                        }
+                      },
+                      "Property": "total_pedidos_45dias"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fato_comportamento_cliente.total_pedidos_45dias)",
+              "nativeQueryRef": "Soma de total_pedidos_45dias"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fato_comportamento_cliente"
+                        }
+                      },
+                      "Property": "dias_sem_compra"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fato_comportamento_cliente.dias_sem_compra)",
+              "nativeQueryRef": "Soma de dias_sem_compra"
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "fato_comportamento_cliente"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "ultima_compra"
+                        }
+                      },
+                      "Hierarchy": "Hierarquia de datas"
+                    }
+                  },
+                  "Level": "Ano"
+                }
+              },
+              "queryRef": "fato_comportamento_cliente.ultima_compra.Variation.Hierarquia de datas.Ano",
+              "nativeQueryRef": "ultima_compra Ano"
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "fato_comportamento_cliente"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "ultima_compra"
+                        }
+                      },
+                      "Hierarchy": "Hierarquia de datas"
+                    }
+                  },
+                  "Level": "Trimestre"
+                }
+              },
+              "queryRef": "fato_comportamento_cliente.ultima_compra.Variation.Hierarquia de datas.Trimestre",
+              "nativeQueryRef": "ultima_compra Trimestre"
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "fato_comportamento_cliente"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "ultima_compra"
+                        }
+                      },
+                      "Hierarchy": "Hierarquia de datas"
+                    }
+                  },
+                  "Level": "Mês"
+                }
+              },
+              "queryRef": "fato_comportamento_cliente.ultima_compra.Variation.Hierarquia de datas.Mês",
+              "nativeQueryRef": "ultima_compra Mês"
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "fato_comportamento_cliente"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "ultima_compra"
+                        }
+                      },
+                      "Hierarchy": "Hierarquia de datas"
+                    }
+                  },
+                  "Level": "Dia"
+                }
+              },
+              "queryRef": "fato_comportamento_cliente.ultima_compra.Variation.Hierarquia de datas.Dia",
+              "nativeQueryRef": "ultima_compra Dia"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

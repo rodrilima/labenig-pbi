@@ -476,23 +476,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "645c136c2902226368b1",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "medidas_financeiro"
-              }
-            },
-            "Property": "06_pmr_dias"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

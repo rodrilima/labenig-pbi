@@ -1,0 +1,80 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "17e528590147607829db",
+  "position": {
+    "x": 726.685878962536,
+    "y": 464.78386167146971,
+    "z": 1000,
+    "height": 213.94812680115271,
+    "width": 512.73775216138324,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fato_pedidos"
+                    }
+                  },
+                  "Property": "cupom_desconto"
+                }
+              },
+              "queryRef": "fato_pedidos.cupom_desconto",
+              "nativeQueryRef": "cupom_desconto"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fato_pedidos"
+                    }
+                  },
+                  "Property": "Utilizacoes por Cupom"
+                }
+              },
+              "queryRef": "fato_pedidos.Utilizacoes por Cupom",
+              "nativeQueryRef": "Utilizacoes por Cupom"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fato_pedidos"
+                    }
+                  },
+                  "Property": "Desconto Total por Cupom"
+                }
+              },
+              "queryRef": "fato_pedidos.Desconto Total por Cupom",
+              "nativeQueryRef": "Desconto Total por Cupom"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fato_pedidos"
+                    }
+                  },
+                  "Property": "Receita por Cupom"
+                }
+              },
+              "queryRef": "fato_pedidos.Receita por Cupom",
+              "nativeQueryRef": "Receita por Cupom"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -22,6 +22,205 @@ table fato_logistica_pedidos
 		formatString: 0.0%
 		lineageTag: bbad859c-3dcd-4c95-8408-f9efa702c9cd
 
+	/// Percentual de pedidos separados dentro do prazo (SLA)
+	measure 'SLA Separacao %' =
+			DIVIDE(
+			    CALCULATE(COUNTROWS(fato_logistica_pedidos), fato_logistica_pedidos[sla_separacao_cumprido] = TRUE()),
+			    CALCULATE(COUNTROWS(fato_logistica_pedidos), fato_logistica_pedidos[data_separacao] <> BLANK())
+			)
+		formatString: 0.0%
+		lineageTag: 140112a9-707b-4dbf-8371-88faef9bfc11
+
+	/// Percentual de pedidos coletados dentro do prazo (SLA)
+	measure 'SLA Coleta %' =
+			DIVIDE(
+			    CALCULATE(COUNTROWS(fato_logistica_pedidos), fato_logistica_pedidos[sla_coleta_cumprido] = TRUE()),
+			    CALCULATE(COUNTROWS(fato_logistica_pedidos), fato_logistica_pedidos[data_coleta] <> BLANK())
+			)
+		formatString: 0.0%
+		lineageTag: 15d63f82-b255-44e0-a074-a9f2cbce15de
+
+	/// Variação em pontos percentuais do SLA Separação vs mês anterior
+	measure 'Variacao SLA Separacao pp' =
+			VAR Atual = [SLA Separacao %]
+			VAR Anterior = CALCULATE([SLA Separacao %], DATEADD(dim_data[Data], -1, MONTH))
+			RETURN
+			IF(Anterior <> 0, Atual - Anterior, BLANK())
+		formatString: +0.0%;-0.0%;0.0%
+		lineageTag: 3eaaea61-955f-4f23-873f-87848dd2dad0
+
+	/// Variação em pontos percentuais do SLA Coleta vs mês anterior
+	measure 'Variacao SLA Coleta pp' =
+			VAR Atual = [SLA Coleta %]
+			VAR Anterior = CALCULATE([SLA Coleta %], DATEADD(dim_data[Data], -1, MONTH))
+			RETURN
+			IF(Anterior <> 0, Atual - Anterior, BLANK())
+		formatString: +0.0%;-0.0%;0.0%
+		lineageTag: 26bbd1b5-8e3f-46ed-80be-4e45dfb63346
+
+	/// Cor hex dinâmica para semáforo do SLA de Separação (verde/amarelo/vermelho)
+	measure 'Cor SLA Separacao' =
+			SWITCH(
+			    TRUE(),
+			    [SLA Separacao %] >= 0.95, "#27AE60",
+			    [SLA Separacao %] >= 0.85, "#F39C12",
+			    "#E74C3C"
+			)
+		lineageTag: 9ef59efa-ef3f-426c-aeef-af1a5519a45c
+
+	/// Cor hex dinâmica para semáforo do SLA de Coleta (verde/amarelo/vermelho)
+	measure 'Cor SLA Coleta' =
+			SWITCH(
+			    TRUE(),
+			    [SLA Coleta %] >= 0.90, "#27AE60",
+			    [SLA Coleta %] >= 0.85, "#F39C12",
+			    "#E74C3C"
+			)
+		lineageTag: b9a82343-fbef-47de-bfec-c66115c7f9b2
+
+	/// Texto de status do SLA de Separação (Excelente/Atenção/Crítico)
+	measure 'Status SLA Separacao' =
+			SWITCH(
+			    TRUE(),
+			    [SLA Separacao %] >= 0.95, "🟢 Excelente",
+			    [SLA Separacao %] >= 0.85, "🟡 Atenção",
+			    "🔴 Crítico"
+			)
+		lineageTag: 8d8b5b88-0ca7-4048-992f-80c1edd0b64c
+
+	/// Texto de status do SLA de Coleta (Excelente/Atenção/Crítico)
+	measure 'Status SLA Coleta' =
+			SWITCH(
+			    TRUE(),
+			    [SLA Coleta %] >= 0.90, "🟢 Excelente",
+			    [SLA Coleta %] >= 0.85, "🟡 Atenção",
+			    "🔴 Crítico"
+			)
+		lineageTag: ddc26109-bab3-4581-acf8-f446b8a22a79
+
+	/// SLA de Separação agrupado por mês para gráfico de evolução temporal
+	measure 'SLA Separacao Mensal' = CALCULATE([SLA Separacao %], ALLEXCEPT(dim_data, dim_data[AnoMes]))
+		formatString: 0.0%
+		lineageTag: bd170dbd-3047-48aa-8856-30db837a1071
+
+	/// SLA de Coleta agrupado por mês para gráfico de evolução temporal
+	measure 'SLA Coleta Mensal' = CALCULATE([SLA Coleta %], ALLEXCEPT(dim_data, dim_data[AnoMes]))
+		formatString: 0.0%
+		lineageTag: 6e2593b0-d9e4-40a8-bad8-664615cc5282
+
+	/// SLA de Separação agrupado por semana para gráfico de evolução temporal
+	measure 'SLA Separacao Semanal' = CALCULATE([SLA Separacao %], ALLEXCEPT(dim_data, dim_data[Ano], dim_data[DiaSemana]))
+		formatString: 0.0%
+		lineageTag: b8119e0e-936f-42f2-90e6-b3c5875f0ad2
+
+	/// SLA de Coleta agrupado por semana para gráfico de evolução temporal
+	measure 'SLA Coleta Semanal' = CALCULATE([SLA Coleta %], ALLEXCEPT(dim_data, dim_data[Ano], dim_data[DiaSemana]))
+		formatString: 0.0%
+		lineageTag: 5a6cbb00-1009-49b7-b727-21babd99562d
+
+	/// Meta de SLA de Separação (95%) - linha de referência nos gráficos
+	measure 'Meta SLA Separacao' = 0.95
+		formatString: 0.0%
+		lineageTag: b162fa7a-f658-4a57-a0e7-ddbba55898b4
+
+	/// Meta de SLA de Coleta (90%) - linha de referência nos gráficos
+	measure 'Meta SLA Coleta' = 0.90
+		formatString: 0.0%
+		lineageTag: 75cfa6a5-2fdd-48fb-a93f-d38751216a86
+
+	/// Cor hex para heatmap da tabela Loja x Transportadora
+	measure 'Cor SLA Heatmap' =
+			SWITCH(
+			    TRUE(),
+			    [SLA Separacao %] >= 0.95, "#27AE60",
+			    [SLA Separacao %] >= 0.85, "#F39C12",
+			    "#E74C3C"
+			)
+		lineageTag: 02ff851f-9c62-45d3-b66e-34ff277d0c1c
+
+	/// Texto de tendência do SLA de Separação (▲ Melhorando / ▼ Piorando)
+	measure 'Tendencia SLA Separacao' = IF([Variacao SLA Separacao pp] > 0, "▲ Melhorando", "▼ Piorando")
+		lineageTag: 6d5df4b2-4e8b-4c4a-aba8-1820c39e38b7
+
+	/// Texto de tendência do SLA de Coleta (▲ Melhorando / ▼ Piorando)
+	measure 'Tendencia SLA Coleta' = IF([Variacao SLA Coleta pp] > 0, "▲ Melhorando", "▼ Piorando")
+		lineageTag: 3cbf59ac-65c4-4280-95b0-83c44c6afce2
+
+	/// Pedidos em andamento (Em Separação + Em Conferência + Faturado)
+	measure 'Pedidos Em Transito' =
+			CALCULATE(
+			    COUNTROWS(fato_logistica_pedidos),
+			    fato_logistica_pedidos[status_atual] IN {"Em Separação", "Em Conferência", "Faturado"}
+			)
+		formatString: 0
+		lineageTag: 50f01491-42c9-42b1-b960-83ce4022f69d
+
+	/// Pedidos com status Entregue
+	measure 'Pedidos Entregues' = CALCULATE(COUNTROWS(fato_logistica_pedidos), fato_logistica_pedidos[status_atual] = "Entregue")
+		formatString: 0
+		lineageTag: 8aeecb82-4a01-44b1-b6d6-7ae8ae356246
+
+	/// Pedidos faturados aguardando coleta da transportadora
+	measure 'Pedidos Aguardando Coleta' = CALCULATE(COUNTROWS(fato_logistica_pedidos), fato_logistica_pedidos[status_atual] = "Aguardando Coleta")
+		formatString: 0
+		lineageTag: 4e3d1bae-d21c-484c-8e26-580d535cb233
+
+	/// Pedidos com data de coleta preenchida (status Coletado)
+	measure 'Pedidos Coletados' =
+			CALCULATE(
+			    COUNTROWS(fato_logistica_pedidos),
+			    fato_logistica_pedidos[status_atual] = "Coletado"
+			)
+		formatString: 0
+		lineageTag: 726c4327-1a48-4d2f-ad86-74b8df56ec8c
+
+	/// Pedidos com status Em Conferência no funil logístico
+	measure 'Pedidos Em Conferencia' =
+			CALCULATE(
+			    COUNTROWS(fato_logistica_pedidos),
+			    fato_logistica_pedidos[status_atual] = "Em Conferência"
+			)
+		formatString: 0
+		lineageTag: 30decc12-d9cb-45bb-9ff3-06246f4a39a8
+
+	/// Pedidos com status Faturado no funil logístico
+	measure 'Pedidos Faturados Logistica' =
+			CALCULATE(
+			    COUNTROWS(fato_logistica_pedidos),
+			    fato_logistica_pedidos[status_atual] = "Faturado"
+			)
+		formatString: 0
+		lineageTag: c96a7e6a-9181-43fa-a081-46a8740ce043
+
+	/// Pedidos com status Em Separação no funil logístico
+	measure 'Pedidos Em Separacao Logistica' =
+			CALCULATE(
+			    COUNTROWS(fato_logistica_pedidos),
+			    fato_logistica_pedidos[status_atual] = "Em Separação"
+			)
+		formatString: 0
+		lineageTag: a62be842-5b81-4ea8-b32c-fc51e3135bc4
+
+	/// Pedidos coletados agrupados por loja para gráfico de barras
+	measure 'Pedidos Coletados por Loja' =
+			CALCULATE(
+			    COUNTROWS(fato_logistica_pedidos),
+			    fato_logistica_pedidos[status_atual] = "Coletado",
+			    ALLEXCEPT(dim_lojas, dim_lojas[nome_loja])
+			)
+		formatString: 0
+		lineageTag: 3bab53b8-0da0-4580-a605-a5bdb837f3a8
+
+	/// Pedidos coletados agrupados por transportadora
+	measure 'Pedidos Coletados por Transportadora' =
+			CALCULATE(
+			    COUNTROWS(fato_logistica_pedidos),
+			    fato_logistica_pedidos[status_atual] = "Coletado",
+			    ALLEXCEPT(fato_logistica_pedidos, fato_logistica_pedidos[transportadora])
+			)
+		formatString: 0
+		lineageTag: 43ad4edd-3492-4430-ae0f-ef74334f427f
+
 	column id
 		dataType: int64
 		formatString: 0

@@ -27,6 +27,14 @@ table fato_fluxo_caixa
 		formatString: R$ #,##0.00
 		lineageTag: d937756b-d5b0-46b5-ab6e-674dd3afbe45
 
+	/// Variação % do saldo de caixa vs período anterior
+	measure 'Variacao Saldo Caixa %' =
+			VAR Atual = [Saldo Caixa Atual]
+			VAR Anterior = CALCULATE([Saldo Caixa Atual], DATEADD(dim_data[Data], -1, MONTH))
+			RETURN IF(Anterior <> 0, DIVIDE(Atual - Anterior, Anterior), BLANK())
+		formatString: +0.0%;-0.0%;0.0%
+		lineageTag: a50423fb-6f8e-4e7e-9854-ad9f44299073
+
 	column data
 		dataType: dateTime
 		formatString: Long Date

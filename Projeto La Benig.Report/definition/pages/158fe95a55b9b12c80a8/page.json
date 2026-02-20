@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
   "name": "158fe95a55b9b12c80a8",
-  "displayName": "LOGÍSTICA - PIPELINE DE PEDIDOS",
+  "displayName": "LOGÍSTICA - PEDIDOS",
   "displayOption": "FitToPage",
   "height": 720,
   "width": 1280,
@@ -14,7 +14,7 @@
               "name": {
                 "expr": {
                   "Literal": {
-                    "Value": "'Tela Opcao 3 La Benig.png.png'"
+                    "Value": "'LogisticaPedidos.png'"
                   }
                 }
               },
@@ -23,7 +23,7 @@
                   "ResourcePackageItem": {
                     "PackageName": "RegisteredResources",
                     "PackageType": 1,
-                    "ItemName": "Tela_Opcao_3_La_Benig.png5915763148300801.png"
+                    "ItemName": "LogisticaPedidos6053414345700683.png"
                   }
                 }
               },

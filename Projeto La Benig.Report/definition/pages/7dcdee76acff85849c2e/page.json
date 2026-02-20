@@ -14,7 +14,7 @@
               "name": {
                 "expr": {
                   "Literal": {
-                    "Value": "'Tela Opcao 1 La Benig.png.png'"
+                    "Value": "'EcommerceBaseClientes.png'"
                   }
                 }
               },
@@ -23,7 +23,7 @@
                   "ResourcePackageItem": {
                     "PackageName": "RegisteredResources",
                     "PackageType": 1,
-                    "ItemName": "Tela_Opcao_1_La_Benig.png5700061033121215.png"
+                    "ItemName": "EcommerceBaseClientes1553668209692909.png"
                   }
                 }
               },
