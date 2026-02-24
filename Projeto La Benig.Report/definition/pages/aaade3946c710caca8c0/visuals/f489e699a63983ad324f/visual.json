@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fato_contas_pagar"
+                      "Entity": "protheus_contasPagar"
                     }
                   },
-                  "Property": "categoria"
+                  "Property": "faixa_aging"
                 }
               },
-              "queryRef": "fato_contas_pagar.categoria",
-              "nativeQueryRef": "categoria",
+              "queryRef": "protheus_contasPagar.faixa_aging",
+              "nativeQueryRef": "faixa_aging",
               "active": true
             }
           ]
@@ -39,14 +39,14 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fato_contas_pagar"
+                      "Entity": "medidas_financeiro"
                     }
                   },
-                  "Property": "Total a Pagar"
+                  "Property": "CP Valor Aging"
                 }
               },
-              "queryRef": "fato_contas_pagar.Total a Pagar",
-              "nativeQueryRef": "Total a Pagar"
+              "queryRef": "medidas_financeiro.CP Valor Aging",
+              "nativeQueryRef": "CP Valor Aging"
             }
           ]
         }
@@ -58,10 +58,10 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "fato_contas_pagar"
+                    "Entity": "medidas_financeiro"
                   }
                 },
-                "Property": "Total a Pagar"
+                "Property": "CP Valor Aging"
               }
             },
             "direction": "Descending"
@@ -79,7 +79,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#2B4000'"
+                      "Value": "'#D56E38'"
                     }
                   }
                 }
@@ -96,56 +96,15 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Entity": "fato_contas_pagar"
+                            "Entity": "protheus_contasPagar"
                           }
                         },
-                        "Property": "categoria"
+                        "Property": "faixa_aging"
                       }
                     },
                     "Right": {
                       "Literal": {
-                        "Value": "'Salários'"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#1B3042'"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "fato_contas_pagar"
-                          }
-                        },
-                        "Property": "categoria"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "'Frete'"
+                        "Value": "'A Vencer'"
                       }
                     }
                   }
@@ -178,56 +137,15 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Entity": "fato_contas_pagar"
+                            "Entity": "protheus_contasPagar"
                           }
                         },
-                        "Property": "categoria"
+                        "Property": "faixa_aging"
                       }
                     },
                     "Right": {
                       "Literal": {
-                        "Value": "'Marketing'"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#99373D'"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "fato_contas_pagar"
-                          }
-                        },
-                        "Property": "categoria"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "'Comissões'"
+                        "Value": "'Vencido 1-30'"
                       }
                     }
                   }
@@ -260,15 +178,15 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Entity": "fato_contas_pagar"
+                            "Entity": "protheus_contasPagar"
                           }
                         },
-                        "Property": "categoria"
+                        "Property": "faixa_aging"
                       }
                     },
                     "Right": {
                       "Literal": {
-                        "Value": "'Aluguel'"
+                        "Value": "'Vencido 31-60'"
                       }
                     }
                   }
@@ -284,7 +202,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#2B4000'"
+                      "Value": "'#99373D'"
                     }
                   }
                 }
@@ -301,15 +219,15 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Entity": "fato_contas_pagar"
+                            "Entity": "protheus_contasPagar"
                           }
                         },
-                        "Property": "categoria"
+                        "Property": "faixa_aging"
                       }
                     },
                     "Right": {
                       "Literal": {
-                        "Value": "'Energia'"
+                        "Value": "'Vencido 61-90'"
                       }
                     }
                   }
@@ -325,7 +243,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#1B3042'"
+                      "Value": "'#660000'"
                     }
                   }
                 }
@@ -342,56 +260,15 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Entity": "fato_contas_pagar"
+                            "Entity": "protheus_contasPagar"
                           }
                         },
-                        "Property": "categoria"
+                        "Property": "faixa_aging"
                       }
                     },
                     "Right": {
                       "Literal": {
-                        "Value": "'Telefonia'"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#E4A34B'"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "fato_contas_pagar"
-                          }
-                        },
-                        "Property": "categoria"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "'Material'"
+                        "Value": "'Vencido +90'"
                       }
                     }
                   }
@@ -409,7 +286,28 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Custos Por categoria'"
+                  "Value": "'Aging — Contas a Pagar'"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Arial'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             },
@@ -421,6 +319,13 @@
                       "Value": "'#1B3042'"
                     }
                   }
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
                 }
               }
             }

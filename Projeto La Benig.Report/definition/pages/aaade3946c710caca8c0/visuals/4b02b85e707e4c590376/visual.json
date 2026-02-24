@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
   "name": "4b02b85e707e4c590376",
   "position": {
-    "x": 304.6829268292683,
+    "x": 158.92682926829269,
     "y": 480.29268292682929,
     "z": 3000,
     "height": 226.53658536585368,
-    "width": 808.68292682926835,
+    "width": 1108.1707317073171,
     "tabOrder": 3000
   },
   "visual": {
@@ -20,117 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fato_contas_pagar"
+                      "Entity": "protheus_contasPagar"
                     }
                   },
-                  "Property": "numero_documento"
+                  "Property": "nome_fornecedor"
                 }
               },
-              "queryRef": "fato_contas_pagar.numero_documento",
-              "nativeQueryRef": "numero_documento"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "fato_contas_pagar"
-                    }
-                  },
-                  "Property": "fornecedor"
-                }
-              },
-              "queryRef": "fato_contas_pagar.fornecedor",
-              "nativeQueryRef": "fornecedor"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "fato_contas_pagar"
-                    }
-                  },
-                  "Property": "categoria"
-                }
-              },
-              "queryRef": "fato_contas_pagar.categoria",
-              "nativeQueryRef": "categoria"
-            },
-            {
-              "field": {
-                "HierarchyLevel": {
-                  "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "fato_contas_pagar"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "data_vencimento"
-                        }
-                      },
-                      "Hierarchy": "Hierarquia de datas"
-                    }
-                  },
-                  "Level": "Ano"
-                }
-              },
-              "queryRef": "fato_contas_pagar.data_vencimento.Variation.Hierarquia de datas.Ano",
-              "nativeQueryRef": "data_vencimento Ano"
-            },
-            {
-              "field": {
-                "HierarchyLevel": {
-                  "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "fato_contas_pagar"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "data_vencimento"
-                        }
-                      },
-                      "Hierarchy": "Hierarquia de datas"
-                    }
-                  },
-                  "Level": "Mês"
-                }
-              },
-              "queryRef": "fato_contas_pagar.data_vencimento.Variation.Hierarquia de datas.Mês",
-              "nativeQueryRef": "data_vencimento Mês"
-            },
-            {
-              "field": {
-                "HierarchyLevel": {
-                  "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "fato_contas_pagar"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "data_vencimento"
-                        }
-                      },
-                      "Hierarchy": "Hierarquia de datas"
-                    }
-                  },
-                  "Level": "Dia"
-                }
-              },
-              "queryRef": "fato_contas_pagar.data_vencimento.Variation.Hierarquia de datas.Dia",
-              "nativeQueryRef": "data_vencimento Dia"
+              "queryRef": "protheus_contasPagar.nome_fornecedor",
+              "nativeQueryRef": "nome_fornecedor"
             },
             {
               "field": {
@@ -139,50 +36,45 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "fato_contas_pagar"
+                          "Entity": "protheus_contasPagar"
                         }
                       },
-                      "Property": "valor_original"
+                      "Property": "valor_titulo"
                     }
                   },
                   "Function": 0
                 }
               },
-              "queryRef": "Sum(fato_contas_pagar.valor_original)",
-              "nativeQueryRef": "Soma de valor_original"
+              "queryRef": "Sum(protheus_contasPagar.valor_titulo)",
+              "nativeQueryRef": "Soma de valor_titulo"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fato_contas_pagar"
+                      "Entity": "protheus_contasPagar"
                     }
                   },
-                  "Property": "status"
+                  "Property": "data_vencimento"
                 }
               },
-              "queryRef": "fato_contas_pagar.status",
-              "nativeQueryRef": "status"
+              "queryRef": "protheus_contasPagar.data_vencimento",
+              "nativeQueryRef": "data_vencimento"
             },
             {
               "field": {
-                "Aggregation": {
+                "Column": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "fato_contas_pagar"
-                        }
-                      },
-                      "Property": "dias_atraso"
+                    "SourceRef": {
+                      "Entity": "protheus_contasPagar"
                     }
                   },
-                  "Function": 0
+                  "Property": "status_pagamento"
                 }
               },
-              "queryRef": "Sum(fato_contas_pagar.dias_atraso)",
-              "nativeQueryRef": "Soma de dias_atraso"
+              "queryRef": "protheus_contasPagar.status_pagamento",
+              "nativeQueryRef": "status_pagamento"
             }
           ]
         }
@@ -194,34 +86,16 @@
               "Column": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "fato_contas_pagar"
+                    "Entity": "protheus_contasPagar"
                   }
                 },
-                "Property": "numero_documento"
+                "Property": "data_vencimento"
               }
             },
             "direction": "Ascending"
           }
         ]
       }
-    },
-    "objects": {
-      "columnWidth": [
-        {
-          "properties": {
-            "value": {
-              "expr": {
-                "Literal": {
-                  "Value": "133.75609708566003D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Sum(fato_contas_pagar.dias_atraso)"
-          }
-        }
-      ]
     },
     "drillFilterOtherVisuals": true
   }

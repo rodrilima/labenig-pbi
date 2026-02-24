@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "mcp__powerbi-modeling-mcp__connection_operations"
+      "mcp__powerbi-modeling-mcp__connection_operations",
+      "mcp__powerbi-modeling-mcp__column_operations",
+      "mcp__powerbi-modeling-mcp__batch_measure_operations",
+      "mcp__powerbi-modeling-mcp__table_operations"
     ]
   }
 }

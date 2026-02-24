@@ -284,6 +284,48 @@ table protheus_contasPagar
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Dias em aberto: diferença entre vencimento e hoje, para títulos com saldo > 0
+	column dias_em_aberto =
+			IF(
+			    protheus_contasPagar[saldo] > 0,
+			    DATEDIFF(
+			        protheus_contasPagar[data_vencimento],
+			        TODAY(),
+			        DAY
+			    )
+			)
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+
+	/// Status do título: Pago, Atrasado ou Pendente
+	column status_pagamento =
+			IF(
+			    NOT(ISBLANK(protheus_contasPagar[data_baixa])),
+			    "Pago",
+			    IF(
+			        protheus_contasPagar[data_vencimento] < TODAY(),
+			        "Atrasado",
+			        "Pendente"
+			    )
+			)
+		dataType: string
+		summarizeBy: none
+
+	/// Faixa de aging: A Vencer, Vencido 1-30, 31-60, 61-90, +90
+	column faixa_aging =
+			SWITCH(
+			    TRUE(),
+			    protheus_contasPagar[saldo] <= 0, BLANK(),
+			    protheus_contasPagar[dias_em_aberto] < 0, "A Vencer",
+			    protheus_contasPagar[dias_em_aberto] <= 30, "Vencido 1-30",
+			    protheus_contasPagar[dias_em_aberto] <= 60, "Vencido 31-60",
+			    protheus_contasPagar[dias_em_aberto] <= 90, "Vencido 61-90",
+			    "Vencido +90"
+			)
+		dataType: string
+		summarizeBy: none
+
 	partition protheus_contasPagar = m
 		mode: import
 		queryGroup: datalake

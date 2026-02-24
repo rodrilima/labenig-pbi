@@ -20,14 +20,14 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fato_contas_pagar"
+                      "Entity": "medidas_financeiro"
                     }
                   },
-                  "Property": "Total Pago"
+                  "Property": "CP Pagamentos Realizados no Período"
                 }
               },
-              "queryRef": "fato_contas_pagar.Total Pago",
-              "nativeQueryRef": "Total Pago"
+              "queryRef": "medidas_financeiro.CP Pagamentos Realizados no Período",
+              "nativeQueryRef": "CP Pagamentos Realizados no Período"
             }
           ]
         }
@@ -39,10 +39,10 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "fato_contas_pagar"
+                    "Entity": "medidas_financeiro"
                   }
                 },
-                "Property": "Total Pago"
+                "Property": "CP Pagamentos Realizados no Período"
               }
             },
             "direction": "Descending"
@@ -265,7 +265,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Total Pago'"
+                  "Value": "'Pagamentos Realizados'"
                 }
               }
             }

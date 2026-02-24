@@ -20,14 +20,14 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fato_contas_pagar"
+                      "Entity": "medidas_financeiro"
                     }
                   },
-                  "Property": "Total a Pagar"
+                  "Property": "CP Total a Pagar"
                 }
               },
-              "queryRef": "fato_contas_pagar.Total a Pagar",
-              "nativeQueryRef": "Total a Pagar"
+              "queryRef": "medidas_financeiro.CP Total a Pagar",
+              "nativeQueryRef": "CP Total a Pagar"
             }
           ]
         }
@@ -39,10 +39,10 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "fato_contas_pagar"
+                    "Entity": "medidas_financeiro"
                   }
                 },
-                "Property": "Total a Pagar"
+                "Property": "CP Total a Pagar"
               }
             },
             "direction": "Descending"
@@ -212,7 +212,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Total a Recebido'"
+                  "Value": "'Total a Pagar'"
                 }
               }
             },

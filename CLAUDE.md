@@ -96,3 +96,14 @@ Page folders use GUIDs as names. To find which GUID corresponds to which page, c
 - **visual.json** files define individual visuals. They are verbose JSON — make targeted edits.
 - After editing files directly, open or refresh in Power BI Desktop to validate.
 - The `annotation PBI_ProTooling = ["MCP-PBIModeling","DevMode"]` in `model.tmdl` indicates this model was built with Power BI MCP tooling.
+
+## Semantic Model Editing Rules
+
+> **NEVER edit `.tmdl` files directly.** All changes to the semantic model (measures, calculated columns, tables, relationships) must be made via the **Power BI MCP tools** (`mcp__powerbi-modeling-mcp__*`).
+
+- `.tmdl` files are managed exclusively by Power BI Desktop + MCP tooling. Manual edits will be overwritten or cause conflicts.
+- To add/update measures → use `mcp__powerbi-modeling-mcp__measure_operations` or `batch_measure_operations`
+- To add/update calculated columns → use `mcp__powerbi-modeling-mcp__column_operations`
+- To add/update tables → use `mcp__powerbi-modeling-mcp__table_operations`
+- Before any MCP operation, connect to the running Power BI Desktop instance via `mcp__powerbi-modeling-mcp__connection_operations` (operation: `ListLocalInstances`, then `Connect`)
+- **`visual.json` files** (report layer) CAN be edited directly with Edit/Write tools — they are not managed by MCP.
