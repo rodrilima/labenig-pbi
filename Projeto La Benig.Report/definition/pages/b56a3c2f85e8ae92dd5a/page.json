@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
   "name": "b56a3c2f85e8ae92dd5a",
-  "displayName": "ATACADO - VISÃO GERAL",
+  "displayName": "VEN - Atacado Visão Geral",
   "displayOption": "FitToPage",
   "height": 720,
   "width": 1280,
@@ -23,7 +23,7 @@
                   "ResourcePackageItem": {
                     "PackageName": "RegisteredResources",
                     "PackageType": 1,
-                    "ItemName": "AtacadoVisaoGeral5428665763415683.png"
+                    "ItemName": "AtacadoVisaoGeral3806424016585911.png"
                   }
                 }
               },

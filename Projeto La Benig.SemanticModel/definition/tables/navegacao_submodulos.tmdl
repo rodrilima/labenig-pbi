@@ -1,0 +1,82 @@
+/// Tabela auxiliar para controle de navegação entre submódulos
+table navegacao_submodulos
+	isHidden
+	lineageTag: 30aa3f58-3add-475b-ae53-43608fe43cf6
+
+	/// Retorna o submódulo ativo atual
+	measure NAV_SubmoduloAtual =
+			// Detecta qual submódulo está ativo
+			VAR SubmoduloAtual = SELECTEDVALUE('navegacao_submodulos'[submodulo_nome])
+			RETURN
+			IF(
+			    ISBLANK(SubmoduloAtual),
+			    BLANK(),
+			    SubmoduloAtual
+			)
+		isHidden
+		lineageTag: df7bbe21-a1f4-4e2a-afdc-a4b8b00c843e
+
+	/// Total de submódulos
+	measure NAV_TotalSubmodulos =
+			// Total de submódulos no menu
+			COUNTROWS('navegacao_submodulos')
+		isHidden
+		lineageTag: 9b16b19d-b34f-4764-abb2-6c005b2d1319
+
+	column modulo_id
+		dataType: string
+		lineageTag: 347aec65-0271-4786-ac05-5cac44625c24
+		summarizeBy: none
+		sourceColumn: modulo_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column ordem
+		dataType: string
+		lineageTag: 3eb7f77d-8c25-4859-b07e-5246833f1d26
+		summarizeBy: none
+		sourceColumn: ordem
+
+		annotation SummarizationSetBy = Automatic
+
+	column submodulo_nome
+		dataType: string
+		lineageTag: 98477488-d90f-4205-b4e1-08f87fffcf8f
+		summarizeBy: none
+		sourceColumn: submodulo_nome
+
+		annotation SummarizationSetBy = Automatic
+
+	column pagina_destino
+		dataType: string
+		lineageTag: 4c63fb5d-61fe-456d-977c-408d7040f09f
+		summarizeBy: none
+		sourceColumn: pagina_destino
+
+		annotation SummarizationSetBy = Automatic
+
+	partition navegacao_submodulos = m
+		mode: import
+		source = ```
+				let
+				    Fonte = Table.FromRecords({
+				        // Financeiro
+				        [modulo_id = "Financeiro", ordem = 1, submodulo_nome = "Caixa & Liquidez", pagina_destino = "FIN - Caixa & Liquidez"],
+				        [modulo_id = "Financeiro", ordem = 2, submodulo_nome = "Contas a Receber", pagina_destino = "FIN - Contas a Receber"],
+				        [modulo_id = "Financeiro", ordem = 3, submodulo_nome = "Contas a Pagar", pagina_destino = "FIN - Contas a Pagar"],
+				        [modulo_id = "Financeiro", ordem = 4, submodulo_nome = "Resultado Operacional", pagina_destino = "FIN - Resultado Operacional"],
+				        
+				        // Vendas
+				        [modulo_id = "Vendas", ordem = 1, submodulo_nome = "Atacado - Visão Geral", pagina_destino = "VEN - Atacado Visão Geral"],
+				        [modulo_id = "Vendas", ordem = 2, submodulo_nome = "Atacado - Mapa", pagina_destino = "VEN - Atacado Mapa Geográfico"],
+				        [modulo_id = "Vendas", ordem = 3, submodulo_nome = "E-commerce - Performance", pagina_destino = "VEN - E-commerce Performance"],
+				        [modulo_id = "Vendas", ordem = 4, submodulo_nome = "E-commerce - Clientes", pagina_destino = "VEN - E-commerce Base Clientes"],
+				        
+				        // Logística
+				        [modulo_id = "Logistica", ordem = 1, submodulo_nome = "Pedidos", pagina_destino = "LOG - Pedidos"],
+				        [modulo_id = "Logistica", ordem = 2, submodulo_nome = "SLAs", pagina_destino = "LOG - SLAs"]
+				    })
+				in
+				    Fonte
+				```
+
