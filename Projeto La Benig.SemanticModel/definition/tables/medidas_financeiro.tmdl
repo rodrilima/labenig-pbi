@@ -242,6 +242,99 @@ table medidas_financeiro
 		displayFolder: Status Cliente
 		lineageTag: f54af439-07bc-4bb2-94ed-ff45a10b2ab5
 
+	/// Saldo total de obrigações em aberto (Contas a Pagar)
+	measure 'CP Total a Pagar' =
+			CALCULATE(
+			    SUM(protheus_contasPagar[saldo]),
+			    protheus_contasPagar[saldo] > 0
+			)
+		formatString: R$ #,##0.00
+		displayFolder: CP Pagamentos
+
+	/// Valor total pago (títulos baixados), incluindo juros e multa
+	measure 'CP Pagamentos Realizados no Período' =
+			CALCULATE(
+			    SUMX(
+			        protheus_contasPagar,
+			        protheus_contasPagar[valor_titulo] +
+			        protheus_contasPagar[valor_juros] +
+			        protheus_contasPagar[valor_multa]
+			    ),
+			    NOT(ISBLANK(protheus_contasPagar[data_baixa]))
+			)
+		formatString: R$ #,##0.00
+		displayFolder: CP Pagamentos
+
+	/// Saldo de títulos vencidos e ainda não pagos
+	measure 'CP Valor em Atraso' =
+			CALCULATE(
+			    SUM(protheus_contasPagar[saldo]),
+			    protheus_contasPagar[saldo] > 0,
+			    protheus_contasPagar[data_vencimento] < TODAY()
+			)
+		formatString: R$ #,##0.00
+		displayFolder: CP Atraso
+
+	/// Quantidade de títulos vencidos e não pagos
+	measure 'CP Qtd Títulos em Atraso' =
+			CALCULATE(
+			    COUNTROWS(protheus_contasPagar),
+			    protheus_contasPagar[saldo] > 0,
+			    protheus_contasPagar[data_vencimento] < TODAY()
+			)
+		formatString: 0
+		displayFolder: CP Atraso
+
+	/// Prazo Médio de Pagamento em dias, ponderado pelo valor do título
+	measure 'CP PMP (dias)' =
+			DIVIDE(
+			    SUMX(
+			        FILTER(
+			            protheus_contasPagar,
+			            NOT(ISBLANK(protheus_contasPagar[data_baixa])) &&
+			            DATEDIFF(
+			                protheus_contasPagar[data_emissao],
+			                protheus_contasPagar[data_baixa],
+			                DAY
+			            ) >= 0 &&
+			            DATEDIFF(
+			                protheus_contasPagar[data_emissao],
+			                protheus_contasPagar[data_baixa],
+			                DAY
+			            ) <= 365
+			        ),
+			        DATEDIFF(
+			            protheus_contasPagar[data_emissao],
+			            protheus_contasPagar[data_baixa],
+			            DAY
+			        ) * protheus_contasPagar[valor_titulo]
+			    ),
+			    CALCULATE(
+			        SUM(protheus_contasPagar[valor_titulo]),
+			        NOT(ISBLANK(protheus_contasPagar[data_baixa]))
+			    )
+			)
+		formatString: 0.0 " dias"
+		displayFolder: CP PMP
+
+	/// Valor total programado a pagar (títulos em aberto, pelo valor original)
+	measure 'CP Total Programado' =
+			CALCULATE(
+			    SUM(protheus_contasPagar[valor_titulo]),
+			    protheus_contasPagar[saldo] > 0
+			)
+		formatString: R$ #,##0.00
+		displayFolder: CP Pagamentos
+
+	/// Saldo em aberto para análise de aging (usar com faixa_aging)
+	measure 'CP Valor Aging' =
+			CALCULATE(
+			    SUM(protheus_contasPagar[saldo]),
+			    protheus_contasPagar[saldo] > 0
+			)
+		formatString: R$ #,##0.00
+		displayFolder: CP Aging
+
 	partition medidas_financeiro = m
 		mode: import
 		source =

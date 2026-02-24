@@ -20,14 +20,28 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fato_contas_pagar"
+                      "Entity": "medidas_financeiro"
                     }
                   },
-                  "Property": "Pagamentos Atrasados"
+                  "Property": "CP Valor em Atraso"
                 }
               },
-              "queryRef": "fato_contas_pagar.Pagamentos Atrasados",
-              "nativeQueryRef": "Pagamentos Atrasados"
+              "queryRef": "medidas_financeiro.CP Valor em Atraso",
+              "nativeQueryRef": "CP Valor em Atraso"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "medidas_financeiro"
+                    }
+                  },
+                  "Property": "CP Qtd Títulos em Atraso"
+                }
+              },
+              "queryRef": "medidas_financeiro.CP Qtd Títulos em Atraso",
+              "nativeQueryRef": "CP Qtd Títulos em Atraso"
             }
           ]
         }
@@ -39,10 +53,10 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "fato_contas_pagar"
+                    "Entity": "medidas_financeiro"
                   }
                 },
-                "Property": "Pagamentos Atrasados"
+                "Property": "CP Valor em Atraso"
               }
             },
             "direction": "Descending"
@@ -185,7 +199,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#1B3042'"
+                      "Value": "'#C00000'"
                     }
                   }
                 }
@@ -265,7 +279,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Pagamentos Atrasados'"
+                  "Value": "'Em Atraso'"
                 }
               }
             }

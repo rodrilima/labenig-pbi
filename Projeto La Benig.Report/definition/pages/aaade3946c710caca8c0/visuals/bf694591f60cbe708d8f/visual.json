@@ -10,7 +10,7 @@
     "tabOrder": 5000
   },
   "visual": {
-    "visualType": "columnChart",
+    "visualType": "lineChart",
     "query": {
       "queryState": {
         "Category": {
@@ -24,7 +24,7 @@
                         "PropertyVariationSource": {
                           "Expression": {
                             "SourceRef": {
-                              "Entity": "fato_contas_pagar"
+                              "Entity": "protheus_contasPagar"
                             }
                           },
                           "Name": "Variation",
@@ -34,30 +34,12 @@
                       "Hierarchy": "Hierarquia de datas"
                     }
                   },
-                  "Level": "Dia"
+                  "Level": "Mês"
                 }
               },
-              "queryRef": "fato_contas_pagar.data_vencimento.Variation.Hierarquia de datas.Dia",
-              "nativeQueryRef": "data_vencimento Dia",
+              "queryRef": "protheus_contasPagar.data_vencimento.Variation.Hierarquia de datas.Mês",
+              "nativeQueryRef": "data_vencimento Mês",
               "active": true
-            }
-          ]
-        },
-        "Series": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "fato_contas_pagar"
-                    }
-                  },
-                  "Property": "status"
-                }
-              },
-              "queryRef": "fato_contas_pagar.status",
-              "nativeQueryRef": "status"
             }
           ]
         },
@@ -68,14 +50,28 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fato_contas_pagar"
+                      "Entity": "medidas_financeiro"
                     }
                   },
-                  "Property": "Total a Pagar"
+                  "Property": "CP Total Programado"
                 }
               },
-              "queryRef": "fato_contas_pagar.Total a Pagar",
-              "nativeQueryRef": "Total a Pagar"
+              "queryRef": "medidas_financeiro.CP Total Programado",
+              "nativeQueryRef": "CP Total Programado"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "medidas_financeiro"
+                    }
+                  },
+                  "Property": "CP Pagamentos Realizados no Período"
+                }
+              },
+              "queryRef": "medidas_financeiro.CP Pagamentos Realizados no Período",
+              "nativeQueryRef": "CP Pagamentos Realizados no Período"
             }
           ]
         }
@@ -91,7 +87,7 @@
                       "PropertyVariationSource": {
                         "Expression": {
                           "SourceRef": {
-                            "Entity": "fato_contas_pagar"
+                            "Entity": "protheus_contasPagar"
                           }
                         },
                         "Name": "Variation",
@@ -101,7 +97,7 @@
                     "Hierarchy": "Hierarquia de datas"
                   }
                 },
-                "Level": "Dia"
+                "Level": "Mês"
               }
             },
             "direction": "Ascending"
@@ -111,148 +107,9 @@
       }
     },
     "objects": {
-      "dataPoint": [
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#D56E38'"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "fato_contas_pagar"
-                          }
-                        },
-                        "Property": "status"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "'Aberto'"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#99373D'"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "fato_contas_pagar"
-                          }
-                        },
-                        "Property": "status"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "'Atrasado'"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#2B4000'"
-                    }
-                  }
-                }
-              }
-            },
-            "borderShow": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "fato_contas_pagar"
-                          }
-                        },
-                        "Property": "status"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "'Pago'"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        }
-      ],
       "legend": [
         {
           "properties": {
-            "showGradientLegend": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
             "show": {
               "expr": {
                 "Literal": {
@@ -278,13 +135,6 @@
                 }
               }
             },
-            "titleText": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Status'"
-                }
-              }
-            },
             "showTitle": {
               "expr": {
                 "Literal": {
@@ -300,6 +150,13 @@
       "title": [
         {
           "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Pagamentos: Programados vs. Realizados'"
+                }
+              }
+            },
             "fontFamily": {
               "expr": {
                 "Literal": {
@@ -336,13 +193,6 @@
               "expr": {
                 "Literal": {
                   "Value": "'center'"
-                }
-              }
-            },
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Total a Pagar por Dia e Status'"
                 }
               }
             }

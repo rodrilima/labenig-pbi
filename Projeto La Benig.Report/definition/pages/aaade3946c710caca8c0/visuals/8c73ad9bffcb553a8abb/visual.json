@@ -20,14 +20,14 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fato_contas_pagar"
+                      "Entity": "medidas_financeiro"
                     }
                   },
-                  "Property": "Prazo Medio Pagamento"
+                  "Property": "CP PMP (dias)"
                 }
               },
-              "queryRef": "fato_contas_pagar.Prazo Medio Pagamento",
-              "nativeQueryRef": "Prazo Medio Pagamento"
+              "queryRef": "medidas_financeiro.CP PMP (dias)",
+              "nativeQueryRef": "CP PMP (dias)"
             }
           ]
         }
@@ -39,10 +39,10 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "fato_contas_pagar"
+                    "Entity": "medidas_financeiro"
                   }
                 },
-                "Property": "Prazo Medio Pagamento"
+                "Property": "CP PMP (dias)"
               }
             },
             "direction": "Descending"
@@ -265,7 +265,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Prazo de Pagamento'"
+                  "Value": "'PMP — Prazo Médio de Pagamento'"
                 }
               }
             }
