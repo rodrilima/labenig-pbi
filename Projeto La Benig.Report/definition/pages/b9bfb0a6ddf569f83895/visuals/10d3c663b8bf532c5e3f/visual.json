@@ -318,51 +318,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "28586002c58d680bf7c7",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fato_pedidos"
-              }
-            },
-            "Property": "Faturamento Total"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "8a66753d72dc96477bfa",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fato_pedidos"
-              }
-            },
-            "Property": "Faturamento Atacado"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "14a18f79f1d9462e19e5",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fato_pedidos"
-              }
-            },
-            "Property": "Faturamento E-commerce"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

@@ -207,3 +207,18 @@ relationship 97234551-54ec-2aa5-ccb8-8cfd1728d73e
 	fromColumn: protheus_contasReceber.cod_cliente
 	toColumn: protheus_contatos.codigo
 
+relationship AutoDetected_7dc9e65c-8382-4ba9-a7b1-c55b04a98a87
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: navegacao_modulos.ordem
+	toColumn: _guia_nomenclatura_paginas.ordem
+
+relationship AutoDetected_cc3daf83-49ad-445a-9c13-c7d25d97ca1e
+	fromColumn: navegacao_submodulos.ordem
+	toColumn: _guia_nomenclatura_paginas.ordem
+
+relationship AutoDetected_f658ab37-c72f-436a-b783-d94e51532742
+	isActive: false
+	fromColumn: navegacao_submodulos.modulo_id
+	toColumn: navegacao_modulos.modulo_id
+

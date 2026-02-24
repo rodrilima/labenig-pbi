@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
   "name": "ccbc515fa25fcacb3465",
-  "displayName": "RESULTADO OPERACIONAL",
+  "displayName": "FIN - Resultado Operacional",
   "displayOption": "FitToPage",
   "height": 720,
   "width": 1280,
@@ -23,7 +23,7 @@
                   "ResourcePackageItem": {
                     "PackageName": "RegisteredResources",
                     "PackageType": 1,
-                    "ItemName": "ResultadoOperacional21505130878478085.png"
+                    "ItemName": "ResultadoOperacional09619249363281712.png"
                   }
                 }
               },

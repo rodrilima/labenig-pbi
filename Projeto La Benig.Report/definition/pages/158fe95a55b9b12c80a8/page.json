@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
   "name": "158fe95a55b9b12c80a8",
-  "displayName": "LOGÍSTICA - PEDIDOS",
+  "displayName": "LOG - Pedidos",
   "displayOption": "FitToPage",
   "height": 720,
   "width": 1280,
@@ -23,7 +23,7 @@
                   "ResourcePackageItem": {
                     "PackageName": "RegisteredResources",
                     "PackageType": 1,
-                    "ItemName": "LogisticaPedidos6053414345700683.png"
+                    "ItemName": "LogisticaPedidos22181514289222226.png"
                   }
                 }
               },
