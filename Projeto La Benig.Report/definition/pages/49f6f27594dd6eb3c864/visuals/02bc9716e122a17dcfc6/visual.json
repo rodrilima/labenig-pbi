@@ -23,11 +23,11 @@
                       "Entity": "medidas_financeiro"
                     }
                   },
-                  "Property": "05_inadimplencia_percentual"
+                  "Property": "CR Inadimplência %"
                 }
               },
-              "queryRef": "Medidas_Financeiro.05_inadimplencia_percentual",
-              "nativeQueryRef": "05_inadimplencia_percentual"
+              "queryRef": "medidas_financeiro.CR Inadimplência %",
+              "nativeQueryRef": "CR Inadimplência %"
             }
           ]
         }
@@ -42,7 +42,7 @@
                     "Entity": "medidas_financeiro"
                   }
                 },
-                "Property": "05_inadimplencia_percentual"
+                "Property": "CR Inadimplência %"
               }
             },
             "direction": "Descending"

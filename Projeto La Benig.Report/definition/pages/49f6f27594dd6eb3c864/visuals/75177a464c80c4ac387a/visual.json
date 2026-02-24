@@ -23,11 +23,11 @@
                       "Entity": "medidas_financeiro"
                     }
                   },
-                  "Property": "01_total_a_receber"
+                  "Property": "CR Total a Receber"
                 }
               },
-              "queryRef": "Medidas.01_Total_a_Receber",
-              "nativeQueryRef": "01_total_a_receber"
+              "queryRef": "medidas_financeiro.CR Total a Receber",
+              "nativeQueryRef": "CR Total a Receber"
             }
           ]
         }
@@ -42,7 +42,7 @@
                     "Entity": "medidas_financeiro"
                   }
                 },
-                "Property": "01_total_a_receber"
+                "Property": "CR Total a Receber"
               }
             },
             "direction": "Descending"

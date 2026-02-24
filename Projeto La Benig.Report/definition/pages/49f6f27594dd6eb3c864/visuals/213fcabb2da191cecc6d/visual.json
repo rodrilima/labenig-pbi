@@ -43,10 +43,10 @@
                       "Entity": "medidas_financeiro"
                     }
                   },
-                  "Property": "09_valor_aging"
+                  "Property": "CR Valor Aging"
                 }
               },
-              "queryRef": "medidas_financeiro.09_valor_aging",
+              "queryRef": "medidas_financeiro.CR Valor Aging",
               "nativeQueryRef": "Valor",
               "displayName": "Valor"
             }
@@ -63,7 +63,7 @@
                     "Entity": "medidas_financeiro"
                   }
                 },
-                "Property": "09_valor_aging"
+                "Property": "CR Valor Aging"
               }
             },
             "direction": "Descending"

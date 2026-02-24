@@ -53,10 +53,10 @@
                       "Entity": "medidas_financeiro"
                     }
                   },
-                  "Property": "20_valor_em_aberto"
+                  "Property": "CR Valor em Aberto por Cliente"
                 }
               },
-              "queryRef": "medidas_financeiro.20_valor_em_aberto",
+              "queryRef": "medidas_financeiro.CR Valor em Aberto por Cliente",
               "nativeQueryRef": "Valor em Aberto",
               "displayName": "Valor em Aberto"
             },
@@ -68,10 +68,10 @@
                       "Entity": "medidas_financeiro"
                     }
                   },
-                  "Property": "21_dias_em_atraso"
+                  "Property": "CR Dias em Atraso"
                 }
               },
-              "queryRef": "medidas_financeiro.21_dias_em_atraso",
+              "queryRef": "medidas_financeiro.CR Dias em Atraso",
               "nativeQueryRef": "Dias em Atraso",
               "displayName": "Dias em Atraso"
             },
@@ -83,10 +83,10 @@
                       "Entity": "medidas_financeiro"
                     }
                   },
-                  "Property": "22_status_cliente"
+                  "Property": "CR Status do Cliente"
                 }
               },
-              "queryRef": "medidas_financeiro.22_status_cliente",
+              "queryRef": "medidas_financeiro.CR Status do Cliente",
               "nativeQueryRef": "Status do Cliente",
               "displayName": "Status do Cliente"
             }
@@ -249,7 +249,7 @@
                                 "Source": "m"
                               }
                             },
-                            "Property": "20_valor_em_aberto"
+                            "Property": "CR Valor em Aberto por Cliente"
                           }
                         }
                       }

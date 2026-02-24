@@ -1,17 +1,21 @@
 table medidas_financeiro
 	lineageTag: 931ad143-9708-4495-ba4d-484963756635
 
-	measure 01_total_a_receber =
+	/// Soma do saldo de todos os títulos em aberto (saldo > 0)
+	measure 'CR Total a Receber' =
 			
 			CALCULATE(
 			    SUM(protheus_contasReceber[saldo]),
 			    protheus_contasReceber[saldo] > 0
 			)
+		formatString: R$ #,##0.00
+		displayFolder: Recebimentos
 		lineageTag: 10de0ace-94cb-4c7b-8a31-d7bcec1448b5
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 02_recebido_no_periodo =
+	/// Valor total recebido (títulos baixados), incluindo juros e multa
+	measure 'CR Recebido no Período' =
 			
 			CALCULATE(
 			    SUMX(
@@ -22,41 +26,52 @@ table medidas_financeiro
 			    ),
 			    NOT(ISBLANK(protheus_contasReceber[data_baixa]))
 			)
+		formatString: R$ #,##0.00
+		displayFolder: Recebimentos
 		lineageTag: 26c03b56-2cf3-42a1-8ed8-4e7f42e0bac6
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 03_valor_inadimplente =
+	/// Saldo de títulos vencidos e ainda não pagos (data_vencimento < hoje)
+	measure 'CR Valor Inadimplente' =
 			
 			CALCULATE(
 			    SUM(protheus_contasReceber[saldo]),
 			    protheus_contasReceber[saldo] > 0,
 			    protheus_contasReceber[data_vencimento] < TODAY()
 			)
+		formatString: R$ #,##0.00
+		displayFolder: Inadimplência
 		lineageTag: ed756031-7a46-4f13-8cee-82c1c4744557
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 04_total_aberto =
+	/// Total de saldo em aberto no período selecionado
+	measure 'CR Total em Aberto' =
 			
 			CALCULATE(
 			    SUM(protheus_contasReceber[saldo]),
 			    protheus_contasReceber[saldo] > 0
 			)
+		formatString: R$ #,##0.00
+		displayFolder: Recebimentos
 		lineageTag: c13ef7e8-fac8-47fe-a6a5-401e2756e597
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 05_inadimplencia_percentual =
+	/// Percentual de inadimplência: valor vencido / total em aberto
+	measure 'CR Inadimplência %' =
 			
 			DIVIDE(
-			    [03_valor_inadimplente],
-			    [04_total_aberto]
+			    [CR Valor Inadimplente],
+			    [CR Total em Aberto]
 			)
 		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Inadimplência
 		lineageTag: a4eeb8c2-e6db-4b2f-96fc-5241adb8a566
 
-	measure 06_pmr_dias =
+	/// Prazo Médio de Recebimento em dias, ponderado pelo valor do título. Exclui outliers acima de 180 dias ou antecipações acima de 60 dias.
+	measure 'CR PMR (dias)' =
 			
 			DIVIDE(
 			    SUMX(
@@ -85,38 +100,50 @@ table medidas_financeiro
 			        NOT(ISBLANK(protheus_contasReceber[data_baixa]))
 			    )
 			)
+		formatString: 0.0 " dias"
+		displayFolder: PMR
 		lineageTag: 61b03866-4a60-4303-b412-a54f43b63a1b
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 07_pmr_periodo_anterior =
+	/// PMR do mês anterior ao período selecionado, para cálculo de variação
+	measure 'CR PMR Período Anterior' =
 			
 			CALCULATE(
-			    [06_pmr_dias],
+			    [CR PMR (dias)],
 			    DATEADD(calendario[Date], -1, MONTH)
 			)
+		formatString: 0.0 " dias"
+		displayFolder: PMR
 		lineageTag: 5936107d-ab0b-41c0-b444-8f22ac477652
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 08_variacao_pmr =
+	/// Variação em dias do PMR vs período anterior. Positivo = piorou; negativo = melhorou.
+	measure 'CR Variação PMR' =
 			
-			[06_pmr_dias] - [07_pmr_periodo_anterior]
+			[CR PMR (dias)] - [CR PMR Período Anterior]
+		formatString: 0.0 " dias"
+		displayFolder: PMR
 		lineageTag: dc03d6da-4489-4930-ad85-f164872ac32f
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 09_valor_aging =
+	/// Valor base para análise de aging (curva de vencimentos). Usar com faixas de dias para estratificar o portfólio.
+	measure 'CR Valor Aging' =
 			
 			CALCULATE(
 			    SUM(protheus_contasReceber[saldo]),
 			    protheus_contasReceber[saldo] > 0
 			)
+		formatString: R$ #,##0.00
+		displayFolder: Aging
 		lineageTag: 2bc60ee4-fc28-4225-aecb-57218f467b29
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 11_valor_inadimplente_mes = ```
+	/// Valor inadimplente calculado até a data máxima do período selecionado no calendário
+	measure 'CR Valor Inadimplente (Posição)' =
 			
 			CALCULATE(
 			    SUM(protheus_contasReceber[saldo]),
@@ -130,13 +157,14 @@ table medidas_financeiro
 			        protheus_contasReceber[data_vencimento] < MAX(calendario[Date])
 			    )
 			)
-			
-			```
+		formatString: R$ #,##0.00
+		displayFolder: Inadimplência
 		lineageTag: aaa2e6d8-f943-4301-8924-dd7904b156b8
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 12_total_aberto_mes = ```
+	/// Total em aberto calculado até a data máxima do período selecionado no calendário
+	measure 'CR Total em Aberto (Posição)' =
 			
 			CALCULATE(
 			    SUM(protheus_contasReceber[saldo]),
@@ -149,41 +177,45 @@ table medidas_financeiro
 			        )
 			    )
 			)
-			
-			```
+		formatString: R$ #,##0.00
+		displayFolder: Inadimplência
 		lineageTag: b30ec5c9-792c-4dfd-9891-2b4d20e61943
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 13_inadimplencia_percentual_mes = ```
+	/// Percentual de inadimplência calculado sobre a posição do período selecionado no calendário
+	measure 'CR Inadimplência % (Posição)' =
 			
 			VAR total_mes =
-			    [12_total_aberto_mes]
+			    [CR Total em Aberto (Posição)]
 			RETURN
 			IF(
 			    total_mes > 0,
 			    DIVIDE(
-			        [11_valor_inadimplente_mes],
+			        [CR Valor Inadimplente (Posição)],
 			        total_mes
 			    ),
 			    BLANK()
 			)
-			
-			```
 		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Inadimplência
 		lineageTag: 92b7a087-e8f7-4090-ae7c-4f9a520faba4
 
-	measure 20_valor_em_aberto =
+	/// Valor em aberto por cliente, usado na tabela de detalhamento de inadimplência
+	measure 'CR Valor em Aberto por Cliente' =
 			
 			CALCULATE(
 			    SUM(protheus_contasReceber[saldo]),
 			    protheus_contasReceber[saldo] > 0
 			)
+		formatString: R$ #,##0.00
+		displayFolder: Status Cliente
 		lineageTag: fcb96510-1d6d-44f7-a096-d61ccb4a8562
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 21_dias_em_atraso = ```
+	/// Quantidade de dias em atraso do título mais antigo do cliente no contexto atual
+	measure 'CR Dias em Atraso' =
 			
 			VAR dias =
 			    DATEDIFF(
@@ -193,20 +225,21 @@ table medidas_financeiro
 			    )
 			RETURN
 			IF(dias > 0, dias, 0)
-			
-			```
 		formatString: 0
+		displayFolder: Status Cliente
 		lineageTag: cf00e4e9-ef1a-4e05-82b7-a8de313b0ae9
 
-	measure 22_status_cliente =
+	/// Classificação do cliente por situação de atraso: Em Dia / Atraso Leve (até 30d) / Moderado (até 90d) / Grave (90d+)
+	measure 'CR Status do Cliente' =
 			
 			SWITCH(
 			    TRUE(),
-			    [21_dias_em_atraso] = 0, "Em Dia",
-			    [21_dias_em_atraso] <= 30, "Atraso Leve",
-			    [21_dias_em_atraso] <= 90, "Atraso Moderado",
+			    [CR Dias em Atraso] = 0, "Em Dia",
+			    [CR Dias em Atraso] <= 30, "Atraso Leve",
+			    [CR Dias em Atraso] <= 90, "Atraso Moderado",
 			    "Atraso Grave"
 			)
+		displayFolder: Status Cliente
 		lineageTag: f54af439-07bc-4bb2-94ed-ff45a10b2ab5
 
 	partition medidas_financeiro = m
