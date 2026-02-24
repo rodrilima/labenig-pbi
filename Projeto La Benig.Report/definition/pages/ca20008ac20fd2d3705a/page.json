@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
   "name": "ca20008ac20fd2d3705a",
-  "displayName": "ATACADO - MAPA GEOGRÁFICO",
+  "displayName": "VEN - Atacado Mapa Geográfico",
   "displayOption": "FitToPage",
   "height": 720,
   "width": 1280,
@@ -23,7 +23,7 @@
                   "ResourcePackageItem": {
                     "PackageName": "RegisteredResources",
                     "PackageType": 1,
-                    "ItemName": "AtacadoMapaGeografico6107840902756797.png"
+                    "ItemName": "AtacadoMapaGeografico22492539201197714.png"
                   }
                 }
               },

@@ -4,10 +4,10 @@
   "position": {
     "x": 158.04878048780489,
     "y": 212.48780487804879,
-    "z": 4001,
+    "z": 5000,
     "height": 209.85365853658539,
     "width": 539.1219512195122,
-    "tabOrder": 4001
+    "tabOrder": 5000
   },
   "visual": {
     "visualType": "clusteredColumnChart",
@@ -107,7 +107,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#E4A34B'"
+                      "Value": "'#1B3042'"
                     }
                   }
                 }
@@ -146,37 +146,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "5de72d992f18dec9b5e9",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "protheus_contasReceber"
-              }
-            },
-            "Property": "faixa_aging"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "26b4d413d670db93120d",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "medidas_financeiro"
-              }
-            },
-            "Property": "09_valor_aging"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
   "name": "d2fc39469db3e316262e",
-  "displayName": " SAC - ATENDIMENTO",
+  "displayName": "SAC - Atendimento",
   "displayOption": "FitToPage",
   "height": 720,
   "width": 1280,
@@ -23,7 +23,7 @@
                   "ResourcePackageItem": {
                     "PackageName": "RegisteredResources",
                     "PackageType": 1,
-                    "ItemName": "SAC23812208665489987.png"
+                    "ItemName": "SAC6628432368845976.png"
                   }
                 }
               },

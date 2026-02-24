@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
   "name": "7dcdee76acff85849c2e",
-  "displayName": " E-COMMERCE - BASE DE CLIENTES",
+  "displayName": "VEN - E-commerce Base Clientes",
   "displayOption": "FitToPage",
   "height": 720,
   "width": 1280,
@@ -23,7 +23,7 @@
                   "ResourcePackageItem": {
                     "PackageName": "RegisteredResources",
                     "PackageType": 1,
-                    "ItemName": "EcommerceBaseClientes1553668209692909.png"
+                    "ItemName": "EcommerceBaseClientes04940994761432238.png"
                   }
                 }
               },
