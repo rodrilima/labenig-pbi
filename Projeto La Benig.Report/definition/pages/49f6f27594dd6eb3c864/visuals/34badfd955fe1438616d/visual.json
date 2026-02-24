@@ -23,11 +23,11 @@
                       "Entity": "medidas_financeiro"
                     }
                   },
-                  "Property": "02_recebido_no_periodo"
+                  "Property": "CR Recebido no Período"
                 }
               },
-              "queryRef": "Medidas.02_Total_Recebido",
-              "nativeQueryRef": "02_recebido_no_periodo"
+              "queryRef": "medidas_financeiro.CR Recebido no Período",
+              "nativeQueryRef": "CR Recebido no Período"
             }
           ]
         }
@@ -42,7 +42,7 @@
                     "Entity": "medidas_financeiro"
                   }
                 },
-                "Property": "02_recebido_no_periodo"
+                "Property": "CR Recebido no Período"
               }
             },
             "direction": "Descending"

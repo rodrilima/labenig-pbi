@@ -23,11 +23,11 @@
                       "Entity": "medidas_financeiro"
                     }
                   },
-                  "Property": "06_pmr_dias"
+                  "Property": "CR PMR (dias)"
                 }
               },
-              "queryRef": "medidas_financeiro.06_pmr_dias",
-              "nativeQueryRef": "06_pmr_dias"
+              "queryRef": "medidas_financeiro.CR PMR (dias)",
+              "nativeQueryRef": "CR PMR (dias)"
             }
           ]
         }
@@ -42,7 +42,7 @@
                     "Entity": "medidas_financeiro"
                   }
                 },
-                "Property": "06_pmr_dias"
+                "Property": "CR PMR (dias)"
               }
             },
             "direction": "Descending"
