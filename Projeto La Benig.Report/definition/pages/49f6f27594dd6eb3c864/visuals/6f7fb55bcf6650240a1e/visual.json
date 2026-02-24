@@ -4,10 +4,10 @@
   "position": {
     "x": 720,
     "y": 212.48780487804879,
-    "z": 4002,
+    "z": 6000,
     "height": 209.85365853658539,
     "width": 537.36585365853659,
-    "tabOrder": 4002
+    "tabOrder": 6000
   },
   "visual": {
     "visualType": "lineChart",
@@ -317,34 +317,6 @@
           ]
         },
         "howCreated": "User"
-      },
-      {
-        "name": "61570333abc231a0124f",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "calendario"
-              }
-            },
-            "Property": "ano_mes"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "a3e397f5514f29ee0f55",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "medidas_financeiro"
-              }
-            },
-            "Property": "13_inadimplencia_percentual_mes"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

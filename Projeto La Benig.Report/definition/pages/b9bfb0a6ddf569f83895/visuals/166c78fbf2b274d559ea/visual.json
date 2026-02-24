@@ -4,10 +4,10 @@
   "position": {
     "x": 155.47746371275781,
     "y": 514.34682964094725,
-    "z": 2001,
+    "z": 3000,
     "height": 185.79067990832695,
     "width": 552.48281130634075,
-    "tabOrder": 2001
+    "tabOrder": 3000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -511,51 +511,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "5dc97218f06ce095b4a5",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fato_sac"
-              }
-            },
-            "Property": "Nota Média SAC"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "03d49e82762d8ef9855b",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fato_sac"
-              }
-            },
-            "Property": "Percentual SLA Cumprido"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "338526c559ab49a19ab8",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fato_sac"
-              }
-            },
-            "Property": "Chamados Abertos"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

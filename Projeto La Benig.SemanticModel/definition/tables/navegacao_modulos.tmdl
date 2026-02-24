@@ -1,0 +1,72 @@
+/// Tabela auxiliar para controle de navegação entre módulos
+table navegacao_modulos
+	isHidden
+	lineageTag: b14f7032-38d8-4a99-b9aa-17f8505453c5
+
+	/// Retorna o módulo ativo atual
+	measure NAV_ModuloAtual =
+			// Detecta qual módulo está ativo baseado no nome da página atual
+			VAR PaginaAtual = SELECTEDVALUE('navegacao_modulos'[modulo_nome])
+			RETURN
+			IF(
+			    ISBLANK(PaginaAtual),
+			    "Home",
+			    PaginaAtual
+			)
+		isHidden
+		lineageTag: 6e0376ee-d296-475e-818f-8f6d3b6d7679
+
+	/// Total de módulos principais
+	measure NAV_TotalModulos =
+			// Total de módulos no menu
+			COUNTROWS('navegacao_modulos')
+		isHidden
+		lineageTag: 3154c88c-4bef-4ffb-86a3-1ca1c0497998
+
+	column ordem
+		dataType: string
+		lineageTag: 30cd0d91-cf04-4bda-bd9d-1d9d7bdd218d
+		summarizeBy: none
+		sourceColumn: ordem
+
+		annotation SummarizationSetBy = Automatic
+
+	column modulo_id
+		dataType: string
+		lineageTag: fb7cf56f-2896-40ab-971c-2d5f47b90086
+		summarizeBy: none
+		sourceColumn: modulo_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column modulo_nome
+		dataType: string
+		lineageTag: 2d5a872d-736d-4344-9dd3-83e2d98c8e02
+		summarizeBy: none
+		sourceColumn: modulo_nome
+
+		annotation SummarizationSetBy = Automatic
+
+	column pagina_destino
+		dataType: string
+		lineageTag: bbdb0864-0947-4fec-a8b8-a3c92f06feb0
+		summarizeBy: none
+		sourceColumn: pagina_destino
+
+		annotation SummarizationSetBy = Automatic
+
+	partition navegacao_modulos = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRecords({
+				        [ordem = 1, modulo_id = "Home", modulo_nome = "Home", pagina_destino = "Home"],
+				        [ordem = 2, modulo_id = "Financeiro", modulo_nome = "Financeiro", pagina_destino = "FIN - Caixa & Liquidez"],
+				        [ordem = 3, modulo_id = "Vendas", modulo_nome = "Vendas", pagina_destino = "VEN - Atacado Visão Geral"],
+				        [ordem = 4, modulo_id = "Logistica", modulo_nome = "Logística", pagina_destino = "LOG - Pedidos"],
+				        [ordem = 5, modulo_id = "SAC", modulo_nome = "SAC", pagina_destino = "SAC - Atendimento"],
+				        [ordem = 6, modulo_id = "VisaoExecutiva", modulo_nome = "Visão Executiva", pagina_destino = "Visão Executiva"]
+				    })
+				in
+				    Fonte
+

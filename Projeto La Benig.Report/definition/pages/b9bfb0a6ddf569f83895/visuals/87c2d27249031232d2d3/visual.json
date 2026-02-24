@@ -4,10 +4,10 @@
   "position": {
     "x": 714.80519480519479,
     "y": 514.34682964094725,
-    "z": 2002,
+    "z": 4000,
     "height": 185.79067990832695,
     "width": 552,
-    "tabOrder": 2002
+    "tabOrder": 4000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -511,51 +511,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "cd68848f194fbb49dd47",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fato_logistica_pedidos"
-              }
-            },
-            "Property": "SLA Separacao %"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "b8598ff81002d433a270",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fato_logistica_pedidos"
-              }
-            },
-            "Property": "SLA Coleta %"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "2e5d192cdf214fc98965",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fato_logistica_pedidos"
-              }
-            },
-            "Property": "Pedidos Em Transito"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

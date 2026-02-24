@@ -1,0 +1,51 @@
+/// 📝 GUIA DE NOMENCLATURA DAS PÁGINAS - Renomeie as páginas no Power BI seguindo este padrão
+table _guia_nomenclatura_paginas
+	isHidden
+	lineageTag: 904840b5-c575-4bb4-b6fc-e922c93124f6
+
+	column modulo
+		dataType: string
+		lineageTag: fca8d7ca-34bb-4de3-9354-731b69169615
+		summarizeBy: none
+		sourceColumn: modulo
+
+		annotation SummarizationSetBy = Automatic
+
+	column pagina
+		dataType: string
+		lineageTag: 9b41c586-05eb-4dc9-80ff-65104407bf1e
+		summarizeBy: none
+		sourceColumn: pagina
+
+		annotation SummarizationSetBy = Automatic
+
+	column ordem
+		dataType: string
+		lineageTag: 6a331446-c42a-4e17-b47a-72f3bbfaf1ea
+		summarizeBy: none
+		sourceColumn: ordem
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _guia_nomenclatura_paginas = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRecords({
+				        [modulo = "Home", pagina = "Home", ordem = 1],
+				        [modulo = "Financeiro", pagina = "FIN - Caixa & Liquidez", ordem = 2],
+				        [modulo = "Financeiro", pagina = "FIN - Contas a Receber", ordem = 3],
+				        [modulo = "Financeiro", pagina = "FIN - Contas a Pagar", ordem = 4],
+				        [modulo = "Financeiro", pagina = "FIN - Resultado Operacional", ordem = 5],
+				        [modulo = "Vendas", pagina = "VEN - Atacado Visão Geral", ordem = 6],
+				        [modulo = "Vendas", pagina = "VEN - Atacado Mapa Geográfico", ordem = 7],
+				        [modulo = "Vendas", pagina = "VEN - E-commerce Performance", ordem = 8],
+				        [modulo = "Vendas", pagina = "VEN - E-commerce Base Clientes", ordem = 9],
+				        [modulo = "Logística", pagina = "LOG - Pedidos", ordem = 10],
+				        [modulo = "Logística", pagina = "LOG - SLAs", ordem = 11],
+				        [modulo = "SAC", pagina = "SAC - Atendimento", ordem = 12],
+				        [modulo = "Visão Executiva", pagina = "Visão Executiva", ordem = 13]
+				    })
+				in
+				    Fonte
+

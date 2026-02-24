@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
   "name": "b697d168368cd6606338",
-  "displayName": " E-COMMERCE - PERFORMANCE",
+  "displayName": "VEN - E-commerce Performance",
   "displayOption": "FitToPage",
   "height": 720,
   "width": 1280,
@@ -23,7 +23,7 @@
                   "ResourcePackageItem": {
                     "PackageName": "RegisteredResources",
                     "PackageType": 1,
-                    "ItemName": "EcommercePerfomanceVendas04572420197299376.png"
+                    "ItemName": "EcommercePerfomanceVendas8050678088198339.png"
                   }
                 }
               },

@@ -1,0 +1,68 @@
+/// Tabela auxiliar para controle de navegação entre módulos e páginas
+table navegacao_menu
+	isHidden
+	lineageTag: 8bd18b08-1c30-4e1d-b286-2bc041900249
+
+	column modulo_id
+		lineageTag: 60ca51b8-bb49-4a49-a6ab-a832213c900e
+		isNameInferred
+		sourceColumn: [modulo_id]
+
+	column modulo_nome
+		lineageTag: e6f266a2-c8bd-4279-b8ab-ed3666e950f5
+		isNameInferred
+		sourceColumn: [modulo_nome]
+
+	column ordem_modulo
+		lineageTag: 53771999-5b47-405c-a3c7-6b572cada7c8
+		isNameInferred
+		sourceColumn: [ordem_modulo]
+
+	column pagina_id
+		lineageTag: 61c4f923-4a56-4d58-b05a-4e65b0c1007b
+		isNameInferred
+		sourceColumn: [pagina_id]
+
+	column pagina_nome
+		lineageTag: 8cb63100-a12e-406d-bea9-c79da5d27f42
+		isNameInferred
+		sourceColumn: [pagina_nome]
+
+	column ordem_pagina
+		lineageTag: e577a46c-be67-4f47-87e4-d618ba0951f3
+		isNameInferred
+		sourceColumn: [ordem_pagina]
+
+	column icone
+		lineageTag: 77a7c57c-fe97-4efd-a914-db0d113746bf
+		isNameInferred
+		sourceColumn: [icone]
+
+	partition navegacao_menu = calculated
+		mode: import
+		source =
+				DATATABLE(
+				    "modulo_id", INTEGER,
+				    "modulo_nome", STRING,
+				    "ordem_modulo", INTEGER,
+				    "pagina_id", INTEGER,
+				    "pagina_nome", STRING,
+				    "ordem_pagina", INTEGER,
+				    "icone", STRING,
+				    {
+				        {1, "Home", 1, 1, "Home", 1, "🏠"},
+				        {2, "Financeiro", 2, 2, "FIN - Caixa & Liquidez", 1, "💰"},
+				        {2, "Financeiro", 2, 3, "FIN - Contas a Receber", 2, "💰"},
+				        {2, "Financeiro", 2, 4, "FIN - Contas a Pagar", 3, "💰"},
+				        {2, "Financeiro", 2, 5, "FIN - Resultado Operacional", 4, "💰"},
+				        {3, "Vendas", 3, 6, "VEN - Atacado Visão Geral", 1, "📊"},
+				        {3, "Vendas", 3, 7, "VEN - Atacado Mapa Geográfico", 2, "📊"},
+				        {3, "Vendas", 3, 8, "VEN - E-commerce Performance", 3, "📊"},
+				        {3, "Vendas", 3, 9, "VEN - E-commerce Base Clientes", 4, "📊"},
+				        {4, "Logística", 4, 10, "LOG - Pedidos", 1, "🚚"},
+				        {4, "Logística", 4, 11, "LOG - SLAs", 2, "🚚"},
+				        {5, "SAC", 5, 12, "SAC - Atendimento", 1, "📞"},
+				        {6, "Visão Executiva", 6, 13, "Visão Executiva", 1, "👔"}
+				    }
+				)
+
