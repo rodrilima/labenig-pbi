@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "46fccc63302849afea2f",
   "position": {
-    "x": 150,
-    "y": 524.44444444444446,
-    "z": 9000,
-    "height": 175.55555555555554,
-    "width": 362.22222222222223,
-    "tabOrder": 9000
+    "x": 150.96882898062341,
+    "y": 340.75821398483572,
+    "z": 7000,
+    "height": 160.67396798652064,
+    "width": 362.32518955349622,
+    "tabOrder": 7000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -412,5 +412,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "769e3786e957c2135b6c",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fato_pedidos"
+              }
+            },
+            "Property": "CAC"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

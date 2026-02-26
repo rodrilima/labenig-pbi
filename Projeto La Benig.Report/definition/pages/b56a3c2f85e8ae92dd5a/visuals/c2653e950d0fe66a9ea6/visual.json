@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "c2653e950d0fe66a9ea6",
   "position": {
-    "x": 907.44079449961794,
-    "y": 361.80290297937353,
+    "x": 535.93934288121318,
+    "y": 340.75821398483572,
     "z": 0,
-    "height": 331.48968678380442,
-    "width": 355.93582887700535,
+    "height": 360.16849199663017,
+    "width": 718.18028643639423,
     "tabOrder": 0
   },
   "visual": {
@@ -20,80 +20,260 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "dim_clientes"
+                      "Entity": "fato_pedidos"
                     }
                   },
-                  "Property": "nome_cliente"
+                  "Property": "pedido_id"
                 }
               },
-              "queryRef": "dim_clientes.nome_cliente",
-              "nativeQueryRef": "Cliente",
-              "displayName": "Cliente"
+              "queryRef": "Sum(fato_pedidos.pedido_id)",
+              "nativeQueryRef": "ID",
+              "displayName": "ID"
             },
             {
               "field": {
                 "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "dim_clientes"
-                    }
-                  },
-                  "Property": "classificacao_atacado"
-                }
-              },
-              "queryRef": "dim_clientes.classificacao_atacado",
-              "nativeQueryRef": "Classificacao",
-              "displayName": "Classificacao"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "dim_clientes"
-                    }
-                  },
-                  "Property": "Classificacao ABC"
-                }
-              },
-              "queryRef": "dim_clientes.Classificacao ABC",
-              "nativeQueryRef": "ABC",
-              "displayName": "ABC"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "dim_clientes"
-                    }
-                  },
-                  "Property": "estado"
-                }
-              },
-              "queryRef": "dim_clientes.estado",
-              "nativeQueryRef": "UF",
-              "displayName": "UF"
-            },
-            {
-              "field": {
-                "Measure": {
                   "Expression": {
                     "SourceRef": {
                       "Entity": "fato_pedidos"
                     }
                   },
-                  "Property": "Faturamento Total"
+                  "Property": "status"
                 }
               },
-              "queryRef": "fato_pedidos.Faturamento Total",
-              "nativeQueryRef": "Faturamento",
-              "displayName": "Faturamento"
+              "queryRef": "fato_pedidos.status",
+              "nativeQueryRef": "Situação",
+              "displayName": "Situação"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fato_pedidos"
+                        }
+                      },
+                      "Property": "valor_bruto"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fato_pedidos.valor_bruto)",
+              "nativeQueryRef": "Valor Bruto",
+              "displayName": "Valor Bruto"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fato_pedidos"
+                        }
+                      },
+                      "Property": "valor_desconto"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fato_pedidos.valor_desconto)",
+              "nativeQueryRef": "Desconto",
+              "displayName": "Desconto"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fato_pedidos"
+                        }
+                      },
+                      "Property": "valor_frete"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fato_pedidos.valor_frete)",
+              "nativeQueryRef": "Frete",
+              "displayName": "Frete"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fato_pedidos"
+                        }
+                      },
+                      "Property": "valor_liquido"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fato_pedidos.valor_liquido)",
+              "nativeQueryRef": "Valor Líquido",
+              "displayName": "Valor Líquido"
             }
           ]
         }
       }
     },
+    "objects": {
+      "columnHeaders": [
+        {
+          "properties": {
+            "columnAdjustment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'growToFit'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Pedidos'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "3210fb065eccc0bab816",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fato_pedidos"
+              }
+            },
+            "Property": "pedido_id"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "4b31d9d3de8a3e070e20",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fato_pedidos"
+              }
+            },
+            "Property": "status"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "d00d92a50d4dc3a7db22",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fato_pedidos"
+                  }
+                },
+                "Property": "valor_bruto"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "10885e9029b887950523",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fato_pedidos"
+                  }
+                },
+                "Property": "valor_desconto"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "86537b4bcd809e89605b",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fato_pedidos"
+                  }
+                },
+                "Property": "valor_frete"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "119f2c538b72a2e65403",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fato_pedidos"
+                  }
+                },
+                "Property": "valor_liquido"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

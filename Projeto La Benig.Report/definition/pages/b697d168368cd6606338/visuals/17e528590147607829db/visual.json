@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "17e528590147607829db",
   "position": {
-    "x": 726.685878962536,
-    "y": 464.78386167146971,
+    "x": 733.27716933445663,
+    "y": 214.59140690817185,
     "z": 1000,
-    "height": 213.94812680115271,
-    "width": 512.73775216138324,
+    "height": 213.51305812973882,
+    "width": 512.21566975568658,
     "tabOrder": 1000
   },
   "visual": {
@@ -41,7 +41,8 @@
                 }
               },
               "queryRef": "fato_pedidos.Utilizacoes por Cupom",
-              "nativeQueryRef": "Utilizacoes por Cupom"
+              "nativeQueryRef": "Utilizações",
+              "displayName": "Utilizações"
             },
             {
               "field": {
@@ -75,6 +76,88 @@
         }
       }
     },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Cupom de Desconto'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "0cf38b4f59026778316a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fato_pedidos"
+              }
+            },
+            "Property": "cupom_desconto"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "291457e340e689a608c3",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fato_pedidos"
+              }
+            },
+            "Property": "Utilizacoes por Cupom"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "9ba8fb7045e2542206cd",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fato_pedidos"
+              }
+            },
+            "Property": "Desconto Total por Cupom"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "82c1d4a788606c4d5754",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fato_pedidos"
+              }
+            },
+            "Property": "Receita por Cupom"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

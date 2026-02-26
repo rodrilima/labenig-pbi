@@ -360,11 +360,20 @@ table fato_logistica_pedidos
 
 		annotation SummarizationSetBy = Automatic
 
+	column status_atual_ordenado
+		dataType: string
+		lineageTag: 0137fc16-786d-4c75-a85c-eb43d7b56674
+		summarizeBy: none
+		sourceColumn: status_atual_ordenado
+
+		annotation SummarizationSetBy = Automatic
+
 	partition Partition = m
 		mode: import
 		queryGroup: mocks
 		source =
 				let
+				    Fonte = let
 				    Fonte = Table.FromRecords({
 				        [id = 1, pedido_id = 1, loja_id = 3, transportadora = "Correios", data_pedido = #date(2025,1,2), data_separacao = #datetime(2025,1,2,14,30,0), data_faturamento = #datetime(2025,1,3,9,0,0), data_coleta = #datetime(2025,1,3,15,20,0), status_atual = "Coletado", sla_separacao_horas = 2.25, sla_coleta_horas = 6.33, sla_separacao_cumprido = true, sla_coleta_cumprido = true],
 				        [id = 2, pedido_id = 2, loja_id = 4, transportadora = "Jadlog", data_pedido = #date(2025,1,3), data_separacao = #datetime(2025,1,3,10,15,0), data_faturamento = #datetime(2025,1,4,8,30,0), data_coleta = #datetime(2025,1,4,14,45,0), status_atual = "Coletado", sla_separacao_horas = 3.08, sla_coleta_horas = 6.25, sla_separacao_cumprido = true, sla_coleta_cumprido = true],
@@ -377,6 +386,23 @@ table fato_logistica_pedidos
 				        [id = 9, pedido_id = 9, loja_id = 1, transportadora = "Loggi", data_pedido = #date(2025,1,8), data_separacao = #datetime(2025,1,8,15,30,0), data_faturamento = #datetime(2025,1,9,8,15,0), data_coleta = null, status_atual = "Faturado", sla_separacao_horas = 0.83, sla_coleta_horas = null, sla_separacao_cumprido = true, sla_coleta_cumprido = null],
 				        [id = 10, pedido_id = 10, loja_id = 4, transportadora = "Jadlog", data_pedido = #date(2025,1,9), data_separacao = #datetime(2025,1,9,9,45,0), data_faturamento = null, data_coleta = null, status_atual = "Em Separação", sla_separacao_horas = null, sla_coleta_horas = null, sla_separacao_cumprido = null, sla_coleta_cumprido = null]
 				    }),
+				
+				    StatusMap = [
+				        #"Em Separação"   = "4 - Em Separação",
+				        #"Em Conferência" = "3 - Em Conferência",
+				        #"Faturado"       = "2 - Faturado",
+				        #"Coletado"       = "1 - Coletado"
+				    ],
+				
+				    ComStatusOrdenado =
+				        Table.AddColumn(
+				            Fonte,
+				            "status_atual_ordenado",
+				            each Record.FieldOrDefault(StatusMap, [status_atual], "99 - Desconhecido"),
+				            type text
+				        )
+				in
+				    ComStatusOrdenado,
 				    TiposDefinidos = Table.TransformColumnTypes(Fonte,{
 				        {"id", Int64.Type},
 				        {"pedido_id", Int64.Type},
