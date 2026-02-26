@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "5a6ab6e05c068476c8c8",
   "position": {
-    "x": 528.88888888888891,
-    "y": 524.44444444444446,
-    "z": 10000,
-    "height": 175.55555555555554,
-    "width": 365.55555555555554,
-    "tabOrder": 10000
+    "x": 141.15528882220553,
+    "y": 517.56939234808692,
+    "z": 8000,
+    "height": 175.72393098274569,
+    "width": 364.89122280570137,
+    "tabOrder": 8000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -412,5 +412,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "dea48065659b6740da0e",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fato_pedidos"
+              }
+            },
+            "Property": "Custo Total Frete"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

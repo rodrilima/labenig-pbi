@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "6fe9aa0f5dd7beebd8b9",
   "position": {
     "x": 157.17073170731709,
@@ -17,18 +17,22 @@
           "projections": [
             {
               "field": {
-                "Measure": {
+                "Aggregation": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "fato_fluxo_caixa"
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "protheus_contasBancarias"
+                        }
+                      },
+                      "Property": "saldo_atual"
                     }
                   },
-                  "Property": "Saldo Caixa Atual"
+                  "Function": 0
                 }
               },
-              "queryRef": "fato_fluxo_caixa.Saldo Caixa Atual",
-              "nativeQueryRef": "Saldo Caixa Atual",
-              "format": "\"R$\" #,0;-\"R$\" #,0;\"R$\" #,0"
+              "queryRef": "Sum(protheus_contasBancarias.saldo_atual)",
+              "nativeQueryRef": "Soma de saldo_atual"
             }
           ]
         }
@@ -37,13 +41,18 @@
         "sort": [
           {
             "field": {
-              "Measure": {
+              "Aggregation": {
                 "Expression": {
-                  "SourceRef": {
-                    "Entity": "fato_fluxo_caixa"
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "protheus_contasBancarias"
+                      }
+                    },
+                    "Property": "saldo_atual"
                   }
                 },
-                "Property": "Saldo Caixa Atual"
+                "Function": 0
               }
             },
             "direction": "Descending"

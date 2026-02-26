@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "874a1c0e7778d51b6314",
   "position": {
-    "x": 151.23919308357347,
-    "y": 486.91642651296826,
+    "x": 164.98736310025274,
+    "y": 494.96208930075818,
     "z": 4000,
-    "height": 232.39193083573485,
-    "width": 1080.8069164265128,
+    "height": 201.65122156697555,
+    "width": 1092.3673125526536,
     "tabOrder": 4000
   },
   "visual": {
@@ -71,6 +71,74 @@
         }
       }
     },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Resumo SLA de Logística'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "a972359ab8401c8a95b0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fato_logistica_pedidos"
+              }
+            },
+            "Property": "transportadora"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "9e4142e030c09c86e98a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_lojas"
+              }
+            },
+            "Property": "nome_loja"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "fbf8a8e29704aa9ba2b9",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fato_logistica_pedidos"
+              }
+            },
+            "Property": "SLA Separacao %"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

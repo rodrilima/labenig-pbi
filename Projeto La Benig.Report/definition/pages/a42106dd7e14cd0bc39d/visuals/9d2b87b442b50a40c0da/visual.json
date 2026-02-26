@@ -1,45 +1,33 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
-  "name": "97a294e33d1eb39b9479",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "9d2b87b442b50a40c0da",
   "position": {
-    "x": 157.17073170731709,
-    "y": 224.78048780487805,
-    "z": 4000,
-    "height": 204.58536585365854,
-    "width": 539.1219512195122,
-    "tabOrder": 4000
+    "x": 171.45745577085088,
+    "y": 215.66975568660487,
+    "z": 13000,
+    "height": 213.51305812973882,
+    "width": 517.60741364785167,
+    "tabOrder": 13000
   },
   "visual": {
-    "visualType": "lineChart",
+    "visualType": "gauge",
     "query": {
       "queryState": {
-        "Category": {
+        "TargetValue": {
           "projections": [
             {
               "field": {
-                "HierarchyLevel": {
+                "Measure": {
                   "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "fato_pedidos"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "data_pedido"
-                        }
-                      },
-                      "Hierarchy": "Hierarquia de datas"
+                    "SourceRef": {
+                      "Entity": "fato_logistica_pedidos"
                     }
                   },
-                  "Level": "Dia"
+                  "Property": "Meta SLA Coleta"
                 }
               },
-              "queryRef": "fato_pedidos.data_pedido.Variation.Hierarquia de datas.Dia",
-              "nativeQueryRef": "data_pedido Dia",
-              "active": true
+              "queryRef": "fato_logistica_pedidos.Meta SLA Coleta",
+              "nativeQueryRef": "Meta SLA Coleta"
             }
           ]
         },
@@ -50,14 +38,14 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fato_pedidos"
+                      "Entity": "fato_logistica_pedidos"
                     }
                   },
-                  "Property": "Faturamento Total"
+                  "Property": "SLA Coleta %"
                 }
               },
-              "queryRef": "fato_pedidos.Faturamento Total",
-              "nativeQueryRef": "Faturamento Total"
+              "queryRef": "fato_logistica_pedidos.SLA Coleta %",
+              "nativeQueryRef": "SLA Coleta %"
             }
           ]
         }
@@ -66,55 +54,37 @@
         "sort": [
           {
             "field": {
-              "HierarchyLevel": {
+              "Measure": {
                 "Expression": {
-                  "Hierarchy": {
-                    "Expression": {
-                      "PropertyVariationSource": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "fato_pedidos"
-                          }
-                        },
-                        "Name": "Variation",
-                        "Property": "data_pedido"
-                      }
-                    },
-                    "Hierarchy": "Hierarquia de datas"
+                  "SourceRef": {
+                    "Entity": "fato_logistica_pedidos"
                   }
                 },
-                "Level": "Dia"
+                "Property": "SLA Coleta %"
               }
             },
-            "direction": "Ascending"
+            "direction": "Descending"
           }
         ],
         "isDefaultSort": true
       }
     },
     "objects": {
-      "valueAxis": [
-        {
-          "properties": {
-            "gridlineColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 2,
-                      "Percent": 0
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      ],
       "dataPoint": [
         {
           "properties": {
             "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#2B4031'"
+                    }
+                  }
+                }
+              }
+            },
+            "target": {
               "solid": {
                 "color": {
                   "expr": {
@@ -125,9 +95,6 @@
                 }
               }
             }
-          },
-          "selector": {
-            "metadata": "fato_pedidos.Faturamento Total"
           }
         }
       ]
@@ -139,7 +106,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Faturamento Por Dia'"
+                  "Value": "'SLA Coleta Logistica'"
                 }
               }
             },

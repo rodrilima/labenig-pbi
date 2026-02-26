@@ -345,20 +345,6 @@
           }
         },
         "type": "Advanced"
-      },
-      {
-        "name": "e056276cba783ee992a7",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "medidas_financeiro"
-              }
-            },
-            "Property": "CP Status do Fornecedor"
-          }
-        },
-        "type": "Advanced"
       }
     ],
     "filterSortOrder": "Custom"

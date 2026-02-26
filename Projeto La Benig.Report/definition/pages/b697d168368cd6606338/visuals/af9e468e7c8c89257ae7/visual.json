@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "af9e468e7c8c89257ae7",
   "position": {
     "x": 158.61671469740634,
@@ -286,7 +286,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Faturamento Total Por Loja'"
+                  "Value": "'Faturamento Por Loja'"
                 }
               }
             },
@@ -374,5 +374,37 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "920dc685e8d6c14821e4",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_lojas"
+              }
+            },
+            "Property": "nome_loja"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "497f4c5fa9700576ce91",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fato_pedidos"
+              }
+            },
+            "Property": "Faturamento Total"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

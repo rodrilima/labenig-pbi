@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "03efee3f1ea1166b8484",
   "position": {
     "x": 999.219512195122,
@@ -17,17 +17,22 @@
           "projections": [
             {
               "field": {
-                "Measure": {
+                "Aggregation": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "fato_pedidos"
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "protheus_movimentosBancarios"
+                        }
+                      },
+                      "Property": "pk"
                     }
                   },
-                  "Property": "Total de Pedidos"
+                  "Function": 5
                 }
               },
-              "queryRef": "fato_pedidos.Total de Pedidos",
-              "nativeQueryRef": "Total de Pedidos"
+              "queryRef": "Min(protheus_movimentosBancarios.pk)",
+              "nativeQueryRef": "Contagem de pk"
             }
           ]
         }
@@ -36,13 +41,18 @@
         "sort": [
           {
             "field": {
-              "Measure": {
+              "Aggregation": {
                 "Expression": {
-                  "SourceRef": {
-                    "Entity": "fato_pedidos"
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "protheus_movimentosBancarios"
+                      }
+                    },
+                    "Property": "pk"
                   }
                 },
-                "Property": "Total de Pedidos"
+                "Function": 5
               }
             },
             "direction": "Descending"
