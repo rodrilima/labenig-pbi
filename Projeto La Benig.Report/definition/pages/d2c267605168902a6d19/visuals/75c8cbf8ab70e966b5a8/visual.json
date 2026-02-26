@@ -1,0 +1,76 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "75c8cbf8ab70e966b5a8",
+  "position": {
+    "x": 666.28751974723536,
+    "y": 359.93680884676149,
+    "z": 5000,
+    "height": 280.06319115323856,
+    "width": 533.83886255924176,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "protheus_contasReceber"
+                    }
+                  },
+                  "Property": "data_vencimento_real"
+                }
+              },
+              "queryRef": "protheus_contasReceber.data_vencimento_real",
+              "nativeQueryRef": "data_vencimento_real"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "protheus_contasReceber"
+                        }
+                      },
+                      "Property": "pk"
+                    }
+                  },
+                  "Function": 5
+                }
+              },
+              "queryRef": "protheus_contasReceber.pk",
+              "nativeQueryRef": "Contagem de pk"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "protheus_contasReceber"
+                        }
+                      },
+                      "Property": "valor_titulo"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(protheus_contasReceber.valor_titulo)",
+              "nativeQueryRef": "Soma de valor_titulo"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

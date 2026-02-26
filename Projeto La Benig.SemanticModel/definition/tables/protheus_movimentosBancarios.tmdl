@@ -18,12 +18,15 @@ table protheus_movimentosBancarios
 		annotation SummarizationSetBy = Automatic
 
 	column data_movimento
-		dataType: string
+		dataType: dateTime
+		formatString: Long Date
 		lineageTag: 4bdda892-8c48-4be8-a77f-0248b10b46e6
 		summarizeBy: none
 		sourceColumn: data_movimento
 
 		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
 
 	column tipo
 		dataType: string
@@ -196,12 +199,20 @@ table protheus_movimentosBancarios
 		annotation SummarizationSetBy = Automatic
 
 	column data_digitacao
-		dataType: string
+		dataType: dateTime
+		formatString: Long Date
 		lineageTag: 466b9c67-1f29-44b4-9f1c-460c267df181
 		summarizeBy: none
 		sourceColumn: data_digitacao
 
+		variation Variation
+			isDefault
+			relationship: 2300cb19-d410-454c-b114-ccd8dfbcf064
+			defaultHierarchy: LocalDateTable_fa06e6ad-0680-42f3-980a-d2b67c531a16.'Hierarquia de datas'
+
 		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
 
 	column tipo_lanc_contabil
 		dataType: string
@@ -393,6 +404,17 @@ table protheus_movimentosBancarios
 
 		annotation SummarizationSetBy = Automatic
 
+	column valorpn
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: ed2a69d5-ac1f-4c5d-9e9a-2a0283d04ccf
+		summarizeBy: sum
+		sourceColumn: valorpn
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
 	partition protheus_movimentosBancarios = m
 		mode: import
 		queryGroup: datalake
@@ -401,9 +423,15 @@ table protheus_movimentosBancarios
 				    Fonte = GoogleBigQuery.Database([Implementation="2.0"]),
 				    #"coherent-window-444219-c1_Database" = Fonte{[Name="coherent-window-444219-c1",Kind="Database"]}[Data],
 				    datalake_Schema = #"coherent-window-444219-c1_Database"{[Name="datalake",Kind="Schema"]}[Data],
-				    protheus_movimentosBancarios_Table = datalake_Schema{[Name="protheus_movimentosBancarios",Kind="Table"]}[Data]
+				    protheus_movimentosBancarios_Table = datalake_Schema{[Name="protheus_movimentosBancarios",Kind="Table"]}[Data],
+				    #"Tipo Alterado" = Table.TransformColumnTypes(protheus_movimentosBancarios_Table,{{"data_movimento", type date}, {"data_digitacao", type date}}),
+				    #"Personalização Adicionada" = Table.AddColumn(#"Tipo Alterado", "valorpn", each if [receb_pagto] = "P" then -[valor]
+				else if [receb_pagto] = "R" then [valor]
+				else null),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Personalização Adicionada",{{"valorpn", Currency.Type}}),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Tipo Alterado1", each ([filial] = "010102"))
 				in
-				    protheus_movimentosBancarios_Table
+				    #"Linhas Filtradas"
 
 	annotation PBI_NavigationStepName = Navegação
 

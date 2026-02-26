@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "639ee5ed2cac1ec809a5",
   "position": {
     "x": 720,
@@ -28,20 +28,6 @@
               },
               "queryRef": "medidas_financeiro.CP Valor em Atraso",
               "nativeQueryRef": "CP Valor em Atraso"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "medidas_financeiro"
-                    }
-                  },
-                  "Property": "CP Qtd Títulos em Atraso"
-                }
-              },
-              "queryRef": "medidas_financeiro.CP Qtd Títulos em Atraso",
-              "nativeQueryRef": "CP Qtd Títulos em Atraso"
             }
           ]
         }
@@ -209,6 +195,22 @@
               "expr": {
                 "Literal": {
                   "Value": "'center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ],
+      "outline": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }

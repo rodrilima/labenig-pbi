@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "213fcabb2da191cecc6d",
   "position": {
-    "x": 158.04878048780489,
-    "y": 212.48780487804879,
+    "x": 158.51727042965459,
+    "y": 210.27801179443975,
     "z": 5000,
-    "height": 209.85365853658539,
-    "width": 539.1219512195122,
+    "height": 226.45324347093512,
+    "width": 539.17438921651217,
     "tabOrder": 5000
   },
   "visual": {
@@ -87,6 +87,48 @@
                 }
               }
             }
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 4,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "protheus_contasReceber"
+                          }
+                        },
+                        "Property": "faixa_aging"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'A Vencer'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
           }
         }
       ]

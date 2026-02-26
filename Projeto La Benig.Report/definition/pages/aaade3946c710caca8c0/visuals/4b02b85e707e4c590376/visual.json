@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "4b02b85e707e4c590376",
   "position": {
-    "x": 158.92682926829269,
-    "y": 480.29268292682929,
+    "x": 158.51727042965459,
+    "y": 469.08171861836564,
     "z": 3000,
-    "height": 226.53658536585368,
-    "width": 1108.1707317073171,
+    "height": 226.45324347093512,
+    "width": 801.21314237573711,
     "tabOrder": 3000
   },
   "visual": {
@@ -23,11 +23,73 @@
                       "Entity": "protheus_contasPagar"
                     }
                   },
+                  "Property": "data_vencimento_real"
+                }
+              },
+              "queryRef": "protheus_contasPagar.data_vencimento_real",
+              "nativeQueryRef": "Vencimento Real",
+              "displayName": "Vencimento Real",
+              "format": "d"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "protheus_contasPagar"
+                    }
+                  },
+                  "Property": "numero_titulo"
+                }
+              },
+              "queryRef": "protheus_contasPagar.numero_titulo",
+              "nativeQueryRef": "Número Título",
+              "displayName": "Número Título"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "protheus_contasPagar"
+                    }
+                  },
+                  "Property": "parcela"
+                }
+              },
+              "queryRef": "protheus_contasPagar.parcela",
+              "nativeQueryRef": "Parcela",
+              "displayName": "Parcela"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "protheus_contasPagar"
+                    }
+                  },
+                  "Property": "cod_fornecedor"
+                }
+              },
+              "queryRef": "protheus_contasPagar.cod_fornecedor",
+              "nativeQueryRef": "Fornecedor",
+              "displayName": "Fornecedor"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "protheus_contasPagar"
+                    }
+                  },
                   "Property": "nome_fornecedor"
                 }
               },
               "queryRef": "protheus_contasPagar.nome_fornecedor",
-              "nativeQueryRef": "nome_fornecedor"
+              "nativeQueryRef": "Nome",
+              "displayName": "Nome"
             },
             {
               "field": {
@@ -46,21 +108,8 @@
                 }
               },
               "queryRef": "Sum(protheus_contasPagar.valor_titulo)",
-              "nativeQueryRef": "Soma de valor_titulo"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "protheus_contasPagar"
-                    }
-                  },
-                  "Property": "data_vencimento"
-                }
-              },
-              "queryRef": "protheus_contasPagar.data_vencimento",
-              "nativeQueryRef": "data_vencimento"
+              "nativeQueryRef": "Valor",
+              "displayName": "Valor"
             },
             {
               "field": {
@@ -74,29 +123,135 @@
                 }
               },
               "queryRef": "protheus_contasPagar.status_pagamento",
-              "nativeQueryRef": "status_pagamento"
+              "nativeQueryRef": "Status",
+              "displayName": "Status"
             }
           ]
         }
+      }
+    },
+    "objects": {
+      "columnHeaders": [
+        {
+          "properties": {
+            "columnAdjustment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'growToFit'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "3886409b5bcc545cb469",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_contasPagar"
+              }
+            },
+            "Property": "data_vencimento_real"
+          }
+        },
+        "type": "Categorical"
       },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
+      {
+        "name": "8c5c566d0d2193dba0e8",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_contasPagar"
+              }
+            },
+            "Property": "numero_titulo"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "0dde510e4b6a0dc825c0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_contasPagar"
+              }
+            },
+            "Property": "parcela"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "7d430d4b40ee009a8434",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_contasPagar"
+              }
+            },
+            "Property": "cod_fornecedor"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "2a4c083e10198bbec912",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_contasPagar"
+              }
+            },
+            "Property": "nome_fornecedor"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "e7a3787654b907ee3cce",
+        "field": {
+          "Aggregation": {
+            "Expression": {
               "Column": {
                 "Expression": {
                   "SourceRef": {
                     "Entity": "protheus_contasPagar"
                   }
                 },
-                "Property": "data_vencimento"
+                "Property": "valor_titulo"
               }
             },
-            "direction": "Ascending"
+            "Function": 0
           }
-        ]
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "930de2c7dbb518dd5462",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_contasPagar"
+              }
+            },
+            "Property": "status_pagamento"
+          }
+        },
+        "type": "Categorical"
       }
-    },
-    "drillFilterOtherVisuals": true
+    ]
   }
 }

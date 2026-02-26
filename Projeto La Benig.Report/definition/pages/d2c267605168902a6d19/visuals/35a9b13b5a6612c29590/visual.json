@@ -1,0 +1,103 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "35a9b13b5a6612c29590",
+  "position": {
+    "x": 81.8957345971564,
+    "y": 377.12480252764612,
+    "z": 1000,
+    "height": 280.06319115323856,
+    "width": 432.73301737756714,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "calendario"
+                    }
+                  },
+                  "Property": "Date"
+                }
+              },
+              "queryRef": "calendario.Date",
+              "nativeQueryRef": "Date"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "projecao_caixa"
+                        }
+                      },
+                      "Property": "valorpn"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(projecao_caixa.valorpn)",
+              "nativeQueryRef": "Soma de valorpn"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "medidas_financeiro"
+                    }
+                  },
+                  "Property": "Saldo Projetado (depois)"
+                }
+              },
+              "queryRef": "medidas_financeiro.SaldoProjetado (por dia)",
+              "nativeQueryRef": "SaldoProjetado (por dia)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "calendario"
+                  }
+                },
+                "Property": "Date"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "total": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

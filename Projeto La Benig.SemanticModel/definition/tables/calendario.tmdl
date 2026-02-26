@@ -19,12 +19,12 @@ table calendario
 		isNameInferred
 		sourceColumn: [ano]
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 	column mes_numero
 		formatString: 0
 		lineageTag: ec94066a-1e05-4dd4-9f12-cf7b6f5cc11e
-		summarizeBy: none
+		summarizeBy: sum
 		isNameInferred
 		sourceColumn: [mes_numero]
 
@@ -35,6 +35,7 @@ table calendario
 		summarizeBy: none
 		isNameInferred
 		sourceColumn: [mes_nome]
+		sortByColumn: mes_numero
 
 		annotation SummarizationSetBy = Automatic
 
@@ -57,7 +58,7 @@ table calendario
 	column ano_mes_ordenacao
 		formatString: 0
 		lineageTag: 61928c03-87f0-453f-918c-845e9352a4e7
-		summarizeBy: none
+		summarizeBy: sum
 		isNameInferred
 		sourceColumn: [ano_mes_ordenacao]
 
@@ -82,7 +83,7 @@ table calendario
 	column dia
 		formatString: 0
 		lineageTag: 15a9ab5d-0146-4d56-9be7-8eda06c80f2b
-		summarizeBy: none
+		summarizeBy: sum
 		isNameInferred
 		sourceColumn: [dia]
 
@@ -91,7 +92,7 @@ table calendario
 	column dia_semana_numero
 		formatString: 0
 		lineageTag: a15439b0-e90d-4fb9-9b3f-81882da2e79f
-		summarizeBy: none
+		summarizeBy: sum
 		isNameInferred
 		sourceColumn: [dia_semana_numero]
 
@@ -116,22 +117,17 @@ table calendario
 
 	partition calendario = calculated
 		mode: import
-		source = ```
+		source =
 				
-				VAR data_min =
-				    MINX(
-				        protheus_contasReceber,
-				        protheus_contasReceber[data_emissao]
-				    )
+				VAR data_min = DATE(2024, 1, 1)
+				
 				VAR data_max =
-				    MAXX(
-				        protheus_contasReceber,
-				        protheus_contasReceber[data_vencimento]
-				    )
+				    DATE(YEAR(TODAY()), 12, 31)
+				
 				RETURN
 				ADDCOLUMNS(
 				    CALENDAR(data_min, data_max),
-				    
+				
 				    "ano", YEAR([Date]),
 				    "mes_numero", MONTH([Date]),
 				    "mes_nome", FORMAT([Date], "mmmm"),
@@ -145,8 +141,6 @@ table calendario
 				    "dia_semana_nome", FORMAT([Date], "dddd"),
 				    "fim_de_mes", EOMONTH([Date], 0)
 				)
-				
-				```
 
 	annotation PBI_Id = 92f27ba2174947c0bf0e8646a205716f
 

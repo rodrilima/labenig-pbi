@@ -1,0 +1,57 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "5715c2ef5bb3c722740c",
+  "position": {
+    "x": 691.56398104265406,
+    "y": 79.873617693522917,
+    "z": 2000,
+    "height": 280.06319115323856,
+    "width": 316.46129541864138,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "protheus_contasBancarias"
+                    }
+                  },
+                  "Property": "nome"
+                }
+              },
+              "queryRef": "protheus_contasBancarias.nome",
+              "nativeQueryRef": "nome"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "protheus_contasBancarias"
+                        }
+                      },
+                      "Property": "saldo_atual"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(protheus_contasBancarias.saldo_atual)",
+              "nativeQueryRef": "Soma de saldo_atual"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

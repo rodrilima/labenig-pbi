@@ -5,7 +5,7 @@
       "ordinal": 0,
       "scrollPosition": {
         "x": 2414,
-        "y": 305
+        "y": 246
       },
       "nodes": [
         {
@@ -241,7 +241,10 @@
           "zIndex": 0
         },
         {
-          "location": {},
+          "location": {
+            "x": 4807.2181098123538,
+            "y": 353.29583200817706
+          },
           "nodeIndex": "protheus_contatos",
           "nodeLineageTag": "c69578b1-8090-43df-94f4-8663358270a9",
           "size": {
@@ -251,10 +254,104 @@
           "zIndex": 0
         },
         {
-          "location": {},
+          "location": {
+            "x": 5091.2181098123538,
+            "y": 403.29583200817706
+          },
           "nodeIndex": "dim_clientes_contas_a_receber",
           "size": {
             "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 4573.2181098123538,
+            "y": 594.89790364556052
+          },
+          "nodeIndex": "_guia_nomenclatura_paginas",
+          "nodeLineageTag": "904840b5-c575-4bb4-b6fc-e922c93124f6",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 5375.2181098123528,
+            "y": 379.29583200817706
+          },
+          "nodeIndex": "navegacao_menu",
+          "nodeLineageTag": "8bd18b08-1c30-4e1d-b286-2bc041900249",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 4573.21228887241,
+            "y": 159.69376037079354
+          },
+          "nodeIndex": "navegacao_modulos",
+          "nodeLineageTag": "b14f7032-38d8-4a99-b9aa-17f8505453c5",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 4289.08221571779,
+            "y": 365.95274559223071
+          },
+          "nodeIndex": "navegacao_submodulos",
+          "nodeLineageTag": "30aa3f58-3add-475b-ae53-43608fe43cf6",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 5609.2181098123528,
+            "y": 353.29583200817706
+          },
+          "nodeIndex": "projecao_caixa",
+          "nodeLineageTag": "ab4ef6a7-1ab7-4246-a348-9379069a1113",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 5843.2181098123528,
+            "y": 353.29583200817706
+          },
+          "nodeIndex": "Entradas",
+          "nodeLineageTag": "d19925c9-a43e-4745-98d1-37f69a43b8d4",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 6127.2181098123528,
+            "y": 353.29583200817706
+          },
+          "nodeIndex": "Saidas",
+          "nodeLineageTag": "a1a32020-bba9-476e-9a46-2b3dd5cc330f",
+          "size": {
+            "height": 300,
             "width": 234
           },
           "zIndex": 0
@@ -270,7 +367,7 @@
     {
       "ordinal": 1,
       "scrollPosition": {
-        "x": 0,
+        "x": 45.488221165490096,
         "y": 0
       },
       "nodes": [
@@ -315,7 +412,7 @@
         }
       ],
       "name": "ContasAReceber",
-      "zoomValue": 100,
+      "zoomValue": 112.11693641406106,
       "pinKeyFieldsToTop": false,
       "showExtraHeaderInfo": false,
       "hideKeyFieldsWhenCollapsed": false,
@@ -327,8 +424,102 @@
         "x": 0,
         "y": 0
       },
-      "nodes": [],
-      "name": "Contatos",
+      "nodes": [
+        {
+          "location": {
+            "x": 277,
+            "y": 76
+          },
+          "nodeIndex": "protheus_movimentosBancarios",
+          "nodeLineageTag": "da554400-d777-4977-8bd5-023e535e7bc4",
+          "size": {
+            "height": 590,
+            "width": 251
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 672,
+            "y": 0
+          },
+          "nodeIndex": "calendario",
+          "nodeLineageTag": "963ae7f1-a55a-45f0-a5f7-69c609f6cb45",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 837,
+            "y": 363
+          },
+          "nodeIndex": "protheus_contasBancarias",
+          "nodeLineageTag": "83cc781d-51c8-4279-861d-29a3d8f96882",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1042.3943697118664,
+            "y": 0
+          },
+          "nodeIndex": "projecao_caixa",
+          "nodeLineageTag": "ab4ef6a7-1ab7-4246-a348-9379069a1113",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "MovimentosBancarios",
+      "zoomValue": 79.553182037699955,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 3,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 267,
+            "y": 218
+          },
+          "nodeIndex": "protheus_contasPagar",
+          "nodeLineageTag": "9a8386ee-1731-43f9-a602-1f0e80ebeda1",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 595,
+            "y": 231
+          },
+          "nodeIndex": "calendario",
+          "nodeLineageTag": "963ae7f1-a55a-45f0-a5f7-69c609f6cb45",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "ContasAPagar",
       "zoomValue": 100,
       "pinKeyFieldsToTop": false,
       "showExtraHeaderInfo": false,
@@ -336,6 +527,6 @@
       "tablesLocked": false
     }
   ],
-  "selectedDiagram": "ContasAReceber",
+  "selectedDiagram": "MovimentosBancarios",
   "defaultDiagram": "Todas as tabelas"
 }

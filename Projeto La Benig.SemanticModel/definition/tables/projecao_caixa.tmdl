@@ -1,0 +1,420 @@
+table projecao_caixa
+	lineageTag: ab4ef6a7-1ab7-4246-a348-9379069a1113
+
+	column pk
+		dataType: string
+		lineageTag: 504dcbff-870a-4f94-9764-8b0bca018e2e
+		summarizeBy: none
+		sourceColumn: pk
+
+		annotation SummarizationSetBy = Automatic
+
+	column filial
+		dataType: string
+		lineageTag: bf5614f7-5eb9-469f-bb9b-9c6ff06aba92
+		summarizeBy: none
+		sourceColumn: filial
+
+		annotation SummarizationSetBy = Automatic
+
+	column prefixo
+		dataType: string
+		lineageTag: 440d0e11-9cc3-4d54-87c2-4ecf0d5268e2
+		summarizeBy: none
+		sourceColumn: prefixo
+
+		annotation SummarizationSetBy = Automatic
+
+	column numero_titulo
+		dataType: string
+		lineageTag: 19c729f5-4fdf-4531-b151-a5a1ebb19370
+		summarizeBy: none
+		sourceColumn: numero_titulo
+
+		annotation SummarizationSetBy = Automatic
+
+	column parcela
+		dataType: string
+		lineageTag: 42c9af43-fa22-47e8-90d8-f8d1412bdbe1
+		summarizeBy: none
+		sourceColumn: parcela
+
+		annotation SummarizationSetBy = Automatic
+
+	column tipo
+		dataType: string
+		lineageTag: 4e89b5ad-eccf-49d4-9aa4-f582a35ce104
+		summarizeBy: none
+		sourceColumn: tipo
+
+		annotation SummarizationSetBy = Automatic
+
+	column natureza
+		dataType: string
+		lineageTag: 95239ddf-ac0a-48ca-a40f-389a355f80c6
+		summarizeBy: none
+		sourceColumn: natureza
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_fornecedor
+		dataType: string
+		lineageTag: 7b1360a9-31d8-4b68-bccc-693ee20c34df
+		summarizeBy: none
+		sourceColumn: cod_fornecedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column loja_fornecedor
+		dataType: string
+		lineageTag: 32683113-bada-4922-b3b6-3ea31efb9b2d
+		summarizeBy: none
+		sourceColumn: loja_fornecedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column nome_fornecedor
+		dataType: string
+		lineageTag: e72ae6bc-5e14-4d5d-b3f7-24c88a5d4417
+		summarizeBy: none
+		sourceColumn: nome_fornecedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_emissao
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1e68e899-e01f-4d18-8a2d-786df18a24a5
+		summarizeBy: none
+		sourceColumn: data_emissao
+
+		variation Variation
+			isDefault
+			relationship: 082a1567-cdd0-4bbe-a736-6972c8f55598
+			defaultHierarchy: LocalDateTable_5e022b20-5d84-41a2-ac04-f1d011e6cb49.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column data_vencimento
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ef09d86e-264c-427d-b15d-be7f1cd2da04
+		summarizeBy: none
+		sourceColumn: data_vencimento
+
+		variation Variation
+			isDefault
+			relationship: ac359e11-93e9-4fcf-8901-62ad2efa6209
+			defaultHierarchy: LocalDateTable_8c0014fe-7d99-47df-8d87-35fe090c54e2.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column data_vencimento_real
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: f316198d-0274-4f7f-9c48-d9202fe824ac
+		summarizeBy: none
+		sourceColumn: data_vencimento_real
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column valor_titulo
+		dataType: double
+		lineageTag: 8fe7524b-68d2-453a-9b59-820e975d5dfd
+		summarizeBy: sum
+		sourceColumn: valor_titulo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column valor_iss
+		dataType: double
+		lineageTag: a065b306-cd50-4547-b7f3-5e9d59280384
+		summarizeBy: sum
+		sourceColumn: valor_iss
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column valor_irrf
+		dataType: double
+		lineageTag: 0e8b434b-3970-445b-9a5b-31c48b611212
+		summarizeBy: sum
+		sourceColumn: valor_irrf
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column saldo
+		dataType: double
+		lineageTag: 26dd69c0-ea55-4fbb-b424-7378b9d7a4cf
+		summarizeBy: sum
+		sourceColumn: saldo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column data_baixa
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 4ab091a7-0a9b-42da-bd08-02b650fcb18c
+		summarizeBy: none
+		sourceColumn: data_baixa
+
+		variation Variation
+			isDefault
+			relationship: cdabfa06-27fe-4b0d-b818-9b38fceb5511
+			defaultHierarchy: LocalDateTable_e694e27b-9630-4c64-aff9-d0a971fea793.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column historico
+		dataType: string
+		lineageTag: bd66a1f0-3fde-4c73-95be-a511e7df20fe
+		summarizeBy: none
+		sourceColumn: historico
+
+		annotation SummarizationSetBy = Automatic
+
+	column portador
+		dataType: string
+		lineageTag: 7b3815a3-6482-4553-8d96-85b197d2e54c
+		summarizeBy: none
+		sourceColumn: portador
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_ult_movimentacao
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8df5c8fc-c7e6-444b-8cfd-955ba38da6db
+		summarizeBy: none
+		sourceColumn: data_ult_movimentacao
+
+		variation Variation
+			isDefault
+			relationship: 87e9f5ac-6745-49fa-a8a7-0be0f3c62ccd
+			defaultHierarchy: LocalDateTable_d3040f55-175f-4ab7-88ec-4cedd27f6a51.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column numero_do_cheque
+		dataType: string
+		lineageTag: 8839083d-371c-4486-a76a-0df085757bb9
+		summarizeBy: none
+		sourceColumn: numero_do_cheque
+
+		annotation SummarizationSetBy = Automatic
+
+	column conta_contabil
+		dataType: string
+		lineageTag: 2cc55562-ba04-4caa-93b4-6047bd642efd
+		summarizeBy: none
+		sourceColumn: conta_contabil
+
+		annotation SummarizationSetBy = Automatic
+
+	column valor_multa
+		dataType: double
+		lineageTag: 08bd1477-c851-4d3f-913a-a1bcc7525362
+		summarizeBy: sum
+		sourceColumn: valor_multa
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column valor_juros
+		dataType: double
+		lineageTag: 67cab72c-8e37-46d2-90ae-51e369f0563d
+		summarizeBy: sum
+		sourceColumn: valor_juros
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column moeda
+		dataType: int64
+		formatString: 0
+		lineageTag: 1aeb0132-1046-4f4a-8166-f4f1b2507a13
+		summarizeBy: sum
+		sourceColumn: moeda
+
+		annotation SummarizationSetBy = Automatic
+
+	column numero_fatura
+		dataType: string
+		lineageTag: ab8e1730-eca4-41b6-894b-ded02bf8b603
+		summarizeBy: none
+		sourceColumn: numero_fatura
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_atualizacao_warehouse
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 47cbf73c-6ba9-499a-86ac-ca1db1f9522f
+		summarizeBy: none
+		sourceColumn: data_atualizacao_warehouse
+
+		variation Variation
+			isDefault
+			relationship: cdf79420-a917-4357-ac0e-3b13631e1f16
+			defaultHierarchy: LocalDateTable_dcd2a1bc-fd5e-45e0-ae27-95a32e09ea2c.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column agencia_depositaria
+		dataType: string
+		lineageTag: 685ac6c5-1ec3-49d8-92d3-032e1ee1190f
+		summarizeBy: none
+		sourceColumn: agencia_depositaria
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_cliente
+		dataType: string
+		lineageTag: d301e6f7-9dcb-4007-85ab-b5064674d98b
+		summarizeBy: none
+		sourceColumn: cod_cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column loja_cliente
+		dataType: string
+		lineageTag: c105e6c1-b551-408c-897e-894080ee8428
+		summarizeBy: none
+		sourceColumn: loja_cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column nome_cliente
+		dataType: string
+		lineageTag: 78fc3fba-4a4a-4d9d-b314-7e5084846d45
+		summarizeBy: none
+		sourceColumn: nome_cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_faturamento
+		dataType: string
+		lineageTag: 5b43e5ce-e217-4ebc-aac2-e94fd158db86
+		summarizeBy: none
+		sourceColumn: data_faturamento
+
+		annotation SummarizationSetBy = Automatic
+
+	column numero_banco
+		dataType: string
+		lineageTag: 50858268-684a-45a4-bc32-7670b7c4c48e
+		summarizeBy: none
+		sourceColumn: numero_banco
+
+		annotation SummarizationSetBy = Automatic
+
+	column situacao
+		dataType: string
+		lineageTag: e955dc3d-0255-4007-ab64-461997c09fda
+		summarizeBy: none
+		sourceColumn: situacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column numero_pedido
+		dataType: string
+		lineageTag: 8d818f6a-d142-40f1-adf5-c0978122a1bf
+		summarizeBy: none
+		sourceColumn: numero_pedido
+
+		annotation SummarizationSetBy = Automatic
+
+	column numero_nf
+		dataType: string
+		lineageTag: 0d9a20a0-fef4-41a8-8f8b-9627d4e31736
+		summarizeBy: none
+		sourceColumn: numero_nf
+
+		annotation SummarizationSetBy = Automatic
+
+	column serie_nf
+		dataType: string
+		lineageTag: d803257f-9a35-4d8e-81e7-287943c2d525
+		summarizeBy: none
+		sourceColumn: serie_nf
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: df271aed-2662-4a88-8acd-e3b3da550726
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column PR
+		dataType: string
+		lineageTag: f939b01e-a78f-4899-9e35-ee35b2f8cc06
+		summarizeBy: none
+		sourceColumn: PR
+
+		annotation SummarizationSetBy = Automatic
+
+	column valorpn
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 835dd57a-d1b4-465e-981a-2e5ce908e633
+		summarizeBy: sum
+		sourceColumn: valorpn
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column data_vencimento_ajustada =
+			
+			IF(
+			    projecao_caixa[saldo] > 0
+			        && projecao_caixa[data_vencimento_real] < TODAY(),
+			    TODAY(),
+			    projecao_caixa[data_vencimento_real]
+			)
+		formatString: General Date
+		lineageTag: 982bdf25-a15b-4f18-aa58-07756c0df3b6
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition projecao_caixa = m
+		mode: import
+		queryGroup: datalake
+		source =
+				let
+				    Fonte = Table.Combine({protheus_contasPagar, protheus_contasReceber}),
+				    #"Personalização Adicionada" = Table.AddColumn(Fonte, "valorpn", each if [PR] = "P" then -[valor_titulo]
+				else if [PR] = "R" then [valor_titulo]
+				else null),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Personalização Adicionada",{{"valorpn", Currency.Type}}),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Tipo Alterado", each [data_vencimento_real] <> null and [data_vencimento_real] <> "")
+				in
+				    #"Linhas Filtradas"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

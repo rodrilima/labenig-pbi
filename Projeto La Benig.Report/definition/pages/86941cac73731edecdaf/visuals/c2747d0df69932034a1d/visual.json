@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "c2747d0df69932034a1d",
   "position": {
-    "x": 438.14634146341473,
-    "y": 474.14634146341473,
+    "x": 157.37704918032787,
+    "y": 465.13661202185796,
     "z": 4000,
-    "height": 230.92682926829269,
-    "width": 553.17073170731715,
+    "height": 221.4936247723133,
+    "width": 545.57377049180332,
     "tabOrder": 4000
   },
   "visual": {
@@ -17,78 +17,32 @@
           "projections": [
             {
               "field": {
-                "HierarchyLevel": {
+                "Column": {
                   "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "fato_fluxo_caixa"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "data"
-                        }
-                      },
-                      "Hierarchy": "Hierarquia de datas"
+                    "SourceRef": {
+                      "Entity": "calendario"
                     }
                   },
-                  "Level": "Ano"
+                  "Property": "Date"
                 }
               },
-              "queryRef": "fato_fluxo_caixa.data.Variation.Hierarquia de datas.Ano",
-              "nativeQueryRef": "data Ano"
+              "queryRef": "calendario.Date",
+              "nativeQueryRef": "Date",
+              "format": "dd/MM/yy"
             },
             {
               "field": {
-                "HierarchyLevel": {
+                "Measure": {
                   "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "fato_fluxo_caixa"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "data"
-                        }
-                      },
-                      "Hierarchy": "Hierarquia de datas"
+                    "SourceRef": {
+                      "Entity": "medidas_financeiro"
                     }
                   },
-                  "Level": "Mês"
+                  "Property": "Saldo Realizado (antes)"
                 }
               },
-              "queryRef": "fato_fluxo_caixa.data.Variation.Hierarquia de datas.Mês",
-              "nativeQueryRef": "data Mês"
-            },
-            {
-              "field": {
-                "HierarchyLevel": {
-                  "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "fato_fluxo_caixa"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "data"
-                        }
-                      },
-                      "Hierarchy": "Hierarquia de datas"
-                    }
-                  },
-                  "Level": "Dia"
-                }
-              },
-              "queryRef": "fato_fluxo_caixa.data.Variation.Hierarquia de datas.Dia",
-              "nativeQueryRef": "data Dia"
+              "queryRef": "medidas_financeiro.Saldo Realizado (por dia)",
+              "nativeQueryRef": "Saldo Realizado (antes)"
             },
             {
               "field": {
@@ -97,77 +51,32 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "fato_fluxo_caixa"
+                          "Entity": "protheus_movimentosBancarios"
                         }
                       },
-                      "Property": "saldo_inicial"
+                      "Property": "valorpn"
                     }
                   },
                   "Function": 0
                 }
               },
-              "queryRef": "Sum(fato_fluxo_caixa.saldo_inicial)",
-              "nativeQueryRef": "Saldo Inicial",
-              "displayName": "Saldo Inicial"
+              "queryRef": "Sum(protheus_movimentosBancarios.valorpn)",
+              "nativeQueryRef": "Movimentação",
+              "displayName": "Movimentação"
             },
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "fato_fluxo_caixa"
-                        }
-                      },
-                      "Property": "entradas"
+                    "SourceRef": {
+                      "Entity": "medidas_financeiro"
                     }
                   },
-                  "Function": 0
+                  "Property": "Saldo Realizado (depois)"
                 }
               },
-              "queryRef": "Sum(fato_fluxo_caixa.entradas)",
-              "nativeQueryRef": "Entradas",
-              "displayName": "Entradas"
-            },
-            {
-              "field": {
-                "Aggregation": {
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "fato_fluxo_caixa"
-                        }
-                      },
-                      "Property": "saidas"
-                    }
-                  },
-                  "Function": 0
-                }
-              },
-              "queryRef": "Sum(fato_fluxo_caixa.saidas)",
-              "nativeQueryRef": "Saidas",
-              "displayName": "Saidas"
-            },
-            {
-              "field": {
-                "Aggregation": {
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "fato_fluxo_caixa"
-                        }
-                      },
-                      "Property": "saldo_final"
-                    }
-                  },
-                  "Function": 0
-                }
-              },
-              "queryRef": "Sum(fato_fluxo_caixa.saldo_final)",
-              "nativeQueryRef": "Soma de saldo_final"
+              "queryRef": "medidas_financeiro.Saldo Realizado (antes)",
+              "nativeQueryRef": "Saldo Realizado (depois)"
             }
           ]
         }
@@ -176,30 +85,90 @@
         "sort": [
           {
             "field": {
-              "HierarchyLevel": {
+              "Column": {
                 "Expression": {
-                  "Hierarchy": {
-                    "Expression": {
-                      "PropertyVariationSource": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "fato_fluxo_caixa"
-                          }
-                        },
-                        "Name": "Variation",
-                        "Property": "data"
-                      }
-                    },
-                    "Hierarchy": "Hierarquia de datas"
+                  "SourceRef": {
+                    "Entity": "calendario"
                   }
                 },
-                "Level": "Ano"
+                "Property": "Date"
               }
             },
             "direction": "Ascending"
           }
         ]
       }
+    },
+    "objects": {
+      "total": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "columnAdjustment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'growToFit'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "calendario.Date"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Realizado'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Condensed'"
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "drillFilterOtherVisuals": true
   }

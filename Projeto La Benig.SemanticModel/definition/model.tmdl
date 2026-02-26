@@ -22,7 +22,7 @@ annotation __PBI_TimeIntelligenceEnabled = 1
 
 annotation PBI_ProTooling = ["MCP-PBIModeling","DevMode"]
 
-annotation PBI_QueryOrder = ["protheus_contasBancarias","protheus_contasPagar","protheus_contasReceber","protheus_movimentosBancarios","dim_clientes","dim_produtos","dim_lojas","dim_data","fato_fluxo_caixa","fato_pedidos","fato_sac","fato_contas_receber","fato_contas_pagar","fato_resultado_operacional","fato_comportamento_cliente","fato_logistica_pedidos","medidas_financeiro","protheus_contatos","navegacao_modulos","navegacao_submodulos","_guia_nomenclatura_paginas"]
+annotation PBI_QueryOrder = ["protheus_contasBancarias","protheus_contasPagar","protheus_contasReceber","protheus_movimentosBancarios","dim_clientes","dim_produtos","dim_lojas","dim_data","fato_fluxo_caixa","fato_pedidos","fato_sac","fato_contas_receber","fato_contas_pagar","fato_resultado_operacional","fato_comportamento_cliente","fato_logistica_pedidos","medidas_financeiro","protheus_contatos","navegacao_modulos","navegacao_submodulos","_guia_nomenclatura_paginas","projecao_caixa","Entradas","Saidas"]
 
 ref table dim_clientes
 ref table dim_produtos
@@ -61,15 +61,12 @@ ref table protheus_contasBancarias
 ref table LocalDateTable_d846c162-cd31-4113-b127-17808b8e2812
 ref table protheus_contasPagar
 ref table LocalDateTable_b519e84d-9581-4c72-9812-aa12a9ef6e20
-ref table LocalDateTable_7f471689-e567-4191-92e5-442838f78efa
-ref table LocalDateTable_e2853529-6db9-4b2d-a00c-e9b84b67a8de
 ref table LocalDateTable_64bf4b89-8d97-45a0-b90d-789842ad8ae2
 ref table LocalDateTable_8fb9b101-a095-42ef-a771-47a6283028c6
 ref table LocalDateTable_ebd51af6-3978-4e54-80df-d6ec24ec41c2
 ref table protheus_contasReceber
 ref table LocalDateTable_43d02457-0394-44b8-a4c0-b9afd925f2c1
 ref table LocalDateTable_6fc32c8d-adc0-4006-8b81-beec3a8c5154
-ref table LocalDateTable_5e526ff1-0d33-4d25-80f9-785b220914d6
 ref table LocalDateTable_e9feb545-339c-4cfa-9342-1b87e1d2de53
 ref table LocalDateTable_e4666247-b35c-4df4-9a7f-e834f81e9a7c
 ref table protheus_movimentosBancarios
@@ -83,6 +80,21 @@ ref table navegacao_menu
 ref table navegacao_modulos
 ref table navegacao_submodulos
 ref table _guia_nomenclatura_paginas
+ref table LocalDateTable_fa06e6ad-0680-42f3-980a-d2b67c531a16
+ref table LocalDateTable_4b11cdba-851b-4ca2-a639-a44204b47b3d
+ref table projecao_caixa
+ref table LocalDateTable_5e022b20-5d84-41a2-ac04-f1d011e6cb49
+ref table LocalDateTable_e694e27b-9630-4c64-aff9-d0a971fea793
+ref table LocalDateTable_d3040f55-175f-4ab7-88ec-4cedd27f6a51
+ref table LocalDateTable_dcd2a1bc-fd5e-45e0-ae27-95a32e09ea2c
+ref table LocalDateTable_8c0014fe-7d99-47df-8d87-35fe090c54e2
+ref table LocalDateTable_72c0f105-1751-4cfb-89b3-f7c54327245f
+ref table Entradas
+ref table LocalDateTable_b3977c3d-5fd5-4ca9-a5fe-da54f66f6ef6
+ref table LocalDateTable_7c6c2472-4c23-40fe-80ef-d8b51e77d773
+ref table Saidas
+ref table LocalDateTable_8d226afb-9709-4d02-884e-0711dc2166c6
+ref table LocalDateTable_84bc05d6-47f9-4575-b7e6-df7f4206801b
 
 ref cultureInfo pt-BR
 
