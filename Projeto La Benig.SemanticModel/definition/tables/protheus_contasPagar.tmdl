@@ -106,8 +106,8 @@ table protheus_contasPagar
 
 		variation Variation
 			isDefault
-			relationship: a8a7d4c8-b5c1-46d4-ad2a-51c79e8f4b6e
-			defaultHierarchy: LocalDateTable_7f471689-e567-4191-92e5-442838f78efa.'Hierarquia de datas'
+			relationship: 2a1b2b3b-f9bb-40a1-9e77-6a47ef710cbb
+			defaultHierarchy: LocalDateTable_72c0f105-1751-4cfb-89b3-f7c54327245f.'Hierarquia de datas'
 
 		annotation SummarizationSetBy = Automatic
 
@@ -119,11 +119,6 @@ table protheus_contasPagar
 		lineageTag: 8e4e4329-a051-4cf1-b8e6-e9b5520f16d3
 		summarizeBy: none
 		sourceColumn: data_vencimento_real
-
-		variation Variation
-			isDefault
-			relationship: 6bc0306e-a942-4025-9edf-4d62a9b18118
-			defaultHierarchy: LocalDateTable_e2853529-6db9-4b2d-a00c-e9b84b67a8de.'Hierarquia de datas'
 
 		annotation SummarizationSetBy = Automatic
 
@@ -296,6 +291,7 @@ table protheus_contasPagar
 			)
 		dataType: int64
 		formatString: 0
+		lineageTag: 1ab656a6-f0f6-4a0c-a740-8673211756fa
 		summarizeBy: sum
 
 	/// Status do título: Pago, Atrasado ou Pendente
@@ -310,6 +306,7 @@ table protheus_contasPagar
 			    )
 			)
 		dataType: string
+		lineageTag: a17212c4-ad81-455e-bfe1-3bb79c62f648
 		summarizeBy: none
 
 	/// Faixa de aging: A Vencer, Vencido 1-30, 31-60, 61-90, +90
@@ -317,14 +314,23 @@ table protheus_contasPagar
 			SWITCH(
 			    TRUE(),
 			    protheus_contasPagar[saldo] <= 0, BLANK(),
-			    protheus_contasPagar[dias_em_aberto] < 0, "A Vencer",
+			    protheus_contasPagar[dias_em_aberto] <= 0, "A Vencer",
 			    protheus_contasPagar[dias_em_aberto] <= 30, "Vencido 1-30",
 			    protheus_contasPagar[dias_em_aberto] <= 60, "Vencido 31-60",
 			    protheus_contasPagar[dias_em_aberto] <= 90, "Vencido 61-90",
 			    "Vencido +90"
 			)
 		dataType: string
+		lineageTag: 1d0315ad-0dfa-4da0-8617-2236eed7dac4
 		summarizeBy: none
+
+	column PR
+		dataType: string
+		lineageTag: 06965aff-ca1e-48ee-9451-4c2aea30cb2c
+		summarizeBy: none
+		sourceColumn: PR
+
+		annotation SummarizationSetBy = Automatic
 
 	partition protheus_contasPagar = m
 		mode: import
@@ -335,9 +341,11 @@ table protheus_contasPagar
 				    #"coherent-window-444219-c1_Database" = Fonte{[Name="coherent-window-444219-c1",Kind="Database"]}[Data],
 				    datalake_Schema = #"coherent-window-444219-c1_Database"{[Name="datalake",Kind="Schema"]}[Data],
 				    protheus_contasPagar_Table = datalake_Schema{[Name="protheus_contasPagar",Kind="Table"]}[Data],
-				    #"Tipo Alterado" = Table.TransformColumnTypes(protheus_contasPagar_Table,{{"data_emissao", type date}, {"data_vencimento", type date}, {"data_vencimento_real", type date}, {"data_baixa", type date}, {"data_ult_movimentacao", type date}})
+				    #"Tipo Alterado" = Table.TransformColumnTypes(protheus_contasPagar_Table,{{"data_emissao", type date}, {"data_vencimento", type date}, {"data_vencimento_real", type date}, {"data_baixa", type date}, {"data_ult_movimentacao", type date}}),
+				    #"Personalização Adicionada" = Table.AddColumn(#"Tipo Alterado", "PR", each "P"),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Personalização Adicionada", each ([filial] = "010102"))
 				in
-				    #"Tipo Alterado"
+				    #"Linhas Filtradas"
 
 	annotation PBI_NavigationStepName = Navegação
 

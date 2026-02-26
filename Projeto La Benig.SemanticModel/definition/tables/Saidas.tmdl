@@ -1,0 +1,233 @@
+table Saidas
+	lineageTag: a1a32020-bba9-476e-9a46-2b3dd5cc330f
+
+	column Filial
+		dataType: int64
+		formatString: 0
+		lineageTag: 28b02136-87c9-41db-93bf-8fd1605c2ef3
+		summarizeBy: sum
+		sourceColumn: Filial
+
+		annotation SummarizationSetBy = Automatic
+
+	column Prefixo
+		dataType: int64
+		formatString: 0
+		lineageTag: 28287d27-b7be-4c1a-979f-a4d34c19883e
+		summarizeBy: sum
+		sourceColumn: Prefixo
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'No. Titulo'
+		dataType: string
+		lineageTag: ccb876bb-c398-4b9c-8d35-09a4d2b166af
+		summarizeBy: none
+		sourceColumn: No. Titulo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Parcela
+		dataType: int64
+		formatString: 0
+		lineageTag: 61f5ff34-1e9b-4d47-8674-e5c1285d37fc
+		summarizeBy: sum
+		sourceColumn: Parcela
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tipo
+		dataType: string
+		lineageTag: 170e197e-dbb0-4448-96a2-35fc34e85a55
+		summarizeBy: none
+		sourceColumn: Tipo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fornecedor
+		dataType: int64
+		formatString: 0
+		lineageTag: 252e84b0-ffd9-402a-be10-984e2c682171
+		summarizeBy: sum
+		sourceColumn: Fornecedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column Loja
+		dataType: int64
+		formatString: 0
+		lineageTag: 3b91f918-9631-4f64-bede-73c994dbb193
+		summarizeBy: none
+		sourceColumn: Loja
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nome do fornecedor'
+		dataType: string
+		lineageTag: 89d23de8-13ea-441d-a619-98286e3d2f05
+		summarizeBy: none
+		sourceColumn: Nome do fornecedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'DT Emissao'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: ac0657e1-f445-405e-be25-fad78235b349
+		summarizeBy: none
+		sourceColumn: DT Emissao
+
+		variation Variation
+			isDefault
+			relationship: 3699d9f3-9f39-44ab-b104-980587a68e64
+			defaultHierarchy: LocalDateTable_8d226afb-9709-4d02-884e-0711dc2166c6.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Vencto Real'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 09e02495-eed4-4501-b914-76b0105c4796
+		summarizeBy: none
+		sourceColumn: Vencto Real
+
+		variation Variation
+			isDefault
+			relationship: 14b8db07-8f17-43a7-9857-3befeac98205
+			defaultHierarchy: LocalDateTable_84bc05d6-47f9-4575-b7e6-df7f4206801b.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Moeda
+		dataType: string
+		lineageTag: d91fa945-4910-4003-87b3-4e0572c08db3
+		summarizeBy: none
+		sourceColumn: Moeda
+
+		annotation SummarizationSetBy = Automatic
+
+	column Natureza
+		dataType: int64
+		formatString: 0
+		lineageTag: 6fe058c6-45d4-4bb7-a5a3-1d516e3755e1
+		summarizeBy: sum
+		sourceColumn: Natureza
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Taxa moeda'
+		dataType: int64
+		formatString: 0
+		lineageTag: b59a2914-d71d-46ed-8276-1dc3f106bfeb
+		summarizeBy: sum
+		sourceColumn: Taxa moeda
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Vlr.Titulo'
+		dataType: double
+		lineageTag: dcccaaab-9b38-4dd4-bb56-89c5cf364ee2
+		summarizeBy: sum
+		sourceColumn: Vlr.Titulo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Saldo Moeda'
+		dataType: double
+		lineageTag: cadf0e62-65fc-488d-a8b2-aa7791afc0bf
+		summarizeBy: sum
+		sourceColumn: Saldo Moeda
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Saldo
+		dataType: double
+		lineageTag: 6cc1bc7d-3850-4dcf-86df-a432223417b0
+		summarizeBy: sum
+		sourceColumn: Saldo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Saldo a pagar'
+		dataType: double
+		lineageTag: 80eb6131-65da-4dfb-9184-91e132371f7e
+		summarizeBy: sum
+		sourceColumn: Saldo a pagar
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Sld.Decresc.'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3cf059b3-23fa-4b5e-8ac2-994f7176b189
+		summarizeBy: sum
+		sourceColumn: Sld.Decresc.
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sld.Acresc.'
+		dataType: int64
+		formatString: 0
+		lineageTag: 735b6b15-68e1-47fd-9034-17db0752c78e
+		summarizeBy: sum
+		sourceColumn: Sld.Acresc.
+
+		annotation SummarizationSetBy = Automatic
+
+	column Abatimentos
+		dataType: int64
+		formatString: 0
+		lineageTag: ddef978b-1e7d-43a8-add9-0a4610410412
+		summarizeBy: sum
+		sourceColumn: Abatimentos
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'VL acessorio'
+		dataType: int64
+		formatString: 0
+		lineageTag: 8dd22030-b0bf-47d5-a34b-5b282d922782
+		summarizeBy: sum
+		sourceColumn: VL acessorio
+
+		annotation SummarizationSetBy = Automatic
+
+	column Multa
+		dataType: int64
+		formatString: 0
+		lineageTag: 66daeef7-145e-4a4a-9872-73f4f1f82c70
+		summarizeBy: sum
+		sourceColumn: Multa
+
+		annotation SummarizationSetBy = Automatic
+
+	column Juros
+		dataType: int64
+		formatString: 0
+		lineageTag: 2e767b23-945b-4caa-affb-8b05abdf0fb3
+		summarizeBy: sum
+		sourceColumn: Juros
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Saidas = m
+		mode: import
+		source =
+				let
+				    Fonte = Excel.Workbook(File.Contents("C:\Users\rodel\Downloads\Detalhes - 01-03-2026 - 31-03-2026 25-02-2026.xlsx"), null, true),
+				    Saidas_Sheet = Fonte{[Item="Saidas",Kind="Sheet"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Saidas_Sheet, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"Filial", Int64.Type}, {"Prefixo", Int64.Type}, {"No. Titulo", type text}, {"Parcela", Int64.Type}, {"Tipo", type text}, {"Fornecedor", Int64.Type}, {"Loja", Int64.Type}, {"Nome do fornecedor", type text}, {"DT Emissao", type datetime}, {"Vencto Real", type datetime}, {"Moeda", type text}, {"Natureza", Int64.Type}, {"Taxa moeda", Int64.Type}, {"Vlr.Titulo", type number}, {"Saldo Moeda", type number}, {"Saldo", type number}, {"Saldo a pagar", type number}, {"Sld.Decresc.", Int64.Type}, {"Sld.Acresc.", Int64.Type}, {"Abatimentos", Int64.Type}, {"VL acessorio", Int64.Type}, {"Multa", Int64.Type}, {"Juros", Int64.Type}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+

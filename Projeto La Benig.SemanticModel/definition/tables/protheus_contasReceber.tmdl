@@ -128,11 +128,6 @@ table protheus_contasReceber
 		summarizeBy: none
 		sourceColumn: data_vencimento_real
 
-		variation Variation
-			isDefault
-			relationship: 767e2fcf-bf6d-4e45-9a4e-942827c4b80a
-			defaultHierarchy: LocalDateTable_5e526ff1-0d33-4d25-80f9-785b220914d6.'Hierarquia de datas'
-
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
@@ -179,6 +174,11 @@ table protheus_contasReceber
 		lineageTag: 728becff-5011-489e-83b8-868732d88afd
 		summarizeBy: none
 		sourceColumn: data_baixa
+
+		variation Variation
+			isDefault
+			relationship: 64d9ffa4-a02e-436c-a292-281af62aaafc
+			defaultHierarchy: LocalDateTable_4b11cdba-851b-4ca2-a639-a44204b47b3d.'Hierarquia de datas'
 
 		annotation SummarizationSetBy = Automatic
 
@@ -358,13 +358,35 @@ table protheus_contasReceber
 			SWITCH(
 			    TRUE(),
 			    protheus_contasReceber[saldo] <= 0, BLANK(),
-			    protheus_contasReceber[dias_em_aberto] < 0, "A Vencer",
+			    protheus_contasReceber[dias_em_aberto] <= 0, "A Vencer",
 			    protheus_contasReceber[dias_em_aberto] <= 30, "Vencido 1-30",
 			    protheus_contasReceber[dias_em_aberto] <= 60, "Vencido 31-60",
 			    protheus_contasReceber[dias_em_aberto] <= 90, "Vencido 61-90",
 			    "Vencido +90"
 			)
 		lineageTag: 4bf6104e-7df2-46d4-ab8d-e9e4e3b526b9
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column PR
+		dataType: string
+		lineageTag: caba3d0f-8393-446f-aaef-19e78da7f9c9
+		summarizeBy: none
+		sourceColumn: PR
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Status Descrição' =
+			
+			SWITCH(
+			    protheus_contasReceber[status],
+			    "A", "Aberto",
+			    "B", "Baixado",
+			    "R", "Reliquidado",
+			    "Desconhecido"
+			)
+		lineageTag: 09508500-bd8c-4a00-a396-8fce840edccd
 		summarizeBy: none
 
 		annotation SummarizationSetBy = Automatic
@@ -378,9 +400,11 @@ table protheus_contasReceber
 				    #"coherent-window-444219-c1_Database" = Fonte{[Name="coherent-window-444219-c1",Kind="Database"]}[Data],
 				    datalake_Schema = #"coherent-window-444219-c1_Database"{[Name="datalake",Kind="Schema"]}[Data],
 				    protheus_contasReceber_Table = datalake_Schema{[Name="protheus_contasReceber",Kind="Table"]}[Data],
-				    #"Tipo Alterado" = Table.TransformColumnTypes(protheus_contasReceber_Table,{{"data_emissao", type date}, {"data_vencimento", type date}, {"data_vencimento_real", type date}, {"data_ult_movimentacao", type date}, {"data_baixa", type date}})
+				    #"Tipo Alterado" = Table.TransformColumnTypes(protheus_contasReceber_Table,{{"data_emissao", type date}, {"data_vencimento", type date}, {"data_vencimento_real", type date}, {"data_ult_movimentacao", type date}, {"data_baixa", type date}}),
+				    #"Personalização Adicionada" = Table.AddColumn(#"Tipo Alterado", "PR", each "R"),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Personalização Adicionada", each ([filial] = "010102"))
 				in
-				    #"Tipo Alterado"
+				    #"Linhas Filtradas"
 
 	annotation PBI_NavigationStepName = Navegação
 

@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "35cdffc9c108e5551267",
   "position": {
-    "x": 778.829268292683,
-    "y": 208.09756097560975,
+    "x": 732.40121580547111,
+    "y": 208.14589665653497,
     "z": 2000,
-    "height": 218.63414634146343,
-    "width": 465.36585365853659,
+    "height": 218.84498480243161,
+    "width": 519.39209726443767,
     "tabOrder": 2000
   },
   "visual": {
@@ -17,28 +17,17 @@
           "projections": [
             {
               "field": {
-                "HierarchyLevel": {
+                "Column": {
                   "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "fato_fluxo_caixa"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "data"
-                        }
-                      },
-                      "Hierarchy": "Hierarquia de datas"
+                    "SourceRef": {
+                      "Entity": "protheus_contasBancarias"
                     }
                   },
-                  "Level": "Dia"
+                  "Property": "nome"
                 }
               },
-              "queryRef": "fato_fluxo_caixa.data.Variation.Hierarquia de datas.Dia",
-              "nativeQueryRef": "data Dia",
+              "queryRef": "protheus_contasBancarias.nome",
+              "nativeQueryRef": "nome",
               "active": true
             }
           ]
@@ -52,38 +41,17 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "fato_fluxo_caixa"
+                          "Entity": "protheus_contasBancarias"
                         }
                       },
-                      "Property": "entradas"
+                      "Property": "saldo_atual"
                     }
                   },
                   "Function": 0
                 }
               },
-              "queryRef": "Sum(fato_fluxo_caixa.entradas)",
-              "nativeQueryRef": "Entradas",
-              "displayName": "Entradas"
-            },
-            {
-              "field": {
-                "Aggregation": {
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "fato_fluxo_caixa"
-                        }
-                      },
-                      "Property": "saidas"
-                    }
-                  },
-                  "Function": 0
-                }
-              },
-              "queryRef": "Sum(fato_fluxo_caixa.saidas)",
-              "nativeQueryRef": "Saidas",
-              "displayName": "Saidas"
+              "queryRef": "Sum(protheus_contasBancarias.saldo_atual)",
+              "nativeQueryRef": "Soma de saldo_atual"
             }
           ]
         }
@@ -92,27 +60,21 @@
         "sort": [
           {
             "field": {
-              "HierarchyLevel": {
+              "Aggregation": {
                 "Expression": {
-                  "Hierarchy": {
+                  "Column": {
                     "Expression": {
-                      "PropertyVariationSource": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "fato_fluxo_caixa"
-                          }
-                        },
-                        "Name": "Variation",
-                        "Property": "data"
+                      "SourceRef": {
+                        "Entity": "protheus_contasBancarias"
                       }
                     },
-                    "Hierarchy": "Hierarquia de datas"
+                    "Property": "saldo_atual"
                   }
                 },
-                "Level": "Dia"
+                "Function": 0
               }
             },
-            "direction": "Ascending"
+            "direction": "Descending"
           }
         ],
         "isDefaultSort": true
@@ -120,42 +82,6 @@
     },
     "objects": {
       "dataPoint": [
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#2B4000'"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Sum(fato_fluxo_caixa.entradas)"
-          }
-        },
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#99373D'"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Sum(fato_fluxo_caixa.saidas)"
-          }
-        },
         {
           "properties": {
             "fill": {
@@ -192,6 +118,32 @@
             "metadata": "Sum(fato_fluxo_caixa.saldo_final)"
           }
         }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "visualContainerObjects": {
@@ -201,7 +153,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Projeção de Caixa'"
+                  "Value": "'Saldo Atual'"
                 }
               }
             },

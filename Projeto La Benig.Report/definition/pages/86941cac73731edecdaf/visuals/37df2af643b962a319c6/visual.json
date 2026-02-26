@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "37df2af643b962a319c6",
   "position": {
     "x": 158.04878048780489,
@@ -17,22 +17,18 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "fato_fluxo_caixa"
-                        }
-                      },
-                      "Property": "saldo_inicial"
+                    "SourceRef": {
+                      "Entity": "medidas_financeiro"
                     }
                   },
-                  "Function": 0
+                  "Property": "Saldo Inicial (caixa)"
                 }
               },
-              "queryRef": "Sum(fato_fluxo_caixa.saldo_inicial)",
-              "nativeQueryRef": "Soma de saldo_inicial"
+              "queryRef": "medidas_financeiro.Saldo Inicial (caixa)",
+              "nativeQueryRef": "Saldo Inicial (caixa)",
+              "format": "\"R$\" #,0.0000;-\"R$\" #,0.0000;\"R$\" #,0.0000"
             }
           ]
         }
@@ -41,18 +37,13 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Measure": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "fato_fluxo_caixa"
-                      }
-                    },
-                    "Property": "saldo_inicial"
+                  "SourceRef": {
+                    "Entity": "medidas_financeiro"
                   }
                 },
-                "Function": 0
+                "Property": "Saldo Inicial (caixa)"
               }
             },
             "direction": "Descending"
@@ -199,6 +190,38 @@
         }
       ],
       "label": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ],
+      "shapeCustomRectangle": [
+        {
+          "properties": {
+            "rectangleRoundedCurve": {
+              "expr": {
+                "Literal": {
+                  "Value": "0L"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ],
+      "outline": [
         {
           "properties": {
             "show": {

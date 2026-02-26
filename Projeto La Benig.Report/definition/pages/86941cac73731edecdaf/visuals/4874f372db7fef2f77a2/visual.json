@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "4874f372db7fef2f77a2",
   "position": {
     "x": 536.48780487804879,
@@ -17,22 +17,18 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "fato_fluxo_caixa"
-                        }
-                      },
-                      "Property": "entradas"
+                    "SourceRef": {
+                      "Entity": "medidas_financeiro"
                     }
                   },
-                  "Function": 0
+                  "Property": "Total Entrada"
                 }
               },
-              "queryRef": "Sum(fato_fluxo_caixa.entradas)",
-              "nativeQueryRef": "Soma de entradas"
+              "queryRef": "medidas_financeiro.Total Entrada",
+              "nativeQueryRef": "Total Entrada",
+              "format": "\"R$\" #,0.00;-\"R$\" #,0.00;\"R$\" #,0.00"
             }
           ]
         }
@@ -41,18 +37,13 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Measure": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "fato_fluxo_caixa"
-                      }
-                    },
-                    "Property": "entradas"
+                  "SourceRef": {
+                    "Entity": "medidas_financeiro"
                   }
                 },
-                "Function": 0
+                "Property": "Total Entrada"
               }
             },
             "direction": "Descending"
@@ -205,6 +196,22 @@
               "expr": {
                 "Literal": {
                   "Value": "'center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ],
+      "outline": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
@@ -422,5 +429,24 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "14c41e76488e7000c85e",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_movimentosBancarios"
+              }
+            },
+            "Property": "receb_pagto"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      }
+    ]
   }
 }

@@ -29,21 +29,23 @@ Projeto La Benig.SemanticModel/        # Data model layer
 
 ### Query Groups (Data Sources)
 
-| Group | Description |
-|-------|-------------|
-| `datalake` | Live production data from **Google BigQuery** (`coherent-window-444219-c1` project, `datalake` schema). Used for `protheus_*` tables. |
-| `mocks` | In-memory M code tables for development/demo (most `fato_*` and `dim_*` tables). |
-| `dw` | Reserved query group (currently unused). |
+| Group        | Description                                                                                                                                      |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `datalake` | Live production data from**Google BigQuery** (`coherent-window-444219-c1` project, `datalake` schema). Used for `protheus_*` tables. |
+| `mocks`    | In-memory M code tables for development/demo (most `fato_*` and `dim_*` tables).                                                             |
+| `dw`       | Reserved query group (currently unused).                                                                                                         |
 
 ### Key Tables
 
 **Protheus (ERP — BigQuery source):**
+
 - `protheus_contasReceber` — Accounts receivable titles with aging, status, and customer data
 - `protheus_contasPagar` — Accounts payable
 - `protheus_contasBancarias` / `protheus_movimentosBancarios` — Bank accounts and transactions
 - `protheus_contatos` — Customer contacts
 
 **Fact tables (mock data):**
+
 - `fato_pedidos` — Sales orders; `canal` column distinguishes `"Atacado"` vs `"E-commerce"`
 - `fato_fluxo_caixa` — Cash flow
 - `fato_contas_receber` / `fato_contas_pagar` — AR/AP (separate from Protheus, mock)
@@ -53,10 +55,12 @@ Projeto La Benig.SemanticModel/        # Data model layer
 - `fato_sac` — Customer service tickets
 
 **Dimension tables:**
+
 - `dim_clientes`, `dim_produtos`, `dim_lojas`, `dim_data`
 - `calendario` — Used for Protheus date relationships (connected via `protheus_contasReceber[data_baixa]`)
 
 **Navigation tables (all hidden):**
+
 - `navegacao_modulos` — Top-level module menu (6 modules)
 - `navegacao_submodulos` — Sub-page navigation per module
 - `navegacao_menu` — Menu control
@@ -70,14 +74,14 @@ All financial KPIs live in `medidas_financeiro.tmdl`. Measures use a `CR ` prefi
 
 Pages are named with a module prefix. The canonical list is defined in `_guia_nomenclatura_paginas`:
 
-| Module | Pages |
-|--------|-------|
-| Home | Home |
-| Financeiro (`FIN`) | Caixa & Liquidez, Contas a Receber, Contas a Pagar, Resultado Operacional |
-| Vendas (`VEN`) | Atacado Visão Geral, Atacado Mapa Geográfico, E-commerce Performance, E-commerce Base Clientes |
-| Logística (`LOG`) | Pedidos, SLAs |
-| SAC | Atendimento |
-| Visão Executiva | Visão Executiva |
+| Module               | Pages                                                                                            |
+| -------------------- | ------------------------------------------------------------------------------------------------ |
+| Home                 | Home                                                                                             |
+| Financeiro (`FIN`) | Caixa & Liquidez, Contas a Receber, Contas a Pagar, Resultado Operacional                        |
+| Vendas (`VEN`)     | Atacado Visão Geral, Atacado Mapa Geográfico, E-commerce Performance, E-commerce Base Clientes |
+| Logística (`LOG`) | Pedidos, SLAs                                                                                    |
+| SAC                  | Atendimento                                                                                      |
+| Visão Executiva     | Visão Executiva                                                                                 |
 
 Page folders use GUIDs as names. To find which GUID corresponds to which page, check the `displayName` inside each page's folder or match against `pages.json` ordering.
 
@@ -107,3 +111,21 @@ Page folders use GUIDs as names. To find which GUID corresponds to which page, c
 - To add/update tables → use `mcp__powerbi-modeling-mcp__table_operations`
 - Before any MCP operation, connect to the running Power BI Desktop instance via `mcp__powerbi-modeling-mcp__connection_operations` (operation: `ListLocalInstances`, then `Connect`)
 - **`visual.json` files** (report layer) CAN be edited directly with Edit/Write tools — they are not managed by MCP.
+
+## Ordem de Edição (Workflow Obrigatório)
+
+> **REGRA CRÍTICA — nunca violar esta ordem. Erros aqui causam perda de trabalho.**
+
+**Sempre que uma tarefa envolver TMDL + visual.json:**
+
+1. **Primeiro: TMDL via MCP** — criar/atualizar medidas, colunas ou tabelas
+2. **→ Instrução ao usuário: "Salve no Power BI Desktop agora (Ctrl+S)"** — aguardar confirmação antes de continuar
+3. **Segundo: visual.json via Edit/Write** — editar os visuais da camada de relatório
+4. **→ Instrução ao usuário: "Reinicie o Power BI Desktop agora (feche e reabra o .pbip)"** — NÃO pedir Ctrl+S aqui
+
+**Regras explícitas para as mensagens ao usuário:**
+
+- Após etapa TMDL (MCP): pedir **Ctrl+S** (salvar)
+- Após etapa visual.json (Edit/Write): pedir **reiniciar** (fechar e reabrir o .pbip) — **NUNCA pedir Ctrl+S após editar visual.json**
+- O Power BI Desktop NÃO detecta arquivos visual.json novos/editados em tempo real — só carrega ao reabrir o projeto
+- Ctrl+S no PBI Desktop **sobrescreve** o visual.json editado manualmente se feito após a edição

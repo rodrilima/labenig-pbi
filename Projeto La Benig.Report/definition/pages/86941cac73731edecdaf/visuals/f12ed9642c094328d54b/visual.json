@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "f12ed9642c094328d54b",
   "position": {
     "x": 158.04878048780489,
@@ -17,28 +17,17 @@
           "projections": [
             {
               "field": {
-                "HierarchyLevel": {
+                "Column": {
                   "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "fato_fluxo_caixa"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "data"
-                        }
-                      },
-                      "Hierarchy": "Hierarquia de datas"
+                    "SourceRef": {
+                      "Entity": "calendario"
                     }
                   },
-                  "Level": "Dia"
+                  "Property": "Date"
                 }
               },
-              "queryRef": "fato_fluxo_caixa.data.Variation.Hierarquia de datas.Dia",
-              "nativeQueryRef": "data Dia",
+              "queryRef": "calendario.Date",
+              "nativeQueryRef": "Date",
               "active": true
             }
           ]
@@ -47,22 +36,33 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "fato_fluxo_caixa"
-                        }
-                      },
-                      "Property": "saldo_final"
+                    "SourceRef": {
+                      "Entity": "medidas_financeiro"
                     }
                   },
-                  "Function": 0
+                  "Property": "Saldo Realizado (depois)"
                 }
               },
-              "queryRef": "Sum(fato_fluxo_caixa.saldo_final)",
-              "nativeQueryRef": "Soma de saldo_final"
+              "queryRef": "medidas_financeiro.Saldo Realizado (depois)",
+              "nativeQueryRef": "Realizado",
+              "displayName": "Realizado"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "medidas_financeiro"
+                    }
+                  },
+                  "Property": "Saldo Projetado (depois)"
+                }
+              },
+              "queryRef": "medidas_financeiro.SaldoPN (por dia)",
+              "nativeQueryRef": "Projetado",
+              "displayName": "Projetado"
             }
           ]
         }
@@ -71,24 +71,13 @@
         "sort": [
           {
             "field": {
-              "HierarchyLevel": {
+              "Column": {
                 "Expression": {
-                  "Hierarchy": {
-                    "Expression": {
-                      "PropertyVariationSource": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "fato_fluxo_caixa"
-                          }
-                        },
-                        "Name": "Variation",
-                        "Property": "data"
-                      }
-                    },
-                    "Hierarchy": "Hierarquia de datas"
+                  "SourceRef": {
+                    "Entity": "calendario"
                   }
                 },
-                "Level": "Dia"
+                "Property": "Date"
               }
             },
             "direction": "Ascending"
@@ -98,6 +87,22 @@
       }
     },
     "objects": {
+      "lineStyles": [
+        {
+          "properties": {
+            "lineStyle": {
+              "expr": {
+                "Literal": {
+                  "Value": "'dashed'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "medidas_financeiro.SaldoPN (por dia)"
+          }
+        }
+      ],
       "dataPoint": [
         {
           "properties": {
@@ -105,8 +110,9 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#E4A34B'"
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": 0
                     }
                   }
                 }
@@ -114,7 +120,25 @@
             }
           },
           "selector": {
-            "metadata": "Sum(fato_fluxo_caixa.saldo_final)"
+            "metadata": "medidas_financeiro.SaldoPN (por dia)"
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#0F803A'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "medidas_financeiro.Saldo Realizado (depois)"
           }
         }
       ]
