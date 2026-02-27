@@ -268,27 +268,22 @@ relationship 34cfabe6-02c1-427c-6325-fa71106a4732
 	fromColumn: projecao_caixa.data_vencimento_ajustada
 	toColumn: calendario.Date
 
-relationship ce332a68-8337-4a58-8839-34c518084566
-	joinOnDateBehavior: datePartOnly
-	fromColumn: Entradas.'DT Emissao'
-	toColumn: LocalDateTable_b3977c3d-5fd5-4ca9-a5fe-da54f66f6ef6.Date
+relationship AutoDetected_1617a476-55bf-499b-9ae4-43337e4e21d1
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: protheus_contasPagar.recno
+	toColumn: protheus_contasReceber.recno
 
-relationship 9a149ccd-e1e0-4168-a6fd-26e251d1e8b4
-	joinOnDateBehavior: datePartOnly
-	fromColumn: Entradas.'Vencto real'
-	toColumn: LocalDateTable_7c6c2472-4c23-40fe-80ef-d8b51e77d773.Date
+relationship AutoDetected_a8f71bc6-2547-4113-8e83-1f3db2e9df65
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: protheus_movimentosBancarios.recno
+	toColumn: protheus_contasReceber.recno
 
-relationship 3699d9f3-9f39-44ab-b104-980587a68e64
-	joinOnDateBehavior: datePartOnly
-	fromColumn: Saidas.'DT Emissao'
-	toColumn: LocalDateTable_8d226afb-9709-4d02-884e-0711dc2166c6.Date
-
-relationship 14b8db07-8f17-43a7-9857-3befeac98205
-	joinOnDateBehavior: datePartOnly
-	fromColumn: Saidas.'Vencto Real'
-	toColumn: LocalDateTable_84bc05d6-47f9-4575-b7e6-df7f4206801b.Date
-
-relationship AutoDetected_80358349-614e-4aa8-b175-181ad43ec708
-	fromColumn: Saidas.Loja
-	toColumn: dim_lojas.loja_id
+relationship AutoDetected_83f1347b-1a9f-4d06-9fbc-2de430ddcd92
+	isActive: false
+	fromColumn: projecao_caixa.recno
+	toColumn: protheus_contasReceber.recno
 

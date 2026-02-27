@@ -299,7 +299,8 @@
               }
             }
           ]
-        }
+        },
+        "howCreated": "User"
       },
       {
         "name": "f25745d5900ddd86d49b",
@@ -342,6 +343,34 @@
               }
             },
             "Property": "CP Dias em Atraso"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "fa7111503cb5bead502c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_contasPagar"
+              }
+            },
+            "Property": "cod_fornecedor"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "26518d38e9523eea9d20",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "medidas_financeiro"
+              }
+            },
+            "Property": "CP Status do Fornecedor"
           }
         },
         "type": "Advanced"

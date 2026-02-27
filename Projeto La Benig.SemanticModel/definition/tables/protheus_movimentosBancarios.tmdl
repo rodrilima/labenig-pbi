@@ -415,6 +415,23 @@ table protheus_movimentosBancarios
 
 		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
 
+	column deletado
+		dataType: string
+		lineageTag: 6c59c0bc-5ab6-4158-99c0-276f02b9f90b
+		summarizeBy: none
+		sourceColumn: deletado
+
+		annotation SummarizationSetBy = Automatic
+
+	column recno
+		dataType: int64
+		formatString: 0
+		lineageTag: 268dfd33-7cb9-42db-8ee2-e2e2f0331f3a
+		summarizeBy: sum
+		sourceColumn: recno
+
+		annotation SummarizationSetBy = Automatic
+
 	partition protheus_movimentosBancarios = m
 		mode: import
 		queryGroup: datalake
@@ -429,7 +446,7 @@ table protheus_movimentosBancarios
 				else if [receb_pagto] = "R" then [valor]
 				else null),
 				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Personalização Adicionada",{{"valorpn", Currency.Type}}),
-				    #"Linhas Filtradas" = Table.SelectRows(#"Tipo Alterado1", each ([filial] = "010102"))
+				    #"Linhas Filtradas" = Table.SelectRows(#"Tipo Alterado1", each ([filial] = "010102") and ([deletado] = ""))
 				in
 				    #"Linhas Filtradas"
 

@@ -334,5 +334,37 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "255562ded77739c41d67",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_contasPagar"
+              }
+            },
+            "Property": "faixa_aging"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "ef35eeb7037e318ebe6a",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "medidas_financeiro"
+              }
+            },
+            "Property": "CP Valor Aging"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

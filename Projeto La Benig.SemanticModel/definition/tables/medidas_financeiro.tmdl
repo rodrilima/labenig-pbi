@@ -566,11 +566,15 @@ table medidas_financeiro
 
 	measure 'CP Dias em Atraso' =
 			
-			VAR dias =
-			    DATEDIFF(
+			VAR dataMin =
+			    CALCULATE(
 			        MIN(protheus_contasPagar[data_vencimento]),
-			        TODAY(),
-			        DAY
+			        protheus_contasPagar[status_pagamento] = "Atrasado"
+			    )
+			VAR dias =
+			    IF(
+			        NOT ISBLANK(dataMin),
+			        DATEDIFF(dataMin, TODAY(), DAY)
 			    )
 			RETURN
 			IF(dias > 0, dias, 0)
