@@ -400,6 +400,23 @@ table projecao_caixa
 
 		annotation SummarizationSetBy = Automatic
 
+	column deletado
+		dataType: string
+		lineageTag: 1063635c-c30c-4f86-b820-14deef98f68c
+		summarizeBy: none
+		sourceColumn: deletado
+
+		annotation SummarizationSetBy = Automatic
+
+	column recno
+		dataType: int64
+		formatString: 0
+		lineageTag: 0c313826-d1e1-4af6-9f24-5262d3b71cc9
+		summarizeBy: sum
+		sourceColumn: recno
+
+		annotation SummarizationSetBy = Automatic
+
 	partition projecao_caixa = m
 		mode: import
 		queryGroup: datalake

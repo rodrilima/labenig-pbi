@@ -146,5 +146,112 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "74c06bbe079098d07026",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_contasPagar"
+              }
+            },
+            "Property": "data_vencimento_real"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "132bd9811a0e3b30be1b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_contasPagar"
+              }
+            },
+            "Property": "numero_titulo"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "6c114000ab118009549e",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_contasPagar"
+              }
+            },
+            "Property": "parcela"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "84249b7143aa00ad83dc",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_contasPagar"
+              }
+            },
+            "Property": "cod_fornecedor"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "34cde82764dca014c64d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_contasPagar"
+              }
+            },
+            "Property": "nome_fornecedor"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "da5e62251472723d6a00",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "protheus_contasPagar"
+                  }
+                },
+                "Property": "valor_titulo"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "61260a42dcc02020d23c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_contasPagar"
+              }
+            },
+            "Property": "status_pagamento"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }

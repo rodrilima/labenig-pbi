@@ -22,7 +22,7 @@ annotation __PBI_TimeIntelligenceEnabled = 1
 
 annotation PBI_ProTooling = ["MCP-PBIModeling","DevMode"]
 
-annotation PBI_QueryOrder = ["protheus_contasBancarias","protheus_contasPagar","protheus_contasReceber","protheus_movimentosBancarios","dim_clientes","dim_produtos","dim_lojas","dim_data","fato_fluxo_caixa","fato_pedidos","fato_sac","fato_contas_receber","fato_contas_pagar","fato_resultado_operacional","fato_comportamento_cliente","fato_logistica_pedidos","medidas_financeiro","protheus_contatos","navegacao_modulos","navegacao_submodulos","_guia_nomenclatura_paginas","projecao_caixa","Entradas","Saidas"]
+annotation PBI_QueryOrder = ["protheus_contasBancarias","protheus_contasPagar","protheus_contasReceber","protheus_movimentosBancarios","dim_clientes","dim_produtos","dim_lojas","dim_data","fato_fluxo_caixa","fato_pedidos","fato_sac","fato_contas_receber","fato_contas_pagar","fato_resultado_operacional","fato_comportamento_cliente","fato_logistica_pedidos","medidas_financeiro","protheus_contatos","navegacao_modulos","navegacao_submodulos","_guia_nomenclatura_paginas","projecao_caixa"]
 
 ref table dim_clientes
 ref table dim_produtos
@@ -89,12 +89,6 @@ ref table LocalDateTable_d3040f55-175f-4ab7-88ec-4cedd27f6a51
 ref table LocalDateTable_dcd2a1bc-fd5e-45e0-ae27-95a32e09ea2c
 ref table LocalDateTable_8c0014fe-7d99-47df-8d87-35fe090c54e2
 ref table LocalDateTable_72c0f105-1751-4cfb-89b3-f7c54327245f
-ref table Entradas
-ref table LocalDateTable_b3977c3d-5fd5-4ca9-a5fe-da54f66f6ef6
-ref table LocalDateTable_7c6c2472-4c23-40fe-80ef-d8b51e77d773
-ref table Saidas
-ref table LocalDateTable_8d226afb-9709-4d02-884e-0711dc2166c6
-ref table LocalDateTable_84bc05d6-47f9-4575-b7e6-df7f4206801b
 
 ref cultureInfo pt-BR
 

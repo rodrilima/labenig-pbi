@@ -391,6 +391,23 @@ table protheus_contasReceber
 
 		annotation SummarizationSetBy = Automatic
 
+	column deletado
+		dataType: string
+		lineageTag: 681e5922-b2f2-4ec1-b1a4-2a5916f13cb1
+		summarizeBy: none
+		sourceColumn: deletado
+
+		annotation SummarizationSetBy = Automatic
+
+	column recno
+		dataType: int64
+		formatString: 0
+		lineageTag: 3e4eba38-10b3-48d9-8d71-17efe303fcda
+		summarizeBy: sum
+		sourceColumn: recno
+
+		annotation SummarizationSetBy = Automatic
+
 	partition protheus_contasReceber = m
 		mode: import
 		queryGroup: datalake
@@ -402,7 +419,7 @@ table protheus_contasReceber
 				    protheus_contasReceber_Table = datalake_Schema{[Name="protheus_contasReceber",Kind="Table"]}[Data],
 				    #"Tipo Alterado" = Table.TransformColumnTypes(protheus_contasReceber_Table,{{"data_emissao", type date}, {"data_vencimento", type date}, {"data_vencimento_real", type date}, {"data_ult_movimentacao", type date}, {"data_baixa", type date}}),
 				    #"Personalização Adicionada" = Table.AddColumn(#"Tipo Alterado", "PR", each "R"),
-				    #"Linhas Filtradas" = Table.SelectRows(#"Personalização Adicionada", each ([filial] = "010102"))
+				    #"Linhas Filtradas" = Table.SelectRows(#"Personalização Adicionada", each ([filial] = "010102") and ([deletado] = ""))
 				in
 				    #"Linhas Filtradas"
 
