@@ -80,3 +80,5 @@ table navegacao_submodulos
 				    Fonte
 				```
 
+	annotation PBI_ResultType = Table
+

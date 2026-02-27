@@ -399,15 +399,6 @@ table protheus_contasReceber
 
 		annotation SummarizationSetBy = Automatic
 
-	column recno
-		dataType: int64
-		formatString: 0
-		lineageTag: 3e4eba38-10b3-48d9-8d71-17efe303fcda
-		summarizeBy: sum
-		sourceColumn: recno
-
-		annotation SummarizationSetBy = Automatic
-
 	partition protheus_contasReceber = m
 		mode: import
 		queryGroup: datalake
@@ -417,7 +408,8 @@ table protheus_contasReceber
 				    #"coherent-window-444219-c1_Database" = Fonte{[Name="coherent-window-444219-c1",Kind="Database"]}[Data],
 				    datalake_Schema = #"coherent-window-444219-c1_Database"{[Name="datalake",Kind="Schema"]}[Data],
 				    protheus_contasReceber_Table = datalake_Schema{[Name="protheus_contasReceber",Kind="Table"]}[Data],
-				    #"Tipo Alterado" = Table.TransformColumnTypes(protheus_contasReceber_Table,{{"data_emissao", type date}, {"data_vencimento", type date}, {"data_vencimento_real", type date}, {"data_ult_movimentacao", type date}, {"data_baixa", type date}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(protheus_contasReceber_Table,{"recno"}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Colunas Removidas",{{"data_emissao", type date}, {"data_vencimento", type date}, {"data_vencimento_real", type date}, {"data_ult_movimentacao", type date}, {"data_baixa", type date}}),
 				    #"Personalização Adicionada" = Table.AddColumn(#"Tipo Alterado", "PR", each "R"),
 				    #"Linhas Filtradas" = Table.SelectRows(#"Personalização Adicionada", each ([filial] = "010102") and ([deletado] = ""))
 				in

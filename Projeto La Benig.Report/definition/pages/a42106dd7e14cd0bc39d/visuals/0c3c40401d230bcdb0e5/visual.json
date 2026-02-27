@@ -307,6 +307,25 @@
             }
           ]
         }
+      },
+      {
+        "name": "a4367b864e05dd49d315",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "protheus_movimentosBancarios"
+                  }
+                },
+                "Property": "valor"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

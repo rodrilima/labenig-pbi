@@ -49,3 +49,5 @@ table _guia_nomenclatura_paginas
 				in
 				    Fonte
 
+	annotation PBI_ResultType = Table
+

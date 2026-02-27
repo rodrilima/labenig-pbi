@@ -329,32 +329,6 @@
             "width": 234
           },
           "zIndex": 0
-        },
-        {
-          "location": {
-            "x": 5843.2181098123528,
-            "y": 353.29583200817706
-          },
-          "nodeIndex": "Entradas",
-          "nodeLineageTag": "d19925c9-a43e-4745-98d1-37f69a43b8d4",
-          "size": {
-            "height": 300,
-            "width": 234
-          },
-          "zIndex": 0
-        },
-        {
-          "location": {
-            "x": 6127.2181098123528,
-            "y": 353.29583200817706
-          },
-          "nodeIndex": "Saidas",
-          "nodeLineageTag": "a1a32020-bba9-476e-9a46-2b3dd5cc330f",
-          "size": {
-            "height": 300,
-            "width": 234
-          },
-          "zIndex": 0
         }
       ],
       "name": "Todas as tabelas",
@@ -527,6 +501,6 @@
       "tablesLocked": false
     }
   ],
-  "selectedDiagram": "MovimentosBancarios",
+  "selectedDiagram": "ContasAReceber",
   "defaultDiagram": "Todas as tabelas"
 }
