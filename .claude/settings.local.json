@@ -5,7 +5,8 @@
       "mcp__powerbi-modeling-mcp__column_operations",
       "mcp__powerbi-modeling-mcp__batch_measure_operations",
       "mcp__powerbi-modeling-mcp__table_operations",
-      "mcp__powerbi-modeling-mcp__measure_operations"
+      "mcp__powerbi-modeling-mcp__measure_operations",
+      "Bash(git config:*)"
     ]
   }
 }

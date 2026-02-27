@@ -263,6 +263,11 @@ relationship e38d1d25-c1de-6e3b-b22b-14d4a289c48f
 	fromColumn: protheus_contasPagar.data_vencimento_real
 	toColumn: calendario.Date
 
+relationship 34cfabe6-02c1-427c-6325-fa71106a4732
+	isActive: false
+	fromColumn: projecao_caixa.data_vencimento_ajustada
+	toColumn: calendario.Date
+
 relationship ce332a68-8337-4a58-8839-34c518084566
 	joinOnDateBehavior: datePartOnly
 	fromColumn: Entradas.'DT Emissao'
@@ -286,9 +291,4 @@ relationship 14b8db07-8f17-43a7-9857-3befeac98205
 relationship AutoDetected_80358349-614e-4aa8-b175-181ad43ec708
 	fromColumn: Saidas.Loja
 	toColumn: dim_lojas.loja_id
-
-relationship 34cfabe6-02c1-427c-6325-fa71106a4732
-	isActive: false
-	fromColumn: projecao_caixa.data_vencimento_ajustada
-	toColumn: calendario.Date
 
