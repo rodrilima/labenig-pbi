@@ -1,0 +1,19 @@
+# Normaliza line endings para LF no git (resolve CRLF do Power BI Desktop no Windows)
+
+# Arquivos de texto genéricos
+* text=auto
+
+# Power BI PBIP — forçar LF
+*.json        text eol=lf
+*.tmdl        text eol=lf
+*.pbip        text eol=lf
+*.pbir        text eol=lf
+*.pbism       text eol=lf
+.platform     text eol=lf
+
+# Binários — sem conversão
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
