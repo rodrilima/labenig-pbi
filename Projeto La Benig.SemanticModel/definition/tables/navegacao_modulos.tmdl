@@ -70,3 +70,5 @@ table navegacao_modulos
 				in
 				    Fonte
 
+	annotation PBI_ResultType = Table
+

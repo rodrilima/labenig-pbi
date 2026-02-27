@@ -268,22 +268,3 @@ relationship 34cfabe6-02c1-427c-6325-fa71106a4732
 	fromColumn: projecao_caixa.data_vencimento_ajustada
 	toColumn: calendario.Date
 
-relationship AutoDetected_1617a476-55bf-499b-9ae4-43337e4e21d1
-	isActive: false
-	crossFilteringBehavior: bothDirections
-	fromCardinality: one
-	fromColumn: protheus_contasPagar.recno
-	toColumn: protheus_contasReceber.recno
-
-relationship AutoDetected_a8f71bc6-2547-4113-8e83-1f3db2e9df65
-	isActive: false
-	crossFilteringBehavior: bothDirections
-	fromCardinality: one
-	fromColumn: protheus_movimentosBancarios.recno
-	toColumn: protheus_contasReceber.recno
-
-relationship AutoDetected_83f1347b-1a9f-4d06-9fbc-2de430ddcd92
-	isActive: false
-	fromColumn: projecao_caixa.recno
-	toColumn: protheus_contasReceber.recno
-
