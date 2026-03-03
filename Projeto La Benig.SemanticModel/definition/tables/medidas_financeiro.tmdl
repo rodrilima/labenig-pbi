@@ -276,9 +276,15 @@ table medidas_financeiro
 
 	/// Saldo de títulos vencidos e ainda não pagos
 	measure 'CP Valor em Atraso' =
-			CALCULATE(
+			
+			VAR DataFinal =
+			    MAX ( calendario[Date] )
+			
+			RETURN CALCULATE(
 			    SUM(protheus_contasPagar[saldo]),
 			    protheus_contasPagar[saldo] > 0,
+			    REMOVEFILTERS(calendario),
+			    protheus_contasPagar[data_vencimento] < DataFinal,
 			    protheus_contasPagar[data_vencimento] < TODAY()
 			)
 		formatString: R$ #,##0.00
@@ -287,9 +293,15 @@ table medidas_financeiro
 
 	/// Quantidade de títulos vencidos e não pagos
 	measure 'CP Qtd Títulos em Atraso' =
-			CALCULATE(
+			
+			VAR DataFinal =
+			    MAX ( calendario[Date] )
+			
+			RETURN CALCULATE(
 			    COUNTROWS(protheus_contasPagar),
 			    protheus_contasPagar[saldo] > 0,
+			    REMOVEFILTERS(calendario),
+			    protheus_contasPagar[data_vencimento] < DataFinal,
 			    protheus_contasPagar[data_vencimento] < TODAY()
 			)
 		formatString: 0

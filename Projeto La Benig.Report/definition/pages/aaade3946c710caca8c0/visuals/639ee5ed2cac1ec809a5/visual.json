@@ -428,5 +428,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "eda422438c1e01646005",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "medidas_financeiro"
+              }
+            },
+            "Property": "CP Valor em Atraso"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }
