@@ -1,0 +1,599 @@
+cultureInfo pt-BR
+
+	linguisticMetadata =
+			{
+			  "Version": "2.0.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "calendario.mes_nome": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "calendario",
+			          "ConceptualProperty": "mes_nome"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Mês": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medidas_financeiro.movimentação_projetada": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "Movimentação Projetada"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Movimentação": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medidas_financeiro.saldo_realizado_depois": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "Saldo Realizado (depois)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Realizado": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medidas_financeiro.saldo_projetado_depois": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "Saldo Projetado (depois)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Projetado": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medidas_financeiro.cr_valor_aging": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "CR Valor Aging"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Valor": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medidas_financeiro.cr_valor_em_aberto_por_cliente": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "CR Valor em Aberto por Cliente"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Valor em Aberto": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medidas_financeiro.cr_dias_em_atraso": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "CR Dias em Atraso"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Dias Atraso": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medidas_financeiro.cr_status_do_cliente": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "CR Status do Cliente"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Status": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medidas_financeiro.cp_valor_em_aberto_por_fornecedor": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "CP Valor em Aberto por Fornecedor"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Valor em Aberto": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medidas_financeiro.cp_dias_em_atraso": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "CP Dias em Atraso"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Dias Atraso": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medidas_financeiro.cp_status_do_fornecedor": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "CP Status do Fornecedor"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Status": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "protheus_contasreceber.data_vencimento_real": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "protheus_contasReceber",
+			          "ConceptualProperty": "data_vencimento_real"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Vencimento Real": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "protheus_contasreceber.numero_titulo": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "protheus_contasReceber",
+			          "ConceptualProperty": "numero_titulo"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Número Título": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "protheus_contasreceber.parcela": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "protheus_contasReceber",
+			          "ConceptualProperty": "parcela"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Parcela": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "protheus_contasreceber.cod_cliente": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "protheus_contasReceber",
+			          "ConceptualProperty": "cod_cliente"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Cliente": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "protheus_contasreceber.nome_cliente": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "protheus_contasReceber",
+			          "ConceptualProperty": "nome_cliente"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Nome": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "protheus_contasreceber.status_descrição": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "protheus_contasReceber",
+			          "ConceptualProperty": "Status Descrição"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Status": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "protheus_contasreceber.faixa_aging": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "protheus_contasReceber",
+			          "ConceptualProperty": "faixa_aging"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Faixa de Aging": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "protheus_contaspagar.data_vencimento_real": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "protheus_contasPagar",
+			          "ConceptualProperty": "data_vencimento_real"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Vencimento Real": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "protheus_contaspagar.numero_titulo": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "protheus_contasPagar",
+			          "ConceptualProperty": "numero_titulo"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Número Título": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "protheus_contaspagar.parcela": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "protheus_contasPagar",
+			          "ConceptualProperty": "parcela"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Parcela": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "protheus_contaspagar.cod_fornecedor": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "protheus_contasPagar",
+			          "ConceptualProperty": "cod_fornecedor"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Fornecedor": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "protheus_contaspagar.nome_fornecedor": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "protheus_contasPagar",
+			          "ConceptualProperty": "nome_fornecedor"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Nome": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "protheus_contaspagar.status_pagamento": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "protheus_contasPagar",
+			          "ConceptualProperty": "status_pagamento"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Status": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "protheus_naturezas.descricao_pai": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "protheus_naturezas",
+			          "ConceptualProperty": "descricao_pai"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Natureza": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fato_pedidos.pedido_id": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fato_pedidos",
+			          "ConceptualProperty": "pedido_id"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ID": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fato_pedidos.status": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fato_pedidos",
+			          "ConceptualProperty": "status"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Situação": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fato_pedidos.utilizacoes_por_cupom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fato_pedidos",
+			          "ConceptualProperty": "Utilizacoes por Cupom"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Utilizações": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    }
+			  }
+			}
+		contentType: json
+

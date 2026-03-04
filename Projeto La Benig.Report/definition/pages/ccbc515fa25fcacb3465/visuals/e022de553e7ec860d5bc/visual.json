@@ -1,0 +1,101 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "e022de553e7ec860d5bc",
+  "position": {
+    "x": 159.80049875311721,
+    "y": 463.24189526184534,
+    "z": 18001,
+    "height": 231.62094763092267,
+    "width": 1105.1371571072318,
+    "tabOrder": 18001
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "protheus_movimentosBancarios"
+                    }
+                  },
+                  "Property": "data_movimento"
+                }
+              },
+              "queryRef": "protheus_movimentosBancarios.data_movimento",
+              "nativeQueryRef": "data_movimento",
+              "format": "d"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "protheus_movimentosBancarios"
+                    }
+                  },
+                  "Property": "numero"
+                }
+              },
+              "queryRef": "protheus_movimentosBancarios.numero",
+              "nativeQueryRef": "numero"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "protheus_movimentosBancarios"
+                    }
+                  },
+                  "Property": "beneficiario"
+                }
+              },
+              "queryRef": "protheus_movimentosBancarios.beneficiario",
+              "nativeQueryRef": "beneficiario"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "protheus_movimentosBancarios"
+                        }
+                      },
+                      "Property": "valorpn"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(protheus_movimentosBancarios.valorpn)",
+              "nativeQueryRef": "Soma de valorpn"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnHeaders": [
+        {
+          "properties": {
+            "columnAdjustment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'growToFit'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
