@@ -1,0 +1,24 @@
+table protheus_numerosTitulos
+	lineageTag: 303e7442-e8df-49a7-9314-6880afb2d29a
+
+	column numero
+		dataType: string
+		lineageTag: d57641a5-8bc4-4093-8679-0cb7eea6ada9
+		summarizeBy: none
+		sourceColumn: numero
+
+		annotation SummarizationSetBy = Automatic
+
+	partition protheus_numerosTitulos = m
+		mode: import
+		queryGroup: datalake
+		source =
+				let
+				    Fonte = Value.NativeQuery(GoogleBigQuery.Database([Implementation="2.0"]){[Name="coherent-window-444219-c1"]}[Data], "SELECT DISTINCT numero FROM `datalake.protheus_movimentosBancarios`", null, [EnableFolding=true])
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

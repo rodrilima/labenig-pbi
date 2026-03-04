@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "17676a66b1b363eba30c",
   "position": {
-    "x": 907.90243902439033,
-    "y": 64.975609756097569,
+    "x": 537.89473684210532,
+    "y": 64.21052631578948,
     "z": 0,
-    "height": 117.65853658536587,
-    "width": 356.48780487804879,
+    "height": 117.89473684210527,
+    "width": 355.78947368421052,
     "tabOrder": 0
   },
   "visual": {
@@ -15,6 +15,27 @@
       "queryState": {
         "Data": {
           "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "protheus_contasPagar"
+                        }
+                      },
+                      "Property": "valorpn"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(protheus_contasPagar.valorpn)",
+              "nativeQueryRef": "Projetado",
+              "displayName": "Projetado",
+              "format": "\"R$\" #,0.00;-\"R$\" #,0.00;\"R$\" #,0.00"
+            },
             {
               "field": {
                 "Measure": {
@@ -27,7 +48,8 @@
                 }
               },
               "queryRef": "medidas_financeiro.Total Saída",
-              "nativeQueryRef": "Total Saída",
+              "nativeQueryRef": "Realizado",
+              "displayName": "Realizado",
               "format": "\"R$\" #,0.00;-\"R$\" #,0.00;\"R$\" #,0.00"
             }
           ]
@@ -37,13 +59,18 @@
         "sort": [
           {
             "field": {
-              "Measure": {
+              "Aggregation": {
                 "Expression": {
-                  "SourceRef": {
-                    "Entity": "medidas_financeiro"
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "protheus_contasPagar"
+                      }
+                    },
+                    "Property": "valorpn"
                   }
                 },
-                "Property": "Total Saída"
+                "Function": 0
               }
             },
             "direction": "Descending"
@@ -88,7 +115,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             }
@@ -282,7 +309,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Total Saida'"
+                  "Value": "'Saida'"
                 }
               }
             }

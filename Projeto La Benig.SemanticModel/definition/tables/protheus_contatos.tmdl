@@ -199,6 +199,30 @@ table protheus_contatos
 
 		annotation SummarizationSetBy = Automatic
 
+	column grupo_cliente
+		dataType: string
+		lineageTag: c9e851ef-75f3-4306-94a3-6f1be6ddfe3b
+		summarizeBy: none
+		sourceColumn: grupo_cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column primeira_compra
+		dataType: string
+		lineageTag: e31faf52-15fd-479e-b53a-6b15d7dcf86f
+		summarizeBy: none
+		sourceColumn: primeira_compra
+
+		annotation SummarizationSetBy = Automatic
+
+	column deletado
+		dataType: string
+		lineageTag: 6be4dd2b-be9c-4222-aefc-3555502bb6db
+		summarizeBy: none
+		sourceColumn: deletado
+
+		annotation SummarizationSetBy = Automatic
+
 	partition protheus_contatos = m
 		mode: import
 		queryGroup: datalake

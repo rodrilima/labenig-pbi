@@ -181,6 +181,14 @@ table protheus_contasBancarias
 
 		annotation SummarizationSetBy = Automatic
 
+	column deletado
+		dataType: string
+		lineageTag: e7e44fdc-0d89-4f73-ad5c-17924e82881e
+		summarizeBy: none
+		sourceColumn: deletado
+
+		annotation SummarizationSetBy = Automatic
+
 	partition protheus_contasBancarias = m
 		mode: import
 		queryGroup: datalake

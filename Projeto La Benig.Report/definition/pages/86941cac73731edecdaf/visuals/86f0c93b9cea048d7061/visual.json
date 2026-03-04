@@ -4,10 +4,10 @@
   "position": {
     "x": 536.89969604863222,
     "y": 0,
-    "z": 16000,
+    "z": 12000,
     "height": 65.167173252279639,
     "width": 121.58054711246201,
-    "tabOrder": 16000
+    "tabOrder": 12000
   },
   "visual": {
     "visualType": "slicer",
@@ -57,6 +57,47 @@
                 "Literal": {
                   "Value": "1D"
                 }
+              }
+            },
+            "filter": {
+              "filter": {
+                "Version": 2,
+                "From": [
+                  {
+                    "Name": "c",
+                    "Entity": "calendario",
+                    "Type": 0
+                  }
+                ],
+                "Where": [
+                  {
+                    "Condition": {
+                      "In": {
+                        "Expressions": [
+                          {
+                            "Column": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Source": "c"
+                                }
+                              },
+                              "Property": "mes_nome"
+                            }
+                          }
+                        ],
+                        "Values": [
+                          [
+                            {
+                              "Literal": {
+                                "Value": "'fevereiro'"
+                              }
+                            }
+                          ]
+                        ]
+                      }
+                    }
+                  }
+                ]
               }
             }
           }

@@ -281,3 +281,24 @@ relationship c2021257-609b-5372-fcd8-3970fc557e53
 	fromColumn: protheus_movimentosBancarios.natureza
 	toColumn: protheus_naturezas.codigo
 
+relationship a555cf98-ad3c-44bc-81be-79baf1921384
+	joinOnDateBehavior: datePartOnly
+	fromColumn: protheus_movimentosBancarios.data_vencimento
+	toColumn: LocalDateTable_09f5cf52-5112-4156-810e-943b79e6f043.Date
+
+relationship AutoDetected_fe4f8f90-e121-42b9-b630-fb9cf9039f33
+	fromColumn: protheus_movimentosBancarios.numero
+	toColumn: protheus_numerosTitulos.numero
+
+relationship a95b0b5e-6369-f476-6433-6098e12d0e49
+	fromColumn: protheus_contasReceber.numero_titulo
+	toColumn: protheus_numerosTitulos.numero
+
+relationship 56d4c07d-8345-449a-cc2d-f48956098740
+	fromColumn: protheus_contasPagar.numero_titulo
+	toColumn: protheus_numerosTitulos.numero
+
+relationship 18909f18-3a43-41d7-9717-be89ad5e6a71
+	fromColumn: projecao_caixa.numero_titulo
+	toColumn: protheus_numerosTitulos.numero
+

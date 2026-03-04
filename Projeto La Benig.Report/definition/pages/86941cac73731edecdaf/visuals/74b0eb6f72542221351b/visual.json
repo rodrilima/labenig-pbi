@@ -1,12 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
-  "name": "53bf3460009c109d7160",
+  "name": "74b0eb6f72542221351b",
   "position": {
-    "x": 695.78947368421052,
-    "y": 140,
+    "x": 909.47368421052636,
+    "y": 64.21052631578948,
     "z": 18000,
-    "height": 37.894736842105267,
-    "width": 209.47368421052633,
+    "height": 117.89473684210527,
+    "width": 355.78947368421052,
     "tabOrder": 18000
   },
   "visual": {
@@ -17,22 +17,35 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "protheus_contasReceber"
-                        }
-                      },
-                      "Property": "pk"
+                    "SourceRef": {
+                      "Entity": "medidas_financeiro"
                     }
                   },
-                  "Function": 2
+                  "Property": "Fluxo Liquido Projetado"
                 }
               },
-              "queryRef": "Min(protheus_contasReceber.pk)",
-              "nativeQueryRef": "Contagem de pk1"
+              "queryRef": "medidas_financeiro.Fluxo Liquido Projetado",
+              "nativeQueryRef": "Projetado",
+              "displayName": "Projetado",
+              "format": "\"R$\" #,0.00;-\"R$\" #,0.00;\"R$\" #,0.00"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "medidas_financeiro"
+                    }
+                  },
+                  "Property": "Fluxo Liquido Real"
+                }
+              },
+              "queryRef": "medidas_financeiro.Fluxo Liquido Real",
+              "nativeQueryRef": "Realizado",
+              "displayName": "Realizado",
+              "format": "\"R$\" #,0.00;-\"R$\" #,0.00;\"R$\" #,0.00"
             }
           ]
         }
@@ -41,18 +54,13 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Measure": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "protheus_contasReceber"
-                      }
-                    },
-                    "Property": "pk"
+                  "SourceRef": {
+                    "Entity": "medidas_financeiro"
                   }
                 },
-                "Function": 2
+                "Property": "Fluxo Liquido Projetado"
               }
             },
             "direction": "Descending"
@@ -97,7 +105,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             }
@@ -128,13 +136,6 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
-                }
-              }
-            },
-            "cellPadding": {
-              "expr": {
-                "Literal": {
-                  "Value": "0L"
                 }
               }
             }
@@ -211,7 +212,7 @@
             "horizontalAlignment": {
               "expr": {
                 "Literal": {
-                  "Value": "'right'"
+                  "Value": "'center'"
                 }
               }
             }
@@ -236,38 +237,6 @@
             "id": "default"
           }
         }
-      ],
-      "divider": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
-          }
-        }
-      ],
-      "padding": [
-        {
-          "properties": {
-            "paddingUniform": {
-              "expr": {
-                "Literal": {
-                  "Value": "9L"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
-          }
-        }
       ]
     },
     "visualContainerObjects": {
@@ -277,7 +246,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             },
@@ -330,7 +299,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Total Entrada'"
+                  "Value": "'Saldo'"
                 }
               }
             }
@@ -391,28 +360,14 @@
             "top": {
               "expr": {
                 "Literal": {
-                  "Value": "0D"
+                  "Value": "17D"
                 }
               }
             },
             "bottom": {
               "expr": {
                 "Literal": {
-                  "Value": "0D"
-                }
-              }
-            },
-            "left": {
-              "expr": {
-                "Literal": {
-                  "Value": "0D"
-                }
-              }
-            },
-            "right": {
-              "expr": {
-                "Literal": {
-                  "Value": "0D"
+                  "Value": "15D"
                 }
               }
             }
@@ -438,7 +393,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             },
@@ -469,7 +424,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             }
@@ -482,7 +437,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             }
@@ -495,7 +450,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "14c41e76488e7000c85e",
+        "name": "fe98eab3a3b5607e605e",
         "field": {
           "Column": {
             "Expression": {

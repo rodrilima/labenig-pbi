@@ -417,6 +417,14 @@ table projecao_caixa
 
 		annotation SummarizationSetBy = Automatic
 
+	column nome
+		dataType: string
+		lineageTag: d2411213-e8ac-4905-aaea-93c04abc5988
+		summarizeBy: none
+		sourceColumn: nome
+
+		annotation SummarizationSetBy = Automatic
+
 	partition projecao_caixa = m
 		mode: import
 		queryGroup: datalake
@@ -427,9 +435,9 @@ table projecao_caixa
 				else if [PR] = "R" then [valor_titulo]
 				else null),
 				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Personalização Adicionada",{{"valorpn", Currency.Type}}),
-				    #"Linhas Filtradas" = Table.SelectRows(#"Tipo Alterado", each [data_vencimento_real] <> null and [data_vencimento_real] <> "")
+				    #"Personalização Adicionada1" = Table.AddColumn(#"Tipo Alterado", "nome", each List.First(List.RemoveNulls({[nome_cliente], [nome_fornecedor]})))
 				in
-				    #"Linhas Filtradas"
+				    #"Personalização Adicionada1"
 
 	annotation PBI_NavigationStepName = Navegação
 

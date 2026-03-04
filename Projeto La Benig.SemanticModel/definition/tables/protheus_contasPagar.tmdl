@@ -349,6 +349,14 @@ table protheus_contasPagar
 
 		annotation SummarizationSetBy = Automatic
 
+	column valorpn = -1 * protheus_contasPagar[valor_titulo]
+		lineageTag: e0cca26a-0ce2-4605-a22e-6decf568a97c
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	partition protheus_contasPagar = m
 		mode: import
 		queryGroup: datalake

@@ -342,6 +342,16 @@
             "width": 234
           },
           "zIndex": 0
+        },
+        {
+          "location": {},
+          "nodeIndex": "protheus_numerosTitulos",
+          "nodeLineageTag": "303e7442-e8df-49a7-9314-6880afb2d29a",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
         }
       ],
       "name": "Todas as tabelas",
@@ -354,7 +364,7 @@
     {
       "ordinal": 1,
       "scrollPosition": {
-        "x": 124.86962672879635,
+        "x": 45.488221165490096,
         "y": 0
       },
       "nodes": [
@@ -393,6 +403,19 @@
           "nodeLineageTag": "c69578b1-8090-43df-94f4-8663358270a9",
           "size": {
             "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 722.22405283583043,
+            "y": 487.42761609931443
+          },
+          "nodeIndex": "protheus_numerosTitulos",
+          "nodeLineageTag": "303e7442-e8df-49a7-9314-6880afb2d29a",
+          "size": {
+            "height": 104,
             "width": 234
           },
           "zIndex": 0
@@ -476,6 +499,19 @@
             "width": 234
           },
           "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 600.13247092735446
+          },
+          "nodeIndex": "protheus_numerosTitulos",
+          "nodeLineageTag": "303e7442-e8df-49a7-9314-6880afb2d29a",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
         }
       ],
       "name": "MovimentosBancarios",
@@ -527,6 +563,19 @@
           "nodeLineageTag": "6771b100-1dd4-4c87-aa18-89ee486295d9",
           "size": {
             "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 346
+          },
+          "nodeIndex": "protheus_numerosTitulos",
+          "nodeLineageTag": "303e7442-e8df-49a7-9314-6880afb2d29a",
+          "size": {
+            "height": 104,
             "width": 234
           },
           "zIndex": 0

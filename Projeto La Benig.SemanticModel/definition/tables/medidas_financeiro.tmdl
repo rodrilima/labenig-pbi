@@ -375,25 +375,15 @@ table medidas_financeiro
 			    SUM(protheus_movimentosBancarios[valor]),
 			    protheus_movimentosBancarios[receb_pagto] = "R"
 			)
-			+
-			CALCULATE(
-			    SUM(projecao_caixa[valor_titulo]),
-			    projecao_caixa[PR] = "R"
-			)
 		lineageTag: 640c1a1e-f1fa-4158-9481-b23ca010254c
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Total Saída' =
 			
-			CALCULATE(
+			-1 * CALCULATE(
 			    SUM(protheus_movimentosBancarios[valor]),
 			    protheus_movimentosBancarios[receb_pagto] = "P"
-			)
-			+
-			CALCULATE(
-			    SUM(projecao_caixa[valor_titulo]),
-			    projecao_caixa[PR] = "P"
 			)
 		lineageTag: 10128ec6-e5fa-469b-8cdb-8d5305a4b6ca
 
@@ -622,6 +612,76 @@ table medidas_financeiro
 		lineageTag: fa530358-f3a5-4759-bf96-0f4d91225de6
 
 		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Saldo Inicial Periodo' =
+			
+			VAR DataInicial =
+			    MIN('calendario'[Date])
+			
+			RETURN
+			CALCULATE(
+			    [Fluxo Liquido Projetado],
+			    FILTER(
+			        ALL('Calendario'),
+			        'Calendario'[Date] < DataInicial
+			    )
+			)
+		lineageTag: 0252e484-7058-4cb8-b194-e3c3a777b5d1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Fluxo Acumulado Projetado' =
+			
+			CALCULATE(
+			    [Fluxo Liquido Projetado],
+			    FILTER(
+			        ALLSELECTED('Calendario'[Date]),
+			        'Calendario'[Date] <= MAX('Calendario'[Date])
+			    )
+			)
+		lineageTag: edaac251-7a08-4135-bb52-2272dcf3d562
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Saldo Acumulado Projetado' =
+			
+			[Saldo Inicial Periodo] + [Fluxo Acumulado Projetado]
+		lineageTag: c944d689-7a17-4f61-89ec-9d0c495e6b44
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Fluxo Liquido Projetado' = SUM(protheus_contasReceber[valor_titulo]) - SUM(protheus_contasPagar[valor_titulo])
+		formatString: "R$"#,0.00;-"R$"#,0.00;"R$"#,0.00
+		lineageTag: ba2cfaf8-6f57-40d8-8515-02a5d6a0e19b
+
+		annotation PBI_FormatHint = {"currencyCulture":"es-BR"}
+
+	measure 'Fluxo Liquido Real' = SUM(protheus_movimentosBancarios[valorpn])
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: d2ef96c9-98d7-4c02-8a71-9da19805277d
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Fluxo Acumulado Real' =
+			
+			CALCULATE(
+			    [Fluxo Liquido Real],
+			    FILTER(
+			        ALLSELECTED('Calendario'[Date]),
+			        'Calendario'[Date] <= MAX('Calendario'[Date])
+			    )
+			)
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 2df8a255-5aaf-43fa-a449-cb2e1badf3aa
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Saldo Acumulado Real' =
+			
+			[Saldo Inicial Periodo] + [Fluxo Acumulado Real]
+		lineageTag: a15fb5e6-a015-4b78-8cbe-7cca3a25498b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	partition medidas_financeiro = m
 		mode: import

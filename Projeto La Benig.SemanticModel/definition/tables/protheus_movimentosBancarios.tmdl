@@ -102,12 +102,20 @@ table protheus_movimentosBancarios
 		annotation SummarizationSetBy = Automatic
 
 	column data_vencimento
-		dataType: string
+		dataType: dateTime
+		formatString: Long Date
 		lineageTag: f88e7edc-4267-4d98-8e54-513cd5074bc7
 		summarizeBy: none
 		sourceColumn: data_vencimento
 
+		variation Variation
+			isDefault
+			relationship: a555cf98-ad3c-44bc-81be-79baf1921384
+			defaultHierarchy: LocalDateTable_09f5cf52-5112-4156-810e-943b79e6f043.'Hierarquia de datas'
+
 		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
 
 	column receb_pagto
 		dataType: string
@@ -440,7 +448,7 @@ table protheus_movimentosBancarios
 				    #"coherent-window-444219-c1_Database" = Fonte{[Name="coherent-window-444219-c1",Kind="Database"]}[Data],
 				    datalake_Schema = #"coherent-window-444219-c1_Database"{[Name="datalake",Kind="Schema"]}[Data],
 				    protheus_movimentosBancarios_Table = datalake_Schema{[Name="protheus_movimentosBancarios",Kind="Table"]}[Data],
-				    #"Tipo Alterado" = Table.TransformColumnTypes(protheus_movimentosBancarios_Table,{{"data_movimento", type date}, {"data_digitacao", type date}}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(protheus_movimentosBancarios_Table,{{"data_movimento", type date}, {"data_digitacao", type date}, {"data_vencimento", type date}}),
 				    #"Personalização Adicionada" = Table.AddColumn(#"Tipo Alterado", "valorpn", each if [receb_pagto] = "P" then -[valor]
 				else if [receb_pagto] = "R" then [valor]
 				else null),

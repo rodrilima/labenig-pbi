@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "4874f372db7fef2f77a2",
   "position": {
-    "x": 536.48780487804879,
-    "y": 64.975609756097569,
+    "x": 157.89473684210526,
+    "y": 65.26315789473685,
     "z": 1000,
-    "height": 117.65853658536587,
-    "width": 355.609756097561,
+    "height": 117.89473684210527,
+    "width": 353.68421052631578,
     "tabOrder": 1000
   },
   "visual": {
@@ -15,6 +15,27 @@
       "queryState": {
         "Data": {
           "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "protheus_contasReceber"
+                        }
+                      },
+                      "Property": "valor_titulo"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(protheus_contasReceber.valor_titulo)",
+              "nativeQueryRef": "Projetado",
+              "displayName": "Projetado",
+              "format": "\"R$\" #,0.00;-\"R$\" #,0.00;\"R$\" #,0.00"
+            },
             {
               "field": {
                 "Measure": {
@@ -27,7 +48,8 @@
                 }
               },
               "queryRef": "medidas_financeiro.Total Entrada",
-              "nativeQueryRef": "Total Entrada",
+              "nativeQueryRef": "Realizado",
+              "displayName": "Realizado",
               "format": "\"R$\" #,0.00;-\"R$\" #,0.00;\"R$\" #,0.00"
             }
           ]
@@ -37,13 +59,18 @@
         "sort": [
           {
             "field": {
-              "Measure": {
+              "Aggregation": {
                 "Expression": {
-                  "SourceRef": {
-                    "Entity": "medidas_financeiro"
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "protheus_contasReceber"
+                      }
+                    },
+                    "Property": "valor_titulo"
                   }
                 },
-                "Property": "Total Entrada"
+                "Function": 0
               }
             },
             "direction": "Descending"
@@ -88,7 +115,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             }
@@ -282,7 +309,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Total Entrada'"
+                  "Value": "'Entrada'"
                 }
               }
             }

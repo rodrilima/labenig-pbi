@@ -20,28 +20,29 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Entradas"
+                      "Entity": "protheus_movimentosBancarios"
                     }
                   },
-                  "Property": "Vencto real"
+                  "Property": "data_movimento"
                 }
               },
-              "queryRef": "Entradas.Vencto real",
-              "nativeQueryRef": "Vencto real"
+              "queryRef": "protheus_movimentosBancarios.data_movimento",
+              "nativeQueryRef": "data_movimento",
+              "format": "d"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Entradas"
+                      "Entity": "protheus_movimentosBancarios"
                     }
                   },
-                  "Property": "pk"
+                  "Property": "numero"
                 }
               },
-              "queryRef": "Entradas.pk",
-              "nativeQueryRef": "pk"
+              "queryRef": "protheus_movimentosBancarios.numero",
+              "nativeQueryRef": "numero"
             },
             {
               "field": {
@@ -50,20 +51,37 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "Entradas"
+                          "Entity": "protheus_movimentosBancarios"
                         }
                       },
-                      "Property": "Vlr.Titulo"
+                      "Property": "valor"
                     }
                   },
                   "Function": 0
                 }
               },
-              "queryRef": "Sum(Entradas.Vlr.Titulo)",
-              "nativeQueryRef": "Soma de Vlr.Titulo"
+              "queryRef": "Sum(protheus_movimentosBancarios.valor)",
+              "nativeQueryRef": "Soma de valor"
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "protheus_movimentosBancarios"
+                  }
+                },
+                "Property": "numero"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
       }
     },
     "drillFilterOtherVisuals": true

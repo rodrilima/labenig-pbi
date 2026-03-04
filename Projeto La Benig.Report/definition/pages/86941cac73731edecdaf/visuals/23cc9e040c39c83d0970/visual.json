@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
-  "name": "c2747d0df69932034a1d",
+  "name": "23cc9e040c39c83d0970",
   "position": {
-    "x": 157.37704918032787,
-    "y": 465.13661202185796,
-    "z": 4000,
-    "height": 221.4936247723133,
-    "width": 545.57377049180332,
-    "tabOrder": 4000
+    "x": 157.89473684210526,
+    "y": 202.10526315789474,
+    "z": 17000,
+    "height": 235.78947368421055,
+    "width": 549.47368421052636,
+    "tabOrder": 17000
   },
   "visual": {
     "visualType": "tableEx",
@@ -28,21 +28,35 @@
               },
               "queryRef": "calendario.Date",
               "nativeQueryRef": "Date",
-              "format": "dd/MM/yy"
+              "format": "d"
             },
             {
               "field": {
-                "Measure": {
+                "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "medidas_financeiro"
+                      "Entity": "projecao_caixa"
                     }
                   },
-                  "Property": "Saldo Realizado (antes)"
+                  "Property": "numero_titulo"
                 }
               },
-              "queryRef": "medidas_financeiro.Saldo Realizado (por dia)",
-              "nativeQueryRef": "Saldo Realizado (antes)"
+              "queryRef": "projecao_caixa.numero_titulo",
+              "nativeQueryRef": "numero_titulo"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "projecao_caixa"
+                    }
+                  },
+                  "Property": "nome"
+                }
+              },
+              "queryRef": "projecao_caixa.nome",
+              "nativeQueryRef": "nome"
             },
             {
               "field": {
@@ -51,7 +65,7 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "protheus_movimentosBancarios"
+                          "Entity": "projecao_caixa"
                         }
                       },
                       "Property": "valorpn"
@@ -60,23 +74,8 @@
                   "Function": 0
                 }
               },
-              "queryRef": "Sum(protheus_movimentosBancarios.valorpn)",
-              "nativeQueryRef": "Movimentação",
-              "displayName": "Movimentação"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "medidas_financeiro"
-                    }
-                  },
-                  "Property": "Saldo Realizado (depois)"
-                }
-              },
-              "queryRef": "medidas_financeiro.Saldo Realizado (antes)",
-              "nativeQueryRef": "Saldo Realizado (depois)"
+              "queryRef": "Sum(projecao_caixa.valorpn)",
+              "nativeQueryRef": "Soma de valorpn"
             }
           ]
         }
@@ -100,19 +99,6 @@
       }
     },
     "objects": {
-      "total": [
-        {
-          "properties": {
-            "totals": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
-        }
-      ],
       "columnHeaders": [
         {
           "properties": {
@@ -128,9 +114,17 @@
       ],
       "columnWidth": [
         {
-          "properties": {},
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "187.94736842105263D"
+                }
+              }
+            }
+          },
           "selector": {
-            "metadata": "calendario.Date"
+            "metadata": "projecao_caixa.nome"
           }
         }
       ]
@@ -149,20 +143,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Realizado'"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "stylePreset": [
-        {
-          "properties": {
-            "name": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Condensed'"
+                  "Value": "'Projetado'"
                 }
               }
             }

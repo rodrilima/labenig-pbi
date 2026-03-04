@@ -1,12 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
-  "name": "e022de553e7ec860d5bc",
+  "name": "2fca66aecc5037cac205",
   "position": {
-    "x": 159.80049875311721,
-    "y": 463.24189526184534,
+    "x": 715.78947368421052,
+    "y": 202.10526315789474,
     "z": 19000,
-    "height": 231.62094763092267,
-    "width": 1105.1371571072318,
+    "height": 235.78947368421055,
+    "width": 549.47368421052636,
     "tabOrder": 19000
   },
   "visual": {
@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "protheus_movimentosBancarios"
+                      "Entity": "calendario"
                     }
                   },
-                  "Property": "data_movimento"
+                  "Property": "Date"
                 }
               },
-              "queryRef": "protheus_movimentosBancarios.data_movimento",
-              "nativeQueryRef": "data_movimento",
+              "queryRef": "calendario.Date",
+              "nativeQueryRef": "Date",
               "format": "d"
             },
             {
@@ -79,6 +79,23 @@
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "calendario"
+                  }
+                },
+                "Property": "Date"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
       }
     },
     "objects": {
@@ -95,19 +112,57 @@
           }
         }
       ],
+      "columnFormatting": [
+        {
+          "properties": {
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "protheus_movimentosBancarios.numero"
+          }
+        }
+      ],
       "columnWidth": [
         {
           "properties": {
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "457.21052445016227D"
+                  "Value": "181.73487587199483D"
                 }
               }
             }
           },
           "selector": {
             "metadata": "protheus_movimentosBancarios.beneficiario"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Realizado'"
+                }
+              }
+            }
           }
         }
       ]

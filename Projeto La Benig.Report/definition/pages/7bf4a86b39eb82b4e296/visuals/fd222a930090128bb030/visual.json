@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "fd222a930090128bb030",
   "position": {
-    "x": 89.502948609941029,
-    "y": 170.37910699241786,
+    "x": 89.473684210526315,
+    "y": 170.5263157894737,
     "z": 0,
-    "height": 280.37068239258633,
-    "width": 533.78264532434707,
+    "height": 280,
+    "width": 569.47368421052636,
     "tabOrder": 0
   },
   "visual": {
@@ -38,11 +38,11 @@
                       "Entity": "protheus_contasReceber"
                     }
                   },
-                  "Property": "pk"
+                  "Property": "numero_titulo"
                 }
               },
-              "queryRef": "protheus_contasReceber.pk",
-              "nativeQueryRef": "pk"
+              "queryRef": "protheus_contasReceber.numero_titulo",
+              "nativeQueryRef": "numero_titulo"
             },
             {
               "field": {
@@ -76,20 +76,6 @@
               },
               "queryRef": "protheus_contasReceber.status",
               "nativeQueryRef": "status"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "protheus_contasReceber"
-                    }
-                  },
-                  "Property": "situacao"
-                }
-              },
-              "queryRef": "protheus_contasReceber.situacao",
-              "nativeQueryRef": "situacao"
             }
           ]
         }
@@ -104,7 +90,7 @@
                     "Entity": "protheus_contasReceber"
                   }
                 },
-                "Property": "data_vencimento_real"
+                "Property": "numero_titulo"
               }
             },
             "direction": "Ascending"
