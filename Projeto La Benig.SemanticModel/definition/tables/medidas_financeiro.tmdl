@@ -276,15 +276,9 @@ table medidas_financeiro
 
 	/// Saldo de títulos vencidos e ainda não pagos
 	measure 'CP Valor em Atraso' =
-			
-			VAR DataFinal =
-			    MAX ( calendario[Date] )
-			
-			RETURN CALCULATE(
+			CALCULATE(
 			    SUM(protheus_contasPagar[saldo]),
 			    protheus_contasPagar[saldo] > 0,
-			    REMOVEFILTERS(calendario),
-			    protheus_contasPagar[data_vencimento] < DataFinal,
 			    protheus_contasPagar[data_vencimento] < TODAY()
 			)
 		formatString: R$ #,##0.00
@@ -293,15 +287,9 @@ table medidas_financeiro
 
 	/// Quantidade de títulos vencidos e não pagos
 	measure 'CP Qtd Títulos em Atraso' =
-			
-			VAR DataFinal =
-			    MAX ( calendario[Date] )
-			
-			RETURN CALCULATE(
+			CALCULATE(
 			    COUNTROWS(protheus_contasPagar),
 			    protheus_contasPagar[saldo] > 0,
-			    REMOVEFILTERS(calendario),
-			    protheus_contasPagar[data_vencimento] < DataFinal,
 			    protheus_contasPagar[data_vencimento] < TODAY()
 			)
 		formatString: 0
@@ -352,19 +340,11 @@ table medidas_financeiro
 		lineageTag: 1f4e8a10-f2bc-48a6-9000-3db158f7f225
 
 	/// Saldo em aberto para análise de aging (usar com faixa_aging)
-	measure 'CP Valor Aging' = ```
-			
-			VAR DataFinal =
-			    MAX ( calendario[Date] )
-			
-			RETURN
+	measure 'CP Valor Aging' =
 			CALCULATE(
 			    SUM(protheus_contasPagar[saldo]),
-			    protheus_contasPagar[saldo] > 0,    
-			    REMOVEFILTERS(calendario),
-			    calendario[Date] <= DataFinal
+			    protheus_contasPagar[saldo] > 0
 			)
-			```
 		formatString: R$ #,##0.00
 		displayFolder: CP Aging
 		lineageTag: 95966676-729d-427a-91ab-b24d889256d8
