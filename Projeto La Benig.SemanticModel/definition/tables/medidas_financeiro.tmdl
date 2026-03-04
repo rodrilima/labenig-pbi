@@ -241,6 +241,7 @@ table medidas_financeiro
 			    SUM(protheus_movimentosBancarios[valor]),
 			    protheus_movimentosBancarios[receb_pagto] = "R"
 			)
+		displayFolder: Caixa
 		lineageTag: 640c1a1e-f1fa-4158-9481-b23ca010254c
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -251,6 +252,7 @@ table medidas_financeiro
 			    SUM(protheus_movimentosBancarios[valor]),
 			    protheus_movimentosBancarios[receb_pagto] = "P"
 			)
+		displayFolder: Caixa
 		lineageTag: 10128ec6-e5fa-469b-8cdb-8d5305a4b6ca
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -281,6 +283,7 @@ table medidas_financeiro
 			
 			RETURN
 			    IF ( TemMovNoDia = 0, BLANK(), SaldoInicial + AcumAteDia )
+		displayFolder: Caixa
 		lineageTag: 41637e26-7271-49b6-abb8-861781c86cb6
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -303,6 +306,7 @@ table medidas_financeiro
 			    )
 			RETURN
 			    IF ( TemMovNoDia = 0, BLANK(), SaldoFuturo - SomaAPartirDoDia )
+		displayFolder: Caixa
 		lineageTag: 6169de71-d0f7-455b-bf17-4dab9d9c47a2
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -350,6 +354,7 @@ table medidas_financeiro
 
 	measure 'Resultado Operacional' = SUM(protheus_movimentosBancarios[valorpn])
 		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: Caixa
 		lineageTag: fa530358-f3a5-4759-bf96-0f4d91225de6
 
 		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
@@ -357,18 +362,21 @@ table medidas_financeiro
 	measure 'Saldo Acumulado Projetado' =
 			
 			[Saldo Inicial Periodo] + [Fluxo Acumulado Projetado]
+		displayFolder: Caixa
 		lineageTag: c944d689-7a17-4f61-89ec-9d0c495e6b44
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Fluxo Liquido Projetado' = SUM(protheus_contasReceber[valor_titulo]) - SUM(protheus_contasPagar[valor_titulo])
 		formatString: "R$"#,0.00;-"R$"#,0.00;"R$"#,0.00
+		displayFolder: Caixa
 		lineageTag: ba2cfaf8-6f57-40d8-8515-02a5d6a0e19b
 
 		annotation PBI_FormatHint = {"currencyCulture":"es-BR"}
 
 	measure 'Fluxo Liquido Real' = SUM(protheus_movimentosBancarios[valorpn])
 		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: Caixa
 		lineageTag: d2ef96c9-98d7-4c02-8a71-9da19805277d
 
 		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
@@ -376,6 +384,7 @@ table medidas_financeiro
 	measure 'Saldo Acumulado Real' =
 			
 			[Saldo Inicial Periodo] + [Fluxo Acumulado Real]
+		displayFolder: Caixa
 		lineageTag: a15fb5e6-a015-4b78-8cbe-7cca3a25498b
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -409,6 +418,7 @@ table medidas_financeiro
 			        'Calendario'[Date] < DataInicial
 			    )
 			)
+		displayFolder: Caixa
 		lineageTag: 8919a334-c86c-4395-9a0f-678cc69ead14
 
 	measure 'Fluxo Acumulado Projetado' =
@@ -419,6 +429,7 @@ table medidas_financeiro
 			        'Calendario'[Date] <= MAX('Calendario'[Date])
 			    )
 			)
+		displayFolder: Caixa
 		lineageTag: b1796501-2579-4f96-b758-cec5bc534901
 
 	measure 'Fluxo Acumulado Real' =
@@ -430,6 +441,7 @@ table medidas_financeiro
 			    )
 			)
 		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: Caixa
 		lineageTag: 8209dc6e-9084-4b2d-86d7-ea9dd51b6613
 
 	partition medidas_financeiro = m
