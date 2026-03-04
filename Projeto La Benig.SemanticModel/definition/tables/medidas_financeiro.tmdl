@@ -38,28 +38,6 @@ table medidas_financeiro
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	/// Saldo de títulos vencidos e ainda não pagos (data_vencimento < hoje)
-	measure 'CR Valor Inadimplente' =
-			
-			CALCULATE(
-			    SUM(protheus_contasReceber[saldo]),
-			    protheus_contasReceber[saldo] > 0,
-			    protheus_contasReceber[data_vencimento] < TODAY()
-			)
-		formatString: R$ #,##0.00
-		displayFolder: Inadimplência
-		lineageTag: ed756031-7a46-4f13-8cee-82c1c4744557
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
-	/// Total de saldo em aberto no período selecionado
-	measure 'CR Total' = SUM(protheus_contasReceber[valor_titulo])
-		formatString: R$ #,##0.00
-		displayFolder: Recebimentos
-		lineageTag: c13ef7e8-fac8-47fe-a6a5-401e2756e597
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
 	/// Percentual de inadimplência: valor vencido / total em aberto
 	measure 'CR Inadimplência %' =
 			
@@ -107,29 +85,6 @@ table medidas_financeiro
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	/// PMR do mês anterior ao período selecionado, para cálculo de variação
-	measure 'CR PMR Período Anterior' =
-			
-			CALCULATE(
-			    [CR PMR (dias)],
-			    DATEADD(calendario[Date], -1, MONTH)
-			)
-		formatString: 0.0 " dias"
-		displayFolder: PMR
-		lineageTag: 5936107d-ab0b-41c0-b444-8f22ac477652
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
-	/// Variação em dias do PMR vs período anterior. Positivo = piorou; negativo = melhorou.
-	measure 'CR Variação PMR' =
-			
-			[CR PMR (dias)] - [CR PMR Período Anterior]
-		formatString: 0.0 " dias"
-		displayFolder: PMR
-		lineageTag: dc03d6da-4489-4930-ad85-f164872ac32f
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
 	/// Valor base para análise de aging (curva de vencimentos). Usar com faixas de dias para estratificar o portfólio.
 	measure 'CR Valor Aging' =
 			
@@ -148,65 +103,6 @@ table medidas_financeiro
 		lineageTag: 2bc60ee4-fc28-4225-aecb-57218f467b29
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
-	/// Valor inadimplente calculado até a data máxima do período selecionado no calendário
-	measure 'CR Valor Inadimplente (Posição)' =
-			
-			CALCULATE(
-			    SUM(protheus_contasReceber[saldo]),
-			    FILTER(
-			        ALL(protheus_contasReceber),
-			        protheus_contasReceber[data_emissao] <= MAX(calendario[Date]) &&
-			        (
-			            ISBLANK(protheus_contasReceber[data_baixa]) ||
-			            protheus_contasReceber[data_baixa] > MAX(calendario[Date])
-			        ) &&
-			        protheus_contasReceber[data_vencimento] < MAX(calendario[Date])
-			    )
-			)
-		formatString: R$ #,##0.00
-		displayFolder: Inadimplência
-		lineageTag: aaa2e6d8-f943-4301-8924-dd7904b156b8
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
-	/// Total em aberto calculado até a data máxima do período selecionado no calendário
-	measure 'CR Total em Aberto (Posição)' =
-			
-			CALCULATE(
-			    SUM(protheus_contasReceber[saldo]),
-			    FILTER(
-			        ALL(protheus_contasReceber),
-			        protheus_contasReceber[data_emissao] <= MAX(calendario[Date]) &&
-			        (
-			            ISBLANK(protheus_contasReceber[data_baixa]) ||
-			            protheus_contasReceber[data_baixa] > MAX(calendario[Date])
-			        )
-			    )
-			)
-		formatString: R$ #,##0.00
-		displayFolder: Inadimplência
-		lineageTag: b30ec5c9-792c-4dfd-9891-2b4d20e61943
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
-	/// Percentual de inadimplência calculado sobre a posição do período selecionado no calendário
-	measure 'CR Inadimplência % (Posição)' =
-			
-			VAR total_mes =
-			    [CR Total em Aberto (Posição)]
-			RETURN
-			IF(
-			    total_mes > 0,
-			    DIVIDE(
-			        [CR Valor Inadimplente (Posição)],
-			        total_mes
-			    ),
-			    BLANK()
-			)
-		formatString: 0.00%;-0.00%;0.00%
-		displayFolder: Inadimplência
-		lineageTag: 92b7a087-e8f7-4090-ae7c-4f9a520faba4
 
 	/// Valor em aberto por cliente, usado na tabela de detalhamento de inadimplência
 	measure 'CR Valor em Aberto por Cliente' =
@@ -329,16 +225,6 @@ table medidas_financeiro
 		displayFolder: CP PMP
 		lineageTag: e4e242ca-6701-49f2-be78-0a00b65b53fc
 
-	/// Valor total programado a pagar (títulos em aberto, pelo valor original)
-	measure 'CP Total Programado' =
-			CALCULATE(
-			    SUM(protheus_contasPagar[valor_titulo]),
-			    protheus_contasPagar[saldo] > 0
-			)
-		formatString: R$ #,##0.00
-		displayFolder: CP Pagamentos
-		lineageTag: 1f4e8a10-f2bc-48a6-9000-3db158f7f225
-
 	/// Saldo em aberto para análise de aging (usar com faixa_aging)
 	measure 'CP Valor Aging' =
 			CALCULATE(
@@ -421,131 +307,6 @@ table medidas_financeiro
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Saldo Inicial (caixa)' =
-			
-			VAR SaldoBase =
-			    SUM ( protheus_contasBancarias[saldo_atual] )
-			
-			VAR DataNoFiltro =
-			    MIN ( calendario[Date] )
-			
-			VAR InicioMes =
-			    DATE ( YEAR ( DataNoFiltro ), MONTH ( DataNoFiltro ), 1 )
-			
-			VAR FimMes =
-			    EOMONTH ( InicioMes, 0 )
-			
-			-- 🔎 Existe qualquer dado no mês? (realizado OU projeção)
-			VAR TemDadosNoMes =
-			    CALCULATE (
-			        COUNTROWS ( protheus_movimentosBancarios ),
-			        FILTER (
-			            ALL ( calendario[Date] ),
-			            calendario[Date] >= InicioMes
-			                && calendario[Date] <= FimMes
-			        )
-			    )
-			    +
-			    CALCULATE (
-			        COUNTROWS ( projecao_caixa ),
-			        FILTER (
-			            ALL ( calendario[Date] ),
-			            calendario[Date] >= InicioMes
-			                && calendario[Date] <= FimMes
-			        )
-			    )
-			
-			-- 🔎 Existe realizado no mês?
-			VAR TemMovRealizado =
-			    CALCULATE (
-			        COUNTROWS ( protheus_movimentosBancarios ),
-			        FILTER (
-			            ALL ( calendario[Date] ),
-			            calendario[Date] >= InicioMes
-			                && calendario[Date] <= FimMes
-			        )
-			    )
-			
-			VAR SaldoInicialRealizado =
-			    SaldoBase
-			        - CALCULATE (
-			            SUM ( protheus_movimentosBancarios[valorpn] ),
-			            FILTER ( ALL ( calendario[Date] ), calendario[Date] >= InicioMes )
-			        )
-			
-			VAR SaldoInicialProjetado =
-			    SaldoBase
-			        + CALCULATE (
-			            SUM ( projecao_caixa[valorpn] ),
-			            FILTER ( ALL ( calendario[Date] ), calendario[Date] < InicioMes )
-			        )
-			RETURN
-			    IF (
-			        ISBLANK ( DataNoFiltro ) || TemDadosNoMes = 0,
-			        BLANK (),
-			        IF ( TemMovRealizado > 0, SaldoInicialRealizado, SaldoInicialProjetado )
-			    )
-		lineageTag: 6af20a64-f7a3-4ffe-ba72-61b1ce621444
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
-	measure 'Saldo Projetado (antes)' =
-			
-			VAR SaldoInicial = SUM ( protheus_contasBancarias[saldo_atual] )
-			VAR DataEixo     = MAX ( calendario[Date] )
-			VAR DataInicio   = MINX ( ALLSELECTED ( calendario[Date] ), calendario[Date] )
-			VAR TemMovNoDia =
-			    CALCULATE (
-			        COUNTROWS ( projecao_caixa ),
-			        USERELATIONSHIP ( calendario[Date], projecao_caixa[data_vencimento_ajustada] ),
-			        KEEPFILTERS ( projecao_caixa[data_vencimento_real] = DataEixo )
-			    )
-			VAR AcumAteDiaAnterior =
-			    CALCULATE (
-			        SUM ( projecao_caixa[valorpn] ),
-			        USERELATIONSHIP ( calendario[Date], projecao_caixa[data_vencimento_ajustada] ),
-			        FILTER (
-			            ALL ( calendario[Date] ),
-			            calendario[Date] >= DataInicio
-			                && calendario[Date] < DataEixo
-			        )
-			    )
-			RETURN
-			    IF ( TemMovNoDia = 0, BLANK(), SaldoInicial + AcumAteDiaAnterior )
-		lineageTag: 5ea174a2-f54c-4e1c-90de-d774b7cc1437
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
-	measure 'Saldo Realizado (depois)' =
-			
-			VAR SaldoFuturo =
-			    SUM ( protheus_contasBancarias[saldo_atual] )
-			VAR DataEixo =
-			    MAX ( calendario[Date] )
-			VAR TemMovNoDia =
-			    CALCULATE (
-			        COUNTROWS ( protheus_movimentosBancarios ),
-			        KEEPFILTERS ( protheus_movimentosBancarios[data_movimento] = DataEixo )
-			    )
-			VAR SomaDepoisDoDia =
-			    CALCULATE (
-			        SUM ( protheus_movimentosBancarios[valorpn] ),
-			        FILTER ( ALL ( calendario[Date] ), calendario[Date] > DataEixo )
-			    )
-			RETURN
-			    IF ( TemMovNoDia = 0, BLANK(), SaldoFuturo - SomaDepoisDoDia )
-		lineageTag: d760297c-dd0e-442a-a6f6-d7b809b74e5c
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
-	measure 'Movimentação Projetada' =
-			
-			CALCULATE( SUM(projecao_caixa[valorpn]), USERELATIONSHIP(calendario[Date], projecao_caixa[data_vencimento_ajustada]) )
-		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
-		lineageTag: e7c7e485-ff21-4d3a-84bb-0929a7f3c90e
-
-		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
-
 	measure 'CP Dias em Atraso' =
 			
 			VAR dataMin =
@@ -593,36 +354,6 @@ table medidas_financeiro
 
 		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
 
-	measure 'Saldo Inicial Periodo' =
-			
-			VAR DataInicial =
-			    MIN('calendario'[Date])
-			
-			RETURN
-			CALCULATE(
-			    [Fluxo Liquido Projetado],
-			    FILTER(
-			        ALL('Calendario'),
-			        'Calendario'[Date] < DataInicial
-			    )
-			)
-		lineageTag: 0252e484-7058-4cb8-b194-e3c3a777b5d1
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
-	measure 'Fluxo Acumulado Projetado' =
-			
-			CALCULATE(
-			    [Fluxo Liquido Projetado],
-			    FILTER(
-			        ALLSELECTED('Calendario'[Date]),
-			        'Calendario'[Date] <= MAX('Calendario'[Date])
-			    )
-			)
-		lineageTag: edaac251-7a08-4135-bb52-2272dcf3d562
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
 	measure 'Saldo Acumulado Projetado' =
 			
 			[Saldo Inicial Periodo] + [Fluxo Acumulado Projetado]
@@ -642,8 +373,55 @@ table medidas_financeiro
 
 		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
 
-	measure 'Fluxo Acumulado Real' =
+	measure 'Saldo Acumulado Real' =
 			
+			[Saldo Inicial Periodo] + [Fluxo Acumulado Real]
+		lineageTag: a15fb5e6-a015-4b78-8cbe-7cca3a25498b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Saldo de títulos vencidos e ainda não pagos (data_vencimento < hoje)
+	measure 'CR Valor Inadimplente' =
+			CALCULATE(
+			    SUM(protheus_contasReceber[saldo]),
+			    protheus_contasReceber[saldo] > 0,
+			    protheus_contasReceber[data_vencimento] < TODAY()
+			)
+		formatString: R$ #,##0.00
+		displayFolder: Inadimplência
+		lineageTag: 3622134b-ecf7-4f08-8012-27fa3f21755b
+
+	/// Total de saldo em aberto no período selecionado
+	measure 'CR Total' = SUM(protheus_contasReceber[valor_titulo])
+		formatString: R$ #,##0.00
+		displayFolder: Recebimentos
+		lineageTag: 084fe15d-3059-449a-a67a-8a935933c0ab
+
+	measure 'Saldo Inicial Periodo' =
+			VAR DataInicial =
+			    MIN('calendario'[Date])
+			
+			RETURN
+			CALCULATE(
+			    [Fluxo Liquido Projetado],
+			    FILTER(
+			        ALL('Calendario'),
+			        'Calendario'[Date] < DataInicial
+			    )
+			)
+		lineageTag: 8919a334-c86c-4395-9a0f-678cc69ead14
+
+	measure 'Fluxo Acumulado Projetado' =
+			CALCULATE(
+			    [Fluxo Liquido Projetado],
+			    FILTER(
+			        ALLSELECTED('Calendario'[Date]),
+			        'Calendario'[Date] <= MAX('Calendario'[Date])
+			    )
+			)
+		lineageTag: b1796501-2579-4f96-b758-cec5bc534901
+
+	measure 'Fluxo Acumulado Real' =
 			CALCULATE(
 			    [Fluxo Liquido Real],
 			    FILTER(
@@ -652,16 +430,7 @@ table medidas_financeiro
 			    )
 			)
 		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
-		lineageTag: 2df8a255-5aaf-43fa-a449-cb2e1badf3aa
-
-		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
-
-	measure 'Saldo Acumulado Real' =
-			
-			[Saldo Inicial Periodo] + [Fluxo Acumulado Real]
-		lineageTag: a15fb5e6-a015-4b78-8cbe-7cca3a25498b
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
+		lineageTag: 8209dc6e-9084-4b2d-86d7-ea9dd51b6613
 
 	partition medidas_financeiro = m
 		mode: import

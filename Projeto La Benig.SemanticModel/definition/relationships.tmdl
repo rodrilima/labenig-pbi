@@ -45,40 +45,6 @@ relationship AutoDetected_a5227dbb-289a-4ea2-a544-07fde6f5d5b2
 	fromColumn: fato_pedidos.loja_id
 	toColumn: dim_lojas.loja_id
 
-relationship 26b13fce-6984-4357-9e3b-55f2a4b48a4e
-	joinOnDateBehavior: datePartOnly
-	fromColumn: fato_contas_receber.data_emissao
-	toColumn: LocalDateTable_946785b6-7017-483a-9de3-61fa64a04300.Date
-
-relationship bd742a95-5939-4ac4-a0a7-e2d4abe0c383
-	joinOnDateBehavior: datePartOnly
-	fromColumn: fato_contas_receber.data_vencimento
-	toColumn: LocalDateTable_088d4d06-68bf-4328-a864-b2f4fb598a12.Date
-
-relationship 8fb27411-7fb5-4edb-8c4e-9d2458b68ad5
-	joinOnDateBehavior: datePartOnly
-	fromColumn: fato_contas_receber.data_recebimento
-	toColumn: LocalDateTable_39250373-7f28-4f06-b891-2c6e7f0a5939.Date
-
-relationship AutoDetected_8b946c89-a3f3-4190-bb05-757d9d41099c
-	fromColumn: fato_contas_receber.cliente_id
-	toColumn: dim_clientes.cliente_id
-
-relationship c5fe6b48-9a21-4cdd-8850-8024e9f67e62
-	joinOnDateBehavior: datePartOnly
-	fromColumn: fato_contas_pagar.data_emissao
-	toColumn: LocalDateTable_e28827f2-1fbc-435b-8094-d1ba91d4d272.Date
-
-relationship aa57dfa6-a43d-441b-8e85-c12031cf3d34
-	joinOnDateBehavior: datePartOnly
-	fromColumn: fato_contas_pagar.data_vencimento
-	toColumn: LocalDateTable_fcd32919-4c9f-495a-b7dc-e907a60bbf59.Date
-
-relationship 36fbcbfd-031b-45e9-8ab4-3fb2afd96575
-	joinOnDateBehavior: datePartOnly
-	fromColumn: fato_contas_pagar.data_pagamento
-	toColumn: LocalDateTable_293c8d7a-b138-43de-85b5-194c186ca028.Date
-
 relationship 57639155-4280-4b6f-b76a-527e45b68366
 	joinOnDateBehavior: datePartOnly
 	fromColumn: fato_resultado_operacional.data
@@ -178,15 +144,6 @@ relationship eec62af2-1278-4025-a449-c430e449fa17
 	joinOnDateBehavior: datePartOnly
 	fromColumn: protheus_movimentosBancarios.data_atualizacao_warehouse
 	toColumn: LocalDateTable_b29f0275-1101-4bbb-9a53-c9f11e5ee9fc.Date
-
-relationship 452dc0fd-8da9-45cc-b918-40a5cf7a9b22
-	joinOnDateBehavior: datePartOnly
-	fromColumn: protheus_contatos.data_atualizacao_warehouse
-	toColumn: LocalDateTable_63a31d30-5033-4537-a4f8-f622ebf0bfb3.Date
-
-relationship 97234551-54ec-2aa5-ccb8-8cfd1728d73e
-	fromColumn: protheus_contasReceber.cod_cliente
-	toColumn: protheus_contatos.codigo
 
 relationship AutoDetected_7dc9e65c-8382-4ba9-a7b1-c55b04a98a87
 	crossFilteringBehavior: bothDirections

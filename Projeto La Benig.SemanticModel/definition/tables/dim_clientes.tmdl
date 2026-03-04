@@ -2,16 +2,6 @@
 table dim_clientes
 	lineageTag: 550d7af7-d6f3-4909-8146-b1e07e9dc4c9
 
-	/// Quantidade de clientes ativos no Atacado
-	measure 'Clientes Ativos Atacado' = CALCULATE(COUNTROWS(dim_clientes), dim_clientes[tipo_cliente] = "Atacado", dim_clientes[status] = "Ativo")
-		formatString: #,##0
-		lineageTag: 14e980d8-b063-4e3b-9cc9-3a6647b61b26
-
-	/// Contagem distinta de clientes
-	measure 'Clientes por Regiao' = DISTINCTCOUNT(dim_clientes[cliente_id])
-		formatString: #,##0
-		lineageTag: 9f3df466-daca-4b41-b4b7-d9bdb5d64677
-
 	/// Quantidade de estados com clientes atacado
 	measure 'Estados Atendidos' = CALCULATE(DISTINCTCOUNT(dim_clientes[estado]), dim_clientes[tipo_cliente] = "Atacado")
 		formatString: #,##0

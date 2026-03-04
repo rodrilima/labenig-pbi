@@ -28,8 +28,8 @@
               },
               "queryRef": "calendario.Date",
               "nativeQueryRef": "Date",
-              "displayName": "Data",
-              "active": true
+              "active": true,
+              "displayName": "Data"
             }
           ]
         },
@@ -476,5 +476,89 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "77125f5c57a46a20a8e2",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "calendario"
+              }
+            },
+            "Property": "Date"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "93991d6e037168a01b75",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "medidas_financeiro"
+              }
+            },
+            "Property": "Total Entrada"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "1b8384fe56088526840b",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "medidas_financeiro"
+              }
+            },
+            "Property": "Total Saída"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "0b26c826670690c34170",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "protheus_contasReceber"
+                  }
+                },
+                "Property": "valor_titulo"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "30eac1330cb3d6e78502",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "protheus_contasPagar"
+                  }
+                },
+                "Property": "valorpn"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

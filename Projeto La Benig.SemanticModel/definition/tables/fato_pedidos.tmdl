@@ -37,11 +37,6 @@ table fato_pedidos
 		formatString: #,##0
 		lineageTag: 4af744e0-cdfd-41f3-916a-79e4504263da
 
-	/// Percentual de pedidos cancelados
-	measure 'Taxa Cancelamento' = DIVIDE(CALCULATE(COUNTROWS(fato_pedidos), fato_pedidos[status] = "Cancelado"), [Total de Pedidos], 0)
-		formatString: 0.0%
-		lineageTag: 02242705-eb9d-4ca8-87d1-0b6f6e9f2b0d
-
 	/// Total de pedidos do canal Atacado
 	measure 'Pedidos Atacado' = CALCULATE([Total de Pedidos], fato_pedidos[canal] = "Atacado")
 		formatString: #,##0
@@ -62,20 +57,10 @@ table fato_pedidos
 		formatString: #,##0
 		lineageTag: 4faaa120-c3e4-4977-be3c-7e34f4329e22
 
-	/// Custo médio de frete por pedido
-	measure 'Custo Medio Frete' = AVERAGE(fato_pedidos[valor_frete])
-		formatString: R$ #,##0.00
-		lineageTag: ea58b590-5147-49b4-8646-f36b872cfb23
-
 	/// Pedidos em processo de separação
 	measure 'Pedidos em Separacao' = CALCULATE(COUNTROWS(fato_pedidos), fato_pedidos[status] = "Em Separação")
 		formatString: #,##0
 		lineageTag: 901949f4-4ba0-4839-a41e-5e0f704f3de8
-
-	/// Tempo médio de separação em horas
-	measure 'Tempo Medio Separacao' = AVERAGE(fato_pedidos[valor_frete])
-		formatString: 0.00
-		lineageTag: ab456644-29fb-4700-b213-5aff3aeb631c
 
 	/// Percentual de cumprimento do SLA de separação (exemplo estático)
 	measure 'SLA Separacao Percentual' = 0.85

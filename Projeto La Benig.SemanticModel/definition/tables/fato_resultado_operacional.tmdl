@@ -7,29 +7,6 @@ table fato_resultado_operacional
 		formatString: R$ #,##0.00
 		lineageTag: 4ae80508-ef27-4bbb-bf55-a72666f8656d
 
-	/// Total de despesas fixas
-	measure 'Despesas Fixas' = CALCULATE(SUM(fato_resultado_operacional[valor]), fato_resultado_operacional[tipo] = "Despesa Fixa")
-		formatString: R$ #,##0.00
-		lineageTag: 4b66437b-4f76-4db5-b6eb-d09d97ebfe87
-
-	/// Total de despesas variáveis
-	measure 'Despesas Variaveis' = CALCULATE(SUM(fato_resultado_operacional[valor]), fato_resultado_operacional[tipo] = "Despesa Variável")
-		formatString: R$ #,##0.00
-		lineageTag: 0e228a79-95ce-45a2-b423-04528e0f0975
-
-	/// Total de despesas (valor absoluto)
-	measure 'Total Despesas' = CALCULATE(ABS(SUM(fato_resultado_operacional[valor])), fato_resultado_operacional[tipo] IN {"Despesa Fixa", "Despesa Variável"})
-		formatString: R$ #,##0.00
-		lineageTag: ec56aa27-e72c-429f-b55d-c009c64bd081
-
-	/// Variação % do resultado operacional vs período anterior
-	measure 'Variacao Resultado Operacional %' =
-			VAR Atual = [Resultado Operacional]
-			VAR Anterior = CALCULATE([Resultado Operacional], DATEADD(dim_data[Data], -1, MONTH))
-			RETURN IF(Anterior <> 0, DIVIDE(Atual - Anterior, Anterior), BLANK())
-		formatString: +0.0%;-0.0%;0.0%
-		lineageTag: 95a974aa-2af2-43a5-8ab5-28dc8b704383
-
 	column id
 		dataType: int64
 		formatString: 0
