@@ -143,6 +143,36 @@
             }
           }
         }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "56.022450617408836D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "protheus_contasPagar.parcela"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "118.84040064223387D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "protheus_contasPagar.data_vencimento_real"
+          }
+        }
       ]
     },
     "drillFilterOtherVisuals": true

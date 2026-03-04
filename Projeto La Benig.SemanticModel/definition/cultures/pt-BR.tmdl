@@ -1300,6 +1300,16 @@ cultureInfo pt-BR
 			            },
 			            "Weight": 0.9
 			          }
+			        },
+			        {
+			          "Categoria": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -24799,6 +24809,16 @@ cultureInfo pt-BR
 			            "State": "Generated",
 			            "Weight": 0.99
 			          }
+			        },
+			        {
+			          "Faixa de Aging": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -29022,6 +29042,16 @@ cultureInfo pt-BR
 			          "beneficiario": {
 			            "State": "Generated"
 			          }
+			        },
+			        {
+			          "Beneficiário": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -29134,6 +29164,16 @@ cultureInfo pt-BR
 			        {
 			          "numero": {
 			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Número": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        }
 			      ]
@@ -31738,6 +31778,16 @@ cultureInfo pt-BR
 			            },
 			            "Weight": 0.714
 			          }
+			        },
+			        {
+			          "Data": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ],
 			      "SemanticType": "Time"
@@ -34225,6 +34275,9 @@ cultureInfo pt-BR
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "numero titulo": {
@@ -34236,6 +34289,16 @@ cultureInfo pt-BR
 			            "Type": "Noun",
 			            "State": "Generated",
 			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "Número Título": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        }
 			      ]
@@ -38216,6 +38279,16 @@ cultureInfo pt-BR
 			        {
 			          "descricao": {
 			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Subcategoria": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        }
 			      ]
@@ -53165,6 +53238,52 @@ cultureInfo pt-BR
 			        }
 			      ]
 			    },
+			    "projecao_caixa_has_protheus_numeros_titulo": {
+			      "Binding": {
+			        "ConceptualEntity": "projecao_caixa"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "projecao_caixa": {
+			          "Target": {
+			            "Entity": "projecao_caixa"
+			          }
+			        },
+			        "protheus_numeros_titulo": {
+			          "Target": {
+			            "Entity": "protheus_numeros_titulo"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "projecao_caixa"
+			            },
+			            "Object": {
+			              "Role": "protheus_numeros_titulo"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "projecao_caixas_have_protheus_numeros_titulos"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "protheus_numeros_titulo"
+			            },
+			            "Object": {
+			              "Role": "projecao_caixa"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "protheus_numeros_titulos_have_projecao_caixas"
+			        }
+			      ]
+			    },
 			    "projecao_caixa_has_calendario": {
 			      "Binding": {
 			        "ConceptualEntity": "projecao_caixa"
@@ -55741,39 +55860,6 @@ cultureInfo pt-BR
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "projecao_caixas_have_parcelas"
-			        }
-			      ]
-			    },
-			    "projecao_caixa_has_numero_titulo": {
-			      "Binding": {
-			        "ConceptualEntity": "projecao_caixa"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "projecao_caixa": {
-			          "Target": {
-			            "Entity": "projecao_caixa"
-			          }
-			        },
-			        "projecao_caixa.numero_titulo": {
-			          "Target": {
-			            "Entity": "projecao_caixa.numero_titulo"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "projecao_caixa"
-			            },
-			            "Object": {
-			              "Role": "projecao_caixa.numero_titulo"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "projecao_caixas_have_numero_titulos"
 			        }
 			      ]
 			    },

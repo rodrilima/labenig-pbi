@@ -28,6 +28,7 @@
               },
               "queryRef": "calendario.Date",
               "nativeQueryRef": "Date",
+              "displayName": "Data",
               "active": true
             }
           ]
@@ -79,7 +80,8 @@
                 }
               },
               "queryRef": "Sum(protheus_contasReceber.valor_titulo)",
-              "nativeQueryRef": "Soma de valor_titulo1"
+              "nativeQueryRef": "Soma de valor_titulo1",
+              "displayName": "Entradas Projetadas"
             },
             {
               "field": {
@@ -98,7 +100,8 @@
                 }
               },
               "queryRef": "Sum(protheus_contasPagar.valorpn)",
-              "nativeQueryRef": "Soma de valorpn"
+              "nativeQueryRef": "Soma de valorpn",
+              "displayName": "Saídas Projetadas"
             }
           ]
         },

@@ -52,7 +52,8 @@
                 }
               },
               "queryRef": "Sum(protheus_movimentosBancarios.valor)",
-              "nativeQueryRef": "Soma de valor"
+              "nativeQueryRef": "Soma de valor",
+              "displayName": "Valor"
             }
           ]
         }
@@ -310,7 +311,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Total de Despesas '"
+                  "Value": "'Categorias'"
                 }
               }
             },

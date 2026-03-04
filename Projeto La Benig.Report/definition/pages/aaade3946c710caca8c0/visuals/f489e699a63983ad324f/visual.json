@@ -28,6 +28,7 @@
               },
               "queryRef": "protheus_contasPagar.faixa_aging",
               "nativeQueryRef": "faixa_aging",
+              "displayName": "Faixa de Aging",
               "active": true
             }
           ]

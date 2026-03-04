@@ -28,6 +28,7 @@
               },
               "queryRef": "protheus_movimentosBancarios.data_movimento",
               "nativeQueryRef": "data_movimento",
+              "displayName": "Data Movimento",
               "format": "d"
             },
             {
@@ -42,7 +43,8 @@
                 }
               },
               "queryRef": "protheus_movimentosBancarios.numero",
-              "nativeQueryRef": "numero"
+              "nativeQueryRef": "numero",
+              "displayName": "Número"
             },
             {
               "field": {
@@ -56,7 +58,38 @@
                 }
               },
               "queryRef": "protheus_movimentosBancarios.beneficiario",
-              "nativeQueryRef": "beneficiario"
+              "nativeQueryRef": "beneficiario",
+              "displayName": "Beneficiário"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "protheus_naturezas"
+                    }
+                  },
+                  "Property": "descricao_pai"
+                }
+              },
+              "queryRef": "protheus_naturezas.descricao_pai",
+              "nativeQueryRef": "Categoria",
+              "displayName": "Categoria"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "protheus_naturezas"
+                    }
+                  },
+                  "Property": "descricao"
+                }
+              },
+              "queryRef": "protheus_naturezas.descricao",
+              "nativeQueryRef": "Subcategoria",
+              "displayName": "Subcategoria"
             },
             {
               "field": {
@@ -75,7 +108,8 @@
                 }
               },
               "queryRef": "Sum(protheus_movimentosBancarios.valorpn)",
-              "nativeQueryRef": "Soma de valorpn"
+              "nativeQueryRef": "Soma de valorpn",
+              "displayName": "Valor"
             }
           ]
         }
@@ -101,7 +135,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "457.21052445016227D"
+                  "Value": "373.75634380053725D"
                 }
               }
             }

@@ -33,6 +33,7 @@
               },
               "queryRef": "Sum(protheus_movimentosBancarios.valorpn)",
               "nativeQueryRef": "Soma de valorpn",
+              "displayName": "Valor",
               "format": "\"R$\" #,0.00;-\"R$\" #,0.00;\"R$\" #,0.00"
             }
           ]

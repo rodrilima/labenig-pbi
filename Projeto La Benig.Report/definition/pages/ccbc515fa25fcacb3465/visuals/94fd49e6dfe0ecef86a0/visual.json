@@ -111,6 +111,13 @@
                   "Value": "12D"
                 }
               }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Subcategorias'"
+                }
+              }
             }
           }
         }
