@@ -412,23 +412,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "837f44fc416e672059ab",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fato_pedidos"
-              }
-            },
-            "Property": "Ticket Medio Atacado"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

@@ -17,11 +17,6 @@ table fato_resultado_operacional
 		formatString: R$ #,##0.00
 		lineageTag: 0e228a79-95ce-45a2-b423-04528e0f0975
 
-	/// Resultado operacional líquido
-	measure 'Resultado Operacional' = SUM(fato_resultado_operacional[valor])
-		formatString: R$ #,##0.00
-		lineageTag: fdef4d1a-86ca-4435-bc7c-64623ed5ddb7
-
 	/// Total de despesas (valor absoluto)
 	measure 'Total Despesas' = CALCULATE(ABS(SUM(fato_resultado_operacional[valor])), fato_resultado_operacional[tipo] IN {"Despesa Fixa", "Despesa Variável"})
 		formatString: R$ #,##0.00

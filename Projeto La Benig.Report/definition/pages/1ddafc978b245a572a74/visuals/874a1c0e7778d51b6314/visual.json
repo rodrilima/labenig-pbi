@@ -94,51 +94,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "a972359ab8401c8a95b0",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fato_logistica_pedidos"
-              }
-            },
-            "Property": "transportadora"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "9e4142e030c09c86e98a",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_lojas"
-              }
-            },
-            "Property": "nome_loja"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "fbf8a8e29704aa9ba2b9",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fato_logistica_pedidos"
-              }
-            },
-            "Property": "SLA Separacao %"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "b76e475dee6bac40c25e",
   "position": {
-    "x": 301.51975683890578,
-    "y": 3.8905775075987843,
-    "z": 19000,
-    "height": 46.68693009118541,
-    "width": 235.37993920972644,
-    "tabOrder": 19000
+    "x": 331.41908713692948,
+    "y": 4.24896265560166,
+    "z": 17000,
+    "height": 46.738589211618255,
+    "width": 205.01244813278009,
+    "tabOrder": 17000
   },
   "visual": {
     "visualType": "slicer",
@@ -56,47 +56,6 @@
                 "Literal": {
                   "Value": "1D"
                 }
-              }
-            },
-            "filter": {
-              "filter": {
-                "Version": 2,
-                "From": [
-                  {
-                    "Name": "c",
-                    "Entity": "calendario",
-                    "Type": 0
-                  }
-                ],
-                "Where": [
-                  {
-                    "Condition": {
-                      "In": {
-                        "Expressions": [
-                          {
-                            "Column": {
-                              "Expression": {
-                                "SourceRef": {
-                                  "Source": "c"
-                                }
-                              },
-                              "Property": "ano"
-                            }
-                          }
-                        ],
-                        "Values": [
-                          [
-                            {
-                              "Literal": {
-                                "Value": "2026L"
-                              }
-                            }
-                          ]
-                        ]
-                      }
-                    }
-                  }
-                ]
               }
             }
           }

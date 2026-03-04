@@ -4,10 +4,10 @@
   "position": {
     "x": 158.61671469740634,
     "y": 210.2593659942363,
-    "z": 2000,
+    "z": 1000,
     "height": 221.32564841498558,
     "width": 527.492795389049,
-    "tabOrder": 2000
+    "tabOrder": 1000
   },
   "visual": {
     "visualType": "clusteredColumnChart",
@@ -374,37 +374,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "920dc685e8d6c14821e4",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_lojas"
-              }
-            },
-            "Property": "nome_loja"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "497f4c5fa9700576ce91",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fato_pedidos"
-              }
-            },
-            "Property": "Faturamento Total"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

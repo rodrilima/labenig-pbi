@@ -428,23 +428,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "18856ca008651970a31a",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "medidas_financeiro"
-              }
-            },
-            "Property": "CP Pagamentos Realizados no Período"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

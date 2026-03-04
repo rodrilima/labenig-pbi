@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "c29a5b69bb30bd5c2065",
   "position": {
     "x": 159.80487804878049,
@@ -17,17 +17,23 @@
           "projections": [
             {
               "field": {
-                "Measure": {
+                "Aggregation": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "fato_resultado_operacional"
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "protheus_movimentosBancarios"
+                        }
+                      },
+                      "Property": "valor"
                     }
                   },
-                  "Property": "Receita Total"
+                  "Function": 0
                 }
               },
-              "queryRef": "fato_resultado_operacional.Receita Total",
-              "nativeQueryRef": "Receita Total"
+              "queryRef": "Sum(protheus_movimentosBancarios.valor)",
+              "nativeQueryRef": "Soma de valor",
+              "format": "\"R$\" #,0.00;-\"R$\" #,0.00;\"R$\" #,0.00"
             }
           ]
         }
@@ -36,13 +42,18 @@
         "sort": [
           {
             "field": {
-              "Measure": {
+              "Aggregation": {
                 "Expression": {
-                  "SourceRef": {
-                    "Entity": "fato_resultado_operacional"
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "protheus_movimentosBancarios"
+                      }
+                    },
+                    "Property": "valor"
                   }
                 },
-                "Property": "Receita Total"
+                "Function": 0
               }
             },
             "direction": "Descending"
@@ -483,5 +494,82 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "dbb0b7018b30576e2061",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_movimentosBancarios"
+              }
+            },
+            "Property": "receb_pagto"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "p",
+              "Entity": "protheus_movimentosBancarios",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "p"
+                          }
+                        },
+                        "Property": "receb_pagto"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'R'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User"
+      },
+      {
+        "name": "ae062a79b937907e1e19",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "protheus_movimentosBancarios"
+                  }
+                },
+                "Property": "valor"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

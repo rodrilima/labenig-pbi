@@ -1,0 +1,123 @@
+table protheus_naturezas
+	lineageTag: 6771b100-1dd4-4c87-aa18-89ee486295d9
+
+	column pk
+		dataType: string
+		lineageTag: 88a593f4-3126-4ed1-ac4d-65fd316e4dda
+		summarizeBy: none
+		sourceColumn: pk
+
+		annotation SummarizationSetBy = Automatic
+
+	column filial
+		dataType: string
+		lineageTag: 10c0892a-5d52-4162-802c-d1f5b75d1b85
+		summarizeBy: none
+		sourceColumn: filial
+
+		annotation SummarizationSetBy = Automatic
+
+	column codigo
+		dataType: string
+		lineageTag: 2c46e64f-50b7-42cd-b7af-34d85197d349
+		summarizeBy: none
+		sourceColumn: codigo
+
+		annotation SummarizationSetBy = Automatic
+
+	column descricao
+		dataType: string
+		lineageTag: bae5e729-5bd0-4a2f-be18-38e4dcef75df
+		summarizeBy: none
+		sourceColumn: descricao
+
+		annotation SummarizationSetBy = Automatic
+
+	column centro_custo_debito
+		dataType: string
+		lineageTag: 51158b9e-b763-4943-9d92-3320dcf7d768
+		summarizeBy: none
+		sourceColumn: centro_custo_debito
+
+		annotation SummarizationSetBy = Automatic
+
+	column centro_custo_credito
+		dataType: string
+		lineageTag: 2a26d3f1-0f01-4a23-ade8-01be52034af1
+		summarizeBy: none
+		sourceColumn: centro_custo_credito
+
+		annotation SummarizationSetBy = Automatic
+
+	column natureza_pai
+		dataType: string
+		lineageTag: a1ad18ce-f552-4ff0-bb00-711d763df323
+		summarizeBy: none
+		sourceColumn: natureza_pai
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_inclusao
+		dataType: string
+		lineageTag: 20627bed-0d9c-4d35-a616-d267b72557d6
+		summarizeBy: none
+		sourceColumn: data_inclusao
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_atualizacao_warehouse
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 62688ad5-104e-4320-9e7c-466e7edc458d
+		summarizeBy: none
+		sourceColumn: data_atualizacao_warehouse
+
+		variation Variation
+			isDefault
+			relationship: 6dd1087c-1698-4d1f-a422-54ec096a9af5
+			defaultHierarchy: LocalDateTable_f619ae2f-f8a3-423c-8404-eaa5333554d8.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column deletado
+		dataType: string
+		lineageTag: 869f4e79-f131-4392-bee9-30c45d2f2cf7
+		summarizeBy: none
+		sourceColumn: deletado
+
+		annotation SummarizationSetBy = Automatic
+
+	column descricao_pai =
+			
+			VAR PaiId = protheus_naturezas[natureza_pai]
+			RETURN
+			IF(
+			    ISBLANK(PaiId),
+			    protheus_naturezas[descricao],
+			    LOOKUPVALUE(
+			        protheus_naturezas[descricao],
+			        protheus_naturezas[codigo], PaiId
+			    )
+			)
+		lineageTag: 384d4d99-a7b6-41f9-b580-6c53c8291599
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition protheus_naturezas = m
+		mode: import
+		queryGroup: datalake
+		source =
+				let
+				    Fonte = GoogleBigQuery.Database([Implementation="2.0"]),
+				    #"coherent-window-444219-c1_Database" = Fonte{[Name="coherent-window-444219-c1",Kind="Database"]}[Data],
+				    datalake_Schema = #"coherent-window-444219-c1_Database"{[Name="datalake",Kind="Schema"]}[Data],
+				    protheus_naturezas_Table = datalake_Schema{[Name="protheus_naturezas",Kind="Table"]}[Data],
+				    #"Linhas Filtradas" = Table.SelectRows(protheus_naturezas_Table, each ([filial] = "0102"))
+				in
+				    #"Linhas Filtradas"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

@@ -329,6 +329,19 @@
             "width": 234
           },
           "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 5843.2181098123528,
+            "y": 353.29583200817706
+          },
+          "nodeIndex": "protheus_naturezas",
+          "nodeLineageTag": "6771b100-1dd4-4c87-aa18-89ee486295d9",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
         }
       ],
       "name": "Todas as tabelas",
@@ -341,7 +354,7 @@
     {
       "ordinal": 1,
       "scrollPosition": {
-        "x": 45.488221165490096,
+        "x": 124.86962672879635,
         "y": 0
       },
       "nodes": [
@@ -450,6 +463,19 @@
             "width": 234
           },
           "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 562.21244585246416,
+            "y": 537.2814337729825
+          },
+          "nodeIndex": "protheus_naturezas",
+          "nodeLineageTag": "6771b100-1dd4-4c87-aa18-89ee486295d9",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
         }
       ],
       "name": "MovimentosBancarios",
@@ -468,8 +494,8 @@
       "nodes": [
         {
           "location": {
-            "x": 267,
-            "y": 218
+            "x": 249,
+            "y": 4
           },
           "nodeIndex": "protheus_contasPagar",
           "nodeLineageTag": "9a8386ee-1731-43f9-a602-1f0e80ebeda1",
@@ -481,11 +507,24 @@
         },
         {
           "location": {
-            "x": 595,
-            "y": 231
+            "x": 677,
+            "y": 23
           },
           "nodeIndex": "calendario",
           "nodeLineageTag": "963ae7f1-a55a-45f0-a5f7-69c609f6cb45",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 691,
+            "y": 359
+          },
+          "nodeIndex": "protheus_naturezas",
+          "nodeLineageTag": "6771b100-1dd4-4c87-aa18-89ee486295d9",
           "size": {
             "height": 300,
             "width": 234
@@ -501,6 +540,6 @@
       "tablesLocked": false
     }
   ],
-  "selectedDiagram": "ContasAReceber",
+  "selectedDiagram": "MovimentosBancarios",
   "defaultDiagram": "Todas as tabelas"
 }

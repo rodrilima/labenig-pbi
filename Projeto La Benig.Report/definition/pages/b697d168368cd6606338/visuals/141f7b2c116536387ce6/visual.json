@@ -4,10 +4,10 @@
   "position": {
     "x": 159.59561920808761,
     "y": 464.76832350463354,
-    "z": 20001,
+    "z": 19000,
     "height": 226.45324347093512,
     "width": 1094.5240101095198,
-    "tabOrder": 20001
+    "tabOrder": 19000
   },
   "visual": {
     "visualType": "tableEx",
@@ -167,113 +167,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "aeb10521002d02250581",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fato_pedidos"
-              }
-            },
-            "Property": "pedido_id"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "724ee51e4757775b4eac",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fato_pedidos"
-              }
-            },
-            "Property": "status"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "59e13a37145855cbb155",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "fato_pedidos"
-                  }
-                },
-                "Property": "valor_bruto"
-              }
-            },
-            "Function": 0
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "15f4c39691e2204eb074",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "fato_pedidos"
-                  }
-                },
-                "Property": "valor_desconto"
-              }
-            },
-            "Function": 0
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "0e7907df0834039814d3",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "fato_pedidos"
-                  }
-                },
-                "Property": "valor_frete"
-              }
-            },
-            "Function": 0
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "0b511eae4b80acd0d09d",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "fato_pedidos"
-                  }
-                },
-                "Property": "valor_liquido"
-              }
-            },
-            "Function": 0
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "e403a1cfb1a015d5e470",
   "position": {
     "x": 999.219512195122,
@@ -20,14 +20,15 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fato_resultado_operacional"
+                      "Entity": "medidas_financeiro"
                     }
                   },
                   "Property": "Resultado Operacional"
                 }
               },
-              "queryRef": "fato_resultado_operacional.Resultado Operacional",
-              "nativeQueryRef": "Resultado Operacional"
+              "queryRef": "medidas_financeiro.Resultado Operacional",
+              "nativeQueryRef": "Resultado Operacional",
+              "format": "\"R$\" #,0.00;-\"R$\" #,0.00;\"R$\" #,0.00"
             }
           ]
         }
@@ -39,7 +40,7 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "fato_resultado_operacional"
+                    "Entity": "medidas_financeiro"
                   }
                 },
                 "Property": "Resultado Operacional"

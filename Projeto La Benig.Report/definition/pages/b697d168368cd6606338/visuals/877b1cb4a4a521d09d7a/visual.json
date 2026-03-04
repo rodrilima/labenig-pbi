@@ -4,10 +4,10 @@
   "position": {
     "x": 449.66456588758274,
     "y": 9.326047358834245,
-    "z": 20000,
+    "z": 18000,
     "height": 46.630236794171225,
     "width": 235.48269581056468,
-    "tabOrder": 20000
+    "tabOrder": 18000
   },
   "visual": {
     "visualType": "slicer",
@@ -56,47 +56,6 @@
                 "Literal": {
                   "Value": "1D"
                 }
-              }
-            },
-            "filter": {
-              "filter": {
-                "Version": 2,
-                "From": [
-                  {
-                    "Name": "c",
-                    "Entity": "calendario",
-                    "Type": 0
-                  }
-                ],
-                "Where": [
-                  {
-                    "Condition": {
-                      "In": {
-                        "Expressions": [
-                          {
-                            "Column": {
-                              "Expression": {
-                                "SourceRef": {
-                                  "Source": "c"
-                                }
-                              },
-                              "Property": "ano"
-                            }
-                          }
-                        ],
-                        "Values": [
-                          [
-                            {
-                              "Literal": {
-                                "Value": "2026L"
-                              }
-                            }
-                          ]
-                        ]
-                      }
-                    }
-                  }
-                ]
               }
             }
           }

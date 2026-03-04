@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "699b672b77bfe3258065",
   "position": {
-    "x": 726.14634146341461,
-    "y": 210.73170731707319,
-    "z": 7000,
-    "height": 216,
-    "width": 540.8780487804878,
-    "tabOrder": 7000
+    "x": 157.21161825726142,
+    "y": 211.38589211618256,
+    "z": 5000,
+    "height": 224.13278008298755,
+    "width": 544.92946058091286,
+    "tabOrder": 5000
   },
   "visual": {
     "visualType": "pieChart",
@@ -20,15 +20,16 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fato_resultado_operacional"
+                      "Entity": "protheus_naturezas"
                     }
                   },
-                  "Property": "categoria"
+                  "Property": "descricao_pai"
                 }
               },
-              "queryRef": "fato_resultado_operacional.categoria",
-              "nativeQueryRef": "categoria",
-              "active": true
+              "queryRef": "protheus_naturezas.descricao_pai",
+              "nativeQueryRef": "Natureza",
+              "active": true,
+              "displayName": "Natureza"
             }
           ]
         },
@@ -36,17 +37,22 @@
           "projections": [
             {
               "field": {
-                "Measure": {
+                "Aggregation": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "fato_resultado_operacional"
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "protheus_movimentosBancarios"
+                        }
+                      },
+                      "Property": "valor"
                     }
                   },
-                  "Property": "Total Despesas"
+                  "Function": 0
                 }
               },
-              "queryRef": "fato_resultado_operacional.Total Despesas",
-              "nativeQueryRef": "Total Despesas"
+              "queryRef": "Sum(protheus_movimentosBancarios.valor)",
+              "nativeQueryRef": "Soma de valor"
             }
           ]
         }
@@ -55,13 +61,18 @@
         "sort": [
           {
             "field": {
-              "Measure": {
+              "Aggregation": {
                 "Expression": {
-                  "SourceRef": {
-                    "Entity": "fato_resultado_operacional"
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "protheus_movimentosBancarios"
+                      }
+                    },
+                    "Property": "valor"
                   }
                 },
-                "Property": "Total Despesas"
+                "Function": 0
               }
             },
             "direction": "Descending"
@@ -347,5 +358,63 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "fc8d1fc72170308a03c5",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_movimentosBancarios"
+              }
+            },
+            "Property": "receb_pagto"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "p",
+              "Entity": "protheus_movimentosBancarios",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "p"
+                          }
+                        },
+                        "Property": "receb_pagto"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'P'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User"
+      }
+    ]
   }
 }

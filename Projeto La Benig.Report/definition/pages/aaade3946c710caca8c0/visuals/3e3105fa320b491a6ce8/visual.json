@@ -76,23 +76,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "05b4f37190b804262dd7",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "protheus_contasPagar"
-              }
-            },
-            "Property": "numero_titulo"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

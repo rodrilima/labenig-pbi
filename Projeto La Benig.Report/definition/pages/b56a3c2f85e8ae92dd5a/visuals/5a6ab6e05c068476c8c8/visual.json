@@ -412,23 +412,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "dea48065659b6740da0e",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fato_pedidos"
-              }
-            },
-            "Property": "Custo Total Frete"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

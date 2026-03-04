@@ -412,23 +412,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "769e3786e957c2135b6c",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fato_pedidos"
-              }
-            },
-            "Property": "CAC"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

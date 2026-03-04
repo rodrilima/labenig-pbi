@@ -617,6 +617,12 @@ table medidas_financeiro
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	measure 'Resultado Operacional' = SUM(protheus_movimentosBancarios[valorpn])
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: fa530358-f3a5-4759-bf96-0f4d91225de6
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
 	partition medidas_financeiro = m
 		mode: import
 		source =

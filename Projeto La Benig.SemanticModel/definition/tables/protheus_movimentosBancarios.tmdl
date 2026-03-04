@@ -46,13 +46,12 @@ table protheus_movimentosBancarios
 
 	column valor
 		dataType: double
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
 		lineageTag: b6f8229f-07ec-40b5-ac58-ef7046db7a32
 		summarizeBy: sum
 		sourceColumn: valor
 
 		annotation SummarizationSetBy = Automatic
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column natureza
 		dataType: string

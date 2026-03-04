@@ -268,3 +268,16 @@ relationship 34cfabe6-02c1-427c-6325-fa71106a4732
 	fromColumn: projecao_caixa.data_vencimento_ajustada
 	toColumn: calendario.Date
 
+relationship 6dd1087c-1698-4d1f-a422-54ec096a9af5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: protheus_naturezas.data_atualizacao_warehouse
+	toColumn: LocalDateTable_f619ae2f-f8a3-423c-8404-eaa5333554d8.Date
+
+relationship eb82932d-a7dc-0583-0d5e-968ea9009163
+	fromColumn: protheus_contasPagar.natureza
+	toColumn: protheus_naturezas.codigo
+
+relationship c2021257-609b-5372-fcd8-3970fc557e53
+	fromColumn: protheus_movimentosBancarios.natureza
+	toColumn: protheus_naturezas.codigo
+
