@@ -9,9 +9,7 @@ table medidas_financeiro
 			RETURN   
 			CALCULATE(
 			    SUM(protheus_contasReceber[saldo]),
-			    protheus_contasReceber[saldo] > 0, 
-			    REMOVEFILTERS ( calendario ),
-			    calendario[Date] <= DataFinal
+			    protheus_contasReceber[saldo] > 0
 			)
 			```
 		formatString: R$ #,##0.00
@@ -94,9 +92,7 @@ table medidas_financeiro
 			RETURN
 			CALCULATE(
 			    SUM ( protheus_contasReceber[saldo] ),
-			    protheus_contasReceber[saldo] > 0,
-			    REMOVEFILTERS ( calendario ),
-			    calendario[Date] <= DataFinal
+			    protheus_contasReceber[saldo] > 0
 			)
 		formatString: R$ #,##0.00
 		displayFolder: Aging

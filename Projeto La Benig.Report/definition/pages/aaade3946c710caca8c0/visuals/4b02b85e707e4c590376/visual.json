@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "4b02b85e707e4c590376",
   "position": {
-    "x": 158.51727042965459,
-    "y": 469.08171861836564,
+    "x": 158.20224719101125,
+    "y": 469.470304975923,
     "z": 3000,
-    "height": 226.45324347093512,
-    "width": 801.21314237573711,
+    "height": 226.00321027287322,
+    "width": 1097.1428571428571,
     "tabOrder": 3000
   },
   "visual": {
@@ -176,5 +176,112 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "1f85fd57114c04a549c1",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_contasPagar"
+              }
+            },
+            "Property": "data_vencimento_real"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "4f3e9ec5a342568c1309",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_contasPagar"
+              }
+            },
+            "Property": "numero_titulo"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "b878a70002701355ed54",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_contasPagar"
+              }
+            },
+            "Property": "parcela"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "59fcf7b7c56403b4946e",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_contasPagar"
+              }
+            },
+            "Property": "cod_fornecedor"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "d749f0d5a00800a4073c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_contasPagar"
+              }
+            },
+            "Property": "nome_fornecedor"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "41c45dd2ae9c3d85bbd3",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "protheus_contasPagar"
+                  }
+                },
+                "Property": "valor_titulo"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "4d0a8872dbc4986ba0e3",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_contasPagar"
+              }
+            },
+            "Property": "status_pagamento"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }

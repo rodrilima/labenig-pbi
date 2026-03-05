@@ -346,34 +346,6 @@
           }
         },
         "type": "Advanced"
-      },
-      {
-        "name": "7ff5524a350edc389bb1",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "protheus_contasPagar"
-              }
-            },
-            "Property": "cod_fornecedor"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "91bd07c2460d95cd817a",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "medidas_financeiro"
-              }
-            },
-            "Property": "CP Status do Fornecedor"
-          }
-        },
-        "type": "Advanced"
       }
     ],
     "filterSortOrder": "Custom"

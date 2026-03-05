@@ -1,0 +1,24 @@
+table protheus_filiais
+	lineageTag: 10c19c01-7110-4a2d-92ea-d544387345f6
+
+	column Filial
+		dataType: string
+		lineageTag: 395f98e6-7a1e-43b9-a391-b3e71c8fabe2
+		summarizeBy: none
+		sourceColumn: Filial
+
+		annotation SummarizationSetBy = Automatic
+
+	partition protheus_filiais = m
+		mode: import
+		queryGroup: datalake
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMjAEQaVYHSjTCMY0QogaIzONEExjpdhYAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Filial = _t])
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

@@ -259,3 +259,19 @@ relationship 18909f18-3a43-41d7-9717-be89ad5e6a71
 	fromColumn: projecao_caixa.numero_titulo
 	toColumn: protheus_numerosTitulos.numero
 
+relationship 0641138a-81f9-cc30-7dd2-260bf9a94ceb
+	fromColumn: protheus_movimentosBancarios.filial
+	toColumn: protheus_filiais.Filial
+
+relationship 5e491f3d-a15c-19eb-2bdb-133c9e4c44fa
+	fromColumn: protheus_contasReceber.filial
+	toColumn: protheus_filiais.Filial
+
+relationship 27bde531-f755-2652-7553-fb3d0782eecb
+	fromColumn: protheus_contasPagar.filial
+	toColumn: protheus_filiais.Filial
+
+relationship 2d274431-ccc7-f99e-86f4-485034e54cfc
+	fromColumn: projecao_caixa.filial
+	toColumn: protheus_filiais.Filial
+

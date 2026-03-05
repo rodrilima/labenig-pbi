@@ -49,50 +49,11 @@
         },
         {
           "location": {
-            "x": 1598.6991657030962,
-            "y": 391.29583200817706
-          },
-          "nodeIndex": "dim_produtos",
-          "nodeLineageTag": "762ddf5a-6367-40b3-b710-b8306d3d4485",
-          "size": {
-            "height": 224,
-            "width": 234
-          },
-          "zIndex": 0
-        },
-        {
-          "location": {
             "x": 316.82673866721609,
             "y": 656.59166401635412
           },
           "nodeIndex": "fato_comportamento_cliente",
           "nodeLineageTag": "94ca9d1b-12bc-4b3e-8bed-a494ec094d4a",
-          "size": {
-            "height": 300,
-            "width": 234
-          },
-          "zIndex": 0
-        },
-        {
-          "location": {
-            "x": 1882.6991657030962,
-            "y": 353.29583200817706
-          },
-          "nodeIndex": "fato_contas_pagar",
-          "nodeLineageTag": "cdf007e0-8241-4c20-bd74-c8be357fcfa4",
-          "size": {
-            "height": 300,
-            "width": 234
-          },
-          "zIndex": 0
-        },
-        {
-          "location": {
-            "x": 203.11680115188216,
-            "y": -50
-          },
-          "nodeIndex": "fato_contas_receber",
-          "nodeLineageTag": "d06afc41-d882-436a-aaf1-64a1702e6f3e",
           "size": {
             "height": 300,
             "width": 234
@@ -242,31 +203,6 @@
         },
         {
           "location": {
-            "x": 4807.2181098123538,
-            "y": 353.29583200817706
-          },
-          "nodeIndex": "protheus_contatos",
-          "nodeLineageTag": "c69578b1-8090-43df-94f4-8663358270a9",
-          "size": {
-            "height": 300,
-            "width": 234
-          },
-          "zIndex": 0
-        },
-        {
-          "location": {
-            "x": 5091.2181098123538,
-            "y": 403.29583200817706
-          },
-          "nodeIndex": "dim_clientes_contas_a_receber",
-          "size": {
-            "height": 200,
-            "width": 234
-          },
-          "zIndex": 0
-        },
-        {
-          "location": {
             "x": 4573.2181098123538,
             "y": 594.89790364556052
           },
@@ -352,6 +288,16 @@
             "width": 234
           },
           "zIndex": 0
+        },
+        {
+          "location": {},
+          "nodeIndex": "protheus_filiais",
+          "nodeLineageTag": "10c19c01-7110-4a2d-92ea-d544387345f6",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
         }
       ],
       "name": "Todas as tabelas",
@@ -364,7 +310,7 @@
     {
       "ordinal": 1,
       "scrollPosition": {
-        "x": 45.488221165490096,
+        "x": 40.136665734255971,
         "y": 0
       },
       "nodes": [
@@ -396,24 +342,24 @@
         },
         {
           "location": {
-            "x": 836,
-            "y": 94
+            "x": 722.22405283583043,
+            "y": 487.42761609931443
           },
-          "nodeIndex": "protheus_contatos",
-          "nodeLineageTag": "c69578b1-8090-43df-94f4-8663358270a9",
+          "nodeIndex": "protheus_numerosTitulos",
+          "nodeLineageTag": "303e7442-e8df-49a7-9314-6880afb2d29a",
           "size": {
-            "height": 300,
+            "height": 104,
             "width": 234
           },
           "zIndex": 0
         },
         {
           "location": {
-            "x": 722.22405283583043,
-            "y": 487.42761609931443
+            "x": 817.660124692839,
+            "y": 60.195107505789764
           },
-          "nodeIndex": "protheus_numerosTitulos",
-          "nodeLineageTag": "303e7442-e8df-49a7-9314-6880afb2d29a",
+          "nodeIndex": "protheus_filiais",
+          "nodeLineageTag": "10c19c01-7110-4a2d-92ea-d544387345f6",
           "size": {
             "height": 104,
             "width": 234
@@ -512,6 +458,19 @@
             "width": 234
           },
           "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 17.922464095602436,
+            "y": 136.29181672808903
+          },
+          "nodeIndex": "protheus_filiais",
+          "nodeLineageTag": "10c19c01-7110-4a2d-92ea-d544387345f6",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
         }
       ],
       "name": "MovimentosBancarios",
@@ -579,6 +538,19 @@
             "width": 234
           },
           "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "protheus_filiais",
+          "nodeLineageTag": "10c19c01-7110-4a2d-92ea-d544387345f6",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
         }
       ],
       "name": "ContasAPagar",
@@ -589,6 +561,6 @@
       "tablesLocked": false
     }
   ],
-  "selectedDiagram": "MovimentosBancarios",
+  "selectedDiagram": "ContasAReceber",
   "defaultDiagram": "Todas as tabelas"
 }

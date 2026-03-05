@@ -46,12 +46,14 @@ table protheus_movimentosBancarios
 
 	column valor
 		dataType: double
-		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		formatString: "R$"#,0.00;-"R$"#,0.00;"R$"#,0.00
 		lineageTag: b6f8229f-07ec-40b5-ac58-ef7046db7a32
 		summarizeBy: sum
 		sourceColumn: valor
 
 		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"es-BR"}
 
 	column natureza
 		dataType: string
@@ -453,7 +455,7 @@ table protheus_movimentosBancarios
 				else if [receb_pagto] = "R" then [valor]
 				else null),
 				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Personalização Adicionada",{{"valorpn", Currency.Type}}),
-				    #"Linhas Filtradas" = Table.SelectRows(#"Tipo Alterado1", each ([filial] = "010102") and ([deletado] = ""))
+				    #"Linhas Filtradas" = Table.SelectRows(#"Tipo Alterado1", each ([deletado] = ""))
 				in
 				    #"Linhas Filtradas"
 

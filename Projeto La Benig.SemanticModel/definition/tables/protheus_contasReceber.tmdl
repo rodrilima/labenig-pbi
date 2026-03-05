@@ -411,7 +411,7 @@ table protheus_contasReceber
 				    #"Colunas Removidas" = Table.RemoveColumns(protheus_contasReceber_Table,{"recno"}),
 				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Colunas Removidas",{{"data_emissao", type date}, {"data_vencimento", type date}, {"data_vencimento_real", type date}, {"data_ult_movimentacao", type date}, {"data_baixa", type date}}),
 				    #"Personalização Adicionada" = Table.AddColumn(#"Tipo Alterado", "PR", each "R"),
-				    #"Linhas Filtradas" = Table.SelectRows(#"Personalização Adicionada", each ([filial] = "010102") and ([deletado] = ""))
+				    #"Linhas Filtradas" = Table.SelectRows(#"Personalização Adicionada", each ([deletado] = ""))
 				in
 				    #"Linhas Filtradas"
 
