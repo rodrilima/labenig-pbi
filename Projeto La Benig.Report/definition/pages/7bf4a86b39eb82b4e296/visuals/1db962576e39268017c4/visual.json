@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
-  "name": "6781b418a205c5e4ed00",
+  "name": "1db962576e39268017c4",
   "position": {
-    "x": 536.89969604863222,
-    "y": 0,
-    "z": 2000,
-    "height": 65.167173252279639,
-    "width": 121.58054711246201,
-    "tabOrder": 2000
+    "x": 395.83333333333337,
+    "y": 21.666666666666668,
+    "z": 3,
+    "height": 65,
+    "width": 120.83333333333334,
+    "tabOrder": 3
   },
   "visual": {
     "visualType": "slicer",
@@ -20,16 +20,15 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "calendario"
+                      "Entity": "protheus_filiais"
                     }
                   },
-                  "Property": "mes_nome"
+                  "Property": "Filial"
                 }
               },
-              "queryRef": "calendario.mes_nome",
-              "nativeQueryRef": "Mês",
-              "active": true,
-              "displayName": "Mês"
+              "queryRef": "protheus_filiais.Filial",
+              "nativeQueryRef": "Filial",
+              "active": true
             }
           ]
         }
@@ -64,8 +63,8 @@
                 "Version": 2,
                 "From": [
                   {
-                    "Name": "c",
-                    "Entity": "calendario",
+                    "Name": "p",
+                    "Entity": "protheus_filiais",
                     "Type": 0
                   }
                 ],
@@ -78,10 +77,10 @@
                             "Column": {
                               "Expression": {
                                 "SourceRef": {
-                                  "Source": "c"
+                                  "Source": "p"
                                 }
                               },
-                              "Property": "mes_nome"
+                              "Property": "Filial"
                             }
                           }
                         ],
@@ -89,7 +88,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'janeiro'"
+                                "Value": "'010102'"
                               }
                             }
                           ]
@@ -159,7 +158,7 @@
       ]
     },
     "syncGroup": {
-      "groupName": "mes_nome",
+      "groupName": "Filial",
       "fieldChanges": true,
       "filterChanges": true
     },

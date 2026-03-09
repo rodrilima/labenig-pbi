@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
-  "name": "1f42bb1f041e0d823e65",
+  "name": "a1ac2824a472e30e97c5",
   "position": {
-    "x": 8.2532052277077472,
-    "y": 54.750937561568335,
+    "x": 150.83333333333334,
+    "y": 8.3333333333333339,
     "z": 2000,
-    "height": 136.86514558434959,
-    "width": 181.2860513702191,
-    "tabOrder": 3000
+    "height": 90.833333333333343,
+    "width": 221.66666666666669,
+    "tabOrder": 4
   },
   "visual": {
     "visualType": "slicer",
@@ -67,7 +67,7 @@
             "endDate": {
               "expr": {
                 "Literal": {
-                  "Value": "datetime'2026-12-31T00:00:00'"
+                  "Value": "datetime'2026-03-09T00:00:00'"
                 }
               }
             },
@@ -107,7 +107,7 @@
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
-                      "ColorId": 0,
+                      "ColorId": 1,
                       "Percent": 0
                     }
                   }
@@ -169,7 +169,7 @@
                             },
                             "Right": {
                               "Literal": {
-                                "Value": "datetime'2027-01-01T00:00:00'"
+                                "Value": "datetime'2026-03-10T00:00:00'"
                               }
                             }
                           }
@@ -213,24 +213,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "parentGroupName": "43aa08147a0018029841",
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "56b1f532d4a5c4b491c9",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "calendario"
-              }
-            },
-            "Property": "Date"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

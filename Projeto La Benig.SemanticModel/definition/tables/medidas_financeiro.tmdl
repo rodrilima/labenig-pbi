@@ -1,7 +1,7 @@
 table medidas_financeiro
 	lineageTag: 931ad143-9708-4495-ba4d-484963756635
 
-	/// Soma do saldo de todos os títulos em aberto (saldo > 0)
+	/// Soma do saldo de todos os títulos em aberto (saldo > 0), excluindo tipo RA
 	measure 'CR Total a Receber' = ```
 			
 			VAR DataFinal =
@@ -9,7 +9,8 @@ table medidas_financeiro
 			RETURN   
 			CALCULATE(
 			    SUM(protheus_contasReceber[saldo]),
-			    protheus_contasReceber[saldo] > 0
+			    protheus_contasReceber[saldo] > 0,
+			    protheus_contasReceber[tipo] <> "RA"
 			)
 			```
 		formatString: R$ #,##0.00
@@ -36,18 +37,21 @@ table medidas_financeiro
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	/// Percentual de inadimplência: valor vencido / total em aberto
+	/// Percentual de inadimplência: valor vencido / total em aberto. Exclui tipo RA.
 	measure 'CR Inadimplência %' =
 			
-			DIVIDE(
-			    [CR Valor Inadimplente],
-			    [CR Total]
+			CALCULATE(
+			    DIVIDE(
+			        [CR Valor Inadimplente],
+			        [CR Total]
+			    ),
+			    protheus_contasReceber[tipo] <> "RA"
 			)
 		formatString: 0.00%;-0.00%;0.00%
 		displayFolder: Inadimplência
 		lineageTag: a4eeb8c2-e6db-4b2f-96fc-5241adb8a566
 
-	/// Prazo Médio de Recebimento em dias, ponderado pelo valor do título. Exclui outliers acima de 180 dias ou antecipações acima de 60 dias.
+	/// Prazo Médio de Recebimento em dias, ponderado pelo valor do título. Exclui outliers acima de 180 dias ou antecipações acima de 60 dias. Exclui tipo RA.
 	measure 'CR PMR (dias)' =
 			
 			DIVIDE(
@@ -55,6 +59,7 @@ table medidas_financeiro
 			        FILTER(
 			            protheus_contasReceber,
 			            NOT(ISBLANK(protheus_contasReceber[data_baixa])) &&
+			            protheus_contasReceber[tipo] <> "RA" &&
 			            DATEDIFF(
 			                protheus_contasReceber[data_vencimento],
 			                protheus_contasReceber[data_baixa],
@@ -74,7 +79,8 @@ table medidas_financeiro
 			    ),
 			    CALCULATE(
 			        SUM(protheus_contasReceber[valor_titulo]),
-			        NOT(ISBLANK(protheus_contasReceber[data_baixa]))
+			        NOT(ISBLANK(protheus_contasReceber[data_baixa])),
+			        protheus_contasReceber[tipo] <> "RA"
 			    )
 			)
 		formatString: 0.0 " dias"
@@ -83,7 +89,7 @@ table medidas_financeiro
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	/// Valor base para análise de aging (curva de vencimentos). Usar com faixas de dias para estratificar o portfólio.
+	/// Valor base para análise de aging (curva de vencimentos). Usar com faixas de dias para estratificar o portfólio. Exclui tipo RA.
 	measure 'CR Valor Aging' =
 			
 			VAR DataFinal =
@@ -92,7 +98,8 @@ table medidas_financeiro
 			RETURN
 			CALCULATE(
 			    SUM ( protheus_contasReceber[saldo] ),
-			    protheus_contasReceber[saldo] > 0
+			    protheus_contasReceber[saldo] > 0,
+			    protheus_contasReceber[tipo] <> "RA"
 			)
 		formatString: R$ #,##0.00
 		displayFolder: Aging

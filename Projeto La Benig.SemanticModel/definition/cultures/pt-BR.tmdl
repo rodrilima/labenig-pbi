@@ -25830,6 +25830,16 @@ cultureInfo pt-BR
 			            },
 			            "Weight": 0.748
 			          }
+			        },
+			        {
+			          "Total a Receber": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -25855,6 +25865,16 @@ cultureInfo pt-BR
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "Recebido no Período": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        }
 			      ]
@@ -25944,6 +25964,16 @@ cultureInfo pt-BR
 			            },
 			            "Weight": 0.739
 			          }
+			        },
+			        {
+			          "Inadimplência %": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -25965,6 +25995,16 @@ cultureInfo pt-BR
 			          "CR PMR": {
 			            "State": "Generated",
 			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "Prazo Médio de Recebimento": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        }
 			      ]
@@ -26002,6 +26042,16 @@ cultureInfo pt-BR
 			            },
 			            "Weight": 0.748
 			          }
+			        },
+			        {
+			          "Total a Pagar": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -26028,6 +26078,16 @@ cultureInfo pt-BR
 			            },
 			            "Weight": 0.605
 			          }
+			        },
+			        {
+			          "Pagamentos Realizados": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -26043,6 +26103,16 @@ cultureInfo pt-BR
 			        {
 			          "CP valor em atraso": {
 			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Valor em Atraso": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        }
 			      ]
@@ -26081,6 +26151,16 @@ cultureInfo pt-BR
 			          "CP PMP": {
 			            "State": "Generated",
 			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "Prazo Médio de Pagamento": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        }
 			      ]

@@ -1,0 +1,206 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "2b9c842b110eeb12c707",
+  "position": {
+    "x": 37.5,
+    "y": 195,
+    "z": 0,
+    "height": 374.16666666666669,
+    "width": 1205,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "calendario"
+                    }
+                  },
+                  "Property": "ano"
+                }
+              },
+              "queryRef": "calendario.ano",
+              "nativeQueryRef": "ano",
+              "displayName": "Ano"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "calendario"
+                    }
+                  },
+                  "Property": "mes_nome"
+                }
+              },
+              "queryRef": "calendario.mes_nome",
+              "nativeQueryRef": "mes_nome",
+              "displayName": "Mês"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "medidas_financeiro"
+                    }
+                  },
+                  "Property": "CR Recebido no Período"
+                }
+              },
+              "queryRef": "medidas_financeiro.CR Recebido no Período",
+              "nativeQueryRef": "CR Recebido no Período",
+              "displayName": "Recebido no Período"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "medidas_financeiro"
+                    }
+                  },
+                  "Property": "CR Total a Receber"
+                }
+              },
+              "queryRef": "medidas_financeiro.CR Total a Receber",
+              "nativeQueryRef": "CR Total a Receber",
+              "displayName": "Total a Receber"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "medidas_financeiro"
+                    }
+                  },
+                  "Property": "CR PMR (dias)"
+                }
+              },
+              "queryRef": "medidas_financeiro.CR PMR (dias)",
+              "nativeQueryRef": "CR PMR (dias)",
+              "displayName": "Prazo Médio de Recebimento"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "medidas_financeiro"
+                    }
+                  },
+                  "Property": "CR Inadimplência %"
+                }
+              },
+              "queryRef": "medidas_financeiro.CR Inadimplência %",
+              "nativeQueryRef": "CR Inadimplência %",
+              "displayName": "Inadimplência %"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "medidas_financeiro"
+                    }
+                  },
+                  "Property": "CP Total a Pagar"
+                }
+              },
+              "queryRef": "medidas_financeiro.CP Total a Pagar",
+              "nativeQueryRef": "CP Total a Pagar",
+              "displayName": "Total a Pagar"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "medidas_financeiro"
+                    }
+                  },
+                  "Property": "CP Pagamentos Realizados no Período"
+                }
+              },
+              "queryRef": "medidas_financeiro.CP Pagamentos Realizados no Período",
+              "nativeQueryRef": "CP Pagamentos Realizados no Período",
+              "displayName": "Pagamentos Realizados"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "medidas_financeiro"
+                    }
+                  },
+                  "Property": "CP Valor em Atraso"
+                }
+              },
+              "queryRef": "medidas_financeiro.CP Valor em Atraso",
+              "nativeQueryRef": "CP Valor em Atraso",
+              "displayName": "Valor em Atraso"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "medidas_financeiro"
+                    }
+                  },
+                  "Property": "CP PMP (dias)"
+                }
+              },
+              "queryRef": "medidas_financeiro.CP PMP (dias)",
+              "nativeQueryRef": "CP PMP (dias)",
+              "displayName": "Prazo Médio de Pagamento"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnFormatting": [
+        {
+          "properties": {
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "calendario.ano"
+          }
+        },
+        {
+          "properties": {
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "calendario.mes_nome"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

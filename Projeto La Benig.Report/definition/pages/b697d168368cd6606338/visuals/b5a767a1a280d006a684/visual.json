@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
-  "name": "196df7cc2b047db84003",
+  "name": "b5a767a1a280d006a684",
   "position": {
-    "x": 301.51975683890578,
-    "y": 3.8905775075987843,
-    "z": 21000,
-    "height": 46.68693009118541,
-    "width": 235.37993920972644,
-    "tabOrder": 21000
+    "x": 795.83333333333337,
+    "y": 0,
+    "z": 19001,
+    "height": 65.833333333333343,
+    "width": 120.83333333333334,
+    "tabOrder": 19001
   },
   "visual": {
     "visualType": "slicer",
@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "calendario"
+                      "Entity": "protheus_filiais"
                     }
                   },
-                  "Property": "ano"
+                  "Property": "Filial"
                 }
               },
-              "queryRef": "calendario.ano",
-              "nativeQueryRef": "ano",
+              "queryRef": "protheus_filiais.Filial",
+              "nativeQueryRef": "Filial",
               "active": true
             }
           ]
@@ -41,7 +41,7 @@
             "mode": {
               "expr": {
                 "Literal": {
-                  "Value": "'Basic'"
+                  "Value": "'Dropdown'"
                 }
               }
             }
@@ -63,8 +63,8 @@
                 "Version": 2,
                 "From": [
                   {
-                    "Name": "c",
-                    "Entity": "calendario",
+                    "Name": "p",
+                    "Entity": "protheus_filiais",
                     "Type": 0
                   }
                 ],
@@ -77,10 +77,10 @@
                             "Column": {
                               "Expression": {
                                 "SourceRef": {
-                                  "Source": "c"
+                                  "Source": "p"
                                 }
                               },
-                              "Property": "ano"
+                              "Property": "Filial"
                             }
                           }
                         ],
@@ -88,14 +88,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "2025L"
-                              }
-                            }
-                          ],
-                          [
-                            {
-                              "Literal": {
-                                "Value": "2026L"
+                                "Value": "'010102'"
                               }
                             }
                           ]
@@ -116,13 +109,6 @@
               "expr": {
                 "Literal": {
                   "Value": "10D"
-                }
-              }
-            },
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
                 }
               }
             }
@@ -157,40 +143,6 @@
       ]
     },
     "visualContainerObjects": {
-      "padding": [
-        {
-          "properties": {
-            "top": {
-              "expr": {
-                "Literal": {
-                  "Value": "0D"
-                }
-              }
-            },
-            "bottom": {
-              "expr": {
-                "Literal": {
-                  "Value": "0D"
-                }
-              }
-            },
-            "right": {
-              "expr": {
-                "Literal": {
-                  "Value": "0D"
-                }
-              }
-            },
-            "left": {
-              "expr": {
-                "Literal": {
-                  "Value": "0D"
-                }
-              }
-            }
-          }
-        }
-      ],
       "background": [
         {
           "properties": {
@@ -206,66 +158,10 @@
       ]
     },
     "syncGroup": {
-      "groupName": "ano",
+      "groupName": "Filial",
       "fieldChanges": true,
       "filterChanges": true
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "ff8a4d6d20491cc92bbd",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "calendario"
-              }
-            },
-            "Property": "ano"
-          }
-        },
-        "type": "Advanced",
-        "filter": {
-          "Version": 2,
-          "From": [
-            {
-              "Name": "c",
-              "Entity": "calendario",
-              "Type": 0
-            }
-          ],
-          "Where": [
-            {
-              "Condition": {
-                "Not": {
-                  "Expression": {
-                    "Comparison": {
-                      "ComparisonKind": 0,
-                      "Left": {
-                        "Column": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Source": "c"
-                            }
-                          },
-                          "Property": "ano"
-                        }
-                      },
-                      "Right": {
-                        "Literal": {
-                          "Value": "null"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          ]
-        }
-      }
-    ]
   }
 }

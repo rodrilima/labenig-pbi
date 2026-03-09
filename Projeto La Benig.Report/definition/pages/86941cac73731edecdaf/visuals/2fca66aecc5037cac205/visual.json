@@ -172,5 +172,70 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "2d8ab027a92a9ab28e38",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "calendario"
+              }
+            },
+            "Property": "Date"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "2aba9c585bca09b3928c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_movimentosBancarios"
+              }
+            },
+            "Property": "numero"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "2ab98dd06e1e397e1eb0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_movimentosBancarios"
+              }
+            },
+            "Property": "beneficiario"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "257fb9c333b19be50640",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "protheus_movimentosBancarios"
+                  }
+                },
+                "Property": "valorpn"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }
