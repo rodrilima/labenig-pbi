@@ -17,19 +17,22 @@
           "projections": [
             {
               "field": {
-                "Column": {
+                "Aggregation": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "protheus_contasReceber"
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "protheus_contasReceber"
+                        }
+                      },
+                      "Property": "pk"
                     }
                   },
-                  "Property": "data_vencimento_real"
+                  "Function": 5
                 }
               },
-              "queryRef": "protheus_contasReceber.data_vencimento_real",
-              "nativeQueryRef": "Vencimento Real",
-              "displayName": "Vencimento Real",
-              "format": "d"
+              "queryRef": "protheus_contasReceber.pk",
+              "nativeQueryRef": "Contagem de pk"
             },
             {
               "field": {
@@ -125,6 +128,20 @@
               "queryRef": "protheus_contasReceber.Status Descrição",
               "nativeQueryRef": "Status",
               "displayName": "Status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "protheus_contasReceber"
+                    }
+                  },
+                  "Property": "historico"
+                }
+              },
+              "queryRef": "protheus_contasReceber.historico",
+              "nativeQueryRef": "historico"
             }
           ]
         }
@@ -133,16 +150,21 @@
         "sort": [
           {
             "field": {
-              "Column": {
+              "Aggregation": {
                 "Expression": {
-                  "SourceRef": {
-                    "Entity": "protheus_contasReceber"
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "protheus_contasReceber"
+                      }
+                    },
+                    "Property": "valor_titulo"
                   }
                 },
-                "Property": "data_vencimento_real"
+                "Function": 0
               }
             },
-            "direction": "Ascending"
+            "direction": "Descending"
           }
         ]
       }
@@ -161,22 +183,6 @@
           }
         }
       ],
-      "columnWidth": [
-        {
-          "properties": {
-            "value": {
-              "expr": {
-                "Literal": {
-                  "Value": "124.58972287537905D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "protheus_contasReceber.data_vencimento_real"
-          }
-        }
-      ],
       "total": [
         {
           "properties": {
@@ -189,8 +195,164 @@
             }
           }
         }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "358.6452657478888D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "protheus_contasReceber.nome_cliente"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "50.44462447709319D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "protheus_contasReceber.pk"
+          }
+        }
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "f3a17aaa0658e6c83151",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_contasReceber"
+              }
+            },
+            "Property": "numero_titulo"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "ca96e9e81492b27ad942",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_contasReceber"
+              }
+            },
+            "Property": "parcela"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "145f3207e474727430e7",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_contasReceber"
+              }
+            },
+            "Property": "cod_cliente"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "2f70ae550e4c01e44d1e",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_contasReceber"
+              }
+            },
+            "Property": "nome_cliente"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "806afd7b885740a11638",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "protheus_contasReceber"
+                  }
+                },
+                "Property": "valor_titulo"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "61205ef1c8b949814d1b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_contasReceber"
+              }
+            },
+            "Property": "Status Descrição"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "043a4c2036704607b03a",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "protheus_contasReceber"
+                  }
+                },
+                "Property": "pk"
+              }
+            },
+            "Function": 5
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "09e803fb514d3cdc155d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_contasReceber"
+              }
+            },
+            "Property": "historico"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }

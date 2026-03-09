@@ -102,6 +102,11 @@
             }
           }
         }
+      ],
+      "general": [
+        {
+          "properties": {}
+        }
       ]
     },
     "visualContainerObjects": {
@@ -134,5 +139,23 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "3daaf564de875450bd72"
+  "parentGroupName": "3daaf564de875450bd72",
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "eca10187e7b629506509",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "calendario"
+              }
+            },
+            "Property": "Date"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
 }

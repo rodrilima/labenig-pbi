@@ -27,8 +27,9 @@
                 }
               },
               "queryRef": "protheus_contasReceber.Status Descrição",
-              "nativeQueryRef": "Status Descrição",
-              "active": true
+              "nativeQueryRef": "Status",
+              "active": true,
+              "displayName": "Status"
             }
           ]
         }
@@ -164,5 +165,23 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "43aa08147a0018029841"
+  "parentGroupName": "43aa08147a0018029841",
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "09ee6a41dcab40593dee",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_contasReceber"
+              }
+            },
+            "Property": "Status Descrição"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
 }

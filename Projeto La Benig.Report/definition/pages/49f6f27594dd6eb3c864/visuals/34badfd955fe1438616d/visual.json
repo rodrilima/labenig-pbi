@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "medidas_financeiro.CR Recebido no Período",
-              "nativeQueryRef": "CR Recebido no Período"
+              "nativeQueryRef": "CR Recebido no Período",
+              "format": "\"R$\" #,0.00;-\"R$\" #,0.00;\"R$\" #,0.00"
             }
           ]
         }
@@ -156,6 +157,20 @@
                 }
               }
             }
+          }
+        },
+        {
+          "properties": {
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "medidas_financeiro.CR Recebido no Período"
           }
         }
       ],
@@ -428,5 +443,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "2b03805b546d401d6267",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "medidas_financeiro"
+              }
+            },
+            "Property": "CR Recebido no Período"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

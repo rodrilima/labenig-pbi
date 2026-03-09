@@ -202,6 +202,20 @@
           "selector": {
             "id": "default"
           }
+        },
+        {
+          "properties": {
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "medidas_financeiro.CP Pagamentos Realizados no Período"
+          }
         }
       ],
       "outline": [
@@ -428,5 +442,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "d9ff2eb90e61ec16a45d",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "medidas_financeiro"
+              }
+            },
+            "Property": "CP Pagamentos Realizados no Período"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

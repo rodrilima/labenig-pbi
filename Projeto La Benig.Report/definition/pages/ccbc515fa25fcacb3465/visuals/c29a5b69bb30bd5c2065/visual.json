@@ -176,6 +176,20 @@
               }
             }
           }
+        },
+        {
+          "properties": {
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(protheus_movimentosBancarios.valor)"
+          }
         }
       ],
       "fillCustom": [
@@ -551,6 +565,25 @@
           ]
         },
         "howCreated": "User"
+      },
+      {
+        "name": "cb461169e0dc5ecddd6b",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "protheus_movimentosBancarios"
+                  }
+                },
+                "Property": "valor"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

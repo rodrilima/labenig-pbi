@@ -577,16 +577,6 @@ cultureInfo pt-BR
 			            },
 			            "Weight": 0.591
 			          }
-			        },
-			        {
-			          "Vencimento Real": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
-			          }
 			        }
 			      ],
 			      "SemanticType": "Time"
