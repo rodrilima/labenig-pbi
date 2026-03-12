@@ -703,25 +703,6 @@
           ]
         },
         "howCreated": "User"
-      },
-      {
-        "name": "9284ae1514234b026bdc",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "protheus_movimentosBancarios"
-                  }
-                },
-                "Property": "valorpn"
-              }
-            },
-            "Function": 0
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

@@ -185,23 +185,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "3daaf564de875450bd72",
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "57da4c833c75b8280b36",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "protheus_contasPagar"
-              }
-            },
-            "Property": "status_pagamento"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
-  }
+  "parentGroupName": "3daaf564de875450bd72"
 }

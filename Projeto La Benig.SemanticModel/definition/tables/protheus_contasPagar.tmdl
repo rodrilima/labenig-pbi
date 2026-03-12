@@ -357,6 +357,14 @@ table protheus_contasPagar
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	column stamp
+		dataType: string
+		lineageTag: 4dc665d3-4e20-4cac-a6cc-19e23e04026f
+		summarizeBy: none
+		sourceColumn: stamp
+
+		annotation SummarizationSetBy = Automatic
+
 	partition protheus_contasPagar = m
 		mode: import
 		queryGroup: datalake

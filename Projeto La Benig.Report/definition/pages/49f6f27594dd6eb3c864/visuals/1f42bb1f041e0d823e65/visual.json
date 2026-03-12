@@ -214,23 +214,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "43aa08147a0018029841",
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "56b1f532d4a5c4b491c9",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "calendario"
-              }
-            },
-            "Property": "Date"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
-  }
+  "parentGroupName": "43aa08147a0018029841"
 }

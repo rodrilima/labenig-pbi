@@ -72,7 +72,8 @@ table dim_clientes
 	column latitude
 		dataType: double
 		lineageTag: 4a4e1c31-0438-41b7-8514-1ed1fb2e9f9b
-		summarizeBy: sum
+		dataCategory: Latitude
+		summarizeBy: none
 		sourceColumn: latitude
 
 		annotation SummarizationSetBy = Automatic
@@ -82,7 +83,8 @@ table dim_clientes
 	column longitude
 		dataType: double
 		lineageTag: d871698c-f642-4f08-9b97-f7b5bd568511
-		summarizeBy: sum
+		dataCategory: Longitude
+		summarizeBy: none
 		sourceColumn: longitude
 
 		annotation SummarizationSetBy = Automatic

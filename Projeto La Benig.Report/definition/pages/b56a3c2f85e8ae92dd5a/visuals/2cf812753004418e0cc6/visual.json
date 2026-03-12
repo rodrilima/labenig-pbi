@@ -4,10 +4,10 @@
   "position": {
     "x": 1169.0104166666667,
     "y": 3.6458333333333335,
-    "z": 16000,
+    "z": 15000,
     "height": 22.916666666666668,
     "width": 96.09375,
-    "tabOrder": 16000
+    "tabOrder": 15000
   },
   "visual": {
     "visualType": "actionButton",
@@ -70,6 +70,17 @@
           "selector": {
             "id": "default"
           }
+        },
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
         }
       ]
     },
@@ -94,7 +105,7 @@
             "navigationSection": {
               "expr": {
                 "Literal": {
-                  "Value": "'7dcdee76acff85849c2e'"
+                  "Value": "'ca20008ac20fd2d3705a'"
                 }
               }
             }

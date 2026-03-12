@@ -2,36 +2,17 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "85bda7e02bb053fe1c44",
   "position": {
-    "x": 154.9279538904899,
-    "y": 228.70317002881842,
+    "x": 158.63636363636363,
+    "y": 228.63636363636363,
     "z": 1000,
-    "height": 457.40634005763684,
-    "width": 534.87031700288185,
+    "height": 457.27272727272725,
+    "width": 535,
     "tabOrder": 1000
   },
   "visual": {
     "visualType": "azureMap",
     "query": {
       "queryState": {
-        "Category": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "dim_clientes"
-                    }
-                  },
-                  "Property": "estado"
-                }
-              },
-              "queryRef": "dim_clientes.estado",
-              "nativeQueryRef": "estado",
-              "active": true
-            }
-          ]
-        },
         "Series": {
           "projections": [
             {
@@ -72,22 +53,17 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Column": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "dim_clientes"
-                        }
-                      },
-                      "Property": "longitude"
+                    "SourceRef": {
+                      "Entity": "dim_clientes"
                     }
                   },
-                  "Function": 0
+                  "Property": "longitude"
                 }
               },
               "queryRef": "Sum(dim_clientes.longitude)",
-              "nativeQueryRef": "Soma de longitude"
+              "nativeQueryRef": "longitude"
             }
           ]
         },
@@ -95,22 +71,17 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Column": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "dim_clientes"
-                        }
-                      },
-                      "Property": "latitude"
+                    "SourceRef": {
+                      "Entity": "dim_clientes"
                     }
                   },
-                  "Function": 0
+                  "Property": "latitude"
                 }
               },
               "queryRef": "Sum(dim_clientes.latitude)",
-              "nativeQueryRef": "Soma de latitude"
+              "nativeQueryRef": "latitude"
             }
           ]
         }
@@ -148,24 +119,24 @@
                 }
               }
             },
-            "zoom": {
-              "expr": {
-                "Literal": {
-                  "Value": "3.54D"
-                }
-              }
-            },
             "centerLatitude": {
               "expr": {
                 "Literal": {
-                  "Value": "-14.904579792575774D"
+                  "Value": "-14.554862357176319D"
                 }
               }
             },
             "centerLongitude": {
               "expr": {
                 "Literal": {
-                  "Value": "-42.02114076442376D"
+                  "Value": "-47.449366D"
+                }
+              }
+            },
+            "zoom": {
+              "expr": {
+                "Literal": {
+                  "Value": "3.37D"
                 }
               }
             }
@@ -374,5 +345,65 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "7e37a2313034062813ba",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_clientes"
+              }
+            },
+            "Property": "tipo_cliente"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "84d077086aed3b5a614d",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fato_pedidos"
+              }
+            },
+            "Property": "Faturamento Total"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "3b4229bcc0068580b8e0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_clientes"
+              }
+            },
+            "Property": "longitude"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "b51366c0ec6b23a456d9",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_clientes"
+              }
+            },
+            "Property": "latitude"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

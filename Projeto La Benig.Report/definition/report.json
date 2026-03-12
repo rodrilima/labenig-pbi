@@ -31,7 +31,7 @@
           "expanded": {
             "expr": {
               "Literal": {
-                "Value": "true"
+                "Value": "false"
               }
             }
           }
@@ -60,66 +60,6 @@
       "type": "RegisteredResources",
       "items": [
         {
-          "name": "Home4599164302808779.png",
-          "path": "Home4599164302808779.png",
-          "type": "Image"
-        },
-        {
-          "name": "Caixa&Liquidez7237195120618407.png",
-          "path": "Caixa&Liquidez7237195120618407.png",
-          "type": "Image"
-        },
-        {
-          "name": "ContaReceber3058268660218991.png",
-          "path": "ContaReceber3058268660218991.png",
-          "type": "Image"
-        },
-        {
-          "name": "ContasPagar4625177044119678.png",
-          "path": "ContasPagar4625177044119678.png",
-          "type": "Image"
-        },
-        {
-          "name": "ResultadoOperacional09619249363281712.png",
-          "path": "ResultadoOperacional09619249363281712.png",
-          "type": "Image"
-        },
-        {
-          "name": "AtacadoVisaoGeral3806424016585911.png",
-          "path": "AtacadoVisaoGeral3806424016585911.png",
-          "type": "Image"
-        },
-        {
-          "name": "AtacadoMapaGeografico22492539201197714.png",
-          "path": "AtacadoMapaGeografico22492539201197714.png",
-          "type": "Image"
-        },
-        {
-          "name": "EcommercePerfomanceVendas8050678088198339.png",
-          "path": "EcommercePerfomanceVendas8050678088198339.png",
-          "type": "Image"
-        },
-        {
-          "name": "EcommerceBaseClientes04940994761432238.png",
-          "path": "EcommerceBaseClientes04940994761432238.png",
-          "type": "Image"
-        },
-        {
-          "name": "LogisticaPedidos22181514289222226.png",
-          "path": "LogisticaPedidos22181514289222226.png",
-          "type": "Image"
-        },
-        {
-          "name": "LogisticaSLAS1344159073261304.png",
-          "path": "LogisticaSLAS1344159073261304.png",
-          "type": "Image"
-        },
-        {
-          "name": "SAC6628432368845976.png",
-          "path": "SAC6628432368845976.png",
-          "type": "Image"
-        },
-        {
           "name": "VisaoExecutiva6913977648699906.png",
           "path": "VisaoExecutiva6913977648699906.png",
           "type": "Image"
@@ -132,6 +72,66 @@
         {
           "name": "_cone_Ativar_Painel_Filtro_Pre7584149044277076.png",
           "path": "_cone_Ativar_Painel_Filtro_Pre7584149044277076.png",
+          "type": "Image"
+        },
+        {
+          "name": "SAC002144903569654688.png",
+          "path": "SAC002144903569654688.png",
+          "type": "Image"
+        },
+        {
+          "name": "LogisticaSLAS8610342599002149.png",
+          "path": "LogisticaSLAS8610342599002149.png",
+          "type": "Image"
+        },
+        {
+          "name": "LogisticaPedidos13327011403951627.png",
+          "path": "LogisticaPedidos13327011403951627.png",
+          "type": "Image"
+        },
+        {
+          "name": "EcommerceBaseClientes6882302220899952.png",
+          "path": "EcommerceBaseClientes6882302220899952.png",
+          "type": "Image"
+        },
+        {
+          "name": "EcommercePerfomanceVendas7460693933677751.png",
+          "path": "EcommercePerfomanceVendas7460693933677751.png",
+          "type": "Image"
+        },
+        {
+          "name": "AtacadoMapaGeografico6740582263666032.png",
+          "path": "AtacadoMapaGeografico6740582263666032.png",
+          "type": "Image"
+        },
+        {
+          "name": "AtacadoVisaoGeral9577774634960096.png",
+          "path": "AtacadoVisaoGeral9577774634960096.png",
+          "type": "Image"
+        },
+        {
+          "name": "ResultadoOperacional0830661278001168.png",
+          "path": "ResultadoOperacional0830661278001168.png",
+          "type": "Image"
+        },
+        {
+          "name": "ContasPagar8761236834936577.png",
+          "path": "ContasPagar8761236834936577.png",
+          "type": "Image"
+        },
+        {
+          "name": "ContaReceber6880257443739192.png",
+          "path": "ContaReceber6880257443739192.png",
+          "type": "Image"
+        },
+        {
+          "name": "Caixa&Liquidez0972366353612849.png",
+          "path": "Caixa&Liquidez0972366353612849.png",
+          "type": "Image"
+        },
+        {
+          "name": "Home01198556629338332.png",
+          "path": "Home01198556629338332.png",
           "type": "Image"
         }
       ]
