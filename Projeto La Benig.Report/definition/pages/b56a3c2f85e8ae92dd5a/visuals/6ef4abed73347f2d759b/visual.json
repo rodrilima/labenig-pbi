@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "6ef4abed73347f2d759b",
   "position": {
     "x": 528.58536585365857,
@@ -10,24 +10,29 @@
     "tabOrder": 2000
   },
   "visual": {
-    "visualType": "cardVisual",
+    "visualType": "card",
     "query": {
       "queryState": {
-        "Data": {
+        "Values": {
           "projections": [
             {
               "field": {
-                "Measure": {
+                "Aggregation": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "fato_pedidos"
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fato _blingV3_notasFiscais"
+                        }
+                      },
+                      "Property": "numero"
                     }
                   },
-                  "Property": "Pedidos Faturados"
+                  "Function": 5
                 }
               },
-              "queryRef": "fato_pedidos.Pedidos Faturados",
-              "nativeQueryRef": "Pedidos Faturados"
+              "queryRef": "CountNonNull(fato _blingV3_notasFiscais.numero)",
+              "nativeQueryRef": "Contagem de numero1"
             }
           ]
         }
@@ -36,13 +41,18 @@
         "sort": [
           {
             "field": {
-              "Measure": {
+              "Aggregation": {
                 "Expression": {
-                  "SourceRef": {
-                    "Entity": "fato_pedidos"
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fato _blingV3_notasFiscais"
+                      }
+                    },
+                    "Property": "numero"
                   }
                 },
-                "Property": "Pedidos Faturados"
+                "Function": 5
               }
             },
             "direction": "Descending"
@@ -52,124 +62,13 @@
       }
     },
     "objects": {
-      "cardCalloutArea": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
-          }
-        }
-      ],
-      "fillCustom": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "label": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
-          }
-        }
-      ],
-      "layout": [
-        {
-          "properties": {
-            "columnCount": {
-              "expr": {
-                "Literal": {
-                  "Value": "5L"
-                }
-              }
-            },
-            "calloutSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "50D"
-                }
-              }
-            },
-            "autoGrid": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        },
-        {
-          "properties": {
-            "backgroundShow": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "rectangleRoundedCurve": {
-              "expr": {
-                "Literal": {
-                  "Value": "1L"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
-          }
-        }
-      ],
-      "value": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        },
+      "labels": [
         {
           "properties": {
             "fontFamily": {
               "expr": {
                 "Literal": {
                   "Value": "'Arial'"
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "13D"
                 }
               }
             },
@@ -180,27 +79,26 @@
                 }
               }
             },
-            "fontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#1B3042'"
-                    }
-                  }
-                }
-              }
-            },
-            "horizontalAlignment": {
+            "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "'center'"
+                  "Value": "13D"
                 }
               }
             }
-          },
-          "selector": {
-            "id": "default"
+          }
+        }
+      ],
+      "categoryLabels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
           }
         }
       ]

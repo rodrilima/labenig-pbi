@@ -10,24 +10,29 @@
     "tabOrder": 4000
   },
   "visual": {
-    "visualType": "cardVisual",
+    "visualType": "card",
     "query": {
       "queryState": {
-        "Data": {
+        "Values": {
           "projections": [
             {
               "field": {
-                "Measure": {
+                "Aggregation": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "fato_pedidos"
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fato _blingV3Atacado_contatos"
+                        }
+                      },
+                      "Property": "id"
                     }
                   },
-                  "Property": "Clientes Ativos 60 Dias"
+                  "Function": 2
                 }
               },
-              "queryRef": "fato_pedidos.Clientes Ativos 60 Dias",
-              "nativeQueryRef": "Clientes Ativos 60 Dias"
+              "queryRef": "Min(fato _blingV3Atacado_contatos.id)",
+              "nativeQueryRef": "Contagem de id"
             }
           ]
         }
@@ -36,13 +41,18 @@
         "sort": [
           {
             "field": {
-              "Measure": {
+              "Aggregation": {
                 "Expression": {
-                  "SourceRef": {
-                    "Entity": "fato_pedidos"
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fato _blingV3Atacado_contatos"
+                      }
+                    },
+                    "Property": "id"
                   }
                 },
-                "Property": "Clientes Ativos 60 Dias"
+                "Function": 2
               }
             },
             "direction": "Descending"
@@ -52,113 +62,23 @@
       }
     },
     "objects": {
-      "cardCalloutArea": [
+      "labels": [
         {
           "properties": {
-            "show": {
+            "labelDisplayUnits": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
-          }
-        }
-      ],
-      "fillCustom": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "label": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
-          }
-        }
-      ],
-      "layout": [
-        {
-          "properties": {
-            "columnCount": {
-              "expr": {
-                "Literal": {
-                  "Value": "5L"
+                  "Value": "1D"
                 }
               }
             },
-            "calloutSize": {
+            "labelPrecision": {
               "expr": {
                 "Literal": {
-                  "Value": "50D"
+                  "Value": "0L"
                 }
               }
             },
-            "autoGrid": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        },
-        {
-          "properties": {
-            "backgroundShow": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "rectangleRoundedCurve": {
-              "expr": {
-                "Literal": {
-                  "Value": "1L"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
-          }
-        }
-      ],
-      "value": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        },
-        {
-          "properties": {
             "fontFamily": {
               "expr": {
                 "Literal": {
@@ -179,28 +99,20 @@
                   "Value": "true"
                 }
               }
-            },
-            "fontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#1B3042'"
-                    }
-                  }
-                }
-              }
-            },
-            "horizontalAlignment": {
+            }
+          }
+        }
+      ],
+      "categoryLabels": [
+        {
+          "properties": {
+            "show": {
               "expr": {
                 "Literal": {
-                  "Value": "'center'"
+                  "Value": "false"
                 }
               }
             }
-          },
-          "selector": {
-            "id": "default"
           }
         }
       ]
@@ -209,6 +121,13 @@
       "title": [
         {
           "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Clientes Ativos'"
+                }
+              }
+            },
             "show": {
               "expr": {
                 "Literal": {
@@ -259,13 +178,6 @@
               "expr": {
                 "Literal": {
                   "Value": "'Arial'"
-                }
-              }
-            },
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Clientes Ativos'"
                 }
               }
             }
@@ -363,13 +275,6 @@
                 }
               }
             },
-            "width": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
-                }
-              }
-            },
             "color": {
               "solid": {
                 "color": {
@@ -378,6 +283,13 @@
                       "Value": "'#1B3042'"
                     }
                   }
+                }
+              }
+            },
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
                 }
               }
             }
@@ -412,5 +324,63 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "caffb68d9dcc367968c0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fato _blingV3Atacado_contatos"
+              }
+            },
+            "Property": "situacao"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "f",
+              "Entity": "fato _blingV3Atacado_contatos",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "f"
+                          }
+                        },
+                        "Property": "situacao"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'A'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User"
+      }
+    ]
   }
 }

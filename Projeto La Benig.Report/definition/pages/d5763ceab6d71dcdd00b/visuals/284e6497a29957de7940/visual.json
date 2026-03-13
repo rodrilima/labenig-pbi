@@ -1,0 +1,57 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "284e6497a29957de7940",
+  "position": {
+    "x": 10.046511627906977,
+    "y": 91.534883720930225,
+    "z": 0,
+    "height": 628.46511627906978,
+    "width": 667.53488372093022,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fato_blingV3Atacado_pedidosVendas"
+                        }
+                      },
+                      "Property": "total"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fato_blingV3Atacado_pedidosVendas.total)",
+              "nativeQueryRef": "Soma de total"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "calendario"
+                    }
+                  },
+                  "Property": "ano"
+                }
+              },
+              "queryRef": "calendario.ano",
+              "nativeQueryRef": "ano"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

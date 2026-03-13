@@ -20,34 +20,19 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fato_pedidos"
+                      "Entity": "fato _blingV3_notasFiscais"
                     }
                   },
-                  "Property": "Custo Total Frete"
+                  "Property": "Custo Total Frete Formatado"
                 }
               },
-              "queryRef": "fato_pedidos.Custo Total Frete",
-              "nativeQueryRef": "Custo Total Frete"
+              "queryRef": "fato _blingV3_notasFiscais.Custo Total Frete Formatado",
+              "nativeQueryRef": "Custo Total Frete Formatado"
             }
           ]
         }
       },
       "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Measure": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "fato_pedidos"
-                  }
-                },
-                "Property": "Custo Total Frete"
-              }
-            },
-            "direction": "Descending"
-          }
-        ],
         "isDefaultSort": true
       }
     },

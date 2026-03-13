@@ -1,0 +1,23 @@
+expression 'Erros em blingV3_notasFiscais' =
+		let
+		Fonte = #"fato _blingV3_notasFiscais",
+		  #"Incompatibilidades de Tipo Detectadas" = let
+		    tableWithOnlyPrimitiveTypes = Table.SelectColumns(Fonte, Table.ColumnsOfType(Fonte, {type nullable number, type nullable text, type nullable logical, type nullable date, type nullable datetime, type nullable datetimezone, type nullable time, type nullable duration})),
+		    recordTypeFields = Type.RecordFields(Type.TableRow(Value.Type(tableWithOnlyPrimitiveTypes))),
+		    fieldNames = Record.FieldNames(recordTypeFields),
+		    fieldTypes = List.Transform(Record.ToList(recordTypeFields), each [Type]),
+		    pairs = List.Transform(List.Positions(fieldNames), (i) => {fieldNames{i}, (v) => if v = null or Value.Is(v, fieldTypes{i}) then v else error [Message = "O tipo do valor não corresponde ao tipo da coluna.", Detail = v], fieldTypes{i}})
+		in
+		    Table.TransformColumns(Fonte, pairs),
+		  #"Índice Adicionado" = Table.AddIndexColumn(#"Incompatibilidades de Tipo Detectadas", "Número da Linha" ,1),
+		  #"Erros Mantidos" = Table.SelectRowsWithErrors(#"Índice Adicionado", {"id", "tipo", "situacao", "numero", "serie", "dataEmissao", "dataOperacao", "chaveAcesso", "valorNota", "valorFrete", "optanteSimplesNacional", "numeroPedidoLoja", "xml", "linkDanfe", "linkPDF", "contato", "naturezaOperacao", "loja", "vendedor", "transporte", "itens", "parcelas", "data_atualizacao_warehouse"}),
+		  #"Colunas Reordenadas" = Table.ReorderColumns(#"Erros Mantidos", {"Número da Linha", "id", "tipo", "situacao", "numero", "serie", "dataEmissao", "dataOperacao", "chaveAcesso", "valorNota", "valorFrete", "optanteSimplesNacional", "numeroPedidoLoja", "xml", "linkDanfe", "linkPDF", "contato", "naturezaOperacao", "loja", "vendedor", "transporte", "itens", "parcelas", "data_atualizacao_warehouse"})
+		in
+		  #"Colunas Reordenadas"
+	lineageTag: d4feee1f-de43-4697-9fe2-c26de3e321db
+	queryGroup: 'Erros na Consulta - 13/03/2026 06:53:59'
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Exception
+

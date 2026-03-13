@@ -1,33 +1,38 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "5ad4efbb670fa9adfa5d",
   "position": {
-    "x": 528.58536585365857,
-    "y": 195.80487804878049,
+    "x": 539.58620689655174,
+    "y": 196.41379310344828,
     "z": 5000,
-    "height": 117.65853658536587,
-    "width": 355.609756097561,
+    "height": 118.06896551724138,
+    "width": 355.31034482758622,
     "tabOrder": 5000
   },
   "visual": {
-    "visualType": "cardVisual",
+    "visualType": "card",
     "query": {
       "queryState": {
-        "Data": {
+        "Values": {
           "projections": [
             {
               "field": {
-                "Measure": {
+                "Aggregation": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "fato_comportamento_cliente"
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fato _blingV3Atacado_contatos"
+                        }
+                      },
+                      "Property": "id"
                     }
                   },
-                  "Property": "Clientes Inativos"
+                  "Function": 5
                 }
               },
-              "queryRef": "fato_comportamento_cliente.Clientes Inativos",
-              "nativeQueryRef": "Clientes Inativos"
+              "queryRef": "Min(fato _blingV3Atacado_contatos.id)",
+              "nativeQueryRef": "Contagem de id"
             }
           ]
         }
@@ -36,13 +41,18 @@
         "sort": [
           {
             "field": {
-              "Measure": {
+              "Aggregation": {
                 "Expression": {
-                  "SourceRef": {
-                    "Entity": "fato_comportamento_cliente"
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fato _blingV3Atacado_contatos"
+                      }
+                    },
+                    "Property": "id"
                   }
                 },
-                "Property": "Clientes Inativos"
+                "Function": 5
               }
             },
             "direction": "Descending"
@@ -52,111 +62,7 @@
       }
     },
     "objects": {
-      "cardCalloutArea": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
-          }
-        }
-      ],
-      "fillCustom": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "label": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
-          }
-        }
-      ],
-      "layout": [
-        {
-          "properties": {
-            "columnCount": {
-              "expr": {
-                "Literal": {
-                  "Value": "5L"
-                }
-              }
-            },
-            "calloutSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "50D"
-                }
-              }
-            },
-            "autoGrid": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        },
-        {
-          "properties": {
-            "backgroundShow": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "rectangleRoundedCurve": {
-              "expr": {
-                "Literal": {
-                  "Value": "1L"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
-          }
-        }
-      ],
-      "value": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        },
+      "labels": [
         {
           "properties": {
             "fontFamily": {
@@ -180,27 +86,33 @@
                 }
               }
             },
-            "fontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#1B3042'"
-                    }
-                  }
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
                 }
               }
             },
-            "horizontalAlignment": {
+            "labelPrecision": {
               "expr": {
                 "Literal": {
-                  "Value": "'center'"
+                  "Value": "0L"
                 }
               }
             }
-          },
-          "selector": {
-            "id": "default"
+          }
+        }
+      ],
+      "categoryLabels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
           }
         }
       ]
@@ -209,6 +121,13 @@
       "title": [
         {
           "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Clientes Inativos'"
+                }
+              }
+            },
             "show": {
               "expr": {
                 "Literal": {
@@ -259,13 +178,6 @@
               "expr": {
                 "Literal": {
                   "Value": "'Arial'"
-                }
-              }
-            },
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Clientes Inativos'"
                 }
               }
             }
@@ -363,13 +275,6 @@
                 }
               }
             },
-            "width": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
-                }
-              }
-            },
             "color": {
               "solid": {
                 "color": {
@@ -378,6 +283,13 @@
                       "Value": "'#1B3042'"
                     }
                   }
+                }
+              }
+            },
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
                 }
               }
             }
@@ -412,5 +324,43 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "ec8cea8f0b279040d7ac",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fato _blingV3Atacado_contatos"
+              }
+            },
+            "Property": "situacao"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "1cefbf46091ea175d436",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fato _blingV3Atacado_contatos"
+                  }
+                },
+                "Property": "id"
+              }
+            },
+            "Function": 5
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

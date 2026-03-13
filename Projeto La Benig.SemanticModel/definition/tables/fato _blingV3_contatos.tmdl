@@ -1,0 +1,209 @@
+table 'fato _blingV3_contatos'
+	lineageTag: dab3cad7-2821-4a68-81c2-45c9bd6349b1
+
+	column id
+		dataType: string
+		lineageTag: 2b1b470b-4b58-4241-ba2c-31eaf482c3b1
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column nome
+		dataType: string
+		lineageTag: fdd3a9f4-ffbd-4f14-a1aa-42ee7a07ab04
+		summarizeBy: none
+		sourceColumn: nome
+
+		annotation SummarizationSetBy = Automatic
+
+	column codigo
+		dataType: string
+		lineageTag: 93a2c530-029a-4ede-99c2-7f19a89d81b6
+		summarizeBy: none
+		sourceColumn: codigo
+
+		annotation SummarizationSetBy = Automatic
+
+	column situacao
+		dataType: string
+		lineageTag: 6fab2786-d743-444f-9278-26e5d8a9dbc3
+		summarizeBy: none
+		sourceColumn: situacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column numeroDocumento
+		dataType: string
+		lineageTag: 092077c2-a20c-4934-9868-d153cd1a30ad
+		summarizeBy: none
+		sourceColumn: numeroDocumento
+
+		annotation SummarizationSetBy = Automatic
+
+	column telefone
+		dataType: string
+		lineageTag: 1800c8e5-e844-41a1-ad7a-a97abeaccd3b
+		summarizeBy: none
+		sourceColumn: telefone
+
+		annotation SummarizationSetBy = Automatic
+
+	column celular
+		dataType: string
+		lineageTag: 1d7f3684-9290-483d-813e-2f1534f14606
+		summarizeBy: none
+		sourceColumn: celular
+
+		annotation SummarizationSetBy = Automatic
+
+	column fantasia
+		dataType: string
+		lineageTag: a592b3bf-db9c-4015-b6d0-fe31bd2e595b
+		summarizeBy: none
+		sourceColumn: fantasia
+
+		annotation SummarizationSetBy = Automatic
+
+	column tipo
+		dataType: string
+		lineageTag: 85949d36-22cf-4aeb-a9d0-368a546c06ce
+		summarizeBy: none
+		sourceColumn: tipo
+
+		annotation SummarizationSetBy = Automatic
+
+	column indicadorIe
+		dataType: string
+		lineageTag: 844ff5a1-2726-47a0-b014-cb041a0cd517
+		summarizeBy: none
+		sourceColumn: indicadorIe
+
+		annotation SummarizationSetBy = Automatic
+
+	column ie
+		dataType: string
+		lineageTag: 93a1d5ed-ae1e-46f4-9249-0fff301167c6
+		summarizeBy: none
+		sourceColumn: ie
+
+		annotation SummarizationSetBy = Automatic
+
+	column rg
+		dataType: string
+		lineageTag: bd6fa5b3-7607-4f2d-96a4-cbeaeede9951
+		summarizeBy: none
+		sourceColumn: rg
+
+		annotation SummarizationSetBy = Automatic
+
+	column orgaoEmissor
+		dataType: string
+		lineageTag: d63ce41d-0724-4ab3-9378-9fb80a593063
+		summarizeBy: none
+		sourceColumn: orgaoEmissor
+
+		annotation SummarizationSetBy = Automatic
+
+	column email
+		dataType: string
+		lineageTag: f1e08fcc-3e6b-43ea-b2e6-055f5b44e1aa
+		summarizeBy: none
+		sourceColumn: email
+
+		annotation SummarizationSetBy = Automatic
+
+	column endereco
+		dataType: string
+		lineageTag: 658d32ce-b295-44f6-9004-6381ae6adeea
+		summarizeBy: none
+		sourceColumn: endereco
+
+		annotation SummarizationSetBy = Automatic
+
+	column vendedor
+		dataType: string
+		lineageTag: 74034023-c65d-4de3-82b8-2fd714058f7e
+		summarizeBy: none
+		sourceColumn: vendedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column dadosAdicionais
+		dataType: string
+		lineageTag: b30c10f8-92c8-4765-b29e-b5e4fa0265d6
+		summarizeBy: none
+		sourceColumn: dadosAdicionais
+
+		annotation SummarizationSetBy = Automatic
+
+	column financeiro
+		dataType: string
+		lineageTag: f5eaad09-2477-41a2-be78-739f825cc5fc
+		summarizeBy: none
+		sourceColumn: financeiro
+
+		annotation SummarizationSetBy = Automatic
+
+	column pais
+		dataType: string
+		lineageTag: 7ffcf6eb-146f-4c4c-958d-df406ce1fe6b
+		summarizeBy: none
+		sourceColumn: pais
+
+		annotation SummarizationSetBy = Automatic
+
+	column tiposContato
+		dataType: string
+		lineageTag: 8f93c0f9-598e-4991-a508-3ffb43fb505c
+		summarizeBy: none
+		sourceColumn: tiposContato
+
+		annotation SummarizationSetBy = Automatic
+
+	column pessoasContato
+		dataType: string
+		lineageTag: 25a0b860-3a01-4e9f-bc8f-b1642bbf47c0
+		summarizeBy: none
+		sourceColumn: pessoasContato
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_atualizacao_warehouse
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 9df73343-8b2b-40a6-9f43-cbf63a256c53
+		summarizeBy: none
+		sourceColumn: data_atualizacao_warehouse
+
+		variation Variation
+			isDefault
+			relationship: 0c2840b5-90af-4a4e-88ef-9dcd4077bb50
+			defaultHierarchy: LocalDateTable_185ad6ec-a1b9-4e97-8ffc-86769d311ef9.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column inscricaoMunicipal
+		dataType: string
+		lineageTag: 2c10b5c8-dfce-4759-b0cc-7ad070e880fe
+		summarizeBy: none
+		sourceColumn: inscricaoMunicipal
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'fato _blingV3_contatos' = m
+		mode: import
+		queryGroup: mocks
+		source =
+				let
+				    Fonte = GoogleBigQuery.Database([Implementation="2.0"]),
+				    #"coherent-window-444219-c1_Database" = Fonte{[Name="coherent-window-444219-c1",Kind="Database"]}[Data],
+				    datalake_Schema = #"coherent-window-444219-c1_Database"{[Name="datalake",Kind="Schema"]}[Data],
+				    blingV3_contatos_Table = datalake_Schema{[Name="blingV3_contatos",Kind="Table"]}[Data]
+				in
+				    blingV3_contatos_Table
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

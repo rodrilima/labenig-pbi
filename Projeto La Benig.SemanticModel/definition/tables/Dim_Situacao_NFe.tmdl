@@ -1,0 +1,44 @@
+table Dim_Situacao_NFe
+	lineageTag: ab8c889b-c271-4ae7-a4b7-94e28ca041b2
+
+	column situacao_id
+		formatString: 0
+		lineageTag: 8615d61c-396f-4a37-8aec-1d5df7f42019
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [situacao_id]
+
+		annotation SummarizationSetBy = Automatic
+
+	column descricao
+		lineageTag: 712a4598-9070-4098-b88f-e978b94b9873
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [descricao]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Situacao_NFe = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "situacao_id", INTEGER,
+				    "descricao", STRING,
+				    {
+				        {1, "Pendente"},
+				        {2, "Cancelada"},
+				        {3, "Aguardando recibo"},
+				        {4, "Rejeitada"},
+				        {5, "Autorizada"},
+				        {6, "Emitida DANFE"},
+				        {7, "Registrada"},
+				        {8, "Aguardando protocolo"},
+				        {9, "Denegada"},
+				        {10, "Em processamento"},
+				        {11, "Bloqueada"}
+				    }
+				)
+
+	annotation PBI_Id = 8bf702ccea2a4c9fb3e9f238affaef85
+

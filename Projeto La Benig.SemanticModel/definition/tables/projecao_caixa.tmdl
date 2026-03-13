@@ -425,6 +425,14 @@ table projecao_caixa
 
 		annotation SummarizationSetBy = Automatic
 
+	column stamp
+		dataType: string
+		lineageTag: c56cb9cd-3a56-4342-92c7-89ff27d23f95
+		summarizeBy: none
+		sourceColumn: stamp
+
+		annotation SummarizationSetBy = Automatic
+
 	partition projecao_caixa = m
 		mode: import
 		queryGroup: datalake

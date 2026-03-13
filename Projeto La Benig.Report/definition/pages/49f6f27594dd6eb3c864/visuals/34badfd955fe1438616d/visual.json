@@ -443,23 +443,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "2b03805b546d401d6267",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "medidas_financeiro"
-              }
-            },
-            "Property": "CR Recebido no Período"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

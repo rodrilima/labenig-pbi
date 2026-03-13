@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "ec5420f7eb30900ca902",
+  "position": {
+    "x": 688,
+    "y": 92,
+    "z": 2000,
+    "height": 628,
+    "width": 592,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fato_blingV3Atacado_pedidosVendas"
+                    }
+                  },
+                  "Property": "Ticke Medio atacado"
+                }
+              },
+              "queryRef": "fato_blingV3Atacado_pedidosVendas.Ticke Medio atacado",
+              "nativeQueryRef": "Ticke Medio atacado"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -4,14 +4,14 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 2414,
-        "y": 246
+        "x": 5091.2181098123528,
+        "y": 694
       },
       "nodes": [
         {
           "location": {
             "x": 432.65862914287817,
-            "y": 303.70738260670441
+            "y": 711.10506348733907
           },
           "nodeIndex": "dim_clientes",
           "nodeLineageTag": "550d7af7-d6f3-4909-8146-b1e07e9dc4c9",
@@ -19,12 +19,12 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 5
         },
         {
           "location": {
             "x": 1314.6991657030962,
-            "y": 367.29583200817706
+            "y": 774.69351288881171
           },
           "nodeIndex": "dim_data",
           "nodeLineageTag": "71695600-1a0a-47cd-949f-976dab967cc5",
@@ -32,12 +32,12 @@
             "height": 272,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 6
         },
         {
           "location": {
             "x": 1005.5833290133191,
-            "y": 271.46385118387855
+            "y": 678.8615320645132
           },
           "nodeIndex": "dim_lojas",
           "nodeLineageTag": "13babba5-d172-4088-bda1-c19dabec9463",
@@ -45,12 +45,12 @@
             "height": 176,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 7
         },
         {
           "location": {
             "x": 316.82673866721609,
-            "y": 656.59166401635412
+            "y": 1063.9893448969888
           },
           "nodeIndex": "fato_comportamento_cliente",
           "nodeLineageTag": "94ca9d1b-12bc-4b3e-8bed-a494ec094d4a",
@@ -58,12 +58,12 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 8
         },
         {
           "location": {
             "x": 2166.6991657030962,
-            "y": 353.29583200817706
+            "y": 760.69351288881171
           },
           "nodeIndex": "fato_fluxo_caixa",
           "nodeLineageTag": "c9e2e0d2-8517-4d64-a28b-d97ecb2f11fd",
@@ -71,12 +71,12 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 9
         },
         {
           "location": {
             "x": 1080.6991657030962,
-            "y": 500.49096484641211
+            "y": 907.88864572704676
           },
           "nodeIndex": "fato_logistica_pedidos",
           "nodeLineageTag": "912e5ee9-efe6-41ba-ab0e-5cd7697600b2",
@@ -84,12 +84,12 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 10
         },
         {
           "location": {
             "x": 718.55532658633092,
-            "y": 373.85225182113732
+            "y": 781.249932701772
           },
           "nodeIndex": "fato_pedidos",
           "nodeLineageTag": "a8dfbd46-d4d3-4671-900c-8abef1a5d985",
@@ -97,12 +97,12 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 11
         },
         {
           "location": {
             "x": 2450.6991657030962,
-            "y": 353.29583200817706
+            "y": 760.69351288881171
           },
           "nodeIndex": "fato_resultado_operacional",
           "nodeLineageTag": "4bf442a7-aeb3-48a9-8b08-78e803a25c1c",
@@ -110,12 +110,12 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 12
         },
         {
           "location": {
             "x": 50,
-            "y": 303.73741077900331
+            "y": 711.135091659638
           },
           "nodeIndex": "fato_sac",
           "nodeLineageTag": "0b6730ba-cf50-4cf2-9955-e97f8e42ba5b",
@@ -123,12 +123,12 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 13
         },
         {
           "location": {
             "x": 3537.08221571779,
-            "y": 345.08465751821581
+            "y": 752.4823383988504
           },
           "nodeIndex": "protheus_contasBancarias",
           "nodeLineageTag": "83cc781d-51c8-4279-861d-29a3d8f96882",
@@ -136,12 +136,12 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 14
         },
         {
           "location": {
             "x": 3303.08221571779,
-            "y": 278.66230853829336
+            "y": 686.059989418928
           },
           "nodeIndex": "protheus_contasPagar",
           "nodeLineageTag": "9a8386ee-1731-43f9-a602-1f0e80ebeda1",
@@ -149,12 +149,12 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 15
         },
         {
           "location": {
             "x": 2734.6991657030962,
-            "y": 308.64741931789121
+            "y": 716.0451001985258
           },
           "nodeIndex": "protheus_contasReceber",
           "nodeLineageTag": "0ee1a42c-97d5-4cbb-8b09-1d141a580f2a",
@@ -162,12 +162,12 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 16
         },
         {
           "location": {
             "x": 3018.9007268962814,
-            "y": 311.50700649813837
+            "y": 718.904687378773
           },
           "nodeIndex": "protheus_movimentosBancarios",
           "nodeLineageTag": "da554400-d777-4977-8bd5-023e535e7bc4",
@@ -175,36 +175,37 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 17
         },
         {
           "location": {
-            "x": 4005.08221571779,
-            "y": 403.29583200817706
+            "x": 4056.08221571779,
+            "y": 1319.6935128888117
           },
           "nodeIndex": "calendario",
+          "nodeLineageTag": "963ae7f1-a55a-45f0-a5f7-69c609f6cb45",
           "size": {
             "height": 200,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 18
         },
         {
           "location": {
             "x": 3771.08221571779,
-            "y": 451.29583200817706
+            "y": 858.69351288881171
           },
           "nodeIndex": "medidas_financeiro",
           "size": {
             "height": 104,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 19
         },
         {
           "location": {
             "x": 4573.2181098123538,
-            "y": 594.89790364556052
+            "y": 1002.2955845261952
           },
           "nodeIndex": "_guia_nomenclatura_paginas",
           "nodeLineageTag": "904840b5-c575-4bb4-b6fc-e922c93124f6",
@@ -212,12 +213,12 @@
             "height": 152,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 20
         },
         {
           "location": {
             "x": 5375.2181098123528,
-            "y": 379.29583200817706
+            "y": 786.69351288881171
           },
           "nodeIndex": "navegacao_menu",
           "nodeLineageTag": "8bd18b08-1c30-4e1d-b286-2bc041900249",
@@ -225,12 +226,12 @@
             "height": 248,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 21
         },
         {
           "location": {
             "x": 4573.21228887241,
-            "y": 159.69376037079354
+            "y": 567.09144125142825
           },
           "nodeIndex": "navegacao_modulos",
           "nodeLineageTag": "b14f7032-38d8-4a99-b9aa-17f8505453c5",
@@ -238,12 +239,12 @@
             "height": 224,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 22
         },
         {
           "location": {
             "x": 4289.08221571779,
-            "y": 365.95274559223071
+            "y": 773.35042647286537
           },
           "nodeIndex": "navegacao_submodulos",
           "nodeLineageTag": "30aa3f58-3add-475b-ae53-43608fe43cf6",
@@ -251,12 +252,12 @@
             "height": 224,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 23
         },
         {
           "location": {
             "x": 5609.2181098123528,
-            "y": 353.29583200817706
+            "y": 760.69351288881171
           },
           "nodeIndex": "projecao_caixa",
           "nodeLineageTag": "ab4ef6a7-1ab7-4246-a348-9379069a1113",
@@ -264,12 +265,12 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 24
         },
         {
           "location": {
             "x": 5843.2181098123528,
-            "y": 353.29583200817706
+            "y": 760.69351288881171
           },
           "nodeIndex": "protheus_naturezas",
           "nodeLineageTag": "6771b100-1dd4-4c87-aa18-89ee486295d9",
@@ -277,24 +278,118 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 25
         },
         {
-          "location": {},
+          "location": {
+            "x": 6645.2181098123528,
+            "y": 753.84663270341491
+          },
           "nodeIndex": "protheus_numerosTitulos",
           "nodeLineageTag": "303e7442-e8df-49a7-9314-6880afb2d29a",
           "size": {
             "height": 104,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 26
         },
         {
-          "location": {},
+          "location": {
+            "x": 6929.2181098123528,
+            "y": 753.84663270341491
+          },
           "nodeIndex": "protheus_filiais",
           "nodeLineageTag": "10c19c01-7110-4a2d-92ea-d544387345f6",
           "size": {
             "height": 104,
+            "width": 234
+          },
+          "zIndex": 27
+        },
+        {
+          "location": {
+            "x": 6797.2181098123528,
+            "y": 1278.8466327034148
+          },
+          "nodeIndex": "fato_blingV3_pedidosVendas",
+          "nodeLineageTag": "4aadc5eb-f64d-436f-9012-80eb59a31b02",
+          "size": {
+            "height": 300,
+            "width": 380
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 7628.2181098123528,
+            "y": 1065.8466327034148
+          },
+          "nodeIndex": "fato_blingV3Atacado_pedidosVendas",
+          "nodeLineageTag": "1b85374d-44c9-44bb-8f68-dc96910d0b19",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 28
+        },
+        {
+          "location": {
+            "x": 7213.2181098123528,
+            "y": 681.84663270341491
+          },
+          "nodeIndex": "Dim_blingV3_situacoesPedidos",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 6159.2181098123528,
+            "y": 1016.8466327034149
+          },
+          "nodeIndex": "fato _blingV3_notasFiscais",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 7731.2181098123528,
+            "y": 613.49975251801823
+          },
+          "nodeIndex": "Dim_Situacao_NFe",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 7965.2181098123528,
+            "y": 544.9080761431361
+          },
+          "nodeIndex": "fato _blingV3_contatos",
+          "nodeLineageTag": "dab3cad7-2821-4a68-81c2-45c9bd6349b1",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 8249.2181098123528,
+            "y": 544.9080761431361
+          },
+          "nodeIndex": "fato _blingV3Atacado_contatos",
+          "nodeLineageTag": "ce2cac80-33bd-4bd0-a014-e12040dea579",
+          "size": {
+            "height": 300,
             "width": 234
           },
           "zIndex": 0
@@ -561,6 +656,6 @@
       "tablesLocked": false
     }
   ],
-  "selectedDiagram": "MovimentosBancarios",
+  "selectedDiagram": "Todas as tabelas",
   "defaultDiagram": "Todas as tabelas"
 }

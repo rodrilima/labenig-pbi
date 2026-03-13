@@ -269,7 +269,7 @@ table fato_pedidos
 		lineageTag: bc3047ff-fb88-4628-a0b1-4f6da21da125
 
 	/// Custo total de frete no período
-	measure 'Custo Total Frete' = SUM(fato_pedidos[valor_frete])
+	measure 'Custo Total Frete' = SUM('fato _blingV3_notasFiscais'[valorFrete])
 		formatString: R$ #,##0.00
 		lineageTag: f0587a39-dad2-4998-aecf-701e3524db26
 
@@ -288,7 +288,7 @@ table fato_pedidos
 
 	/// Clientes que compraram nos últimos 60 dias (baseado na data máxima do modelo)
 	measure 'Clientes Ativos 60 Dias' =
-			VAR UltimaData = CALCULATE(MAX(fato_pedidos[data_pedido]), ALL(fato_pedidos))
+			VAR UltimaData = CALCULATE(MAX(fato_blingV3Atacado_pedidosVendas[data]), ALL(fato_pedidos))
 			VAR DataCorte = UltimaData - 60
 			RETURN
 			CALCULATE(

@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "c2653e950d0fe66a9ea6",
   "position": {
-    "x": 535.93934288121318,
-    "y": 340.75821398483572,
+    "x": 539.58620689655174,
+    "y": 340.9655172413793,
     "z": 0,
-    "height": 360.16849199663017,
-    "width": 718.18028643639423,
+    "height": 359.72413793103448,
+    "width": 718.34482758620686,
     "tabOrder": 0
   },
   "visual": {
@@ -20,30 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fato_pedidos"
+                      "Entity": "Dim_blingV3_situacoesPedidos"
                     }
                   },
-                  "Property": "pedido_id"
+                  "Property": "status pedido"
                 }
               },
-              "queryRef": "Sum(fato_pedidos.pedido_id)",
-              "nativeQueryRef": "ID",
-              "displayName": "ID"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "fato_pedidos"
-                    }
-                  },
-                  "Property": "status"
-                }
-              },
-              "queryRef": "fato_pedidos.status",
-              "nativeQueryRef": "Situação",
-              "displayName": "Situação"
+              "queryRef": "Dim_blingV3_situacoesPedidos.status pedido",
+              "nativeQueryRef": "status pedido"
             },
             {
               "field": {
@@ -52,81 +36,43 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "fato_pedidos"
+                          "Entity": "fato_blingV3Atacado_pedidosVendas"
                         }
                       },
-                      "Property": "valor_bruto"
+                      "Property": "total"
                     }
                   },
                   "Function": 0
                 }
               },
-              "queryRef": "Sum(fato_pedidos.valor_bruto)",
-              "nativeQueryRef": "Valor Bruto",
-              "displayName": "Valor Bruto"
-            },
-            {
-              "field": {
-                "Aggregation": {
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "fato_pedidos"
-                        }
-                      },
-                      "Property": "valor_desconto"
-                    }
-                  },
-                  "Function": 0
-                }
-              },
-              "queryRef": "Sum(fato_pedidos.valor_desconto)",
-              "nativeQueryRef": "Desconto",
-              "displayName": "Desconto"
-            },
-            {
-              "field": {
-                "Aggregation": {
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "fato_pedidos"
-                        }
-                      },
-                      "Property": "valor_frete"
-                    }
-                  },
-                  "Function": 0
-                }
-              },
-              "queryRef": "Sum(fato_pedidos.valor_frete)",
-              "nativeQueryRef": "Frete",
-              "displayName": "Frete"
-            },
-            {
-              "field": {
-                "Aggregation": {
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "fato_pedidos"
-                        }
-                      },
-                      "Property": "valor_liquido"
-                    }
-                  },
-                  "Function": 0
-                }
-              },
-              "queryRef": "Sum(fato_pedidos.valor_liquido)",
-              "nativeQueryRef": "Valor Líquido",
-              "displayName": "Valor Líquido"
+              "queryRef": "Sum(fato_blingV3Atacado_pedidosVendas.total)",
+              "nativeQueryRef": "total",
+              "displayName": "total"
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fato_blingV3Atacado_pedidosVendas"
+                      }
+                    },
+                    "Property": "total"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
       }
     },
     "objects": {
@@ -140,6 +86,22 @@
                 }
               }
             }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "176.31034482758622D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Dim_blingV3_situacoesPedidos.status pedido"
           }
         }
       ]

@@ -1,0 +1,280 @@
+/// Pedidos de Atacado e E-commerce
+table fato_blingV3Atacado_pedidosVendas
+	lineageTag: 1b85374d-44c9-44bb-8f68-dc96910d0b19
+
+	measure 'Ticke Medio atacado' =
+			
+			DIVIDE(
+			    SUM(fato_blingV3Atacado_pedidosVendas[total]),
+			    DISTINCTCOUNT(fato_blingV3Atacado_pedidosVendas[id])
+			)
+		lineageTag: db0ad889-4f86-4180-b1e3-212807834d8d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 8cfed1d4-33b3-4815-b9f9-a4ff37425bf5
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column numero
+		dataType: int64
+		formatString: 0
+		lineageTag: aef769c9-da5a-49c8-b0e3-32edd956c703
+		summarizeBy: sum
+		sourceColumn: numero
+
+		annotation SummarizationSetBy = Automatic
+
+	column numeroLoja
+		dataType: string
+		lineageTag: 230f1a6f-4ec8-4130-81f7-4c4a8e58f243
+		summarizeBy: none
+		sourceColumn: numeroLoja
+
+		annotation SummarizationSetBy = Automatic
+
+	column data
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: a9734ef6-5709-4af0-9793-7782e45ad3eb
+		summarizeBy: none
+		sourceColumn: data
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column dataSaida
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: ff0ca6ac-16d2-4e7d-9570-16e266d07189
+		summarizeBy: none
+		sourceColumn: dataSaida
+
+		variation Variation
+			isDefault
+			relationship: 3c8201bd-c57b-4b0e-ad39-68b283484d5a
+			defaultHierarchy: LocalDateTable_dc8343db-bcfd-469c-b7f0-8a69d0a8a2d2.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column dataPrevista
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 70202491-b455-4920-956a-701a4b4dd45f
+		summarizeBy: none
+		sourceColumn: dataPrevista
+
+		variation Variation
+			isDefault
+			relationship: 27b5273d-7bf9-4987-b269-b1852b0afab2
+			defaultHierarchy: LocalDateTable_82212d1b-051f-43d9-b992-fa34c6947a0c.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column totalProdutos
+		dataType: string
+		lineageTag: 378dfda5-6bad-45c3-982b-126dc6d9d3a1
+		summarizeBy: none
+		sourceColumn: totalProdutos
+
+		annotation SummarizationSetBy = Automatic
+
+	column total
+		dataType: double
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 22f178f8-ff3e-45aa-a012-2bd2f34e4f71
+		summarizeBy: sum
+		sourceColumn: total
+
+		annotation SummarizationSetBy = Automatic
+
+	column contato
+		dataType: string
+		lineageTag: c5015862-b461-4f39-8432-4e75158640a1
+		summarizeBy: none
+		sourceColumn: contato
+
+		annotation SummarizationSetBy = Automatic
+
+	column situacao
+		dataType: string
+		lineageTag: e7ba644e-f265-4a34-8a3d-5148559b5204
+		summarizeBy: none
+		sourceColumn: situacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column loja
+		dataType: string
+		lineageTag: 7c3cd4a9-0224-424f-b9a9-a7663f9f80fd
+		summarizeBy: none
+		sourceColumn: loja
+
+		annotation SummarizationSetBy = Automatic
+
+	column numeroPedidoCompra
+		dataType: string
+		lineageTag: 6abb757a-f28b-44d4-b98c-9e571afd8898
+		summarizeBy: none
+		sourceColumn: numeroPedidoCompra
+
+		annotation SummarizationSetBy = Automatic
+
+	column outrasDespesas
+		dataType: string
+		lineageTag: 8555ff4d-d621-4855-b312-4d102e94482a
+		summarizeBy: none
+		sourceColumn: outrasDespesas
+
+		annotation SummarizationSetBy = Automatic
+
+	column observacoes
+		dataType: string
+		lineageTag: 8f0dd199-424f-4b58-819d-7a354d0c131c
+		summarizeBy: none
+		sourceColumn: observacoes
+
+		annotation SummarizationSetBy = Automatic
+
+	column observacoesInternas
+		dataType: string
+		lineageTag: 4a7e1424-28f6-4154-b8a6-aa6dd57483d3
+		summarizeBy: none
+		sourceColumn: observacoesInternas
+
+		annotation SummarizationSetBy = Automatic
+
+	column desconto
+		dataType: string
+		lineageTag: 2ad03c3b-e368-44b4-89a1-49fc01b8cae6
+		summarizeBy: none
+		sourceColumn: desconto
+
+		annotation SummarizationSetBy = Automatic
+
+	column categoria
+		dataType: string
+		lineageTag: 286ecbd2-7ecc-4654-b05b-c1103666aa14
+		summarizeBy: none
+		sourceColumn: categoria
+
+		annotation SummarizationSetBy = Automatic
+
+	column notaFiscal
+		dataType: string
+		lineageTag: f11351bd-1cf2-448b-8050-5d9f8c59f1f6
+		summarizeBy: none
+		sourceColumn: notaFiscal
+
+		annotation SummarizationSetBy = Automatic
+
+	column tributacao
+		dataType: string
+		lineageTag: cb951ab2-e97c-42a9-8b53-8747330b78da
+		summarizeBy: none
+		sourceColumn: tributacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column itens
+		dataType: string
+		lineageTag: 47b95bb0-a033-40bc-abf6-c64fee825287
+		summarizeBy: none
+		sourceColumn: itens
+
+		annotation SummarizationSetBy = Automatic
+
+	column parcelas
+		dataType: string
+		lineageTag: cb33017e-b49c-4e68-8865-4d496966467f
+		summarizeBy: none
+		sourceColumn: parcelas
+
+		annotation SummarizationSetBy = Automatic
+
+	column transporte
+		dataType: string
+		lineageTag: dd1e2003-c3a6-4e20-84d7-ba2818555a16
+		summarizeBy: none
+		sourceColumn: transporte
+
+		annotation SummarizationSetBy = Automatic
+
+	column vendedor
+		dataType: string
+		lineageTag: 73d1052d-7fa5-4120-9d39-5522ad0e477f
+		summarizeBy: none
+		sourceColumn: vendedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column intermediador
+		dataType: string
+		lineageTag: 23c2288c-b214-4eec-9cbf-d8981ef72522
+		summarizeBy: none
+		sourceColumn: intermediador
+
+		annotation SummarizationSetBy = Automatic
+
+	column taxas
+		dataType: string
+		lineageTag: 1edc83df-78f9-44a8-a9fd-fe6ff597e956
+		summarizeBy: none
+		sourceColumn: taxas
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_atualizacao_warehouse
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 81aaa019-82d9-4e62-9f25-0b5b4ef02ec4
+		summarizeBy: none
+		sourceColumn: data_atualizacao_warehouse
+
+		variation Variation
+			isDefault
+			relationship: 340288b9-98d2-4aa5-9c6e-48d966c8ecb5
+			defaultHierarchy: LocalDateTable_189ae35e-0eff-4709-a18a-f20abd7e65fd.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'status pedido'
+		dataType: string
+		lineageTag: 0bda39a5-16dc-49ea-9d7c-e06215026a30
+		summarizeBy: none
+		sourceColumn: status pedido
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fato_blingV3Atacado_pedidosVendas = m
+		mode: import
+		queryGroup: mocks
+		source =
+				let
+				    Fonte = GoogleBigQuery.Database([Implementation="2.0"]),
+				    #"coherent-window-444219-c1_Database" = Fonte{[Name="coherent-window-444219-c1",Kind="Database"]}[Data],
+				    datalake_Schema = #"coherent-window-444219-c1_Database"{[Name="datalake",Kind="Schema"]}[Data],
+				    blingV3Atacado_pedidosVendas_Table = datalake_Schema{[Name="blingV3Atacado_pedidosVendas",Kind="Table"]}[Data],
+				    #"Texto Inserido Entre os Delimitadores" = Table.AddColumn(blingV3Atacado_pedidosVendas_Table, "status pedido", each Text.BetweenDelimiters([situacao], ":", ","), type text),
+				    #"Valor Substituído" = Table.ReplaceValue(#"Texto Inserido Entre os Delimitadores",".",",",Replacer.ReplaceText,{"total"}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Valor Substituído",{{"total", type number}, {"data", type date}, {"dataSaida", type date}, {"dataPrevista", type date}}),
+				    #"Erros Substituídos" = Table.ReplaceErrorValues(#"Tipo Alterado", {{"dataSaida", #date(9999, 1, 1)}}),
+				    #"Erros Substituídos1" = Table.ReplaceErrorValues(#"Erros Substituídos", {{"dataPrevista", #date(9999, 1, 1)}}),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Erros Substituídos1",{{"numero", Int64.Type}, {"id", Int64.Type}})
+				in
+				    #"Tipo Alterado1"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

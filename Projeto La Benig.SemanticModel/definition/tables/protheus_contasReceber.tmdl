@@ -399,6 +399,14 @@ table protheus_contasReceber
 
 		annotation SummarizationSetBy = Automatic
 
+	column stamp
+		dataType: string
+		lineageTag: caba0bdf-62f9-428d-8580-3c174000b547
+		summarizeBy: none
+		sourceColumn: stamp
+
+		annotation SummarizationSetBy = Automatic
+
 	partition protheus_contasReceber = m
 		mode: import
 		queryGroup: datalake
