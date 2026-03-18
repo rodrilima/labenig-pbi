@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "7d53ea5897b5198f75df",
   "position": {
     "x": 719.75683890577511,
@@ -20,33 +20,15 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "dim_clientes"
+                      "Entity": "protheus_contatos"
                     }
                   },
                   "Property": "estado"
                 }
               },
-              "queryRef": "dim_clientes.estado",
+              "queryRef": "protheus_contatos.estado",
               "nativeQueryRef": "estado",
               "active": true
-            }
-          ]
-        },
-        "Series": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "dim_clientes"
-                    }
-                  },
-                  "Property": "tipo_cliente"
-                }
-              },
-              "queryRef": "dim_clientes.tipo_cliente",
-              "nativeQueryRef": "tipo_cliente"
             }
           ]
         },
@@ -57,14 +39,15 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fato_pedidos"
+                      "Entity": "protheus_pedidosVendas"
                     }
                   },
-                  "Property": "Ticket Medio por Estado"
+                  "Property": "ATC Ticket Medio"
                 }
               },
-              "queryRef": "fato_pedidos.Ticket Medio por Estado",
-              "nativeQueryRef": "Ticket Medio por Estado"
+              "queryRef": "protheus_pedidosVendas.ATC Ticket Medio",
+              "nativeQueryRef": "ATC Ticket Medio",
+              "format": "0"
             }
           ]
         }
@@ -76,10 +59,10 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "fato_pedidos"
+                    "Entity": "protheus_pedidosVendas"
                   }
                 },
-                "Property": "Ticket Medio por Estado"
+                "Property": "ATC Ticket Medio"
               }
             },
             "direction": "Descending"
@@ -196,6 +179,26 @@
             ]
           }
         }
+      ],
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "visualContainerObjects": {
@@ -253,5 +256,37 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "45c2ac97b491a0ed8202",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_contatos"
+              }
+            },
+            "Property": "estado"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "edb3ae4ec513254958b8",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_pedidosVendas"
+              }
+            },
+            "Property": "ATC Ticket Medio"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

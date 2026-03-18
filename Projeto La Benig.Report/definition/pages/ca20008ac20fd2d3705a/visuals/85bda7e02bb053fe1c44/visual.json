@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "85bda7e02bb053fe1c44",
   "position": {
     "x": 154.9279538904899,
@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "dim_clientes"
+                      "Entity": "protheus_contatos"
                     }
                   },
                   "Property": "estado"
                 }
               },
-              "queryRef": "dim_clientes.estado",
-              "nativeQueryRef": "estado",
+              "queryRef": "protheus_contatos.estado",
+              "nativeQueryRef": "estado1",
               "active": true
             }
           ]
@@ -39,78 +39,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "dim_clientes"
+                      "Entity": "protheus_contatos"
                     }
                   },
                   "Property": "tipo_cliente"
                 }
               },
-              "queryRef": "dim_clientes.tipo_cliente",
+              "queryRef": "protheus_contatos.tipo_cliente",
               "nativeQueryRef": "tipo_cliente"
-            }
-          ]
-        },
-        "Size": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "fato_pedidos"
-                    }
-                  },
-                  "Property": "Faturamento Total"
-                }
-              },
-              "queryRef": "fato_pedidos.Faturamento Total",
-              "nativeQueryRef": "Faturamento Total"
-            }
-          ]
-        },
-        "X": {
-          "projections": [
-            {
-              "field": {
-                "Aggregation": {
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "dim_clientes"
-                        }
-                      },
-                      "Property": "longitude"
-                    }
-                  },
-                  "Function": 0
-                }
-              },
-              "queryRef": "Sum(dim_clientes.longitude)",
-              "nativeQueryRef": "Soma de longitude"
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
-            {
-              "field": {
-                "Aggregation": {
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "dim_clientes"
-                        }
-                      },
-                      "Property": "latitude"
-                    }
-                  },
-                  "Function": 0
-                }
-              },
-              "queryRef": "Sum(dim_clientes.latitude)",
-              "nativeQueryRef": "Soma de latitude"
             }
           ]
         }

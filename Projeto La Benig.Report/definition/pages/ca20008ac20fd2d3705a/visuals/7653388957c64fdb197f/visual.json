@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "7653388957c64fdb197f",
   "position": {
-    "x": 719.30835734870311,
-    "y": 210.2593659942363,
+    "x": 717,
+    "y": 210,
     "z": 0,
-    "height": 298.7896253602305,
-    "width": 534.87031700288185,
+    "height": 300,
+    "width": 534,
     "tabOrder": 0
   },
   "visual": {
@@ -20,59 +20,76 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "dim_clientes"
+                      "Entity": "protheus_contatos"
                     }
                   },
-                  "Property": "estado"
+                  "Property": "estado_uf"
                 }
               },
-              "queryRef": "dim_clientes.estado",
-              "nativeQueryRef": "estado"
+              "queryRef": "protheus_contatos.estado_uf",
+              "nativeQueryRef": "estado_uf"
             },
             {
               "field": {
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fato_pedidos"
+                      "Entity": "protheus_pedidosVendas"
                     }
                   },
-                  "Property": "Clientes por Estado"
+                  "Property": "ATC Clientes por Estado"
                 }
               },
-              "queryRef": "fato_pedidos.Clientes por Estado",
-              "nativeQueryRef": "Clientes por Estado"
+              "queryRef": "protheus_pedidosVendas.ATC Clientes por Estado",
+              "nativeQueryRef": "ATC Clientes por Estado"
             },
             {
               "field": {
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fato_pedidos"
+                      "Entity": "protheus_pedidosVendas"
                     }
                   },
-                  "Property": "Faturamento Total"
+                  "Property": "ATC Faturamento Total"
                 }
               },
-              "queryRef": "fato_pedidos.Faturamento Total",
-              "nativeQueryRef": "Faturamento Total"
+              "queryRef": "protheus_pedidosVendas.ATC Faturamento Total",
+              "nativeQueryRef": "ATC Faturamento Total"
             },
             {
               "field": {
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fato_pedidos"
+                      "Entity": "protheus_pedidosVendas"
                     }
                   },
-                  "Property": "Participacao Estado %"
+                  "Property": "ATC Participacao Estado %"
                 }
               },
-              "queryRef": "fato_pedidos.Participacao Estado %",
-              "nativeQueryRef": "Participacao Estado %"
+              "queryRef": "protheus_pedidosVendas.ATC Participacao Estado %",
+              "nativeQueryRef": "ATC Participacao Estado %"
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "protheus_pedidosVendas"
+                  }
+                },
+                "Property": "ATC Participacao Estado %"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
       }
     },
     "drillFilterOtherVisuals": true

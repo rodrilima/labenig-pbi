@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "9124d96d262f0ed57045",
   "position": {
     "x": 896.36887608069162,
@@ -20,14 +20,14 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fato_pedidos"
+                      "Entity": "protheus_pedidosVendas"
                     }
                   },
-                  "Property": "Faturamento Total"
+                  "Property": "ATC Faturamento Total"
                 }
               },
-              "queryRef": "fato_pedidos.Faturamento Total",
-              "nativeQueryRef": "Faturamento Total"
+              "queryRef": "protheus_pedidosVendas.ATC Faturamento Total",
+              "nativeQueryRef": "ATC Faturamento Total"
             }
           ]
         }
@@ -39,10 +39,10 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "fato_pedidos"
+                    "Entity": "protheus_pedidosVendas"
                   }
                 },
-                "Property": "Faturamento Total"
+                "Property": "ATC Faturamento Total"
               }
             },
             "direction": "Descending"
@@ -412,5 +412,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "bdbf97776aaa6d37c6d0",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_pedidosVendas"
+              }
+            },
+            "Property": "ATC Faturamento Total"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

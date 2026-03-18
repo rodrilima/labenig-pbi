@@ -447,6 +447,456 @@ table medidas_financeiro
 		displayFolder: Caixa
 		lineageTag: 8209dc6e-9084-4b2d-86d7-ea9dd51b6613
 
+	/// Soma o valor dos itens com nota fiscal faturada, filtrando por mês da data_faturamento e por filial.
+	measure 'Faturamento Atacado' =
+			VAR TemFiltroData = ISCROSSFILTERED(calendario[Date])
+			VAR FiliaisSelecionadas = VALUES(protheus_filiais[Filial])
+			VAR ResultadoSemData =
+			    CALCULATE(
+			        SUM(protheus_itensPedidosVendas[preco_total]),
+			        NOT(ISBLANK(protheus_itensPedidosVendas[nota_fiscal])),
+			        TRIM(protheus_itensPedidosVendas[nota_fiscal]) <> "",
+			        NOT(ISBLANK(protheus_itensPedidosVendas[data_faturamento])),
+			        KEEPFILTERS(TREATAS(FiliaisSelecionadas, protheus_itensPedidosVendas[filial]))
+			    )
+			VAR ResultadoComData =
+			    CALCULATE(
+			        SUM(protheus_itensPedidosVendas[preco_total]),
+			        NOT(ISBLANK(protheus_itensPedidosVendas[nota_fiscal])),
+			        TRIM(protheus_itensPedidosVendas[nota_fiscal]) <> "",
+			        NOT(ISBLANK(protheus_itensPedidosVendas[data_faturamento])),
+			        KEEPFILTERS(
+			            FILTER(
+			                protheus_itensPedidosVendas,
+			                DATEVALUE(protheus_itensPedidosVendas[data_faturamento]) IN VALUES(calendario[Date])
+			            )
+			        ),
+			        KEEPFILTERS(TREATAS(FiliaisSelecionadas, protheus_itensPedidosVendas[filial]))
+			    )
+			RETURN
+			COALESCE(IF(TemFiltroData, ResultadoComData, ResultadoSemData), 0)
+		formatString: R$ #,##0.00
+		displayFolder: Atacado
+		lineageTag: 92acf82e-4c7e-4250-8e11-c40f1622ed20
+
+	/// Conta pedidos faturados distintos com base em nota fiscal preenchida e data_faturamento, respeitando calendário e filial.
+	measure 'Pedidos Faturados' =
+			VAR TemFiltroData = ISCROSSFILTERED(calendario[Date])
+			VAR FiliaisSelecionadas = VALUES(protheus_filiais[Filial])
+			VAR ResultadoSemData =
+			    CALCULATE(
+			        DISTINCTCOUNT(protheus_itensPedidosVendas[numero_pedido]),
+			        NOT(ISBLANK(protheus_itensPedidosVendas[nota_fiscal])),
+			        TRIM(protheus_itensPedidosVendas[nota_fiscal]) <> "",
+			        NOT(ISBLANK(protheus_itensPedidosVendas[data_faturamento])),
+			        KEEPFILTERS(TREATAS(FiliaisSelecionadas, protheus_itensPedidosVendas[filial]))
+			    )
+			VAR ResultadoComData =
+			    CALCULATE(
+			        DISTINCTCOUNT(protheus_itensPedidosVendas[numero_pedido]),
+			        NOT(ISBLANK(protheus_itensPedidosVendas[nota_fiscal])),
+			        TRIM(protheus_itensPedidosVendas[nota_fiscal]) <> "",
+			        NOT(ISBLANK(protheus_itensPedidosVendas[data_faturamento])),
+			        KEEPFILTERS(
+			            FILTER(
+			                protheus_itensPedidosVendas,
+			                DATEVALUE(protheus_itensPedidosVendas[data_faturamento]) IN VALUES(calendario[Date])
+			            )
+			        ),
+			        KEEPFILTERS(TREATAS(FiliaisSelecionadas, protheus_itensPedidosVendas[filial]))
+			    )
+			RETURN
+			COALESCE(IF(TemFiltroData, ResultadoComData, ResultadoSemData), 0)
+		formatString: #,##0
+		displayFolder: Atacado
+		lineageTag: 80926c25-25c6-4d4b-825a-786ed83442ec
+
+	/// Quantidade total de pedidos em aberto (sem nota fiscal), ignorando filtro de calendário e respeitando filtro de filial.
+	measure 'Pedidos em Aberto' =
+			VAR FiliaisSelecionadas = VALUES(protheus_filiais[Filial])
+			VAR Resultado =
+			    CALCULATE(
+			        DISTINCTCOUNT(protheus_itensPedidosVendas[numero_pedido]),
+			        ISBLANK(protheus_itensPedidosVendas[nota_fiscal])
+			            || TRIM(protheus_itensPedidosVendas[nota_fiscal]) = "",
+			        REMOVEFILTERS(calendario),
+			        KEEPFILTERS(TREATAS(FiliaisSelecionadas, protheus_itensPedidosVendas[filial]))
+			    )
+			RETURN
+			COALESCE(Resultado, 0)
+		formatString: #,##0
+		displayFolder: Atacado
+		lineageTag: 4af744e0-cdfd-41f3-916a-79e4504263da
+
+	/// Ticket médio do atacado com base no faturamento dos itens e na quantidade de pedidos faturados corrigida.
+	measure 'Ticket Medio Atacado' =
+			DIVIDE(
+			    [Faturamento Atacado],
+			    [Pedidos Faturados],
+			    0
+			)
+		formatString: R$ #,##0.00
+		displayFolder: Atacado
+		lineageTag: 3420992a-f53c-4206-8360-dc2258d0a73b
+
+	/// Custo total de frete por pedido com filtro de data de emissão e filial.
+	measure 'Custo Total Frete' =
+			VAR TemFiltroData = ISCROSSFILTERED(calendario[Date])
+			VAR TemFiltroFilial = ISCROSSFILTERED(protheus_filiais[Filial])
+			VAR ResultadoBase =
+			    SUMX(
+			        VALUES(protheus_itensPedidosVendas[numero_pedido]),
+			        VAR PedidoSelecionado = protheus_itensPedidosVendas[numero_pedido]
+			        RETURN
+			            COALESCE(
+			                CALCULATE(
+			                    MAX(protheus_pedidosVendas[Frete Valor]),
+			                    TREATAS({ PedidoSelecionado }, protheus_pedidosVendas[numero])
+			                ),
+			                0
+			            )
+			    )
+			VAR Resultado =
+			    SWITCH(
+			        TRUE(),
+			        TemFiltroData && TemFiltroFilial,
+			            CALCULATE(
+			                ResultadoBase,
+			                KEEPFILTERS(TREATAS(VALUES(calendario[Date]), protheus_itensPedidosVendas[data_emissao])),
+			                KEEPFILTERS(TREATAS(VALUES(protheus_filiais[Filial]), protheus_itensPedidosVendas[filial])),
+			                KEEPFILTERS(TREATAS(VALUES(protheus_filiais[Filial]), protheus_pedidosVendas[filial]))
+			            ),
+			        TemFiltroData,
+			            CALCULATE(
+			                ResultadoBase,
+			                KEEPFILTERS(TREATAS(VALUES(calendario[Date]), protheus_itensPedidosVendas[data_emissao]))
+			            ),
+			        TemFiltroFilial,
+			            CALCULATE(
+			                ResultadoBase,
+			                KEEPFILTERS(TREATAS(VALUES(protheus_filiais[Filial]), protheus_itensPedidosVendas[filial])),
+			                KEEPFILTERS(TREATAS(VALUES(protheus_filiais[Filial]), protheus_pedidosVendas[filial]))
+			            ),
+			        ResultadoBase
+			    )
+			RETURN
+			COALESCE(Resultado, 0)
+		formatString: R$ #,##0.00
+		displayFolder: Atacado
+		lineageTag: f0587a39-dad2-4998-aecf-701e3524db26
+
+	/// Clientes ativos considerando última compra até a data de referência, com data sem componente de hora e retorno 0 quando não houver referência.
+	measure 'Clientes Ativos' =
+			VAR DataReferencia =
+			    COALESCE(
+			        MAX(calendario[Date]),
+			        CALCULATE(
+			            MAXX(
+			                protheus_itensPedidosVendas,
+			                DATEVALUE(protheus_itensPedidosVendas[data_emissao])
+			            ),
+			            REMOVEFILTERS(calendario)
+			        )
+			    )
+			VAR DataCorte = DataReferencia - 60
+			VAR ClientesComUltimaCompra =
+			    ADDCOLUMNS(
+			        CALCULATETABLE(
+			            VALUES(protheus_itensPedidosVendas[cod_cliente]),
+			            KEEPFILTERS(TREATAS(VALUES(protheus_filiais[Filial]), protheus_itensPedidosVendas[filial]))
+			        ),
+			        "@UltimaCompra",
+			            CALCULATE(
+			                MAXX(
+			                    FILTER(
+			                        protheus_itensPedidosVendas,
+			                        DATEVALUE(protheus_itensPedidosVendas[data_emissao]) <= DataReferencia
+			                    ),
+			                    DATEVALUE(protheus_itensPedidosVendas[data_emissao])
+			                ),
+			                REMOVEFILTERS(calendario),
+			                KEEPFILTERS(TREATAS(VALUES(protheus_filiais[Filial]), protheus_itensPedidosVendas[filial]))
+			            )
+			    )
+			VAR Resultado =
+			    COUNTROWS(
+			        FILTER(
+			            ClientesComUltimaCompra,
+			            NOT(ISBLANK([@UltimaCompra]))
+			                && [@UltimaCompra] >= DataCorte
+			                && [@UltimaCompra] <= DataReferencia
+			        )
+			    )
+			RETURN
+			IF(ISBLANK(DataReferencia), 0, COALESCE(Resultado, 0))
+		formatString: #,##0
+		displayFolder: Atacado
+		lineageTag: e64bd25e-5032-412d-867d-0688142fa6ac
+
+	/// Clientes inativos considerando última compra até a data de referência, com data sem componente de hora e retorno 0 quando não houver referência.
+	measure 'Clientes Inativos' =
+			VAR DataReferencia =
+			    COALESCE(
+			        MAX(calendario[Date]),
+			        CALCULATE(
+			            MAXX(
+			                protheus_itensPedidosVendas,
+			                DATEVALUE(protheus_itensPedidosVendas[data_emissao])
+			            ),
+			            REMOVEFILTERS(calendario)
+			        )
+			    )
+			VAR DataCorte = DataReferencia - 60
+			VAR ClientesComUltimaCompra =
+			    ADDCOLUMNS(
+			        CALCULATETABLE(
+			            VALUES(protheus_itensPedidosVendas[cod_cliente]),
+			            KEEPFILTERS(TREATAS(VALUES(protheus_filiais[Filial]), protheus_itensPedidosVendas[filial]))
+			        ),
+			        "@UltimaCompra",
+			            CALCULATE(
+			                MAXX(
+			                    FILTER(
+			                        protheus_itensPedidosVendas,
+			                        DATEVALUE(protheus_itensPedidosVendas[data_emissao]) <= DataReferencia
+			                    ),
+			                    DATEVALUE(protheus_itensPedidosVendas[data_emissao])
+			                ),
+			                REMOVEFILTERS(calendario),
+			                KEEPFILTERS(TREATAS(VALUES(protheus_filiais[Filial]), protheus_itensPedidosVendas[filial]))
+			            )
+			    )
+			VAR Resultado =
+			    COUNTROWS(
+			        FILTER(
+			            ClientesComUltimaCompra,
+			            NOT(ISBLANK([@UltimaCompra]))
+			                && [@UltimaCompra] < DataCorte
+			        )
+			    )
+			RETURN
+			IF(ISBLANK(DataReferencia), 0, COALESCE(Resultado, 0))
+		formatString: #,##0
+		displayFolder: Atacado
+		lineageTag: a801e88b-ef68-4374-aeaa-7cdf1d0a3cc5
+
+	measure 'Faturamento Base Auditoria' =
+			
+			CALCULATE(
+			    SUM(protheus_itensPedidosVendas[preco_total]),
+			    NOT(ISBLANK(protheus_itensPedidosVendas[data_faturamento]))
+			)
+		displayFolder: Atacado
+		lineageTag: 4db6e9e6-6fb6-4be1-b091-bf68667defad
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Diferença Auditoria' =
+			
+			[Faturamento Atacado] - [Faturamento Base Auditoria]
+		displayFolder: Atacado
+		lineageTag: ed0c9e77-ac24-4eca-aee3-dce026b815c7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Situação do pedido baseada na regra: se houver nota fiscal nos itens do pedido, então Faturado; caso contrário, Em Aberto. Respeita filtros de data_faturamento e filial.
+	measure 'ATC Tabela Pedidos - Situação' =
+			VAR PedidoSelecionado = SELECTEDVALUE(protheus_itensPedidosVendas[numero_pedido])
+			VAR TemFiltroData = ISCROSSFILTERED(calendario[Date])
+			VAR TemFiltroFilial = ISCROSSFILTERED(protheus_filiais[Filial])
+			VAR QtdItensComNota =
+			    SWITCH(
+			        TRUE(),
+			        TemFiltroData && TemFiltroFilial,
+			            CALCULATE(
+			                COUNTROWS(protheus_itensPedidosVendas),
+			                NOT(ISBLANK(protheus_itensPedidosVendas[nota_fiscal])),
+			                protheus_itensPedidosVendas[nota_fiscal] <> "",
+			                KEEPFILTERS(TREATAS(VALUES(calendario[Date]), protheus_itensPedidosVendas[data_faturamento])),
+			                KEEPFILTERS(TREATAS(VALUES(protheus_filiais[Filial]), protheus_itensPedidosVendas[filial]))
+			            ),
+			        TemFiltroData,
+			            CALCULATE(
+			                COUNTROWS(protheus_itensPedidosVendas),
+			                NOT(ISBLANK(protheus_itensPedidosVendas[nota_fiscal])),
+			                protheus_itensPedidosVendas[nota_fiscal] <> "",
+			                KEEPFILTERS(TREATAS(VALUES(calendario[Date]), protheus_itensPedidosVendas[data_faturamento]))
+			            ),
+			        TemFiltroFilial,
+			            CALCULATE(
+			                COUNTROWS(protheus_itensPedidosVendas),
+			                NOT(ISBLANK(protheus_itensPedidosVendas[nota_fiscal])),
+			                protheus_itensPedidosVendas[nota_fiscal] <> "",
+			                KEEPFILTERS(TREATAS(VALUES(protheus_filiais[Filial]), protheus_itensPedidosVendas[filial]))
+			            ),
+			        CALCULATE(
+			            COUNTROWS(protheus_itensPedidosVendas),
+			            NOT(ISBLANK(protheus_itensPedidosVendas[nota_fiscal])),
+			            protheus_itensPedidosVendas[nota_fiscal] <> ""
+			        )
+			    )
+			RETURN
+			IF(
+			    ISBLANK(PedidoSelecionado),
+			    BLANK(),
+			    IF(QtdItensComNota > 0, "Faturado", "Em Aberto")
+			)
+		displayFolder: Atacado\Tabela Pedidos
+		lineageTag: f0de8811-cf3f-44fd-85c2-7b631200cf7c
+
+	/// Valor bruto dos itens com suporte a filtros de mês/ano pela data de faturamento e por filial.
+	measure 'ATC Tabela Pedidos - Valor Bruto' =
+			VAR TemFiltroData = ISCROSSFILTERED(calendario[Date])
+			VAR TemFiltroFilial = ISCROSSFILTERED(protheus_filiais[Filial])
+			VAR ResultadoBase = SUM(protheus_itensPedidosVendas[preco_total])
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    TemFiltroData && TemFiltroFilial,
+			        CALCULATE(
+			            SUM(protheus_itensPedidosVendas[preco_total]),
+			            KEEPFILTERS(TREATAS(VALUES(calendario[Date]), protheus_itensPedidosVendas[data_faturamento])),
+			            KEEPFILTERS(TREATAS(VALUES(protheus_filiais[Filial]), protheus_itensPedidosVendas[filial]))
+			        ),
+			    TemFiltroData,
+			        CALCULATE(
+			            SUM(protheus_itensPedidosVendas[preco_total]),
+			            KEEPFILTERS(TREATAS(VALUES(calendario[Date]), protheus_itensPedidosVendas[data_faturamento]))
+			        ),
+			    TemFiltroFilial,
+			        CALCULATE(
+			            SUM(protheus_itensPedidosVendas[preco_total]),
+			            KEEPFILTERS(TREATAS(VALUES(protheus_filiais[Filial]), protheus_itensPedidosVendas[filial]))
+			        ),
+			    ResultadoBase
+			)
+		formatString: R$ #,##0.00
+		displayFolder: Atacado\Tabela Pedidos
+		lineageTag: e48fb661-f00c-45b3-8b1d-0719df00c0e6
+
+	/// Desconto por pedido filtrável por data de faturamento e filial, sem duplicidade por quantidade de itens.
+	measure 'ATC Tabela Pedidos - Desconto' =
+			VAR TemFiltroData = ISCROSSFILTERED(calendario[Date])
+			VAR TemFiltroFilial = ISCROSSFILTERED(protheus_filiais[Filial])
+			VAR ResultadoBase =
+			    SUMX(
+			        VALUES(protheus_itensPedidosVendas[numero_pedido]),
+			        VAR PedidoSelecionado = protheus_itensPedidosVendas[numero_pedido]
+			        RETURN
+			            COALESCE(
+			                CALCULATE(
+			                    MAX(protheus_pedidosVendas[Desconto Valor]),
+			                    TREATAS({ PedidoSelecionado }, protheus_pedidosVendas[numero])
+			                ),
+			                0
+			            )
+			    )
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    TemFiltroData && TemFiltroFilial,
+			        CALCULATE(
+			            ResultadoBase,
+			            KEEPFILTERS(TREATAS(VALUES(calendario[Date]), protheus_itensPedidosVendas[data_faturamento])),
+			            KEEPFILTERS(TREATAS(VALUES(protheus_filiais[Filial]), protheus_itensPedidosVendas[filial])),
+			            KEEPFILTERS(TREATAS(VALUES(protheus_filiais[Filial]), protheus_pedidosVendas[filial]))
+			        ),
+			    TemFiltroData,
+			        CALCULATE(
+			            ResultadoBase,
+			            KEEPFILTERS(TREATAS(VALUES(calendario[Date]), protheus_itensPedidosVendas[data_faturamento]))
+			        ),
+			    TemFiltroFilial,
+			        CALCULATE(
+			            ResultadoBase,
+			            KEEPFILTERS(TREATAS(VALUES(protheus_filiais[Filial]), protheus_itensPedidosVendas[filial])),
+			            KEEPFILTERS(TREATAS(VALUES(protheus_filiais[Filial]), protheus_pedidosVendas[filial]))
+			        ),
+			    ResultadoBase
+			)
+		formatString: R$ #,##0.00
+		displayFolder: Atacado\Tabela Pedidos
+		lineageTag: c9c2cfe8-a50d-43fb-a474-a7d33c60aba2
+
+	/// Frete por pedido filtrável por data de faturamento e filial, sem duplicidade por quantidade de itens.
+	measure 'ATC Tabela Pedidos - Frete' =
+			VAR TemFiltroData = ISCROSSFILTERED(calendario[Date])
+			VAR TemFiltroFilial = ISCROSSFILTERED(protheus_filiais[Filial])
+			VAR ResultadoBase =
+			    SUMX(
+			        VALUES(protheus_itensPedidosVendas[numero_pedido]),
+			        VAR PedidoSelecionado = protheus_itensPedidosVendas[numero_pedido]
+			        RETURN
+			            COALESCE(
+			                CALCULATE(
+			                    MAX(protheus_pedidosVendas[Frete Valor]),
+			                    TREATAS({ PedidoSelecionado }, protheus_pedidosVendas[numero])
+			                ),
+			                0
+			            )
+			    )
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    TemFiltroData && TemFiltroFilial,
+			        CALCULATE(
+			            ResultadoBase,
+			            KEEPFILTERS(TREATAS(VALUES(calendario[Date]), protheus_itensPedidosVendas[data_faturamento])),
+			            KEEPFILTERS(TREATAS(VALUES(protheus_filiais[Filial]), protheus_itensPedidosVendas[filial])),
+			            KEEPFILTERS(TREATAS(VALUES(protheus_filiais[Filial]), protheus_pedidosVendas[filial]))
+			        ),
+			    TemFiltroData,
+			        CALCULATE(
+			            ResultadoBase,
+			            KEEPFILTERS(TREATAS(VALUES(calendario[Date]), protheus_itensPedidosVendas[data_faturamento]))
+			        ),
+			    TemFiltroFilial,
+			        CALCULATE(
+			            ResultadoBase,
+			            KEEPFILTERS(TREATAS(VALUES(protheus_filiais[Filial]), protheus_itensPedidosVendas[filial])),
+			            KEEPFILTERS(TREATAS(VALUES(protheus_filiais[Filial]), protheus_pedidosVendas[filial]))
+			        ),
+			    ResultadoBase
+			)
+		formatString: R$ #,##0.00
+		displayFolder: Atacado\Tabela Pedidos
+		lineageTag: 0767bee7-903c-4680-8393-e5d604ef12e2
+
+	/// Classifica o pedido como Aberto ou Faturado combinando evidências do cabeçalho (nota) e dos itens (data_faturamento).
+	measure 'ATC Situação Pedido (Aberto/Faturado)' =
+			VAR PedidoSelecionado =
+			    COALESCE(
+			        SELECTEDVALUE(protheus_itensPedidosVendas[numero_pedido]),
+			        SELECTEDVALUE(protheus_pedidosVendas[numero])
+			    )
+			VAR QtdItensFaturados =
+			    CALCULATE(
+			        COUNTROWS(protheus_itensPedidosVendas),
+			        TREATAS({ PedidoSelecionado }, protheus_itensPedidosVendas[numero_pedido]),
+			        NOT(ISBLANK(protheus_itensPedidosVendas[data_faturamento]))
+			    )
+			VAR QtdPedidosComNota =
+			    CALCULATE(
+			        COUNTROWS(protheus_pedidosVendas),
+			        TREATAS({ PedidoSelecionado }, protheus_pedidosVendas[numero]),
+			        NOT(ISBLANK(protheus_pedidosVendas[nota])),
+			        TRIM(protheus_pedidosVendas[nota]) <> ""
+			    )
+			RETURN
+			IF(
+			    ISBLANK(PedidoSelecionado),
+			    BLANK(),
+			    IF(QtdItensFaturados > 0 || QtdPedidosComNota > 0, "Faturado", "Aberto")
+			)
+		displayFolder: Atacado\Tabela Pedidos
+		lineageTag: b1c572bc-72bc-4984-80f2-c46accafd455
+
+	/// Valor líquido calculado para a tabela de pedidos: Bruto - Desconto + Frete.
+	measure 'ATC Tabela Pedidos - Valor Líquido' = [ATC Tabela Pedidos - Valor Bruto] - [ATC Tabela Pedidos - Desconto] + [ATC Tabela Pedidos - Frete]
+		formatString: R$ #,##0.00
+		displayFolder: Atacado\Tabela Pedidos
+		lineageTag: 495b1aeb-740b-4134-a9fe-b256551fb54b
+
 	partition medidas_financeiro = m
 		mode: import
 		source =

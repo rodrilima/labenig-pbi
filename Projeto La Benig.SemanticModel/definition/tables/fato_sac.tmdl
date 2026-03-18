@@ -84,7 +84,7 @@ table fato_sac
 		dataType: int64
 		formatString: 0
 		lineageTag: e2b553d5-f143-470f-9064-50fe6345358a
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: cliente_id
 
 		annotation SummarizationSetBy = Automatic

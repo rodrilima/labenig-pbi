@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "6ef4abed73347f2d759b",
   "position": {
     "x": 528.58536585365857,
     "y": 64.097560975609753,
-    "z": 2000,
+    "z": 1000,
     "height": 117.65853658536587,
     "width": 355.609756097561,
-    "tabOrder": 2000
+    "tabOrder": 1000
   },
   "visual": {
     "visualType": "card",
@@ -17,22 +17,17 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "fato _blingV3_notasFiscais"
-                        }
-                      },
-                      "Property": "numero"
+                    "SourceRef": {
+                      "Entity": "medidas_financeiro"
                     }
                   },
-                  "Function": 5
+                  "Property": "Pedidos Faturados"
                 }
               },
-              "queryRef": "CountNonNull(fato _blingV3_notasFiscais.numero)",
-              "nativeQueryRef": "Contagem de numero1"
+              "queryRef": "medidas_financeiro.Pedidos Faturados",
+              "nativeQueryRef": "Pedidos Faturados"
             }
           ]
         }
@@ -41,18 +36,13 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Measure": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "fato _blingV3_notasFiscais"
-                      }
-                    },
-                    "Property": "numero"
+                  "SourceRef": {
+                    "Entity": "medidas_financeiro"
                   }
                 },
-                "Function": 5
+                "Property": "Pedidos Faturados"
               }
             },
             "direction": "Descending"
@@ -310,5 +300,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "65196b696c6681a092ad",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "medidas_financeiro"
+              }
+            },
+            "Property": "Pedidos Faturados"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

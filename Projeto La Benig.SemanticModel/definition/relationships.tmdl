@@ -1,8 +1,3 @@
-relationship 794c494e-1e2a-43b7-81d6-7232cdfefc0b
-	joinOnDateBehavior: datePartOnly
-	fromColumn: dim_clientes.data_cadastro
-	toColumn: LocalDateTable_a2fc2df0-961a-4a27-90cc-757dadd2e093.Date
-
 relationship dc32a7e0-9b3e-4394-9f49-82a5cf3a424a
 	joinOnDateBehavior: datePartOnly
 	fromColumn: dim_data.Data
@@ -33,14 +28,6 @@ relationship 1247eb99-f37a-4d80-8b53-afcbc9b17ba8
 	fromColumn: fato_sac.data_fechamento
 	toColumn: LocalDateTable_f886aefa-7298-4190-b87e-8d97277a8f4e.Date
 
-relationship AutoDetected_f9e21199-dba2-4b69-b209-7f982e7ef3c3
-	fromColumn: fato_pedidos.cliente_id
-	toColumn: dim_clientes.cliente_id
-
-relationship AutoDetected_e378e167-d942-442a-8dc0-86dff44c683d
-	fromColumn: fato_sac.cliente_id
-	toColumn: dim_clientes.cliente_id
-
 relationship AutoDetected_a5227dbb-289a-4ea2-a544-07fde6f5d5b2
 	fromColumn: fato_pedidos.loja_id
 	toColumn: dim_lojas.loja_id
@@ -59,10 +46,6 @@ relationship 7f91096a-0ebb-4bfe-9763-836045d6dfce
 	joinOnDateBehavior: datePartOnly
 	fromColumn: fato_comportamento_cliente.ultima_compra
 	toColumn: LocalDateTable_1585e211-a4d0-4b83-a84a-842fc1c5bad0.Date
-
-relationship AutoDetected_7d88eb3c-b089-4ed1-8c34-3f5ff9b709af
-	fromColumn: fato_comportamento_cliente.cliente_id
-	toColumn: dim_clientes.cliente_id
 
 relationship 5e9aa45c-d2f1-4993-a7b1-3627bae75613
 	joinOnDateBehavior: datePartOnly
@@ -275,77 +258,41 @@ relationship 2d274431-ccc7-f99e-86f4-485034e54cfc
 	fromColumn: projecao_caixa.filial
 	toColumn: protheus_filiais.Filial
 
-relationship 75e7c481-7588-4a8a-af3b-62659484d5e2
+relationship 1167181a-4496-4c73-8563-428cfcf0ea75
 	joinOnDateBehavior: datePartOnly
-	fromColumn: fato_blingV3_pedidosVendas.data_atualizacao_warehouse
-	toColumn: LocalDateTable_38714dd5-9355-4072-81d6-8698c8244aad.Date
+	fromColumn: protheus_pedidosVendas.data_atualizacao_warehouse
+	toColumn: LocalDateTable_cb434446-ecf4-451a-a169-16aae58cc926.Date
 
-relationship 340288b9-98d2-4aa5-9c6e-48d966c8ecb5
+relationship de85fd4e-108c-4213-a5dd-27b93cf0e21e
 	joinOnDateBehavior: datePartOnly
-	fromColumn: fato_blingV3Atacado_pedidosVendas.data_atualizacao_warehouse
-	toColumn: LocalDateTable_189ae35e-0eff-4709-a18a-f20abd7e65fd.Date
+	fromColumn: protheus_itensPedidosVendas.data_atualizacao_warehouse
+	toColumn: LocalDateTable_f342f63a-8c2e-4684-ab39-9172e1a131e1.Date
 
-relationship 19c78217-2249-4a4c-be61-78b13e418851
+relationship 97797de2-94a4-44e2-88a0-f62acdd26512
 	joinOnDateBehavior: datePartOnly
-	fromColumn: Dim_blingV3_situacoesPedidos.data_atualizacao_warehouse
-	toColumn: LocalDateTable_e52266ca-025c-45dc-9787-93cdfef6d2bc.Date
+	fromColumn: protheus_contatos.data_atualizacao_warehouse
+	toColumn: LocalDateTable_65328ec4-7671-4e12-aa2c-e0e7d87a1098.Date
 
-relationship dc6377b2-febe-4b9b-9729-02041502aea1
+relationship protheus_itensPedidosVendas_data_faturamento_calendario_Date
 	joinOnDateBehavior: datePartOnly
-	fromColumn: 'fato _blingV3_notasFiscais'.data_atualizacao_warehouse
-	toColumn: LocalDateTable_c38dee5d-2ba7-4323-a945-0cd9b106333b.Date
-
-relationship de48c631-b9f1-4c31-a4d7-669b8c0fe8b6
-	joinOnDateBehavior: datePartOnly
-	fromColumn: fato_blingV3_pedidosVendas.dataSaida
-	toColumn: LocalDateTable_19a29c42-d29a-4850-90a1-de12619ea1f6.Date
-
-relationship 53f4197c-ed8d-4aba-819f-ec1e9cf7d570
-	joinOnDateBehavior: datePartOnly
-	fromColumn: fato_blingV3_pedidosVendas.dataPrevista
-	toColumn: LocalDateTable_e9d299f3-c3a0-4bca-9bf5-9339e71110aa.Date
-
-relationship a1055b79-cbe8-e223-1444-da965d0a9e93
-	fromColumn: fato_blingV3_pedidosVendas.'status pedido'
-	toColumn: Dim_blingV3_situacoesPedidos.id
-
-relationship 550ee5eb-b448-e780-8f94-cb71c4a7faaa
-	fromColumn: 'fato _blingV3_notasFiscais'.situacao
-	toColumn: Dim_Situacao_NFe.situacao_id
-
-relationship f5d24003-7199-d60b-c121-be7c35186f9d
-	fromColumn: 'fato _blingV3_notasFiscais'.dataEmissao
+	fromColumn: protheus_itensPedidosVendas.data_faturamento
 	toColumn: calendario.Date
 
-relationship 286ec160-ae23-40bf-3d35-31ea0da1d7b1
-	fromColumn: fato_blingV3_pedidosVendas.data
-	toColumn: calendario.Date
+relationship 501c7efa-89e7-b99c-fe97-e19de8d566ea
+	fromColumn: protheus_itensPedidosVendas.cod_cliente
+	toColumn: protheus_contatos.codigo
 
-relationship 2c857b61-2e2c-1f36-8110-e2f791f50c15
-	fromColumn: fato_blingV3Atacado_pedidosVendas.data
-	toColumn: calendario.Date
+relationship b15670c8-78ad-3314-6ce3-07e9df908d1c
+	fromColumn: protheus_itensPedidosVendas.numero_pedido
+	toColumn: protheus_pedidosVendas.numero
 
-relationship 3c8201bd-c57b-4b0e-ad39-68b283484d5a
+relationship 87c32658-2ebc-4353-9d50-1ccec18bc8ff
 	joinOnDateBehavior: datePartOnly
-	fromColumn: fato_blingV3Atacado_pedidosVendas.dataSaida
-	toColumn: LocalDateTable_dc8343db-bcfd-469c-b7f0-8a69d0a8a2d2.Date
+	fromColumn: protheus_pedidosVendas.data_emissao
+	toColumn: LocalDateTable_16fd360e-5abe-46bd-8174-3973edeb3c2e.Date
 
-relationship 27b5273d-7bf9-4987-b269-b1852b0afab2
+relationship eeedd304-7060-4092-aeba-b6421ab0fcdc
 	joinOnDateBehavior: datePartOnly
-	fromColumn: fato_blingV3Atacado_pedidosVendas.dataPrevista
-	toColumn: LocalDateTable_82212d1b-051f-43d9-b992-fa34c6947a0c.Date
-
-relationship 37b78f07-4480-4c48-2b65-493fdac6efd7
-	fromColumn: fato_blingV3Atacado_pedidosVendas.'status pedido'
-	toColumn: Dim_blingV3_situacoesPedidos.id
-
-relationship 21c57dac-867a-4e72-acb5-4d5723afc3fa
-	joinOnDateBehavior: datePartOnly
-	fromColumn: 'fato _blingV3Atacado_contatos'.data_atualizacao_warehouse
-	toColumn: LocalDateTable_bc5627ea-02ce-49b9-94a4-1c3b588c8e3c.Date
-
-relationship 0c2840b5-90af-4a4e-88ef-9dcd4077bb50
-	joinOnDateBehavior: datePartOnly
-	fromColumn: 'fato _blingV3_contatos'.data_atualizacao_warehouse
-	toColumn: LocalDateTable_185ad6ec-a1b9-4e97-8ffc-86769d311ef9.Date
+	fromColumn: protheus_itensPedidosVendas.data_emissao
+	toColumn: LocalDateTable_a5e673d5-385f-4234-828e-8cc1898355dd.Date
 

@@ -1,0 +1,237 @@
+table protheus_itensPedidosVendas
+	lineageTag: 3c0463d9-f370-41df-b6bc-9f36e002da5f
+
+	measure 'Total Faturado atac.' =
+			
+			CALCULATE(
+			    SUM(protheus_itensPedidosVendas[preco_total]),
+			    protheus_itensPedidosVendas[nota_fiscal] <> BLANK()
+			)
+		lineageTag: 9d913295-6ff7-4342-8200-f7e2cfd2209d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Clientes Inativos atac.' =
+			
+			COUNTROWS(
+			    FILTER(
+			        ADDCOLUMNS(
+			            VALUES(protheus_itensPedidosVendas[cod_cliente]),
+			            "UltimaCompra", CALCULATE(MAX(protheus_itensPedidosVendas[data_emissao]))
+			        ),
+			        [UltimaCompra] < TODAY() - 60
+			    )
+			)
+		formatString: 0
+		lineageTag: 7668a78b-dbc6-477b-81ca-49ab9b2e15b8
+
+	column numero_do_item_no_pedido
+		dataType: string
+		lineageTag: 4fa3f5bc-abf4-4c38-87ab-635ff763f70f
+		summarizeBy: none
+		sourceColumn: numero_do_item_no_pedido
+
+		annotation SummarizationSetBy = Automatic
+
+	column filial
+		dataType: string
+		lineageTag: 1e324ffd-e628-49f8-ad5a-2fb63e4a657e
+		summarizeBy: none
+		sourceColumn: filial
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_produto
+		dataType: string
+		lineageTag: 8494d0f3-697f-42db-a7ad-0486afb0583e
+		summarizeBy: none
+		sourceColumn: cod_produto
+
+		annotation SummarizationSetBy = Automatic
+
+	column unidade_medida
+		dataType: string
+		lineageTag: 2d1e8d9e-be50-49ed-b5a8-b298c2f15a43
+		summarizeBy: none
+		sourceColumn: unidade_medida
+
+		annotation SummarizationSetBy = Automatic
+
+	column quantidade
+		dataType: int64
+		formatString: 0
+		lineageTag: c2481fa8-a278-485c-a839-e6469a2926c5
+		summarizeBy: sum
+		sourceColumn: quantidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column preco_unitario
+		dataType: double
+		lineageTag: 3087759d-2b6b-4543-9849-11d6327d1868
+		summarizeBy: sum
+		sourceColumn: preco_unitario
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column preco_total
+		dataType: double
+		lineageTag: 247e3686-991e-45f3-972f-53d7eead752a
+		summarizeBy: sum
+		sourceColumn: preco_total
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column quantidade_liberada
+		dataType: string
+		lineageTag: 39c339b1-0ddb-434d-aae0-3870124eea55
+		summarizeBy: none
+		sourceColumn: quantidade_liberada
+
+		annotation SummarizationSetBy = Automatic
+
+	column tipo_operacao
+		dataType: string
+		lineageTag: 9fa98306-784f-40ac-86af-0479e0885eca
+		summarizeBy: none
+		sourceColumn: tipo_operacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_cliente
+		dataType: string
+		lineageTag: c927739a-2cb4-4eea-b8ea-e585d5438789
+		summarizeBy: none
+		sourceColumn: cod_cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column nota_fiscal
+		dataType: string
+		lineageTag: 28df072a-5b22-4db0-865d-eb55c91ba72a
+		summarizeBy: none
+		sourceColumn: nota_fiscal
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_faturamento
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: afea12dc-ec70-49e8-9db9-c3d018933240
+		summarizeBy: none
+		sourceColumn: data_faturamento
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column numero_pedido
+		dataType: string
+		lineageTag: 65ebb9c1-f8af-4a7b-9c5e-7c9a5f31e251
+		summarizeBy: none
+		sourceColumn: numero_pedido
+
+		annotation SummarizationSetBy = Automatic
+
+	column tipo_saida
+		dataType: string
+		lineageTag: 8836b40d-96fb-4005-83cb-48e555985596
+		summarizeBy: none
+		sourceColumn: tipo_saida
+
+		annotation SummarizationSetBy = Automatic
+
+	column descricao_produto
+		dataType: string
+		lineageTag: 64262d81-b851-4096-bb18-b87f8a131215
+		summarizeBy: none
+		sourceColumn: descricao_produto
+
+		annotation SummarizationSetBy = Automatic
+
+	column tipo_produto
+		dataType: string
+		lineageTag: 783a3d78-f7eb-4325-a2f3-cf968927fbc2
+		summarizeBy: none
+		sourceColumn: tipo_produto
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_emissao
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 94244362-a7d5-41a6-97a6-4f63c9cb12bd
+		summarizeBy: none
+		sourceColumn: data_emissao
+
+		variation Variation
+			isDefault
+			relationship: eeedd304-7060-4092-aeba-b6421ab0fcdc
+			defaultHierarchy: LocalDateTable_a5e673d5-385f-4234-828e-8cc1898355dd.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column data_atualizacao_warehouse
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 58e9fa1d-13ae-45db-b4d7-67416aee5b39
+		summarizeBy: none
+		sourceColumn: data_atualizacao_warehouse
+
+		variation Variation
+			isDefault
+			relationship: de85fd4e-108c-4213-a5dd-27b93cf0e21e
+			defaultHierarchy: LocalDateTable_f342f63a-8c2e-4684-ab39-9172e1a131e1.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column pk
+		dataType: string
+		lineageTag: 5938d526-cee8-4f28-bef2-08321f70fef4
+		summarizeBy: none
+		sourceColumn: pk
+
+		annotation SummarizationSetBy = Automatic
+
+	column deletado
+		dataType: string
+		lineageTag: 7f84b49b-1de5-4407-8763-7d11454a692f
+		summarizeBy: none
+		sourceColumn: deletado
+
+		annotation SummarizationSetBy = Automatic
+
+	partition protheus_itensPedidosVendas = m
+		mode: import
+		queryGroup: mocks
+		source =
+				let
+				    Fonte = GoogleBigQuery.Database([Implementation="2.0"]),
+				    #"coherent-window-444219-c1_Database" = Fonte{[Name="coherent-window-444219-c1",Kind="Database"]}[Data],
+				    datalake_Schema = #"coherent-window-444219-c1_Database"{[Name="datalake",Kind="Schema"]}[Data],
+				    protheus_itensPedidosVendas_Table = datalake_Schema{[Name="protheus_itensPedidosVendas",Kind="Table"]}[Data],
+				    #"Tipo Corrigido" =
+				        Table.TransformColumnTypes(
+				            protheus_itensPedidosVendas_Table,
+				            {
+				                {"preco_unitario", type number},
+				                {"preco_total", type number},
+				                {"quantidade", Int64.Type},
+				                {"data_faturamento", type date},
+				                {"data_emissao", type date}
+				            },
+				            "en-US"
+				        )
+				in
+				    #"Tipo Corrigido"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

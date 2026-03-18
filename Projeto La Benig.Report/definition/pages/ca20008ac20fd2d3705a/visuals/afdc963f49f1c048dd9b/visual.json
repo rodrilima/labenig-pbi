@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "afdc963f49f1c048dd9b",
   "position": {
     "x": 538.55907780979828,
@@ -20,14 +20,14 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fato_pedidos"
+                      "Entity": "protheus_pedidosVendas"
                     }
                   },
-                  "Property": "Clientes por Estado"
+                  "Property": "ATC Clientes por Estado"
                 }
               },
-              "queryRef": "fato_pedidos.Clientes por Estado",
-              "nativeQueryRef": "Clientes por Estado"
+              "queryRef": "protheus_pedidosVendas.ATC Clientes por Estado",
+              "nativeQueryRef": "ATC Clientes por Estado"
             }
           ]
         }
@@ -39,10 +39,10 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "fato_pedidos"
+                    "Entity": "protheus_pedidosVendas"
                   }
                 },
-                "Property": "Clientes por Estado"
+                "Property": "ATC Clientes por Estado"
               }
             },
             "direction": "Descending"
@@ -412,5 +412,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "6f7c1e13168e5aec5e47",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_pedidosVendas"
+              }
+            },
+            "Property": "ATC Clientes por Estado"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

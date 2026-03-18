@@ -27,16 +27,14 @@ annotation __PBI_TimeIntelligenceEnabled = 1
 
 annotation PBI_ProTooling = ["MCP-PBIModeling","DevMode"]
 
-annotation PBI_QueryOrder = ["protheus_contasBancarias","protheus_contasPagar","protheus_contasReceber","protheus_movimentosBancarios","dim_clientes","dim_lojas","dim_data","fato_fluxo_caixa","fato_pedidos","fato_sac","fato_resultado_operacional","fato_comportamento_cliente","fato_logistica_pedidos","medidas_financeiro","navegacao_modulos","navegacao_submodulos","_guia_nomenclatura_paginas","projecao_caixa","protheus_naturezas","protheus_numerosTitulos","protheus_filiais","fato_blingV3_pedidosVendas","fato_blingV3Atacado_pedidosVendas","Dim_blingV3_situacoesPedidos","fato _blingV3_notasFiscais","Erros em blingV3_notasFiscais","fato _blingV3Atacado_contatos","fato _blingV3_contatos"]
+annotation PBI_QueryOrder = ["protheus_contasBancarias","protheus_contasPagar","protheus_contasReceber","protheus_movimentosBancarios","dim_lojas","dim_data","fato_fluxo_caixa","fato_pedidos","fato_sac","fato_resultado_operacional","fato_comportamento_cliente","fato_logistica_pedidos","medidas_financeiro","navegacao_modulos","navegacao_submodulos","_guia_nomenclatura_paginas","projecao_caixa","protheus_naturezas","protheus_numerosTitulos","protheus_filiais","Erros em blingV3_notasFiscais","protheus_pedidosVendas","protheus_contatos","protheus_itensPedidosVendas"]
 
-ref table dim_clientes
 ref table dim_lojas
 ref table dim_data
 ref table fato_fluxo_caixa
 ref table fato_pedidos
 ref table fato_sac
 ref table DateTableTemplate_63bae9ea-5091-4a4b-a9d1-35ccc1586d47
-ref table LocalDateTable_a2fc2df0-961a-4a27-90cc-757dadd2e093
 ref table LocalDateTable_ce94daa7-725f-4e78-83d0-4ea685cbe3ef
 ref table LocalDateTable_b92a3258-0434-487e-a920-b050c97bbbda
 ref table LocalDateTable_0e79337e-c284-4fd5-9697-8cc1c1a4d549
@@ -87,23 +85,14 @@ ref table LocalDateTable_f619ae2f-f8a3-423c-8404-eaa5333554d8
 ref table LocalDateTable_09f5cf52-5112-4156-810e-943b79e6f043
 ref table protheus_numerosTitulos
 ref table protheus_filiais
-ref table fato_blingV3_pedidosVendas
-ref table LocalDateTable_38714dd5-9355-4072-81d6-8698c8244aad
-ref table fato_blingV3Atacado_pedidosVendas
-ref table LocalDateTable_189ae35e-0eff-4709-a18a-f20abd7e65fd
-ref table Dim_blingV3_situacoesPedidos
-ref table LocalDateTable_e52266ca-025c-45dc-9787-93cdfef6d2bc
-ref table 'fato _blingV3_notasFiscais'
-ref table LocalDateTable_c38dee5d-2ba7-4323-a945-0cd9b106333b
-ref table LocalDateTable_19a29c42-d29a-4850-90a1-de12619ea1f6
-ref table LocalDateTable_e9d299f3-c3a0-4bca-9bf5-9339e71110aa
-ref table Dim_Situacao_NFe
-ref table LocalDateTable_dc8343db-bcfd-469c-b7f0-8a69d0a8a2d2
-ref table LocalDateTable_82212d1b-051f-43d9-b992-fa34c6947a0c
-ref table 'fato _blingV3Atacado_contatos'
-ref table LocalDateTable_bc5627ea-02ce-49b9-94a4-1c3b588c8e3c
-ref table 'fato _blingV3_contatos'
-ref table LocalDateTable_185ad6ec-a1b9-4e97-8ffc-86769d311ef9
+ref table protheus_pedidosVendas
+ref table LocalDateTable_cb434446-ecf4-451a-a169-16aae58cc926
+ref table protheus_contatos
+ref table LocalDateTable_65328ec4-7671-4e12-aa2c-e0e7d87a1098
+ref table protheus_itensPedidosVendas
+ref table LocalDateTable_f342f63a-8c2e-4684-ab39-9172e1a131e1
+ref table LocalDateTable_16fd360e-5abe-46bd-8174-3973edeb3c2e
+ref table LocalDateTable_a5e673d5-385f-4234-828e-8cc1898355dd
 
 ref cultureInfo pt-BR
 

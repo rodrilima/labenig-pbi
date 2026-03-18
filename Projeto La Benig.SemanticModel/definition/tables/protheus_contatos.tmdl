@@ -1,0 +1,250 @@
+table protheus_contatos
+	lineageTag: d390708f-83af-449c-959e-a1e0fd1b5190
+
+	column codigo
+		dataType: string
+		lineageTag: 1ab6c5f3-ed16-4393-82d0-8103574d7ff1
+		summarizeBy: none
+		sourceColumn: codigo
+
+		annotation SummarizationSetBy = Automatic
+
+	column filial
+		dataType: string
+		lineageTag: 9797fc64-94d4-4927-855b-06706fd2516f
+		summarizeBy: none
+		sourceColumn: filial
+
+		annotation SummarizationSetBy = Automatic
+
+	column loja
+		dataType: string
+		lineageTag: 56db0f1a-deda-4f93-8f34-5bbcec8c828b
+		summarizeBy: none
+		sourceColumn: loja
+
+		annotation SummarizationSetBy = Automatic
+
+	column nome_completo
+		dataType: string
+		lineageTag: 8dc915f3-9353-42f1-b058-a2adbd8c5199
+		summarizeBy: none
+		sourceColumn: nome_completo
+
+		annotation SummarizationSetBy = Automatic
+
+	column tipo_pessoa
+		dataType: string
+		lineageTag: 39de122c-e9c9-415d-a337-236e693919ce
+		summarizeBy: none
+		sourceColumn: tipo_pessoa
+
+		annotation SummarizationSetBy = Automatic
+
+	column endereco
+		dataType: string
+		lineageTag: 49b9f3fe-783f-4206-a39f-03b3d0e3e598
+		summarizeBy: none
+		sourceColumn: endereco
+
+		annotation SummarizationSetBy = Automatic
+
+	column nome
+		dataType: string
+		lineageTag: 8c317f2b-0969-4488-a096-1d89ea3c6459
+		summarizeBy: none
+		sourceColumn: nome
+
+		annotation SummarizationSetBy = Automatic
+
+	column bairro
+		dataType: string
+		lineageTag: 0fd7ba2b-be0f-49d8-a3f0-6b6f5cf004e9
+		summarizeBy: none
+		sourceColumn: bairro
+
+		annotation SummarizationSetBy = Automatic
+
+	column tipo_cliente
+		dataType: string
+		lineageTag: 14668a8a-6572-49f2-92bb-96f90dbdfa82
+		summarizeBy: none
+		sourceColumn: tipo_cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column estado
+		dataType: string
+		lineageTag: fa5b1eee-ecd7-44a4-9f0f-ba67cbc67419
+		summarizeBy: none
+		sourceColumn: estado
+
+		annotation SummarizationSetBy = Automatic
+
+	column cep
+		dataType: string
+		lineageTag: 45ed3fd7-2845-4bde-98c9-8a785713032a
+		summarizeBy: none
+		sourceColumn: cep
+
+		annotation SummarizationSetBy = Automatic
+
+	column municipio
+		dataType: string
+		lineageTag: 2f3b13fb-d458-476d-8653-ac0135482b29
+		summarizeBy: none
+		sourceColumn: municipio
+
+		annotation SummarizationSetBy = Automatic
+
+	column codmun
+		dataType: string
+		lineageTag: 4a40874a-3a77-4e75-aecc-17b04619b4ed
+		summarizeBy: none
+		sourceColumn: codmun
+
+		annotation SummarizationSetBy = Automatic
+
+	column natureza
+		dataType: string
+		lineageTag: 0636b3b4-1672-4c99-b1ed-c02759b27e33
+		summarizeBy: none
+		sourceColumn: natureza
+
+		annotation SummarizationSetBy = Automatic
+
+	column ddd
+		dataType: string
+		lineageTag: 2652a653-621d-4ca5-ae92-3efc767c2d34
+		summarizeBy: none
+		sourceColumn: ddd
+
+		annotation SummarizationSetBy = Automatic
+
+	column fone
+		dataType: string
+		lineageTag: aeb8ee06-92d5-41b5-b2db-77d61176dc1b
+		summarizeBy: none
+		sourceColumn: fone
+
+		annotation SummarizationSetBy = Automatic
+
+	column cpf_cnpj
+		dataType: string
+		lineageTag: efc80dcf-08e1-4c11-a2e6-1e138ff0370b
+		summarizeBy: none
+		sourceColumn: cpf_cnpj
+
+		annotation SummarizationSetBy = Automatic
+
+	column email
+		dataType: string
+		lineageTag: e2e9eae2-32a9-410d-a2a0-639bdeee9734
+		summarizeBy: none
+		sourceColumn: email
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_pais
+		dataType: string
+		lineageTag: bd3c68df-5714-465f-a71a-3e07f6cb43df
+		summarizeBy: none
+		sourceColumn: cod_pais
+
+		annotation SummarizationSetBy = Automatic
+
+	column ins_estadual
+		dataType: string
+		lineageTag: 6815b61a-8968-45a4-bd4f-eec288ff95a4
+		summarizeBy: none
+		sourceColumn: ins_estadual
+
+		annotation SummarizationSetBy = Automatic
+
+	column limite_credito
+		dataType: string
+		lineageTag: bb4534e7-c2bd-491e-b3c6-c29f208dd264
+		summarizeBy: none
+		sourceColumn: limite_credito
+
+		annotation SummarizationSetBy = Automatic
+
+	column ultima_compra
+		dataType: string
+		lineageTag: ff05f975-1815-450f-8df2-8daf0794fab7
+		summarizeBy: none
+		sourceColumn: ultima_compra
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_cadastro
+		dataType: string
+		lineageTag: 8b316a55-978f-4235-8863-12993ca7d389
+		summarizeBy: none
+		sourceColumn: data_cadastro
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_atualizacao_warehouse
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 100123ad-f63c-439e-8df1-50e3838e78f6
+		summarizeBy: none
+		sourceColumn: data_atualizacao_warehouse
+
+		variation Variation
+			isDefault
+			relationship: 97797de2-94a4-44e2-88a0-f62acdd26512
+			defaultHierarchy: LocalDateTable_65328ec4-7671-4e12-aa2c-e0e7d87a1098.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column grupo_cliente
+		dataType: string
+		lineageTag: b161579e-25d3-4d45-a899-cd6cd5f55b0e
+		summarizeBy: none
+		sourceColumn: grupo_cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column primeira_compra
+		dataType: string
+		lineageTag: 578bae58-8354-43b8-9fff-dcb4ebd17f7d
+		summarizeBy: none
+		sourceColumn: primeira_compra
+
+		annotation SummarizationSetBy = Automatic
+
+	column deletado
+		dataType: string
+		lineageTag: 1632ed2f-8e58-4aba-b24a-3a2a082ff88e
+		summarizeBy: none
+		sourceColumn: deletado
+
+		annotation SummarizationSetBy = Automatic
+
+	/// UF padronizada para análises geográficas de Vendas Atacado.
+	column estado_uf =
+			VAR UF = UPPER(TRIM(protheus_contatos[estado]))
+			RETURN IF(LEN(UF) = 2, UF, BLANK())
+		dataType: string
+		lineageTag: 499fece7-78c6-4403-a01b-c6d18d3d8f87
+		dataCategory: StateOrProvince
+		summarizeBy: none
+
+	partition protheus_contatos = m
+		mode: import
+		queryGroup: mocks
+		source =
+				let
+				    Fonte = GoogleBigQuery.Database([Implementation="2.0"]),
+				    #"coherent-window-444219-c1_Database" = Fonte{[Name="coherent-window-444219-c1",Kind="Database"]}[Data],
+				    datalake_Schema = #"coherent-window-444219-c1_Database"{[Name="datalake",Kind="Schema"]}[Data],
+				    protheus_contatos_Table = datalake_Schema{[Name="protheus_contatos",Kind="Table"]}[Data]
+				in
+				    protheus_contatos_Table
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

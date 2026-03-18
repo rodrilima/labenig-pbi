@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "51d37ae0b7933ab8e6d9",
   "position": {
     "x": 909.24137931034488,
     "y": 70.620689655172413,
-    "z": 3000,
+    "z": 2000,
     "height": 118.06896551724138,
     "width": 355.31034482758622,
-    "tabOrder": 3000
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "card",
@@ -17,22 +17,17 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "fato_blingV3Atacado_pedidosVendas"
-                        }
-                      },
-                      "Property": "id"
+                    "SourceRef": {
+                      "Entity": "medidas_financeiro"
                     }
                   },
-                  "Function": 5
+                  "Property": "Pedidos em Aberto"
                 }
               },
-              "queryRef": "CountNonNull(fato_blingV3Atacado_pedidosVendas.id)",
-              "nativeQueryRef": "Contagem de id"
+              "queryRef": "medidas_financeiro.Pedidos em Aberto",
+              "nativeQueryRef": "Pedidos em Aberto"
             }
           ]
         }
@@ -41,18 +36,13 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Measure": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "fato_blingV3Atacado_pedidosVendas"
-                      }
-                    },
-                    "Property": "id"
+                  "SourceRef": {
+                    "Entity": "medidas_financeiro"
                   }
                 },
-                "Function": 5
+                "Property": "Pedidos em Aberto"
               }
             },
             "direction": "Descending"
@@ -314,79 +304,19 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "4f6725fd0016aa576cb4",
+        "name": "b1f08895d5431a25b2a9",
         "ordinal": 0,
         "field": {
-          "Aggregation": {
+          "Measure": {
             "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "fato_blingV3Atacado_pedidosVendas"
-                  }
-                },
-                "Property": "id"
+              "SourceRef": {
+                "Entity": "medidas_financeiro"
               }
             },
-            "Function": 5
+            "Property": "Pedidos em Aberto"
           }
         },
         "type": "Advanced"
-      },
-      {
-        "name": "2d0052315e70ddc604ee",
-        "ordinal": 1,
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_blingV3_situacoesPedidos"
-              }
-            },
-            "Property": "status pedido"
-          }
-        },
-        "type": "Categorical",
-        "filter": {
-          "Version": 2,
-          "From": [
-            {
-              "Name": "d",
-              "Entity": "Dim_blingV3_situacoesPedidos",
-              "Type": 0
-            }
-          ],
-          "Where": [
-            {
-              "Condition": {
-                "In": {
-                  "Expressions": [
-                    {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Source": "d"
-                          }
-                        },
-                        "Property": "status pedido"
-                      }
-                    }
-                  ],
-                  "Values": [
-                    [
-                      {
-                        "Literal": {
-                          "Value": "'Em aberto'"
-                        }
-                      }
-                    ]
-                  ]
-                }
-              }
-            }
-          ]
-        },
-        "howCreated": "User"
       }
     ],
     "filterSortOrder": "Custom"

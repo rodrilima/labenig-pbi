@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "748aafa8c064743c0bb7",
   "position": {
     "x": 690.83333333333337,
     "y": 0,
-    "z": 21000,
+    "z": 20000,
     "height": 65.833333333333343,
     "width": 120.83333333333334,
-    "tabOrder": 21000
+    "tabOrder": 20000
   },
   "visual": {
     "visualType": "slicer",
@@ -122,5 +122,23 @@
       "filterChanges": true
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "b4ea68d99aac77e5f3cb",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_filiais"
+              }
+            },
+            "Property": "Filial"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }

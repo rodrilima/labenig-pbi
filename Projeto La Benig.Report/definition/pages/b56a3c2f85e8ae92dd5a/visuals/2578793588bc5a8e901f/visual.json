@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "2578793588bc5a8e901f",
   "position": {
     "x": 907.90243902439033,
     "y": 195.80487804878049,
-    "z": 6000,
+    "z": 5000,
     "height": 117.65853658536587,
     "width": 355.609756097561,
-    "tabOrder": 6000
+    "tabOrder": 5000
   },
   "visual": {
     "visualType": "card",
@@ -20,15 +20,14 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fato_blingV3Atacado_pedidosVendas"
+                      "Entity": "medidas_financeiro"
                     }
                   },
-                  "Property": "Ticke Medio atacado"
+                  "Property": "Ticket Medio Atacado"
                 }
               },
-              "queryRef": "fato_blingV3Atacado_pedidosVendas.Ticke Medio atacado",
-              "nativeQueryRef": "Ticke Medio atacado",
-              "format": "\"R$\" #,0.00;-\"R$\" #,0.00;\"R$\" #,0.00"
+              "queryRef": "medidas_financeiro.Ticket Medio Atacado",
+              "nativeQueryRef": "Ticket Medio Atacado"
             }
           ]
         }
@@ -40,10 +39,10 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "fato_blingV3Atacado_pedidosVendas"
+                    "Entity": "medidas_financeiro"
                   }
                 },
-                "Property": "Ticke Medio atacado"
+                "Property": "Ticket Medio Atacado"
               }
             },
             "direction": "Descending"
@@ -308,5 +307,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "79a58846efb4f9c77fd8",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "medidas_financeiro"
+              }
+            },
+            "Property": "Ticket Medio Atacado"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

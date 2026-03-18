@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "24cd10522fa87c127f08",
   "position": {
     "x": 156.68965517241378,
     "y": 70.620689655172413,
-    "z": 1000,
+    "z": 0,
     "height": 118.06896551724138,
     "width": 356.41379310344826,
-    "tabOrder": 1000
+    "tabOrder": 0
   },
   "visual": {
     "visualType": "card",
@@ -17,22 +17,17 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "fato_blingV3Atacado_pedidosVendas"
-                        }
-                      },
-                      "Property": "total"
+                    "SourceRef": {
+                      "Entity": "medidas_financeiro"
                     }
                   },
-                  "Function": 0
+                  "Property": "Faturamento Atacado"
                 }
               },
-              "queryRef": "Sum(fato_blingV3Atacado_pedidosVendas.total)",
-              "nativeQueryRef": "Soma de total"
+              "queryRef": "medidas_financeiro.Faturamento Atacado",
+              "nativeQueryRef": "Faturamento Atacado"
             }
           ]
         }
@@ -41,18 +36,13 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Measure": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "fato_blingV3Atacado_pedidosVendas"
-                      }
-                    },
-                    "Property": "total"
+                  "SourceRef": {
+                    "Entity": "medidas_financeiro"
                   }
                 },
-                "Function": 0
+                "Property": "Faturamento Atacado"
               }
             },
             "direction": "Descending"
@@ -317,5 +307,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "c192d4999710788e4a64",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "medidas_financeiro"
+              }
+            },
+            "Property": "Faturamento Atacado"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

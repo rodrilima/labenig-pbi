@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "5ad4efbb670fa9adfa5d",
   "position": {
     "x": 539.58620689655174,
     "y": 196.41379310344828,
-    "z": 5000,
+    "z": 4000,
     "height": 118.06896551724138,
     "width": 355.31034482758622,
-    "tabOrder": 5000
+    "tabOrder": 4000
   },
   "visual": {
     "visualType": "card",
@@ -17,22 +17,17 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "fato _blingV3Atacado_contatos"
-                        }
-                      },
-                      "Property": "id"
+                    "SourceRef": {
+                      "Entity": "medidas_financeiro"
                     }
                   },
-                  "Function": 5
+                  "Property": "Clientes Inativos"
                 }
               },
-              "queryRef": "Min(fato _blingV3Atacado_contatos.id)",
-              "nativeQueryRef": "Contagem de id"
+              "queryRef": "medidas_financeiro.Clientes Inativos",
+              "nativeQueryRef": "Clientes Inativos"
             }
           ]
         }
@@ -41,18 +36,13 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Measure": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "fato _blingV3Atacado_contatos"
-                      }
-                    },
-                    "Property": "id"
+                  "SourceRef": {
+                    "Entity": "medidas_financeiro"
                   }
                 },
-                "Function": 5
+                "Property": "Clientes Inativos"
               }
             },
             "direction": "Descending"
@@ -343,20 +333,15 @@
         "howCreated": "User"
       },
       {
-        "name": "1cefbf46091ea175d436",
+        "name": "dd6cbc3a438d4330a828",
         "field": {
-          "Aggregation": {
+          "Measure": {
             "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "fato _blingV3Atacado_contatos"
-                  }
-                },
-                "Property": "id"
+              "SourceRef": {
+                "Entity": "medidas_financeiro"
               }
             },
-            "Function": 5
+            "Property": "Clientes Inativos"
           }
         },
         "type": "Advanced"

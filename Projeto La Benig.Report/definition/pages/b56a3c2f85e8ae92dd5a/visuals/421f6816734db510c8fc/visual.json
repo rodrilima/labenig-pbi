@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "421f6816734db510c8fc",
   "position": {
     "x": 157.17073170731709,
     "y": 195.80487804878049,
-    "z": 4000,
+    "z": 3000,
     "height": 117.65853658536587,
     "width": 355.609756097561,
-    "tabOrder": 4000
+    "tabOrder": 3000
   },
   "visual": {
     "visualType": "card",
@@ -17,22 +17,17 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "fato _blingV3Atacado_contatos"
-                        }
-                      },
-                      "Property": "id"
+                    "SourceRef": {
+                      "Entity": "medidas_financeiro"
                     }
                   },
-                  "Function": 2
+                  "Property": "Clientes Ativos"
                 }
               },
-              "queryRef": "Min(fato _blingV3Atacado_contatos.id)",
-              "nativeQueryRef": "Contagem de id"
+              "queryRef": "medidas_financeiro.Clientes Ativos",
+              "nativeQueryRef": "Clientes Ativos"
             }
           ]
         }
@@ -41,18 +36,13 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Measure": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "fato _blingV3Atacado_contatos"
-                      }
-                    },
-                    "Property": "id"
+                  "SourceRef": {
+                    "Entity": "medidas_financeiro"
                   }
                 },
-                "Function": 2
+                "Property": "Clientes Ativos"
               }
             },
             "direction": "Descending"
@@ -328,58 +318,18 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "caffb68d9dcc367968c0",
+        "name": "52f4bb06fe4437309658",
         "field": {
-          "Column": {
+          "Measure": {
             "Expression": {
               "SourceRef": {
-                "Entity": "fato _blingV3Atacado_contatos"
+                "Entity": "medidas_financeiro"
               }
             },
-            "Property": "situacao"
+            "Property": "Clientes Ativos"
           }
         },
-        "type": "Categorical",
-        "filter": {
-          "Version": 2,
-          "From": [
-            {
-              "Name": "f",
-              "Entity": "fato _blingV3Atacado_contatos",
-              "Type": 0
-            }
-          ],
-          "Where": [
-            {
-              "Condition": {
-                "In": {
-                  "Expressions": [
-                    {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Source": "f"
-                          }
-                        },
-                        "Property": "situacao"
-                      }
-                    }
-                  ],
-                  "Values": [
-                    [
-                      {
-                        "Literal": {
-                          "Value": "'A'"
-                        }
-                      }
-                    ]
-                  ]
-                }
-              }
-            }
-          ]
-        },
-        "howCreated": "User"
+        "type": "Advanced"
       }
     ]
   }

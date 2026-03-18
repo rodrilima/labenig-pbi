@@ -17,35 +17,15 @@ table fato_pedidos
 		formatString: #,##0
 		lineageTag: 124d5c43-d651-4ea1-901a-52405bc86129
 
-	/// Faturamento do canal Atacado
-	measure 'Faturamento Atacado' = CALCULATE([Faturamento Total], fato_pedidos[canal] = "Atacado")
-		formatString: R$ #,##0.00
-		lineageTag: 92acf82e-4c7e-4250-8e11-c40f1622ed20
-
 	/// Faturamento do canal E-commerce
 	measure 'Faturamento E-commerce' = CALCULATE([Faturamento Total], fato_pedidos[canal] = "E-commerce")
 		formatString: R$ #,##0.00
 		lineageTag: a4cc1061-e74d-4632-b263-acc29af044af
 
-	/// Quantidade de pedidos já faturados
-	measure 'Pedidos Faturados' = CALCULATE(COUNTROWS(fato_pedidos), fato_pedidos[status] = "Faturado")
-		formatString: #,##0
-		lineageTag: 80926c25-25c6-4d4b-825a-786ed83442ec
-
-	/// Quantidade de pedidos ainda não faturados
-	measure 'Pedidos em Aberto' = CALCULATE(COUNTROWS(fato_pedidos), fato_pedidos[status] IN {"Aberto", "Em Separação"})
-		formatString: #,##0
-		lineageTag: 4af744e0-cdfd-41f3-916a-79e4504263da
-
 	/// Total de pedidos do canal Atacado
 	measure 'Pedidos Atacado' = CALCULATE([Total de Pedidos], fato_pedidos[canal] = "Atacado")
 		formatString: #,##0
 		lineageTag: e37883e6-120f-4622-8216-d9a7eaa420be
-
-	/// Valor médio por pedido no Atacado
-	measure 'Ticket Medio Atacado' = DIVIDE([Faturamento Atacado], [Pedidos Atacado], 0)
-		formatString: R$ #,##0.00
-		lineageTag: 3420992a-f53c-4206-8360-dc2258d0a73b
 
 	/// Total de pedidos do canal E-commerce
 	measure 'Pedidos E-commerce' = CALCULATE([Total de Pedidos], fato_pedidos[canal] = "E-commerce")
@@ -267,11 +247,6 @@ table fato_pedidos
 			DIVIDE(TotalCustoAquisicao, NovosClientes)
 		formatString: R$ #,##0.00
 		lineageTag: bc3047ff-fb88-4628-a0b1-4f6da21da125
-
-	/// Custo total de frete no período
-	measure 'Custo Total Frete' = SUM('fato _blingV3_notasFiscais'[valorFrete])
-		formatString: R$ #,##0.00
-		lineageTag: f0587a39-dad2-4998-aecf-701e3524db26
 
 	/// Percentual do custo de frete sobre o faturamento total
 	measure 'Frete sobre Faturamento %' = DIVIDE([Custo Total Frete], [Faturamento Total])
@@ -498,7 +473,7 @@ table fato_pedidos
 		dataType: int64
 		formatString: 0
 		lineageTag: 57aba227-1ffd-4f9c-a4e5-a267e9efbcae
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: cliente_id
 
 		annotation SummarizationSetBy = Automatic
