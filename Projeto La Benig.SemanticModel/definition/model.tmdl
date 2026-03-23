@@ -93,6 +93,8 @@ ref table protheus_itensPedidosVendas
 ref table LocalDateTable_f342f63a-8c2e-4684-ab39-9172e1a131e1
 ref table LocalDateTable_16fd360e-5abe-46bd-8174-3973edeb3c2e
 ref table LocalDateTable_a5e673d5-385f-4234-828e-8cc1898355dd
+ref table dim_dfc_linhas
+ref table mapa_natureza_dfc_auto
 
 ref cultureInfo pt-BR
 

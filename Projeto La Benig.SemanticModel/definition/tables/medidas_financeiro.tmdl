@@ -897,6 +897,77 @@ table medidas_financeiro
 		displayFolder: Atacado\Tabela Pedidos
 		lineageTag: 495b1aeb-740b-4134-a9fe-b256551fb54b
 
+	measure 'DFC Valor Real' =
+			VAR CodigosNatureza =
+			    CALCULATETABLE (
+			        VALUES ( mapa_natureza_dfc_auto[codigo_natureza] ),
+			        KEEPFILTERS ( TREATAS ( VALUES ( dim_dfc_linhas[grupo] ), mapa_natureza_dfc_auto[grupo_dfc] ) ),
+			        KEEPFILTERS ( TREATAS ( VALUES ( dim_dfc_linhas[subgrupo] ), mapa_natureza_dfc_auto[subgrupo_dfc] ) ),
+			        KEEPFILTERS ( TREATAS ( VALUES ( dim_dfc_linhas[linha] ), mapa_natureza_dfc_auto[linha_dfc] ) )
+			    )
+			RETURN
+			    CALCULATE (
+			        SUM ( protheus_movimentosBancarios[valorpn] ),
+			        TREATAS ( CodigosNatureza, protheus_movimentosBancarios[natureza] )
+			    )
+		formatString: R$ #,##0.00
+		displayFolder: DFC Auto
+		lineageTag: 21cf9a45-6aac-4492-9620-35ed73fa90a4
+
+	measure 'DFC Valor Projetado' =
+			VAR CodigosNatureza =
+			    CALCULATETABLE (
+			        VALUES ( mapa_natureza_dfc_auto[codigo_natureza] ),
+			        KEEPFILTERS ( TREATAS ( VALUES ( dim_dfc_linhas[grupo] ), mapa_natureza_dfc_auto[grupo_dfc] ) ),
+			        KEEPFILTERS ( TREATAS ( VALUES ( dim_dfc_linhas[subgrupo] ), mapa_natureza_dfc_auto[subgrupo_dfc] ) ),
+			        KEEPFILTERS ( TREATAS ( VALUES ( dim_dfc_linhas[linha] ), mapa_natureza_dfc_auto[linha_dfc] ) )
+			    )
+			RETURN
+			    CALCULATE (
+			        SUM ( projecao_caixa[valorpn] ),
+			        TREATAS ( CodigosNatureza, projecao_caixa[natureza] )
+			    )
+		formatString: R$ #,##0.00
+		displayFolder: DFC Auto
+		lineageTag: 91206416-690e-420b-9593-cba1281a540b
+
+	measure 'DFC Total Linha' = [DFC Valor Real]
+		formatString: R$ #,##0.00
+		displayFolder: DFC Auto
+		lineageTag: 9deb16db-8b29-45ee-a229-f061657e9d34
+
+	measure 'DFC Subtotal' =
+			IF (
+			    ISINSCOPE ( dim_dfc_linhas[linha] ),
+			    [DFC Total Linha],
+			    SUMX ( VALUES ( dim_dfc_linhas[linha] ), [DFC Total Linha] )
+			)
+		formatString: R$ #,##0.00
+		displayFolder: DFC Auto
+		lineageTag: d23d121f-0182-4fbe-b304-224bf4669ede
+
+	measure 'DFC Fluxo Líquido' = CALCULATE ( [DFC Valor Real], REMOVEFILTERS ( dim_dfc_linhas ) )
+		formatString: R$ #,##0.00
+		displayFolder: DFC Auto
+		lineageTag: 1f610723-94f1-41f3-a41e-d4d42f205ffb
+
+	measure 'DFC Saldo Inicial' =
+			VAR DataInicial = MIN ( calendario[Date] )
+			RETURN
+			    CALCULATE (
+			        SUM ( protheus_movimentosBancarios[valorpn] ),
+			        REMOVEFILTERS ( dim_dfc_linhas ),
+			        FILTER ( ALL ( calendario[Date] ), calendario[Date] < DataInicial )
+			    )
+		formatString: R$ #,##0.00
+		displayFolder: DFC Auto
+		lineageTag: 2e51e292-d700-43e1-bf84-39399f9e182c
+
+	measure 'DFC Saldo Final' = [DFC Saldo Inicial] + [DFC Fluxo Líquido]
+		formatString: R$ #,##0.00
+		displayFolder: DFC Auto
+		lineageTag: 3cf409b0-ef46-48f2-9db4-59db5c2984a0
+
 	partition medidas_financeiro = m
 		mode: import
 		source =

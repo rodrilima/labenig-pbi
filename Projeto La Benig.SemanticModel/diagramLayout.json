@@ -11,7 +11,7 @@
         {
           "location": {
             "x": 1314.6991657030962,
-            "y": 1047.1475509603797
+            "y": 1773.8960968763283
           },
           "nodeIndex": "dim_data",
           "nodeLineageTag": "71695600-1a0a-47cd-949f-976dab967cc5",
@@ -24,7 +24,7 @@
         {
           "location": {
             "x": 1005.5833290133191,
-            "y": 951.31557013608119
+            "y": 1678.0641160520297
           },
           "nodeIndex": "dim_lojas",
           "nodeLineageTag": "13babba5-d172-4088-bda1-c19dabec9463",
@@ -37,7 +37,7 @@
         {
           "location": {
             "x": 316.82673866721609,
-            "y": 1336.4433829685568
+            "y": 2063.1919288845056
           },
           "nodeIndex": "fato_comportamento_cliente",
           "nodeLineageTag": "94ca9d1b-12bc-4b3e-8bed-a494ec094d4a",
@@ -50,7 +50,7 @@
         {
           "location": {
             "x": 2166.6991657030962,
-            "y": 1033.1475509603797
+            "y": 1759.8960968763283
           },
           "nodeIndex": "fato_fluxo_caixa",
           "nodeLineageTag": "c9e2e0d2-8517-4d64-a28b-d97ecb2f11fd",
@@ -63,7 +63,7 @@
         {
           "location": {
             "x": 1080.6991657030962,
-            "y": 1180.3426837986149
+            "y": 1907.0912297145635
           },
           "nodeIndex": "fato_logistica_pedidos",
           "nodeLineageTag": "912e5ee9-efe6-41ba-ab0e-5cd7697600b2",
@@ -76,7 +76,7 @@
         {
           "location": {
             "x": 718.55532658633092,
-            "y": 1053.70397077334
+            "y": 1780.4525166892886
           },
           "nodeIndex": "fato_pedidos",
           "nodeLineageTag": "a8dfbd46-d4d3-4671-900c-8abef1a5d985",
@@ -89,7 +89,7 @@
         {
           "location": {
             "x": 2450.6991657030962,
-            "y": 1033.1475509603797
+            "y": 1759.8960968763283
           },
           "nodeIndex": "fato_resultado_operacional",
           "nodeLineageTag": "4bf442a7-aeb3-48a9-8b08-78e803a25c1c",
@@ -102,7 +102,7 @@
         {
           "location": {
             "x": 50,
-            "y": 983.589129731206
+            "y": 1710.3376756471546
           },
           "nodeIndex": "fato_sac",
           "nodeLineageTag": "0b6730ba-cf50-4cf2-9955-e97f8e42ba5b",
@@ -115,7 +115,7 @@
         {
           "location": {
             "x": 3537.08221571779,
-            "y": 1024.9363764704185
+            "y": 1751.6849223863671
           },
           "nodeIndex": "protheus_contasBancarias",
           "nodeLineageTag": "83cc781d-51c8-4279-861d-29a3d8f96882",
@@ -128,7 +128,7 @@
         {
           "location": {
             "x": 3303.08221571779,
-            "y": 958.514027490496
+            "y": 1685.2625734064447
           },
           "nodeIndex": "protheus_contasPagar",
           "nodeLineageTag": "9a8386ee-1731-43f9-a602-1f0e80ebeda1",
@@ -141,7 +141,7 @@
         {
           "location": {
             "x": 2734.6991657030962,
-            "y": 988.49913827009379
+            "y": 1715.2476841860423
           },
           "nodeIndex": "protheus_contasReceber",
           "nodeLineageTag": "0ee1a42c-97d5-4cbb-8b09-1d141a580f2a",
@@ -154,7 +154,7 @@
         {
           "location": {
             "x": 3018.9007268962814,
-            "y": 991.358725450341
+            "y": 1718.1072713662895
           },
           "nodeIndex": "protheus_movimentosBancarios",
           "nodeLineageTag": "da554400-d777-4977-8bd5-023e535e7bc4",
@@ -167,7 +167,7 @@
         {
           "location": {
             "x": 4056.08221571779,
-            "y": 1592.1475509603797
+            "y": 2318.8960968763286
           },
           "nodeIndex": "calendario",
           "nodeLineageTag": "963ae7f1-a55a-45f0-a5f7-69c609f6cb45",
@@ -180,7 +180,7 @@
         {
           "location": {
             "x": 3771.08221571779,
-            "y": 1131.1475509603797
+            "y": 1857.8960968763283
           },
           "nodeIndex": "medidas_financeiro",
           "size": {
@@ -192,7 +192,7 @@
         {
           "location": {
             "x": 4573.2181098123538,
-            "y": 1274.7496225977632
+            "y": 2001.4981685137118
           },
           "nodeIndex": "_guia_nomenclatura_paginas",
           "nodeLineageTag": "904840b5-c575-4bb4-b6fc-e922c93124f6",
@@ -205,7 +205,7 @@
         {
           "location": {
             "x": 5375.2181098123528,
-            "y": 1059.1475509603797
+            "y": 1785.8960968763283
           },
           "nodeIndex": "navegacao_menu",
           "nodeLineageTag": "8bd18b08-1c30-4e1d-b286-2bc041900249",
@@ -218,7 +218,7 @@
         {
           "location": {
             "x": 4573.21228887241,
-            "y": 839.54547932299624
+            "y": 1566.2940252389449
           },
           "nodeIndex": "navegacao_modulos",
           "nodeLineageTag": "b14f7032-38d8-4a99-b9aa-17f8505453c5",
@@ -231,7 +231,7 @@
         {
           "location": {
             "x": 4289.08221571779,
-            "y": 1045.8044645444334
+            "y": 1772.553010460382
           },
           "nodeIndex": "navegacao_submodulos",
           "nodeLineageTag": "30aa3f58-3add-475b-ae53-43608fe43cf6",
@@ -244,7 +244,7 @@
         {
           "location": {
             "x": 5609.2181098123528,
-            "y": 1033.1475509603797
+            "y": 1759.8960968763283
           },
           "nodeIndex": "projecao_caixa",
           "nodeLineageTag": "ab4ef6a7-1ab7-4246-a348-9379069a1113",
@@ -257,7 +257,7 @@
         {
           "location": {
             "x": 5843.2181098123528,
-            "y": 1033.1475509603797
+            "y": 1759.8960968763283
           },
           "nodeIndex": "protheus_naturezas",
           "nodeLineageTag": "6771b100-1dd4-4c87-aa18-89ee486295d9",
@@ -270,7 +270,7 @@
         {
           "location": {
             "x": 6645.2181098123528,
-            "y": 1026.3006707749828
+            "y": 1753.0492166909314
           },
           "nodeIndex": "protheus_numerosTitulos",
           "nodeLineageTag": "303e7442-e8df-49a7-9314-6880afb2d29a",
@@ -283,7 +283,7 @@
         {
           "location": {
             "x": 6929.2181098123528,
-            "y": 1026.3006707749828
+            "y": 1753.0492166909314
           },
           "nodeIndex": "protheus_filiais",
           "nodeLineageTag": "10c19c01-7110-4a2d-92ea-d544387345f6",
@@ -296,7 +296,7 @@
         {
           "location": {
             "x": 8074.2181098123528,
-            "y": 1061.4233163517074
+            "y": 1788.171862267656
           },
           "nodeIndex": "protheus_contatos",
           "nodeLineageTag": "d390708f-83af-449c-959e-a1e0fd1b5190",
@@ -309,7 +309,7 @@
         {
           "location": {
             "x": 8362.2181098123528,
-            "y": 669.4233163517074
+            "y": 1396.171862267656
           },
           "nodeIndex": "protheus_itensPedidosVendas",
           "nodeLineageTag": "3c0463d9-f370-41df-b6bc-9f36e002da5f",
@@ -322,12 +322,38 @@
         {
           "location": {
             "x": 8686.2181098123528,
-            "y": 671.4233163517074
+            "y": 1398.171862267656
           },
           "nodeIndex": "protheus_pedidosVendas",
           "nodeLineageTag": "5d4721c0-19c1-450f-908c-ec1691833e18",
           "size": {
             "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 8920.2181098123528,
+            "y": 1176.1106632202848
+          },
+          "nodeIndex": "dim_dfc_linhas",
+          "nodeLineageTag": "4015a265-5753-4647-ad65-6de840478009",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 9154.2181098123528,
+            "y": 927.4296045681167
+          },
+          "nodeIndex": "mapa_natureza_dfc_auto",
+          "nodeLineageTag": "9629530e-8d4d-4603-9e41-c9eda36d1532",
+          "size": {
+            "height": 272,
             "width": 234
           },
           "zIndex": 0

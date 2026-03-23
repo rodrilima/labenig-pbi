@@ -37988,6 +37988,153 @@ cultureInfo pt-BR
 			          }
 			        }
 			      ]
+			    },
+			    "medidas_financeiro.dfc_fluxo_líquido": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "DFC Fluxo Líquido"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Fluxo Líquido": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medidas_financeiro.dfc_saldo_final": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "DFC Saldo Final"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Saldo Final": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medidas_financeiro.dfc_subtotal": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "DFC Subtotal"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Valor Real": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medidas_financeiro.dfc_valor_projetado": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "DFC Valor Projetado"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Valor Projetado": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dim_dfc_linhas.grupo": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_dfc_linhas",
+			          "ConceptualProperty": "grupo"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Grupo": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dim_dfc_linhas.subgrupo": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_dfc_linhas",
+			          "ConceptualProperty": "subgrupo"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Subgrupo": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dim_dfc_linhas.linha": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_dfc_linhas",
+			          "ConceptualProperty": "linha"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Linha DFC": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
 			    }
 			  },
 			  "Relationships": {

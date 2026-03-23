@@ -1,0 +1,62 @@
+table dim_dfc_linhas
+	lineageTag: 4015a265-5753-4647-ad65-6de840478009
+
+	column grupo
+		lineageTag: 4ee0b128-a650-4fc6-82fe-abfc42e35dfe
+		isNameInferred
+		sourceColumn: [grupo]
+
+	column subgrupo
+		lineageTag: 4c0afead-34f8-4d15-843c-55f150d01f1e
+		isNameInferred
+		sourceColumn: [subgrupo]
+
+	column linha
+		lineageTag: 0cf9bc04-2a5c-4f6f-966a-54c6be816715
+		isNameInferred
+		sourceColumn: [linha]
+
+	column ordem_grupo
+		lineageTag: 27d3ec8a-cebb-4b43-8cc1-df3f159b1c89
+		isNameInferred
+		sourceColumn: [ordem_grupo]
+
+	column ordem_subgrupo
+		lineageTag: cda43a06-5377-4f5a-8b1c-d1c9ffa4902a
+		isNameInferred
+		sourceColumn: [ordem_subgrupo]
+
+	column ordem_linha
+		lineageTag: 37071e91-c731-4eba-94ad-360fab84b414
+		isNameInferred
+		sourceColumn: [ordem_linha]
+
+	partition dim_dfc_linhas = calculated
+		mode: import
+		source =
+				DATATABLE (
+				    "grupo", STRING,
+				    "subgrupo", STRING,
+				    "linha", STRING,
+				    "ordem_grupo", INTEGER,
+				    "ordem_subgrupo", INTEGER,
+				    "ordem_linha", INTEGER,
+				    {
+				        { "Operacional", "Entradas Operacionais", "Recebimentos Operacionais", 1, 1, 1 },
+				        { "Operacional", "Saidas Operacionais", "Pagamentos Operacionais", 1, 2, 1 },
+				
+				        { "Investimentos", "Desinvestimentos", "Outros Investimentos", 2, 1, 1 },
+				        { "Investimentos", "Aplicacoes em Ativos", "Aquisição de Imobilizado", 2, 2, 1 },
+				        { "Investimentos", "Aplicacoes em Ativos", "Aquisição de Software", 2, 2, 2 },
+				
+				        { "Financiamentos", "Capitacoes", "Capitacao de Emprestimos", 3, 1, 1 },
+				        { "Financiamentos", "Amortizacoes", "Amortizacao de Principal", 3, 2, 1 },
+				        { "Financiamentos", "Juros e Encargos", "Juros de Financiamentos", 3, 3, 1 },
+				
+				        { "Transferencias", "Transferencias de Entrada", "Transferencia entre Contas", 4, 1, 1 },
+				        { "Transferencias", "Transferencias de Entrada", "Transferencia entre Filiais", 4, 1, 2 },
+				        { "Transferencias", "Transferencias de Saida", "Transferencia entre Contas", 4, 2, 1 },
+				        { "Transferencias", "Transferencias de Saida", "Transferencia entre Filiais", 4, 2, 2 }
+				    }
+				)
+
