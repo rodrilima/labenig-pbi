@@ -33068,141 +33068,357 @@ cultureInfo pt-BR
 			          }
 			        }
 			      ]
+			    },
+			    "protheus_contas_pagar.stamp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "protheus_contasPagar",
+			          "ConceptualProperty": "stamp"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "stamp": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "impression": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "endorsement": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "identification": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "brand": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "imprint": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "mold": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "cast": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "hallmark": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "earmark": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "print": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        }
+			      ]
+			    },
+			    "protheus_contas_receber.stamp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "protheus_contasReceber",
+			          "ConceptualProperty": "stamp"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "stamp": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "impression": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "endorsement": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "identification": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "brand": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "imprint": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "mold": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "cast": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "hallmark": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "earmark": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "print": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        }
+			      ]
+			    },
+			    "projecao_caixa.stamp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "projecao_caixa",
+			          "ConceptualProperty": "stamp"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "stamp": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "impression": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "endorsement": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "identification": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "brand": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "imprint": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "mold": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "cast": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "hallmark": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "earmark": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "print": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        }
+			      ]
 			    }
 			  },
 			  "Relationships": {
-			    "projecao_caixa_data_atualizacao_warehouse_ano_has_projecao_caixa_data_atualizacao_warehouse_trimestre": {
-			      "Binding": {
-			        "ConceptualEntity": "projecao_caixa"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "projecao_caixa.data_atualizacao_warehouse.ano": {
-			          "Target": {
-			            "Entity": "projecao_caixa.data_atualizacao_warehouse.ano"
-			          }
-			        },
-			        "projecao_caixa.data_atualizacao_warehouse.trimestre": {
-			          "Target": {
-			            "Entity": "projecao_caixa.data_atualizacao_warehouse.trimestre"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "projecao_caixa.data_atualizacao_warehouse.ano"
-			            },
-			            "Object": {
-			              "Role": "projecao_caixa.data_atualizacao_warehouse.trimestre"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "anos_have_trimestres"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "projecao_caixa.data_atualizacao_warehouse.trimestre"
-			            },
-			            "Object": {
-			              "Role": "projecao_caixa.data_atualizacao_warehouse.ano"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "trimestres_have_anos"
-			        },
-			        {
-			          "Preposition": {
-			            "Subject": {
-			              "Role": "projecao_caixa.data_atualizacao_warehouse.trimestre"
-			            },
-			            "Prepositions": [
-			              {
-			                "in": {
-			                  "State": "Generated"
-			                }
-			              }
-			            ],
-			            "Object": {
-			              "Role": "projecao_caixa.data_atualizacao_warehouse.ano"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "trimestres_are_in_anos31"
-			        }
-			      ]
-			    },
-			    "projecao_caixa_data_atualizacao_warehouse_hierarquia_de_data_has_projecao_caixa_data_atualizacao_warehouse_dia": {
-			      "Binding": {
-			        "ConceptualEntity": "projecao_caixa"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "projecao_caixa.data_atualizacao_warehouse.hierarquia_de_data": {
-			          "Target": {
-			            "Entity": "projecao_caixa.data_atualizacao_warehouse.hierarquia_de_data"
-			          }
-			        },
-			        "projecao_caixa.data_atualizacao_warehouse.dia": {
-			          "Target": {
-			            "Entity": "projecao_caixa.data_atualizacao_warehouse.dia"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "projecao_caixa.data_atualizacao_warehouse.hierarquia_de_data"
-			            },
-			            "Object": {
-			              "Role": "projecao_caixa.data_atualizacao_warehouse.dia"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_dias"
-			        }
-			      ]
-			    },
-			    "projecao_caixa_data_atualizacao_warehouse_hierarquia_de_data_has_projecao_caixa_data_atualizacao_warehouse_mê": {
-			      "Binding": {
-			        "ConceptualEntity": "projecao_caixa"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "projecao_caixa.data_atualizacao_warehouse.hierarquia_de_data": {
-			          "Target": {
-			            "Entity": "projecao_caixa.data_atualizacao_warehouse.hierarquia_de_data"
-			          }
-			        },
-			        "projecao_caixa.data_atualizacao_warehouse.mê": {
-			          "Target": {
-			            "Entity": "projecao_caixa.data_atualizacao_warehouse.mê"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "projecao_caixa.data_atualizacao_warehouse.hierarquia_de_data"
-			            },
-			            "Object": {
-			              "Role": "projecao_caixa.data_atualizacao_warehouse.mê"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_mê"
-			        }
-			      ]
-			    },
 			    "projecao_caixa_data_atualizacao_warehouse_hierarquia_de_data_has_projecao_caixa_data_atualizacao_warehouse_trimestre": {
 			      "Binding": {
 			        "ConceptualEntity": "projecao_caixa"
@@ -33463,7 +33679,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "anos_have_trimestres1"
+			          "ID": "anos_have_trimestres"
 			        },
 			        {
 			          "Attribute": {
@@ -33476,7 +33692,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "trimestres_have_anos1"
+			          "ID": "trimestres_have_anos"
 			        },
 			        {
 			          "Preposition": {
@@ -33529,7 +33745,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_dias1"
+			          "ID": "hierarquia_de_data_have_dias"
 			        }
 			      ]
 			    },
@@ -33562,7 +33778,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_mê1"
+			          "ID": "hierarquia_de_data_have_mê"
 			        }
 			      ]
 			    },
@@ -33826,7 +34042,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "anos_have_trimestres2"
+			          "ID": "anos_have_trimestres1"
 			        },
 			        {
 			          "Attribute": {
@@ -33839,7 +34055,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "trimestres_have_anos2"
+			          "ID": "trimestres_have_anos1"
 			        },
 			        {
 			          "Preposition": {
@@ -33892,7 +34108,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_dias2"
+			          "ID": "hierarquia_de_data_have_dias1"
 			        }
 			      ]
 			    },
@@ -33925,7 +34141,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_mê2"
+			          "ID": "hierarquia_de_data_have_mê1"
 			        }
 			      ]
 			    },
@@ -34189,7 +34405,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "anos_have_trimestres3"
+			          "ID": "anos_have_trimestres2"
 			        },
 			        {
 			          "Attribute": {
@@ -34202,7 +34418,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "trimestres_have_anos3"
+			          "ID": "trimestres_have_anos2"
 			        },
 			        {
 			          "Preposition": {
@@ -34255,7 +34471,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_dias3"
+			          "ID": "hierarquia_de_data_have_dias2"
 			        }
 			      ]
 			    },
@@ -34288,7 +34504,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_mê3"
+			          "ID": "hierarquia_de_data_have_mê2"
 			        }
 			      ]
 			    },
@@ -34552,7 +34768,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "anos_have_trimestres4"
+			          "ID": "anos_have_trimestres3"
 			        },
 			        {
 			          "Attribute": {
@@ -34565,7 +34781,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "trimestres_have_anos4"
+			          "ID": "trimestres_have_anos3"
 			        },
 			        {
 			          "Preposition": {
@@ -34618,7 +34834,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_dias4"
+			          "ID": "hierarquia_de_data_have_dias3"
 			        }
 			      ]
 			    },
@@ -34651,7 +34867,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_mê4"
+			          "ID": "hierarquia_de_data_have_mê3"
 			        }
 			      ]
 			    },
@@ -34915,7 +35131,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "anos_have_trimestres5"
+			          "ID": "anos_have_trimestres4"
 			        },
 			        {
 			          "Attribute": {
@@ -34928,7 +35144,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "trimestres_have_anos5"
+			          "ID": "trimestres_have_anos4"
 			        },
 			        {
 			          "Preposition": {
@@ -34981,7 +35197,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_dias5"
+			          "ID": "hierarquia_de_data_have_dias4"
 			        }
 			      ]
 			    },
@@ -35014,7 +35230,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_mê5"
+			          "ID": "hierarquia_de_data_have_mê4"
 			        }
 			      ]
 			    },
@@ -35278,7 +35494,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "anos_have_trimestres6"
+			          "ID": "anos_have_trimestres5"
 			        },
 			        {
 			          "Attribute": {
@@ -35291,7 +35507,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "trimestres_have_anos6"
+			          "ID": "trimestres_have_anos5"
 			        },
 			        {
 			          "Preposition": {
@@ -35344,7 +35560,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_dias6"
+			          "ID": "hierarquia_de_data_have_dias5"
 			        }
 			      ]
 			    },
@@ -35377,7 +35593,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_mê6"
+			          "ID": "hierarquia_de_data_have_mê5"
 			        }
 			      ]
 			    },
@@ -35641,7 +35857,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "anos_have_trimestres7"
+			          "ID": "anos_have_trimestres6"
 			        },
 			        {
 			          "Attribute": {
@@ -35654,7 +35870,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "trimestres_have_anos7"
+			          "ID": "trimestres_have_anos6"
 			        },
 			        {
 			          "Preposition": {
@@ -35707,7 +35923,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_dias7"
+			          "ID": "hierarquia_de_data_have_dias6"
 			        }
 			      ]
 			    },
@@ -35740,7 +35956,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_mê7"
+			          "ID": "hierarquia_de_data_have_mê6"
 			        }
 			      ]
 			    },
@@ -36004,7 +36220,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "anos_have_trimestres8"
+			          "ID": "anos_have_trimestres7"
 			        },
 			        {
 			          "Attribute": {
@@ -36017,7 +36233,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "trimestres_have_anos8"
+			          "ID": "trimestres_have_anos7"
 			        },
 			        {
 			          "Preposition": {
@@ -36070,7 +36286,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_dias8"
+			          "ID": "hierarquia_de_data_have_dias7"
 			        }
 			      ]
 			    },
@@ -36103,7 +36319,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_mê8"
+			          "ID": "hierarquia_de_data_have_mê7"
 			        }
 			      ]
 			    },
@@ -36367,7 +36583,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "anos_have_trimestres9"
+			          "ID": "anos_have_trimestres8"
 			        },
 			        {
 			          "Attribute": {
@@ -36380,7 +36596,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "trimestres_have_anos9"
+			          "ID": "trimestres_have_anos8"
 			        },
 			        {
 			          "Preposition": {
@@ -36433,7 +36649,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_dias9"
+			          "ID": "hierarquia_de_data_have_dias8"
 			        }
 			      ]
 			    },
@@ -36466,7 +36682,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_mê9"
+			          "ID": "hierarquia_de_data_have_mê8"
 			        }
 			      ]
 			    },
@@ -36730,7 +36946,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "anos_have_trimestres10"
+			          "ID": "anos_have_trimestres9"
 			        },
 			        {
 			          "Attribute": {
@@ -36743,7 +36959,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "trimestres_have_anos10"
+			          "ID": "trimestres_have_anos9"
 			        },
 			        {
 			          "Preposition": {
@@ -36796,7 +37012,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_dias10"
+			          "ID": "hierarquia_de_data_have_dias9"
 			        }
 			      ]
 			    },
@@ -36829,7 +37045,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_mê10"
+			          "ID": "hierarquia_de_data_have_mê9"
 			        }
 			      ]
 			    },
@@ -37093,7 +37309,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "anos_have_trimestres11"
+			          "ID": "anos_have_trimestres10"
 			        },
 			        {
 			          "Attribute": {
@@ -37106,7 +37322,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "trimestres_have_anos11"
+			          "ID": "trimestres_have_anos10"
 			        },
 			        {
 			          "Preposition": {
@@ -37159,7 +37375,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_dias11"
+			          "ID": "hierarquia_de_data_have_dias10"
 			        }
 			      ]
 			    },
@@ -37192,7 +37408,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_mê11"
+			          "ID": "hierarquia_de_data_have_mê10"
 			        }
 			      ]
 			    },
@@ -37456,7 +37672,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "anos_have_trimestres12"
+			          "ID": "anos_have_trimestres11"
 			        },
 			        {
 			          "Attribute": {
@@ -37469,7 +37685,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "trimestres_have_anos12"
+			          "ID": "trimestres_have_anos11"
 			        },
 			        {
 			          "Preposition": {
@@ -37522,7 +37738,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_dias12"
+			          "ID": "hierarquia_de_data_have_dias11"
 			        }
 			      ]
 			    },
@@ -37555,7 +37771,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_mê12"
+			          "ID": "hierarquia_de_data_have_mê11"
 			        }
 			      ]
 			    },
@@ -37819,7 +38035,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "anos_have_trimestres13"
+			          "ID": "anos_have_trimestres12"
 			        },
 			        {
 			          "Attribute": {
@@ -37832,7 +38048,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "trimestres_have_anos13"
+			          "ID": "trimestres_have_anos12"
 			        },
 			        {
 			          "Preposition": {
@@ -37885,7 +38101,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_dias13"
+			          "ID": "hierarquia_de_data_have_dias12"
 			        }
 			      ]
 			    },
@@ -37918,7 +38134,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_mê13"
+			          "ID": "hierarquia_de_data_have_mê12"
 			        }
 			      ]
 			    },
@@ -38182,7 +38398,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "anos_have_trimestres14"
+			          "ID": "anos_have_trimestres13"
 			        },
 			        {
 			          "Attribute": {
@@ -38195,7 +38411,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "trimestres_have_anos14"
+			          "ID": "trimestres_have_anos13"
 			        },
 			        {
 			          "Preposition": {
@@ -38248,7 +38464,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_dias14"
+			          "ID": "hierarquia_de_data_have_dias13"
 			        }
 			      ]
 			    },
@@ -38281,7 +38497,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_mê14"
+			          "ID": "hierarquia_de_data_have_mê13"
 			        }
 			      ]
 			    },
@@ -38545,7 +38761,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "anos_have_trimestres15"
+			          "ID": "anos_have_trimestres14"
 			        },
 			        {
 			          "Attribute": {
@@ -38558,7 +38774,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "trimestres_have_anos15"
+			          "ID": "trimestres_have_anos14"
 			        },
 			        {
 			          "Preposition": {
@@ -38611,7 +38827,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_dias15"
+			          "ID": "hierarquia_de_data_have_dias14"
 			        }
 			      ]
 			    },
@@ -38644,7 +38860,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_mê15"
+			          "ID": "hierarquia_de_data_have_mê14"
 			        }
 			      ]
 			    },
@@ -38908,7 +39124,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "anos_have_trimestres16"
+			          "ID": "anos_have_trimestres15"
 			        },
 			        {
 			          "Attribute": {
@@ -38921,7 +39137,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "trimestres_have_anos16"
+			          "ID": "trimestres_have_anos15"
 			        },
 			        {
 			          "Preposition": {
@@ -38974,7 +39190,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_dias16"
+			          "ID": "hierarquia_de_data_have_dias15"
 			        }
 			      ]
 			    },
@@ -39007,7 +39223,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_mê16"
+			          "ID": "hierarquia_de_data_have_mê15"
 			        }
 			      ]
 			    },
@@ -39271,7 +39487,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "anos_have_trimestres17"
+			          "ID": "anos_have_trimestres16"
 			        },
 			        {
 			          "Attribute": {
@@ -39284,7 +39500,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "trimestres_have_anos17"
+			          "ID": "trimestres_have_anos16"
 			        },
 			        {
 			          "Preposition": {
@@ -39337,7 +39553,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_dias17"
+			          "ID": "hierarquia_de_data_have_dias16"
 			        }
 			      ]
 			    },
@@ -39370,7 +39586,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_mê17"
+			          "ID": "hierarquia_de_data_have_mê16"
 			        }
 			      ]
 			    },
@@ -39634,7 +39850,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "anos_have_trimestres18"
+			          "ID": "anos_have_trimestres17"
 			        },
 			        {
 			          "Attribute": {
@@ -39647,7 +39863,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "trimestres_have_anos18"
+			          "ID": "trimestres_have_anos17"
 			        },
 			        {
 			          "Preposition": {
@@ -39700,7 +39916,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_dias18"
+			          "ID": "hierarquia_de_data_have_dias17"
 			        }
 			      ]
 			    },
@@ -39733,7 +39949,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_mê18"
+			          "ID": "hierarquia_de_data_have_mê17"
 			        }
 			      ]
 			    },
@@ -39997,7 +40213,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "anos_have_trimestres19"
+			          "ID": "anos_have_trimestres18"
 			        },
 			        {
 			          "Attribute": {
@@ -40010,7 +40226,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "trimestres_have_anos19"
+			          "ID": "trimestres_have_anos18"
 			        },
 			        {
 			          "Preposition": {
@@ -40063,7 +40279,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_dias19"
+			          "ID": "hierarquia_de_data_have_dias18"
 			        }
 			      ]
 			    },
@@ -40096,7 +40312,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_mê19"
+			          "ID": "hierarquia_de_data_have_mê18"
 			        }
 			      ]
 			    },
@@ -40360,7 +40576,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "anos_have_trimestres20"
+			          "ID": "anos_have_trimestres19"
 			        },
 			        {
 			          "Attribute": {
@@ -40373,7 +40589,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "trimestres_have_anos20"
+			          "ID": "trimestres_have_anos19"
 			        },
 			        {
 			          "Preposition": {
@@ -40426,7 +40642,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_dias20"
+			          "ID": "hierarquia_de_data_have_dias19"
 			        }
 			      ]
 			    },
@@ -40459,7 +40675,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_mê20"
+			          "ID": "hierarquia_de_data_have_mê19"
 			        }
 			      ]
 			    },
@@ -40723,7 +40939,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "anos_have_trimestres21"
+			          "ID": "anos_have_trimestres20"
 			        },
 			        {
 			          "Attribute": {
@@ -40736,7 +40952,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "trimestres_have_anos21"
+			          "ID": "trimestres_have_anos20"
 			        },
 			        {
 			          "Preposition": {
@@ -40789,7 +41005,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_dias21"
+			          "ID": "hierarquia_de_data_have_dias20"
 			        }
 			      ]
 			    },
@@ -40822,7 +41038,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_mê21"
+			          "ID": "hierarquia_de_data_have_mê20"
 			        }
 			      ]
 			    },
@@ -41086,7 +41302,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "anos_have_trimestres22"
+			          "ID": "anos_have_trimestres21"
 			        },
 			        {
 			          "Attribute": {
@@ -41099,7 +41315,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "trimestres_have_anos22"
+			          "ID": "trimestres_have_anos21"
 			        },
 			        {
 			          "Preposition": {
@@ -41152,7 +41368,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_dias22"
+			          "ID": "hierarquia_de_data_have_dias21"
 			        }
 			      ]
 			    },
@@ -41185,7 +41401,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_mê22"
+			          "ID": "hierarquia_de_data_have_mê21"
 			        }
 			      ]
 			    },
@@ -41449,7 +41665,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "anos_have_trimestres23"
+			          "ID": "anos_have_trimestres22"
 			        },
 			        {
 			          "Attribute": {
@@ -41462,7 +41678,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "trimestres_have_anos23"
+			          "ID": "trimestres_have_anos22"
 			        },
 			        {
 			          "Preposition": {
@@ -41515,7 +41731,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_dias23"
+			          "ID": "hierarquia_de_data_have_dias22"
 			        }
 			      ]
 			    },
@@ -41548,7 +41764,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_mê23"
+			          "ID": "hierarquia_de_data_have_mê22"
 			        }
 			      ]
 			    },
@@ -41812,7 +42028,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "anos_have_trimestres24"
+			          "ID": "anos_have_trimestres23"
 			        },
 			        {
 			          "Attribute": {
@@ -41825,7 +42041,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "trimestres_have_anos24"
+			          "ID": "trimestres_have_anos23"
 			        },
 			        {
 			          "Preposition": {
@@ -41878,7 +42094,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_dias24"
+			          "ID": "hierarquia_de_data_have_dias23"
 			        }
 			      ]
 			    },
@@ -41911,7 +42127,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_mê24"
+			          "ID": "hierarquia_de_data_have_mê23"
 			        }
 			      ]
 			    },
@@ -42175,7 +42391,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "anos_have_trimestres25"
+			          "ID": "anos_have_trimestres24"
 			        },
 			        {
 			          "Attribute": {
@@ -42188,7 +42404,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "trimestres_have_anos25"
+			          "ID": "trimestres_have_anos24"
 			        },
 			        {
 			          "Preposition": {
@@ -42241,7 +42457,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_dias25"
+			          "ID": "hierarquia_de_data_have_dias24"
 			        }
 			      ]
 			    },
@@ -42274,7 +42490,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_mê25"
+			          "ID": "hierarquia_de_data_have_mê24"
 			        }
 			      ]
 			    },
@@ -42538,7 +42754,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "anos_have_trimestres26"
+			          "ID": "anos_have_trimestres25"
 			        },
 			        {
 			          "Attribute": {
@@ -42551,7 +42767,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "trimestres_have_anos26"
+			          "ID": "trimestres_have_anos25"
 			        },
 			        {
 			          "Preposition": {
@@ -42604,7 +42820,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_dias26"
+			          "ID": "hierarquia_de_data_have_dias25"
 			        }
 			      ]
 			    },
@@ -42637,7 +42853,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_mê26"
+			          "ID": "hierarquia_de_data_have_mê25"
 			        }
 			      ]
 			    },
@@ -42901,7 +43117,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "anos_have_trimestres27"
+			          "ID": "anos_have_trimestres26"
 			        },
 			        {
 			          "Attribute": {
@@ -42914,7 +43130,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "trimestres_have_anos27"
+			          "ID": "trimestres_have_anos26"
 			        },
 			        {
 			          "Preposition": {
@@ -42967,7 +43183,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_dias27"
+			          "ID": "hierarquia_de_data_have_dias26"
 			        }
 			      ]
 			    },
@@ -43000,7 +43216,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_mê27"
+			          "ID": "hierarquia_de_data_have_mê26"
 			        }
 			      ]
 			    },
@@ -43264,7 +43480,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "anos_have_trimestres28"
+			          "ID": "anos_have_trimestres27"
 			        },
 			        {
 			          "Attribute": {
@@ -43277,7 +43493,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "trimestres_have_anos28"
+			          "ID": "trimestres_have_anos27"
 			        },
 			        {
 			          "Preposition": {
@@ -43330,7 +43546,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_dias28"
+			          "ID": "hierarquia_de_data_have_dias27"
 			        }
 			      ]
 			    },
@@ -43363,7 +43579,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_mê28"
+			          "ID": "hierarquia_de_data_have_mê27"
 			        }
 			      ]
 			    },
@@ -43627,7 +43843,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "anos_have_trimestres29"
+			          "ID": "anos_have_trimestres28"
 			        },
 			        {
 			          "Attribute": {
@@ -43640,7 +43856,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "trimestres_have_anos29"
+			          "ID": "trimestres_have_anos28"
 			        },
 			        {
 			          "Preposition": {
@@ -43693,7 +43909,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_dias29"
+			          "ID": "hierarquia_de_data_have_dias28"
 			        }
 			      ]
 			    },
@@ -43726,7 +43942,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_mê29"
+			          "ID": "hierarquia_de_data_have_mê28"
 			        }
 			      ]
 			    },
@@ -43990,7 +44206,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "anos_have_trimestres30"
+			          "ID": "anos_have_trimestres29"
 			        },
 			        {
 			          "Attribute": {
@@ -44003,7 +44219,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "trimestres_have_anos30"
+			          "ID": "trimestres_have_anos29"
 			        },
 			        {
 			          "Preposition": {
@@ -44056,7 +44272,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_dias30"
+			          "ID": "hierarquia_de_data_have_dias29"
 			        }
 			      ]
 			    },
@@ -44089,7 +44305,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_mê30"
+			          "ID": "hierarquia_de_data_have_mê29"
 			        }
 			      ]
 			    },
@@ -44353,7 +44569,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "anos_have_trimestres31"
+			          "ID": "anos_have_trimestres30"
 			        },
 			        {
 			          "Attribute": {
@@ -44366,7 +44582,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "trimestres_have_anos31"
+			          "ID": "trimestres_have_anos30"
 			        },
 			        {
 			          "Preposition": {
@@ -44419,7 +44635,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_dias31"
+			          "ID": "hierarquia_de_data_have_dias30"
 			        }
 			      ]
 			    },
@@ -44452,7 +44668,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hierarquia_de_data_have_mê31"
+			          "ID": "hierarquia_de_data_have_mê30"
 			        }
 			      ]
 			    },
@@ -45526,6 +45742,105 @@ cultureInfo pt-BR
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "dim_clientes_have_fato_pedidos"
+			        }
+			      ]
+			    },
+			    "projecao_caixa_has_stamp": {
+			      "Binding": {
+			        "ConceptualEntity": "projecao_caixa"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "projecao_caixa": {
+			          "Target": {
+			            "Entity": "projecao_caixa"
+			          }
+			        },
+			        "projecao_caixa.stamp": {
+			          "Target": {
+			            "Entity": "projecao_caixa.stamp"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "projecao_caixa"
+			            },
+			            "Object": {
+			              "Role": "projecao_caixa.stamp"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "projecao_caixas_have_stamps"
+			        }
+			      ]
+			    },
+			    "protheus_contas_receber_has_stamp": {
+			      "Binding": {
+			        "ConceptualEntity": "protheus_contasReceber"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "protheus_contas_receber": {
+			          "Target": {
+			            "Entity": "protheus_contas_receber"
+			          }
+			        },
+			        "protheus_contas_receber.stamp": {
+			          "Target": {
+			            "Entity": "protheus_contas_receber.stamp"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "protheus_contas_receber"
+			            },
+			            "Object": {
+			              "Role": "protheus_contas_receber.stamp"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "protheus_contas_recebers_have_stamps"
+			        }
+			      ]
+			    },
+			    "protheus_contas_pagar_has_stamp": {
+			      "Binding": {
+			        "ConceptualEntity": "protheus_contasPagar"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "protheus_contas_pagar": {
+			          "Target": {
+			            "Entity": "protheus_contas_pagar"
+			          }
+			        },
+			        "protheus_contas_pagar.stamp": {
+			          "Target": {
+			            "Entity": "protheus_contas_pagar.stamp"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "protheus_contas_pagar"
+			            },
+			            "Object": {
+			              "Role": "protheus_contas_pagar.stamp"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "protheus_contas_pagars_have_stamps"
 			        }
 			      ]
 			    },
@@ -60278,6 +60593,138 @@ cultureInfo pt-BR
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "calendarios_have_mes_nome"
+			        }
+			      ]
+			    },
+			    "projecao_caixa_data_atualizacao_warehouse_hierarquia_de_data_has_projecao_caixa_data_atualizacao_warehouse_mê": {
+			      "Binding": {
+			        "ConceptualEntity": "projecao_caixa"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "projecao_caixa.data_atualizacao_warehouse.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "projecao_caixa.data_atualizacao_warehouse.hierarquia_de_data"
+			          }
+			        },
+			        "projecao_caixa.data_atualizacao_warehouse.mê": {
+			          "Target": {
+			            "Entity": "projecao_caixa.data_atualizacao_warehouse.mê"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "projecao_caixa.data_atualizacao_warehouse.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "projecao_caixa.data_atualizacao_warehouse.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_mê31"
+			        }
+			      ]
+			    },
+			    "projecao_caixa_data_atualizacao_warehouse_hierarquia_de_data_has_projecao_caixa_data_atualizacao_warehouse_dia": {
+			      "Binding": {
+			        "ConceptualEntity": "projecao_caixa"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "projecao_caixa.data_atualizacao_warehouse.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "projecao_caixa.data_atualizacao_warehouse.hierarquia_de_data"
+			          }
+			        },
+			        "projecao_caixa.data_atualizacao_warehouse.dia": {
+			          "Target": {
+			            "Entity": "projecao_caixa.data_atualizacao_warehouse.dia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "projecao_caixa.data_atualizacao_warehouse.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "projecao_caixa.data_atualizacao_warehouse.dia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_dias31"
+			        }
+			      ]
+			    },
+			    "projecao_caixa_data_atualizacao_warehouse_ano_has_projecao_caixa_data_atualizacao_warehouse_trimestre": {
+			      "Binding": {
+			        "ConceptualEntity": "projecao_caixa"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "projecao_caixa.data_atualizacao_warehouse.ano": {
+			          "Target": {
+			            "Entity": "projecao_caixa.data_atualizacao_warehouse.ano"
+			          }
+			        },
+			        "projecao_caixa.data_atualizacao_warehouse.trimestre": {
+			          "Target": {
+			            "Entity": "projecao_caixa.data_atualizacao_warehouse.trimestre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "projecao_caixa.data_atualizacao_warehouse.ano"
+			            },
+			            "Object": {
+			              "Role": "projecao_caixa.data_atualizacao_warehouse.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "anos_have_trimestres31"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "projecao_caixa.data_atualizacao_warehouse.trimestre"
+			            },
+			            "Object": {
+			              "Role": "projecao_caixa.data_atualizacao_warehouse.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_have_anos31"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "projecao_caixa.data_atualizacao_warehouse.trimestre"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "projecao_caixa.data_atualizacao_warehouse.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_are_in_anos31"
 			        }
 			      ]
 			    },

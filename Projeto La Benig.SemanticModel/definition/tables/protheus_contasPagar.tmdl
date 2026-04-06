@@ -376,7 +376,7 @@ table protheus_contasPagar
 				    protheus_contasPagar_Table = datalake_Schema{[Name="protheus_contasPagar",Kind="Table"]}[Data],
 				    #"Tipo Alterado" = Table.TransformColumnTypes(protheus_contasPagar_Table,{{"data_emissao", type date}, {"data_vencimento", type date}, {"data_vencimento_real", type date}, {"data_baixa", type date}, {"data_ult_movimentacao", type date}}),
 				    #"Personalização Adicionada" = Table.AddColumn(#"Tipo Alterado", "PR", each "P"),
-				    #"Linhas Filtradas" = Table.SelectRows(#"Personalização Adicionada", each ([deletado] = ""))
+				    #"Linhas Filtradas" = Table.SelectRows(#"Personalização Adicionada", each [deletado] = "")
 				in
 				    #"Linhas Filtradas"
 

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "1b5d53d5e5ab10eed89c",
   "position": {
     "x": 158.32285115303984,
@@ -32,7 +32,8 @@
                 }
               },
               "queryRef": "protheus_contasReceber.pk",
-              "nativeQueryRef": "Contagem de pk"
+              "nativeQueryRef": ".",
+              "displayName": "."
             },
             {
               "field": {
