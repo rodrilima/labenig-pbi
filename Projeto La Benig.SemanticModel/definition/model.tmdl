@@ -18,20 +18,23 @@ queryGroup dw
 
 	annotation PBI_QueryGroupOrder = 2
 
+/// Erros nas consultas que foram carregadas em 13/03/2026 06:53:59.
+queryGroup 'Erros na Consulta - 13/03/2026 06:53:59'
+
+	annotation PBI_QueryGroupOrder = 3
+
 annotation __PBI_TimeIntelligenceEnabled = 1
 
 annotation PBI_ProTooling = ["MCP-PBIModeling","DevMode"]
 
-annotation PBI_QueryOrder = ["protheus_contasBancarias","protheus_contasPagar","protheus_contasReceber","protheus_movimentosBancarios","dim_clientes","dim_lojas","dim_data","fato_fluxo_caixa","fato_pedidos","fato_sac","fato_resultado_operacional","fato_comportamento_cliente","fato_logistica_pedidos","medidas_financeiro","navegacao_modulos","navegacao_submodulos","_guia_nomenclatura_paginas","projecao_caixa","protheus_naturezas","protheus_numerosTitulos","protheus_filiais"]
+annotation PBI_QueryOrder = ["protheus_contasBancarias","protheus_contasPagar","protheus_contasReceber","protheus_movimentosBancarios","dim_lojas","dim_data","fato_fluxo_caixa","fato_pedidos","fato_sac","fato_resultado_operacional","fato_comportamento_cliente","fato_logistica_pedidos","medidas_financeiro","navegacao_modulos","navegacao_submodulos","_guia_nomenclatura_paginas","projecao_caixa","protheus_naturezas","protheus_numerosTitulos","protheus_filiais","Erros em blingV3_notasFiscais","protheus_pedidosVendas","protheus_contatos","protheus_itensPedidosVendas"]
 
-ref table dim_clientes
 ref table dim_lojas
 ref table dim_data
 ref table fato_fluxo_caixa
 ref table fato_pedidos
 ref table fato_sac
 ref table DateTableTemplate_63bae9ea-5091-4a4b-a9d1-35ccc1586d47
-ref table LocalDateTable_a2fc2df0-961a-4a27-90cc-757dadd2e093
 ref table LocalDateTable_ce94daa7-725f-4e78-83d0-4ea685cbe3ef
 ref table LocalDateTable_b92a3258-0434-487e-a920-b050c97bbbda
 ref table LocalDateTable_0e79337e-c284-4fd5-9697-8cc1c1a4d549
@@ -82,6 +85,16 @@ ref table LocalDateTable_f619ae2f-f8a3-423c-8404-eaa5333554d8
 ref table LocalDateTable_09f5cf52-5112-4156-810e-943b79e6f043
 ref table protheus_numerosTitulos
 ref table protheus_filiais
+ref table protheus_pedidosVendas
+ref table LocalDateTable_cb434446-ecf4-451a-a169-16aae58cc926
+ref table protheus_contatos
+ref table LocalDateTable_65328ec4-7671-4e12-aa2c-e0e7d87a1098
+ref table protheus_itensPedidosVendas
+ref table LocalDateTable_f342f63a-8c2e-4684-ab39-9172e1a131e1
+ref table LocalDateTable_16fd360e-5abe-46bd-8174-3973edeb3c2e
+ref table LocalDateTable_a5e673d5-385f-4234-828e-8cc1898355dd
+ref table dim_dfc_linhas
+ref table mapa_natureza_dfc_auto
 
 ref cultureInfo pt-BR
 

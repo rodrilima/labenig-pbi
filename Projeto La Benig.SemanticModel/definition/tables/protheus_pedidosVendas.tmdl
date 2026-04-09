@@ -1,0 +1,537 @@
+table protheus_pedidosVendas
+	lineageTag: 5d4721c0-19c1-450f-908c-ec1691833e18
+
+	/// Faturamento total atacado (PJ) na filial 010102, considerando apenas notas faturadas e filtrando por data_faturamento quando houver seleção no calendário.
+	measure 'ATC Faturamento Total' =
+			VAR TemFiltroData = ISCROSSFILTERED(calendario[Date])
+			VAR ClientesPJNoContexto =
+			    CALCULATETABLE(
+			        VALUES(protheus_contatos[codigo]),
+			        KEEPFILTERS(protheus_contatos[tipo_pessoa] = "J")
+			    )
+			VAR ResultadoSemData =
+			    CALCULATE(
+			        SUM(protheus_itensPedidosVendas[preco_total]),
+			        protheus_itensPedidosVendas[filial] = "010102",
+			        NOT(ISBLANK(protheus_itensPedidosVendas[nota_fiscal])),
+			        TRIM(protheus_itensPedidosVendas[nota_fiscal]) <> "",
+			        NOT(ISBLANK(protheus_itensPedidosVendas[data_faturamento])),
+			        TREATAS(ClientesPJNoContexto, protheus_itensPedidosVendas[cod_cliente])
+			    )
+			VAR ResultadoComData =
+			    CALCULATE(
+			        SUM(protheus_itensPedidosVendas[preco_total]),
+			        protheus_itensPedidosVendas[filial] = "010102",
+			        NOT(ISBLANK(protheus_itensPedidosVendas[nota_fiscal])),
+			        TRIM(protheus_itensPedidosVendas[nota_fiscal]) <> "",
+			        NOT(ISBLANK(protheus_itensPedidosVendas[data_faturamento])),
+			        KEEPFILTERS(
+			            FILTER(
+			                protheus_itensPedidosVendas,
+			                DATEVALUE(protheus_itensPedidosVendas[data_faturamento]) IN VALUES(calendario[Date])
+			            )
+			        ),
+			        TREATAS(ClientesPJNoContexto, protheus_itensPedidosVendas[cod_cliente])
+			    )
+			RETURN
+			COALESCE(IF(TemFiltroData, ResultadoComData, ResultadoSemData), 0)
+		formatString: R$ #,##0.00
+		displayFolder: Atacado Mapa Geografico
+		lineageTag: 30e196e1-62f1-456e-95b9-876dcfa4dc86
+
+	/// Quantidade de pedidos atacado (filial 010102) de clientes PJ.
+	measure 'ATC Pedidos' =
+			VAR ClientesPJNoContexto =
+			    CALCULATETABLE(
+			        VALUES(protheus_contatos[codigo]),
+			        KEEPFILTERS(protheus_contatos[tipo_pessoa] = "J")
+			    )
+			RETURN
+			    CALCULATE(
+			        DISTINCTCOUNT(protheus_pedidosVendas[numero]),
+			        protheus_pedidosVendas[filial] = "010102",
+			        TREATAS(ClientesPJNoContexto, protheus_pedidosVendas[cod_cliente])
+			    )
+		formatString: 0
+		displayFolder: Atacado Mapa Geografico
+		lineageTag: c1e7bdef-8b47-4d27-aeb2-d8813a6246a5
+
+	/// Clientes PJ com compra atacado no estado em contexto.
+	measure 'ATC Clientes por Estado' =
+			VAR ClientesPJNoContexto =
+			    CALCULATETABLE(
+			        VALUES(protheus_contatos[codigo]),
+			        KEEPFILTERS(protheus_contatos[tipo_pessoa] = "J")
+			    )
+			VAR ClientesComPedidoAtacado =
+			    CALCULATETABLE(
+			        VALUES(protheus_pedidosVendas[cod_cliente]),
+			        protheus_pedidosVendas[filial] = "010102",
+			        TREATAS(ClientesPJNoContexto, protheus_pedidosVendas[cod_cliente])
+			    )
+			RETURN
+			    COUNTROWS(INTERSECT(ClientesPJNoContexto, ClientesComPedidoAtacado))
+		formatString: 0
+		displayFolder: Atacado Mapa Geografico
+		lineageTag: 5f5b0baf-9ca0-47a9-b9a9-90a167f1f9bd
+
+	/// Total de UFs com faturamento de atacado no contexto atual.
+	measure 'ATC Estados Atendidos' =
+			COUNTROWS(
+			    FILTER(
+			        VALUES(protheus_contatos[estado_uf]),
+			        CALCULATE([ATC Faturamento Total]) > 0
+			    )
+			)
+		formatString: 0
+		displayFolder: Atacado Mapa Geografico
+		lineageTag: e60056b3-1dbd-41e1-a785-de33624995ce
+
+	/// Participação percentual da UF no faturamento atacado. Denominador usa ALLSELECTED para respeitar slicers de estado mas remover o contexto de linha da tabela.
+	measure 'ATC Participacao Estado %' =
+			VAR TodosClientesPJ =
+			    CALCULATETABLE(
+			        VALUES(protheus_contatos[codigo]),
+			        ALLSELECTED(protheus_contatos[estado_uf]),
+			        KEEPFILTERS(protheus_contatos[tipo_pessoa] = "J")
+			    )
+			VAR TotalGlobal =
+			    CALCULATE(
+			        SUM(protheus_itensPedidosVendas[preco_total]),
+			        protheus_itensPedidosVendas[filial] = "010102",
+			        TREATAS(TodosClientesPJ, protheus_itensPedidosVendas[cod_cliente])
+			    )
+			RETURN
+			    DIVIDE([ATC Faturamento Total], TotalGlobal)
+		formatString: 0.00%
+		displayFolder: Atacado Mapa Geografico
+		lineageTag: 7f5a2214-1cac-4488-ba64-b2522f1bafb5
+
+	/// Ticket médio de atacado (faturamento/pedidos).
+	measure 'ATC Ticket Medio' = DIVIDE([ATC Faturamento Total], [ATC Pedidos])
+		formatString: R$ #,##0.00
+		displayFolder: Atacado Mapa Geografico
+		lineageTag: b80228ea-c965-46eb-857e-721373d08922
+
+	/// Pedidos atacado ainda sem nota (abertos).
+	measure 'ATC Pedidos em Aberto' =
+			VAR ClientesPJNoContexto =
+			    CALCULATETABLE(
+			        VALUES(protheus_contatos[codigo]),
+			        KEEPFILTERS(protheus_contatos[tipo_pessoa] = "J")
+			    )
+			RETURN
+			    CALCULATE(
+			        DISTINCTCOUNT(protheus_pedidosVendas[numero]),
+			        protheus_pedidosVendas[filial] = "010102",
+			        FILTER(
+			            protheus_pedidosVendas,
+			            ISBLANK(protheus_pedidosVendas[nota]) || TRIM(protheus_pedidosVendas[nota]) = ""
+			        ),
+			        TREATAS(ClientesPJNoContexto, protheus_pedidosVendas[cod_cliente])
+			    )
+		formatString: 0
+		displayFolder: Atacado Mapa Geografico
+		lineageTag: 78face25-4442-4bdc-b258-290e481846d4
+
+	/// Clientes PJ com compra atacado nos últimos 60 dias.
+	measure 'ATC Clientes Ativos 60d' =
+			VAR ClientesPJNoContexto =
+			    CALCULATETABLE(
+			        VALUES(protheus_contatos[codigo]),
+			        KEEPFILTERS(protheus_contatos[tipo_pessoa] = "J")
+			    )
+			VAR BaseClientes =
+			    CALCULATETABLE(
+			        ADDCOLUMNS(
+			            VALUES(protheus_pedidosVendas[cod_cliente]),
+			            "UltimaCompra", CALCULATE(MAX(protheus_pedidosVendas[data_emissao]))
+			        ),
+			        protheus_pedidosVendas[filial] = "010102",
+			        TREATAS(ClientesPJNoContexto, protheus_pedidosVendas[cod_cliente])
+			    )
+			RETURN
+			    COUNTROWS(
+			        FILTER(BaseClientes, NOT ISBLANK([UltimaCompra]) && [UltimaCompra] >= TODAY() - 60)
+			    )
+		formatString: 0
+		displayFolder: Atacado Mapa Geografico
+		lineageTag: 05c8b02e-9c74-4b8e-8ff0-3ffff74d6c19
+
+	/// Clientes PJ com última compra atacado há mais de 60 dias.
+	measure 'ATC Clientes Inativos 60d' =
+			VAR ClientesPJNoContexto =
+			    CALCULATETABLE(
+			        VALUES(protheus_contatos[codigo]),
+			        KEEPFILTERS(protheus_contatos[tipo_pessoa] = "J")
+			    )
+			VAR BaseClientes =
+			    CALCULATETABLE(
+			        ADDCOLUMNS(
+			            VALUES(protheus_pedidosVendas[cod_cliente]),
+			            "UltimaCompra", CALCULATE(MAX(protheus_pedidosVendas[data_emissao]))
+			        ),
+			        protheus_pedidosVendas[filial] = "010102",
+			        TREATAS(ClientesPJNoContexto, protheus_pedidosVendas[cod_cliente])
+			    )
+			RETURN
+			    COUNTROWS(
+			        FILTER(BaseClientes, NOT ISBLANK([UltimaCompra]) && [UltimaCompra] < TODAY() - 60)
+			    )
+		formatString: 0
+		displayFolder: Atacado Mapa Geografico
+		lineageTag: fe1b2b9f-554b-4313-a224-daa51a28c057
+
+	measure 'Itens Sem Pedido' =
+			
+			CALCULATE(
+			    SUM(protheus_itensPedidosVendas[preco_total]),
+			    NOT(
+			        protheus_itensPedidosVendas[numero_pedido]
+			            IN VALUES(protheus_pedidosVendas[numero])
+			    )
+			)
+		lineageTag: 71cfbf4d-f898-4b98-ba76-01013c43e57d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Repeticoes =
+			
+			CALCULATE(
+			    COUNT(protheus_pedidosVendas[numero]),
+			    ALLEXCEPT(protheus_pedidosVendas, protheus_pedidosVendas[numero])
+			)
+		formatString: 0
+		lineageTag: 9273dd1a-05d6-4ab3-b539-1eac1b8b0a3a
+
+	column numero
+		dataType: string
+		lineageTag: 91218919-c7a2-423c-8461-a24a5dc8c976
+		summarizeBy: none
+		sourceColumn: numero
+
+		annotation SummarizationSetBy = Automatic
+
+	column filial
+		dataType: string
+		lineageTag: 50f50848-7fba-4114-b365-e0c8d034ee81
+		summarizeBy: none
+		sourceColumn: filial
+
+		annotation SummarizationSetBy = Automatic
+
+	column tipo
+		dataType: string
+		lineageTag: 38a80cff-51ed-4f73-bd5b-4a2ebdc56664
+		summarizeBy: none
+		sourceColumn: tipo
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod_cliente
+		dataType: string
+		lineageTag: 635a71dd-ac51-4d6c-8462-e1e45b1c9aca
+		summarizeBy: none
+		sourceColumn: cod_cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column loja
+		dataType: string
+		lineageTag: 3cabcacc-cd97-42cc-949d-582ca3e88f18
+		summarizeBy: none
+		sourceColumn: loja
+
+		annotation SummarizationSetBy = Automatic
+
+	column loja_entrega
+		dataType: string
+		lineageTag: 64646b28-11cb-4d96-a188-51e3d2d158fc
+		summarizeBy: none
+		sourceColumn: loja_entrega
+
+		annotation SummarizationSetBy = Automatic
+
+	column cond_pagamento
+		dataType: string
+		lineageTag: 89909214-f426-4795-be12-aa95005eee41
+		summarizeBy: none
+		sourceColumn: cond_pagamento
+
+		annotation SummarizationSetBy = Automatic
+
+	column tabela
+		dataType: string
+		lineageTag: fc17d659-b5cf-4004-8fb2-83d77d5fb0f9
+		summarizeBy: none
+		sourceColumn: tabela
+
+		annotation SummarizationSetBy = Automatic
+
+	column vendedor
+		dataType: string
+		lineageTag: 2a336082-2f72-4ac8-8d4d-77ef0e87b538
+		summarizeBy: none
+		sourceColumn: vendedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column comissao
+		dataType: string
+		lineageTag: 69a8e126-131e-4b94-8a1e-b745c2399e72
+		summarizeBy: none
+		sourceColumn: comissao
+
+		annotation SummarizationSetBy = Automatic
+
+	column transportadora
+		dataType: string
+		lineageTag: b839c85d-7937-498d-8573-a51b20e0c815
+		summarizeBy: none
+		sourceColumn: transportadora
+
+		annotation SummarizationSetBy = Automatic
+
+	column tipo_frete
+		dataType: string
+		lineageTag: 4ff0c9d9-1909-4e9d-a8bd-761b0f8df30d
+		summarizeBy: none
+		sourceColumn: tipo_frete
+
+		annotation SummarizationSetBy = Automatic
+
+	column frete
+		dataType: string
+		lineageTag: 5438087a-967b-4255-a01a-45ab2c58864d
+		summarizeBy: none
+		sourceColumn: frete
+
+		annotation SummarizationSetBy = Automatic
+
+	column desconto
+		dataType: string
+		lineageTag: ffdbb063-1245-4f0e-b713-846819737c59
+		summarizeBy: none
+		sourceColumn: desconto
+
+		annotation SummarizationSetBy = Automatic
+
+	column liber_total
+		dataType: string
+		lineageTag: 26a07d5c-f6f6-4919-8635-97643d548a02
+		summarizeBy: none
+		sourceColumn: liber_total
+
+		annotation SummarizationSetBy = Automatic
+
+	column ok
+		dataType: string
+		lineageTag: 494bf750-cf43-4903-ac0d-5d1d8ed9ee7d
+		summarizeBy: none
+		sourceColumn: ok
+
+		annotation SummarizationSetBy = Automatic
+
+	column nota
+		dataType: string
+		lineageTag: 3cd31110-5b4b-4d4c-95a8-8bc090d70fae
+		summarizeBy: none
+		sourceColumn: nota
+
+		annotation SummarizationSetBy = Automatic
+
+	column serie
+		dataType: string
+		lineageTag: b1d3334d-12f5-4be7-9460-c97ecab25ab4
+		summarizeBy: none
+		sourceColumn: serie
+
+		annotation SummarizationSetBy = Automatic
+
+	column comentario_codigo_cross
+		dataType: string
+		lineageTag: 6cf7f350-599e-4f7d-8e96-f075d337c83f
+		summarizeBy: none
+		sourceColumn: comentario_codigo_cross
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_emissao
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 29304cc4-8134-4d49-9f88-4c927fc32505
+		summarizeBy: none
+		sourceColumn: data_emissao
+
+		variation Variation
+			isDefault
+			relationship: 87c32658-2ebc-4353-9d50-1ccec18bc8ff
+			defaultHierarchy: LocalDateTable_16fd360e-5abe-46bd-8174-3973edeb3c2e.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column nome_cliente
+		dataType: string
+		lineageTag: 8dcd06d9-9ca4-4a4f-b350-3c35417a42f0
+		summarizeBy: none
+		sourceColumn: nome_cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column documento
+		dataType: string
+		lineageTag: 7a6d29e5-d17b-4a78-824d-04ef1a75cf80
+		summarizeBy: none
+		sourceColumn: documento
+
+		annotation SummarizationSetBy = Automatic
+
+	column endereco
+		dataType: string
+		lineageTag: 5b98c794-24ba-4a98-bba2-5c8d7a7c4511
+		summarizeBy: none
+		sourceColumn: endereco
+
+		annotation SummarizationSetBy = Automatic
+
+	column bairro
+		dataType: string
+		lineageTag: 0f452e15-df44-4a2b-8b0f-78dd39b0f4b5
+		summarizeBy: none
+		sourceColumn: bairro
+
+		annotation SummarizationSetBy = Automatic
+
+	column cep
+		dataType: string
+		lineageTag: 337cfe5d-6c34-4776-94ca-b4cc38b39b3b
+		summarizeBy: none
+		sourceColumn: cep
+
+		annotation SummarizationSetBy = Automatic
+
+	column cidade
+		dataType: string
+		lineageTag: dececc7d-367e-4bd8-bb60-75cf8ba6630d
+		summarizeBy: none
+		sourceColumn: cidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column transportadora_nome
+		dataType: string
+		lineageTag: 5c320986-88af-4f62-b6c1-814efedc2451
+		summarizeBy: none
+		sourceColumn: transportadora_nome
+
+		annotation SummarizationSetBy = Automatic
+
+	column transportadora_documento
+		dataType: string
+		lineageTag: f0dd7380-ae39-4ec8-b4f2-864e28024f45
+		summarizeBy: none
+		sourceColumn: transportadora_documento
+
+		annotation SummarizationSetBy = Automatic
+
+	column vendedor_nome
+		dataType: string
+		lineageTag: 74193db5-5608-4709-845d-59fd5be26c44
+		summarizeBy: none
+		sourceColumn: vendedor_nome
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_atualizacao_warehouse
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 635924b4-2c8d-4a54-9f11-cdc8087866e3
+		summarizeBy: none
+		sourceColumn: data_atualizacao_warehouse
+
+		variation Variation
+			isDefault
+			relationship: 1167181a-4496-4c73-8563-428cfcf0ea75
+			defaultHierarchy: LocalDateTable_cb434446-ecf4-451a-a169-16aae58cc926.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column deletado
+		dataType: string
+		lineageTag: 3635e863-5957-4f8b-bed5-1d098cfe76fe
+		summarizeBy: none
+		sourceColumn: deletado
+
+		annotation SummarizationSetBy = Automatic
+
+	column Classificacao_Venda =
+			IF(
+			    protheus_pedidosVendas[filial] = "010102",
+			    "ATACADO",
+			    "VAREJO"
+			)
+		dataType: string
+		lineageTag: 436235eb-3b6e-44ae-9aaa-7b499c7fa8b4
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column status_pedido = IF(protheus_pedidosVendas[nota] = "" || ISBLANK(protheus_pedidosVendas[nota]), "Em aberto", "Faturado")
+		dataType: string
+		lineageTag: fe26bec9-38a1-4168-839c-a2e81dd77221
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Desconto convertido para numérico para exibição e agregação em tabela de pedidos.
+	column 'Desconto Valor' =
+			VAR Txt0 = TRIM(SUBSTITUTE(SUBSTITUTE(protheus_pedidosVendas[desconto], "R$", ""), " ", ""))
+			VAR Txt1 = IF(CONTAINSSTRING(Txt0, ","), SUBSTITUTE(SUBSTITUTE(Txt0, ".", ""), ",", "."), Txt0)
+			RETURN IF(Txt1 = "" || Txt1 = "-", BLANK(), IFERROR(VALUE(Txt1), BLANK()))
+		dataType: double
+		formatString: R$ #,##0.00
+		lineageTag: d06494ad-d83d-4e74-aabe-1c1dfc0549a5
+		summarizeBy: sum
+
+	/// Frete convertido para numérico para exibição e agregação em tabela de pedidos.
+	column 'Frete Valor' =
+			VAR Txt0 = TRIM(SUBSTITUTE(SUBSTITUTE(protheus_pedidosVendas[frete], "R$", ""), " ", ""))
+			VAR Txt1 = IF(CONTAINSSTRING(Txt0, ","), SUBSTITUTE(SUBSTITUTE(Txt0, ".", ""), ",", "."), Txt0)
+			RETURN IF(Txt1 = "" || Txt1 = "-", BLANK(), IFERROR(VALUE(Txt1), BLANK()))
+		dataType: double
+		formatString: R$ #,##0.00
+		lineageTag: 0f4fdb11-0b0d-4b6e-a819-4810eb879bb6
+		summarizeBy: sum
+
+	column AAARepeticoes =
+			
+			CALCULATE(
+			    COUNT(protheus_pedidosVendas[numero]),
+			    ALLEXCEPT(protheus_pedidosVendas, protheus_pedidosVendas[numero])
+			)
+		formatString: 0
+		lineageTag: d2f6c20d-2646-4a56-8159-3d0f03f1117b
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition protheus_pedidosVendas = m
+		mode: import
+		queryGroup: mocks
+		source =
+				let
+				    Fonte = GoogleBigQuery.Database([Implementation="2.0"]),
+				    #"coherent-window-444219-c1_Database" = Fonte{[Name="coherent-window-444219-c1",Kind="Database"]}[Data],
+				    datalake_Schema = #"coherent-window-444219-c1_Database"{[Name="datalake",Kind="Schema"]}[Data],
+				    protheus_pedidosVendas_Table = datalake_Schema{[Name="protheus_pedidosVendas",Kind="Table"]}[Data],
+				    #"Tipo Alterado" = Table.TransformColumnTypes(protheus_pedidosVendas_Table,{{"data_emissao", type date}}),
+				    #"Duplicatas Removidas" = Table.Distinct(#"Tipo Alterado", {"numero"})
+				in
+				    #"Duplicatas Removidas"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

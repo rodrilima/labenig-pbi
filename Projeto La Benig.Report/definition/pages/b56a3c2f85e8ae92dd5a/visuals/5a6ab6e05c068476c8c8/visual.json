@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "5a6ab6e05c068476c8c8",
   "position": {
     "x": 141.15528882220553,
     "y": 517.56939234808692,
-    "z": 8000,
+    "z": 7000,
     "height": 175.72393098274569,
     "width": 364.89122280570137,
-    "tabOrder": 8000
+    "tabOrder": 7000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -17,17 +17,22 @@
           "projections": [
             {
               "field": {
-                "Measure": {
+                "Aggregation": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "fato_pedidos"
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "protheus_pedidosVendas"
+                        }
+                      },
+                      "Property": "Frete Valor"
                     }
                   },
-                  "Property": "Custo Total Frete"
+                  "Function": 0
                 }
               },
-              "queryRef": "fato_pedidos.Custo Total Frete",
-              "nativeQueryRef": "Custo Total Frete"
+              "queryRef": "Sum(protheus_pedidosVendas.Frete Valor)",
+              "nativeQueryRef": "Soma de Frete Valor"
             }
           ]
         }
@@ -36,13 +41,18 @@
         "sort": [
           {
             "field": {
-              "Measure": {
+              "Aggregation": {
                 "Expression": {
-                  "SourceRef": {
-                    "Entity": "fato_pedidos"
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "protheus_pedidosVendas"
+                      }
+                    },
+                    "Property": "Frete Valor"
                   }
                 },
-                "Property": "Custo Total Frete"
+                "Function": 0
               }
             },
             "direction": "Descending"

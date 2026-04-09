@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
   "name": "b56a3c2f85e8ae92dd5a",
   "displayName": "VEN - Atacado Visão Geral",
   "displayOption": "FitToPage",
@@ -46,5 +46,37 @@
         }
       }
     ]
-  }
+  },
+  "visualInteractions": [
+    {
+      "source": "96cdff728a960d6964b6",
+      "target": "a52c5cbbf82252044acf",
+      "type": "NoFilter"
+    },
+    {
+      "source": "748aafa8c064743c0bb7",
+      "target": "a52c5cbbf82252044acf",
+      "type": "NoFilter"
+    },
+    {
+      "source": "d30e8820bb0da19bb027",
+      "target": "a52c5cbbf82252044acf",
+      "type": "NoFilter"
+    },
+    {
+      "source": "d30e8820bb0da19bb027",
+      "target": "51d37ae0b7933ab8e6d9",
+      "type": "NoFilter"
+    },
+    {
+      "source": "96cdff728a960d6964b6",
+      "target": "51d37ae0b7933ab8e6d9",
+      "type": "NoFilter"
+    },
+    {
+      "source": "d30e8820bb0da19bb027",
+      "target": "2cf812753004418e0cc6",
+      "type": "NoFilter"
+    }
+  ]
 }

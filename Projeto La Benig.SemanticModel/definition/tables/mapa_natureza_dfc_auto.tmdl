@@ -1,0 +1,298 @@
+table mapa_natureza_dfc_auto
+	lineageTag: 9629530e-8d4d-4603-9e41-c9eda36d1532
+
+	column codigo_natureza
+		lineageTag: 418bc6f9-7cc6-4ea0-935b-899ddfa97414
+		isNameInferred
+		sourceColumn: [codigo_natureza]
+
+	column descricao_natureza
+		lineageTag: 941f07a2-7b75-4d95-a2e6-e2fd8470040b
+		isNameInferred
+		sourceColumn: [descricao_natureza]
+
+	column grupo_dfc
+		lineageTag: a77cd433-7669-4379-8fb0-5ee67974ff6b
+		isNameInferred
+		sourceColumn: [grupo_dfc]
+
+	column subgrupo_dfc
+		lineageTag: e93db36e-9914-496d-bfec-a2dcd86855db
+		isNameInferred
+		sourceColumn: [subgrupo_dfc]
+
+	column linha_dfc
+		lineageTag: c975c465-b06a-4ae4-ba34-e30d45abfe55
+		isNameInferred
+		sourceColumn: [linha_dfc]
+
+	column ordem
+		lineageTag: e18b2391-ddc0-4e15-80bf-68cff5c5b0ca
+		isNameInferred
+		sourceColumn: [ordem]
+
+	column confianca_classificacao
+		lineageTag: 617abaad-f6b3-4285-b25f-54cf0cae73ff
+		isNameInferred
+		sourceColumn: [confianca_classificacao]
+
+	column regra_utilizada
+		lineageTag: baf14d23-0aff-40e8-a13a-28fe310ea8a7
+		isNameInferred
+		sourceColumn: [regra_utilizada]
+
+	partition mapa_natureza_dfc_auto = calculated
+		mode: import
+		source =
+				VAR BaseNatureza =
+				    DISTINCT (
+				        SELECTCOLUMNS (
+				            protheus_naturezas,
+				            "codigo_natureza", protheus_naturezas[codigo],
+				            "descricao_natureza", protheus_naturezas[descricao],
+				            "descricao_pai_natureza", protheus_naturezas[descricao_pai]
+				        )
+				    )
+				VAR Enriquecida =
+				    ADDCOLUMNS (
+				        BaseNatureza,
+				        "historico_exemplo",
+				            VAR CodNatureza = [codigo_natureza]
+				            RETURN
+				                CALCULATE (
+				                    CONCATENATEX (
+				                        TOPN (
+				                            3,
+				                            FILTER (
+				                                protheus_movimentosBancarios,
+				                                protheus_movimentosBancarios[natureza] = CodNatureza
+				                                    && NOT ISBLANK ( protheus_movimentosBancarios[historico] )
+				                            ),
+				                            protheus_movimentosBancarios[data_movimento],
+				                            DESC
+				                        ),
+				                        protheus_movimentosBancarios[historico],
+				                        " | "
+				                    )
+				                ),
+				        "tipo_lanc_exemplo",
+				            VAR CodNatureza = [codigo_natureza]
+				            RETURN
+				                CALCULATE (
+				                    CONCATENATEX (
+				                        TOPN (
+				                            2,
+				                            FILTER (
+				                                protheus_movimentosBancarios,
+				                                protheus_movimentosBancarios[natureza] = CodNatureza
+				                                    && NOT ISBLANK ( protheus_movimentosBancarios[tipo_lanc_contabil] )
+				                            ),
+				                            protheus_movimentosBancarios[data_movimento],
+				                            DESC
+				                        ),
+				                        protheus_movimentosBancarios[tipo_lanc_contabil],
+				                        " | "
+				                    )
+				                ),
+				        "conta_exemplo",
+				            VAR CodNatureza = [codigo_natureza]
+				            RETURN
+				                CALCULATE (
+				                    CONCATENATEX (
+				                        TOPN (
+				                            1,
+				                            FILTER (
+				                                protheus_movimentosBancarios,
+				                                protheus_movimentosBancarios[natureza] = CodNatureza
+				                            ),
+				                            protheus_movimentosBancarios[data_movimento],
+				                            DESC
+				                        ),
+				                        COALESCE ( protheus_movimentosBancarios[conta_debito], "" ) & " -> " & COALESCE ( protheus_movimentosBancarios[conta_credito], "" ),
+				                        ""
+				                    )
+				                ),
+				        "saldo_liquido_real_natureza",
+				            VAR CodNatureza = [codigo_natureza]
+				            RETURN
+				                CALCULATE (
+				                    SUM ( protheus_movimentosBancarios[valorpn] ),
+				                    protheus_movimentosBancarios[natureza] = CodNatureza
+				                ),
+				        "qtd_entradas",
+				            VAR CodNatureza = [codigo_natureza]
+				            RETURN
+				                CALCULATE (
+				                    COUNTROWS ( protheus_movimentosBancarios ),
+				                    protheus_movimentosBancarios[natureza] = CodNatureza,
+				                    protheus_movimentosBancarios[valorpn] > 0
+				                ),
+				        "qtd_saidas",
+				            VAR CodNatureza = [codigo_natureza]
+				            RETURN
+				                CALCULATE (
+				                    COUNTROWS ( protheus_movimentosBancarios ),
+				                    protheus_movimentosBancarios[natureza] = CodNatureza,
+				                    protheus_movimentosBancarios[valorpn] < 0
+				                )
+				    )
+				VAR ComTexto =
+				    ADDCOLUMNS (
+				        Enriquecida,
+				        "texto_base",
+				            UPPER (
+				                TRIM (
+				                    COALESCE ( [descricao_natureza], "" ) & " "
+				                        & COALESCE ( [descricao_pai_natureza], "" ) & " "
+				                        & COALESCE ( [historico_exemplo], "" ) & " "
+				                        & COALESCE ( [tipo_lanc_exemplo], "" ) & " "
+				                        & COALESCE ( [conta_exemplo], "" )
+				                )
+				            )
+				    )
+				VAR ComGrupo =
+				    ADDCOLUMNS (
+				        ComTexto,
+				        "grupo_dfc",
+				            VAR Texto = [texto_base]
+				            VAR EhTransferencia =
+				                CONTAINSSTRING ( Texto, "TRANSFER" )
+				                    || CONTAINSSTRING ( Texto, "TRANSF" )
+				                    || CONTAINSSTRING ( Texto, "TED" )
+				                    || CONTAINSSTRING ( Texto, "DOC" )
+				                    || CONTAINSSTRING ( Texto, "PIX" )
+				                    || CONTAINSSTRING ( Texto, "ENTRE CONTAS" )
+				            VAR EhFinanciamento =
+				                CONTAINSSTRING ( Texto, "EMPREST" )
+				                    || CONTAINSSTRING ( Texto, "EMPR" )
+				                    || CONTAINSSTRING ( Texto, "FINAN" )
+				                    || CONTAINSSTRING ( Texto, "JUROS" )
+				                    || CONTAINSSTRING ( Texto, "AMORTIZ" )
+				                    || CONTAINSSTRING ( Texto, "BANCO" )
+				            VAR EhInvestimento =
+				                CONTAINSSTRING ( Texto, "IMOBIL" )
+				                    || CONTAINSSTRING ( Texto, "ATIVO" )
+				                    || CONTAINSSTRING ( Texto, "EQUIP" )
+				                    || CONTAINSSTRING ( Texto, "MAQUINA" )
+				                    || CONTAINSSTRING ( Texto, "SOFTWARE" )
+				                    || CONTAINSSTRING ( Texto, "CAPEX" )
+				                    || CONTAINSSTRING ( Texto, "INVEST" )
+				            RETURN
+				                SWITCH (
+				                    TRUE (),
+				                    EhTransferencia, "Transferencias",
+				                    EhFinanciamento, "Financiamentos",
+				                    EhInvestimento, "Investimentos",
+				                    "Operacional"
+				                )
+				    )
+				VAR ComSubgrupo =
+				    ADDCOLUMNS (
+				        ComGrupo,
+				        "subgrupo_dfc",
+				            VAR Grupo = [grupo_dfc]
+				            VAR Saldo = COALESCE ( [saldo_liquido_real_natureza], 0 )
+				            VAR Texto = [texto_base]
+				            RETURN
+				                SWITCH (
+				                    TRUE (),
+				                    Grupo = "Transferencias" && Saldo >= 0, "Transferencias de Entrada",
+				                    Grupo = "Transferencias" && Saldo < 0, "Transferencias de Saida",
+				                    Grupo = "Financiamentos" && CONTAINSSTRING ( Texto, "JUROS" ), "Juros e Encargos",
+				                    Grupo = "Financiamentos" && Saldo >= 0, "Capitacoes",
+				                    Grupo = "Financiamentos" && Saldo < 0, "Amortizacoes",
+				                    Grupo = "Investimentos" && Saldo >= 0, "Desinvestimentos",
+				                    Grupo = "Investimentos" && Saldo < 0, "Aplicacoes em Ativos",
+				                    Grupo = "Operacional" && Saldo >= 0, "Entradas Operacionais",
+				                    "Saidas Operacionais"
+				                )
+				    )
+				VAR ComLinha =
+				    ADDCOLUMNS (
+				        ComSubgrupo,
+				        "linha_dfc",
+				            VAR Grupo = [grupo_dfc]
+				            VAR Texto = [texto_base]
+				            RETURN
+				                SWITCH (
+				                    TRUE (),
+				                    Grupo = "Transferencias" && CONTAINSSTRING ( Texto, "FILIAL" ), "Transferencia entre Filiais",
+				                    Grupo = "Transferencias", "Transferencia entre Contas",
+				                    Grupo = "Financiamentos" && CONTAINSSTRING ( Texto, "JUROS" ), "Juros de Financiamentos",
+				                    Grupo = "Financiamentos" && CONTAINSSTRING ( Texto, "AMORTIZ" ), "Amortizacao de Principal",
+				                    Grupo = "Financiamentos" && CONTAINSSTRING ( Texto, "EMPREST" ), "Capitacao de Emprestimos",
+				                    Grupo = "Investimentos" && CONTAINSSTRING ( Texto, "SOFTWARE" ), "Aquisicao de Software",
+				                    Grupo = "Investimentos" && CONTAINSSTRING ( Texto, "IMOBIL" ), "Aquisicao de Imobilizado",
+				                    Grupo = "Investimentos", "Outros Investimentos",
+				                    Grupo = "Operacional" && COALESCE ( [saldo_liquido_real_natureza], 0 ) >= 0, "Recebimentos Operacionais",
+				                    "Pagamentos Operacionais"
+				                )
+				    )
+				VAR ComOrdem =
+				    ADDCOLUMNS (
+				        ComLinha,
+				        "ordem",
+				            VAR Grupo = [grupo_dfc]
+				            VAR SubGrupo = [subgrupo_dfc]
+				            RETURN
+				                SWITCH (
+				                    TRUE (),
+				                    Grupo = "Operacional" && SubGrupo = "Entradas Operacionais", 110,
+				                    Grupo = "Operacional" && SubGrupo = "Saidas Operacionais", 120,
+				                    Grupo = "Investimentos" && SubGrupo = "Desinvestimentos", 210,
+				                    Grupo = "Investimentos" && SubGrupo = "Aplicacoes em Ativos", 220,
+				                    Grupo = "Financiamentos" && SubGrupo = "Capitacoes", 310,
+				                    Grupo = "Financiamentos" && SubGrupo = "Amortizacoes", 320,
+				                    Grupo = "Financiamentos" && SubGrupo = "Juros e Encargos", 330,
+				                    Grupo = "Transferencias" && SubGrupo = "Transferencias de Entrada", 410,
+				                    Grupo = "Transferencias" && SubGrupo = "Transferencias de Saida", 420,
+				                    990
+				                )
+				    )
+				VAR ComConfianca =
+				    ADDCOLUMNS (
+				        ComOrdem,
+				        "confianca_classificacao",
+				            VAR Texto = [texto_base]
+				            VAR HitsFortes =
+				                INT ( CONTAINSSTRING ( Texto, "EMPREST" ) || CONTAINSSTRING ( Texto, "FINAN" ) )
+				                    + INT ( CONTAINSSTRING ( Texto, "IMOBIL" ) || CONTAINSSTRING ( Texto, "SOFTWARE" ) || CONTAINSSTRING ( Texto, "CAPEX" ) )
+				                    + INT ( CONTAINSSTRING ( Texto, "TRANSFER" ) || CONTAINSSTRING ( Texto, "PIX" ) || CONTAINSSTRING ( Texto, "TED" ) )
+				            VAR TemMov = COALESCE ( [qtd_entradas], 0 ) + COALESCE ( [qtd_saidas], 0 )
+				            RETURN
+				                SWITCH (
+				                    TRUE (),
+				                    HitsFortes >= 1 && TemMov > 0, "Alta",
+				                    TemMov > 0, "Media",
+				                    "Baixa"
+				                )
+				    )
+				VAR FinalComRegra =
+				    ADDCOLUMNS (
+				        ComConfianca,
+				        "regra_utilizada",
+				            VAR Texto = [texto_base]
+				            RETURN
+				                SWITCH (
+				                    TRUE (),
+				                    CONTAINSSTRING ( Texto, "TRANSFER" ) || CONTAINSSTRING ( Texto, "TRANSF" ) || CONTAINSSTRING ( Texto, "PIX" ) || CONTAINSSTRING ( Texto, "TED" ), "descricao/historico contem termo de transferencia",
+				                    CONTAINSSTRING ( Texto, "EMPREST" ) || CONTAINSSTRING ( Texto, "FINAN" ) || CONTAINSSTRING ( Texto, "JUROS" ), "descricao/historico contem termo de financiamento",
+				                    CONTAINSSTRING ( Texto, "IMOBIL" ) || CONTAINSSTRING ( Texto, "ATIVO" ) || CONTAINSSTRING ( Texto, "EQUIP" ) || CONTAINSSTRING ( Texto, "SOFTWARE" ) || CONTAINSSTRING ( Texto, "CAPEX" ), "descricao/historico contem termo de investimento",
+				                    COALESCE ( [qtd_entradas], 0 ) > COALESCE ( [qtd_saidas], 0 ), "fallback por predominancia de entradas",
+				                    COALESCE ( [qtd_saidas], 0 ) >= COALESCE ( [qtd_entradas], 0 ), "fallback por predominancia de saidas",
+				                    "sem evidencias suficientes"
+				                )
+				    )
+				RETURN
+				    SELECTCOLUMNS (
+				        FinalComRegra,
+				        "codigo_natureza", [codigo_natureza],
+				        "descricao_natureza", [descricao_natureza],
+				        "grupo_dfc", [grupo_dfc],
+				        "subgrupo_dfc", [subgrupo_dfc],
+				        "linha_dfc", [linha_dfc],
+				        "ordem", [ordem],
+				        "confianca_classificacao", [confianca_classificacao],
+				        "regra_utilizada", [regra_utilizada]
+				    )
+

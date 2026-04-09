@@ -1,0 +1,169 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "f0a1d2c3b4e596877003",
+  "position": {
+    "x": 20,
+    "y": 430,
+    "z": 1000,
+    "height": 260,
+    "width": 1240,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_dfc_linhas"
+                    }
+                  },
+                  "Property": "grupo"
+                }
+              },
+              "queryRef": "dim_dfc_linhas.grupo",
+              "nativeQueryRef": "grupo",
+              "displayName": "Grupo"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_dfc_linhas"
+                    }
+                  },
+                  "Property": "subgrupo"
+                }
+              },
+              "queryRef": "dim_dfc_linhas.subgrupo",
+              "nativeQueryRef": "subgrupo",
+              "displayName": "Subgrupo"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_dfc_linhas"
+                    }
+                  },
+                  "Property": "linha"
+                }
+              },
+              "queryRef": "dim_dfc_linhas.linha",
+              "nativeQueryRef": "linha",
+              "displayName": "Linha DFC"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "medidas_financeiro"
+                    }
+                  },
+                  "Property": "DFC Subtotal"
+                }
+              },
+              "queryRef": "medidas_financeiro.DFC Subtotal",
+              "nativeQueryRef": "DFC Subtotal",
+              "displayName": "Valor Real"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "medidas_financeiro"
+                    }
+                  },
+                  "Property": "DFC Valor Projetado"
+                }
+              },
+              "queryRef": "medidas_financeiro.DFC Valor Projetado",
+              "nativeQueryRef": "DFC Valor Projetado",
+              "displayName": "Valor Projetado"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dim_dfc_linhas"
+                  }
+                },
+                "Property": "ordem_linha"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnHeaders": [
+        {
+          "properties": {
+            "columnAdjustment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'growToFit'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "187.94736842105263D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "dim_dfc_linhas.linha"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'DFC - Estrutura por Linha'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

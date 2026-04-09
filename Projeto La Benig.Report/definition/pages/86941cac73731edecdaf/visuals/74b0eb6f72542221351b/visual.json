@@ -491,34 +491,6 @@
         },
         "type": "Categorical",
         "howCreated": "User"
-      },
-      {
-        "name": "8af3478748cc3bb0053a",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "medidas_financeiro"
-              }
-            },
-            "Property": "Fluxo Liquido Projetado"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "48afeddbb51e2c486550",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "medidas_financeiro"
-              }
-            },
-            "Property": "Fluxo Liquido Real"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

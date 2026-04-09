@@ -1,0 +1,305 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "a52c5cbbf82252044acf",
+  "position": {
+    "x": 529.14285714285711,
+    "y": 333.71428571428572,
+    "z": 21000,
+    "height": 368,
+    "width": 733.71428571428567,
+    "tabOrder": 21000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "protheus_itensPedidosVendas"
+                    }
+                  },
+                  "Property": "numero_pedido"
+                }
+              },
+              "queryRef": "protheus_itensPedidosVendas.numero_pedido",
+              "nativeQueryRef": "Nº pedido",
+              "displayName": "Nº pedido"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "protheus_itensPedidosVendas"
+                    }
+                  },
+                  "Property": "cod_cliente"
+                }
+              },
+              "queryRef": "protheus_itensPedidosVendas.cod_cliente",
+              "nativeQueryRef": "cod_cliente"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "protheus_contatos"
+                    }
+                  },
+                  "Property": "nome"
+                }
+              },
+              "queryRef": "protheus_contatos.nome",
+              "nativeQueryRef": "nome"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "medidas_financeiro"
+                    }
+                  },
+                  "Property": "ATC Tabela Pedidos - Situação"
+                }
+              },
+              "queryRef": "medidas_financeiro.ATC Tabela Pedidos - Situação",
+              "nativeQueryRef": "Situação",
+              "displayName": "Situação"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "protheus_itensPedidosVendas"
+                        }
+                      },
+                      "Property": "preco_total"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(protheus_itensPedidosVendas.preco_total)",
+              "nativeQueryRef": "preco_total",
+              "displayName": "preco_total"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "protheus_itensPedidosVendas"
+                    }
+                  },
+                  "Property": "data_emissao"
+                }
+              },
+              "queryRef": "protheus_itensPedidosVendas.data_emissao",
+              "nativeQueryRef": "data_emissao"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "protheus_itensPedidosVendas"
+                  }
+                },
+                "Property": "numero_pedido"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "297.31162296465294D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "protheus_contatos.nome"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "98D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "protheus_itensPedidosVendas.data_emissao"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "99.42857142857143D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(protheus_itensPedidosVendas.preco_total)"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "765235e9642ace38d899",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_itensPedidosVendas"
+              }
+            },
+            "Property": "numero_pedido"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "36b912e5da168ffca325",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_itensPedidosVendas"
+              }
+            },
+            "Property": "cod_cliente"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "567bf82ba01076d2e4f9",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_contatos"
+              }
+            },
+            "Property": "nome"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "7104cae52be56f742c96",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "protheus_itensPedidosVendas"
+                  }
+                },
+                "Property": "preco_total"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "bd69517a7decdf42b367",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "medidas_financeiro"
+              }
+            },
+            "Property": "ATC Tabela Pedidos - Situação"
+          }
+        },
+        "type": "Advanced",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "m",
+              "Entity": "medidas_financeiro",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Contains": {
+                  "Left": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Source": "m"
+                        }
+                      },
+                      "Property": "ATC Tabela Pedidos - Situação"
+                    }
+                  },
+                  "Right": {
+                    "Literal": {
+                      "Value": "'EM Aberto'"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "085fc964891ca467051c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_itensPedidosVendas"
+              }
+            },
+            "Property": "data_emissao"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

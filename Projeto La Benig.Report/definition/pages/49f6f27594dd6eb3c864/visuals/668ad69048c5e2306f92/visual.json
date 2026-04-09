@@ -476,23 +476,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "09d07265432106d6726a",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "medidas_financeiro"
-              }
-            },
-            "Property": "CR PMR (dias)"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

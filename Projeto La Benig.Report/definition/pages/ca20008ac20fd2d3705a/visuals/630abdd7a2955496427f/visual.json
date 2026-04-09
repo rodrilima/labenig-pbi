@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "630abdd7a2955496427f",
   "position": {
     "x": 155.47746371275781,
@@ -20,14 +20,14 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "dim_clientes"
+                      "Entity": "protheus_pedidosVendas"
                     }
                   },
-                  "Property": "Estados Atendidos"
+                  "Property": "ATC Estados Atendidos"
                 }
               },
-              "queryRef": "dim_clientes.Estados Atendidos",
-              "nativeQueryRef": "Estados Atendidos"
+              "queryRef": "protheus_pedidosVendas.ATC Estados Atendidos",
+              "nativeQueryRef": "ATC Estados Atendidos"
             }
           ]
         }
@@ -39,10 +39,10 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "dim_clientes"
+                    "Entity": "protheus_pedidosVendas"
                   }
                 },
-                "Property": "Estados Atendidos"
+                "Property": "ATC Estados Atendidos"
               }
             },
             "direction": "Descending"
@@ -412,5 +412,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "aaf131c3a4f604bb7ce7",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_pedidosVendas"
+              }
+            },
+            "Property": "ATC Estados Atendidos"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

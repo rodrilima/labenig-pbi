@@ -4,13 +4,15 @@ table calendario
 
 	column Date
 		isKey
-		formatString: General Date
+		formatString: Short Date
 		lineageTag: e079afc2-4d5d-482b-9812-c1ccdf645ce0
 		summarizeBy: none
 		isNameInferred
 		sourceColumn: [Date]
 
 		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
 
 	column ano
 		formatString: 0

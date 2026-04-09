@@ -1,0 +1,278 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "d07e8100342876b7ab20",
+  "position": {
+    "x": 242.23255813953489,
+    "y": 60.279069767441861,
+    "z": 0,
+    "height": 640.74418604651157,
+    "width": 802.60465116279067,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "protheus_itensPedidosVendas"
+                    }
+                  },
+                  "Property": "filial"
+                }
+              },
+              "queryRef": "protheus_itensPedidosVendas.filial",
+              "nativeQueryRef": "filial"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "protheus_itensPedidosVendas"
+                    }
+                  },
+                  "Property": "nota_fiscal"
+                }
+              },
+              "queryRef": "protheus_itensPedidosVendas.nota_fiscal",
+              "nativeQueryRef": "nota_fiscal"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "protheus_itensPedidosVendas"
+                    }
+                  },
+                  "Property": "numero_pedido"
+                }
+              },
+              "queryRef": "protheus_itensPedidosVendas.numero_pedido",
+              "nativeQueryRef": "numero_pedido"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "protheus_itensPedidosVendas"
+                        }
+                      },
+                      "Property": "preco_total"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(protheus_itensPedidosVendas.preco_total)",
+              "nativeQueryRef": "Soma de preco_total"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "protheus_itensPedidosVendas"
+                    }
+                  },
+                  "Property": "Total Faturado atac."
+                }
+              },
+              "queryRef": "protheus_itensPedidosVendas.Total Faturado atac.",
+              "nativeQueryRef": "Total Faturado atac."
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "medidas_financeiro"
+                    }
+                  },
+                  "Property": "Atacado - Faturamento"
+                }
+              },
+              "queryRef": "medidas_financeiro.Atacado - Faturamento",
+              "nativeQueryRef": "Atacado - Faturamento"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "protheus_itensPedidosVendas"
+                    }
+                  },
+                  "Property": "data_faturamento"
+                }
+              },
+              "queryRef": "protheus_itensPedidosVendas.data_faturamento",
+              "nativeQueryRef": "data_faturamento"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "protheus_itensPedidosVendas"
+                  }
+                },
+                "Property": "numero_pedido"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "fb5db88cd43bd4200b0b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_itensPedidosVendas"
+              }
+            },
+            "Property": "numero_pedido"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "p",
+              "Entity": "protheus_itensPedidosVendas",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "p"
+                          }
+                        },
+                        "Property": "numero_pedido"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'000001'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'000002'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'000003'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'000004'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'000005'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'000006'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'000007'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'000008'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'000009'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'000010'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'000011'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'000012'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

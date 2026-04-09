@@ -1,0 +1,175 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "2989c90fd3221eceee98",
+  "position": {
+    "x": 661.71428571428567,
+    "y": 32,
+    "z": 1,
+    "height": 429.71428571428572,
+    "width": 410.28571428571428,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "protheus_itensPedidosVendas"
+                    }
+                  },
+                  "Property": "numero_pedido"
+                }
+              },
+              "queryRef": "protheus_itensPedidosVendas.numero_pedido",
+              "nativeQueryRef": "numero_pedido"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "protheus_itensPedidosVendas"
+                    }
+                  },
+                  "Property": "data_faturamento"
+                }
+              },
+              "queryRef": "protheus_itensPedidosVendas.data_faturamento",
+              "nativeQueryRef": "data_faturamento"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "protheus_itensPedidosVendas"
+                    }
+                  },
+                  "Property": "data_emissao"
+                }
+              },
+              "queryRef": "protheus_itensPedidosVendas.data_emissao",
+              "nativeQueryRef": "data_emissao"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "protheus_itensPedidosVendas"
+                  }
+                },
+                "Property": "numero_pedido"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "578dd129967c5d200988",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_itensPedidosVendas"
+              }
+            },
+            "Property": "numero_pedido"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "c72b64a36b66e17c1e64",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_itensPedidosVendas"
+              }
+            },
+            "Property": "data_faturamento"
+          }
+        },
+        "type": "Advanced",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "p",
+              "Entity": "protheus_itensPedidosVendas",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Comparison": {
+                  "ComparisonKind": 1,
+                  "Left": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Source": "p"
+                        }
+                      },
+                      "Property": "data_faturamento"
+                    }
+                  },
+                  "Right": {
+                    "DateSpan": {
+                      "Expression": {
+                        "Literal": {
+                          "Value": "datetime'2026-03-01T00:00:00'"
+                        }
+                      },
+                      "TimeUnit": 5
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "objects": {
+          "general": [
+            {
+              "properties": {}
+            }
+          ]
+        }
+      },
+      {
+        "name": "be99fab5db048f0dd6f6",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_itensPedidosVendas"
+              }
+            },
+            "Property": "data_emissao"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

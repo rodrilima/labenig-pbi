@@ -7,11 +7,6 @@ table fato_comportamento_cliente
 		formatString: #,##0
 		lineageTag: a01c8efb-896f-4852-ac99-6dae52ac2019
 
-	/// Clientes com +30 dias sem compra
-	measure 'Clientes Inativos' = CALCULATE(COUNTROWS(fato_comportamento_cliente), fato_comportamento_cliente[classificacao] = "Inativo")
-		formatString: #,##0
-		lineageTag: a801e88b-ef68-4374-aeaa-7cdf1d0a3cc5
-
 	/// Percentual de clientes recorrentes
 	measure 'Taxa Recompra' = DIVIDE([Clientes Recorrentes], COUNTROWS(fato_comportamento_cliente), 0)
 		formatString: 0.0%
@@ -30,7 +25,7 @@ table fato_comportamento_cliente
 		dataType: int64
 		formatString: 0
 		lineageTag: 35aad319-243c-4e04-9bc9-9c0717b335dc
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: cliente_id
 
 		annotation SummarizationSetBy = Automatic

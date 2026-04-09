@@ -478,20 +478,6 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "ca9e40c902e249a4e803",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "medidas_financeiro"
-              }
-            },
-            "Property": "CR Total a Receber"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
         "name": "e75f11fbb8410412cabe",
         "field": {
           "Column": {
