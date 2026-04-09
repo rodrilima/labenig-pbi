@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "2989c90fd3221eceee98",
   "position": {
     "x": 661.71428571428567,
     "y": 32,
-    "z": 1,
+    "z": 1000,
     "height": 429.71428571428572,
     "width": 410.28571428571428,
-    "tabOrder": 1
+    "tabOrder": 1000
   },
   "visual": {
     "visualType": "tableEx",
@@ -83,20 +83,6 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "578dd129967c5d200988",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "protheus_itensPedidosVendas"
-              }
-            },
-            "Property": "numero_pedido"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
         "name": "c72b64a36b66e17c1e64",
         "field": {
           "Column": {
@@ -155,20 +141,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "be99fab5db048f0dd6f6",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "protheus_itensPedidosVendas"
-              }
-            },
-            "Property": "data_emissao"
-          }
-        },
-        "type": "Categorical"
       }
     ]
   }

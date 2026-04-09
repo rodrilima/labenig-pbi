@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "2578793588bc5a8e901f",
   "position": {
     "x": 907.90243902439033,
@@ -307,23 +307,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "79a58846efb4f9c77fd8",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "medidas_financeiro"
-              }
-            },
-            "Property": "Ticket Medio Atacado"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "afdc963f49f1c048dd9b",
   "position": {
     "x": 538.55907780979828,
@@ -412,23 +412,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "6f7c1e13168e5aec5e47",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "protheus_pedidosVendas"
-              }
-            },
-            "Property": "ATC Clientes por Estado"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

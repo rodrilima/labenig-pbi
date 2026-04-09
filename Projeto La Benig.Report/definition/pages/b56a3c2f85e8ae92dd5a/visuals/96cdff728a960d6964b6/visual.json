@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "96cdff728a960d6964b6",
   "position": {
     "x": 569.25015940162245,
@@ -89,7 +89,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'março'"
+                                "Value": "'abril'"
                               }
                             }
                           ]
@@ -164,23 +164,5 @@
       "filterChanges": true
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "4952912f0c5e387fb301",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "calendario"
-              }
-            },
-            "Property": "mes_nome"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

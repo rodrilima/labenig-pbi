@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "24cd10522fa87c127f08",
   "position": {
     "x": 156.68965517241378,
@@ -307,23 +307,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "c192d4999710788e4a64",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "medidas_financeiro"
-              }
-            },
-            "Property": "Faturamento Atacado"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "7d53ea5897b5198f75df",
   "position": {
     "x": 719.75683890577511,
@@ -256,37 +256,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "45c2ac97b491a0ed8202",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "protheus_contatos"
-              }
-            },
-            "Property": "estado"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "edb3ae4ec513254958b8",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "protheus_pedidosVendas"
-              }
-            },
-            "Property": "ATC Ticket Medio"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

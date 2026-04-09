@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "a52c5cbbf82252044acf",
   "position": {
     "x": 529.14285714285711,
@@ -179,67 +179,6 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "765235e9642ace38d899",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "protheus_itensPedidosVendas"
-              }
-            },
-            "Property": "numero_pedido"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "36b912e5da168ffca325",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "protheus_itensPedidosVendas"
-              }
-            },
-            "Property": "cod_cliente"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "567bf82ba01076d2e4f9",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "protheus_contatos"
-              }
-            },
-            "Property": "nome"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "7104cae52be56f742c96",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "protheus_itensPedidosVendas"
-                  }
-                },
-                "Property": "preco_total"
-              }
-            },
-            "Function": 0
-          }
-        },
-        "type": "Advanced"
-      },
-      {
         "name": "bd69517a7decdf42b367",
         "field": {
           "Measure": {
@@ -285,20 +224,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "085fc964891ca467051c",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "protheus_itensPedidosVendas"
-              }
-            },
-            "Property": "data_emissao"
-          }
-        },
-        "type": "Categorical"
       }
     ]
   }

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "36311341b3dd73014226",
   "position": {
     "x": 10.285714285714286,
@@ -79,51 +79,5 @@
       }
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "fef925d232606d0b839f",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "protheus_pedidosVendas"
-              }
-            },
-            "Property": "numero"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "a2dab73e482b2718b639",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "protheus_pedidosVendas"
-              }
-            },
-            "Property": "nota"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "74520fae31f0f7121e60",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "protheus_pedidosVendas"
-              }
-            },
-            "Property": "Repeticoes"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }
