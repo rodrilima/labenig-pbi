@@ -4,10 +4,10 @@
   "position": {
     "x": 690.83333333333337,
     "y": 0,
-    "z": 20000,
+    "z": 18000,
     "height": 65.833333333333343,
     "width": 120.83333333333334,
-    "tabOrder": 20000
+    "tabOrder": 18000
   },
   "visual": {
     "visualType": "slicer",
@@ -56,6 +56,47 @@
                 "Literal": {
                   "Value": "1D"
                 }
+              }
+            },
+            "filter": {
+              "filter": {
+                "Version": 2,
+                "From": [
+                  {
+                    "Name": "p",
+                    "Entity": "protheus_filiais",
+                    "Type": 0
+                  }
+                ],
+                "Where": [
+                  {
+                    "Condition": {
+                      "In": {
+                        "Expressions": [
+                          {
+                            "Column": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Source": "p"
+                                }
+                              },
+                              "Property": "Filial"
+                            }
+                          }
+                        ],
+                        "Values": [
+                          [
+                            {
+                              "Literal": {
+                                "Value": "'010102'"
+                              }
+                            }
+                          ]
+                        ]
+                      }
+                    }
+                  }
+                ]
               }
             }
           }

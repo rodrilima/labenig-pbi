@@ -114,3 +114,5 @@ table fato_comportamento_cliente
 
 	annotation PBI_ResultType = Table
 
+	annotation PBI_NavigationStepName = Navegação
+

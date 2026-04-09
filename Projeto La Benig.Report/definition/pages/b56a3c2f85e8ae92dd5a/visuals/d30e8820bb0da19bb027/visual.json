@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "d30e8820bb0da19bb027",
   "position": {
-    "x": 0,
-    "y": 333.71428571428572,
-    "z": 19000,
-    "height": 205.71428571428572,
-    "width": 128,
-    "tabOrder": 19000
+    "x": 334.28124659524894,
+    "y": 9.3260473588342432,
+    "z": 17000,
+    "height": 46.630236794171225,
+    "width": 235.48269581056468,
+    "tabOrder": 17000
   },
   "visual": {
     "visualType": "slicer",
@@ -85,6 +85,13 @@
                           }
                         ],
                         "Values": [
+                          [
+                            {
+                              "Literal": {
+                                "Value": "2025L"
+                              }
+                            }
+                          ],
                           [
                             {
                               "Literal": {
@@ -208,7 +215,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "d340b943aa0b788c031e",
+        "name": "49abb1c882605206b8e4",
         "field": {
           "Column": {
             "Expression": {
@@ -219,7 +226,7 @@
             "Property": "ano"
           }
         },
-        "type": "Categorical",
+        "type": "Advanced",
         "filter": {
           "Version": 2,
           "From": [
@@ -234,43 +241,23 @@
               "Condition": {
                 "Not": {
                   "Expression": {
-                    "In": {
-                      "Expressions": [
-                        {
-                          "Column": {
-                            "Expression": {
-                              "SourceRef": {
-                                "Source": "c"
-                              }
-                            },
-                            "Property": "ano"
-                          }
-                        }
-                      ],
-                      "Values": [
-                        [
-                          {
-                            "Literal": {
-                              "Value": "null"
+                    "Comparison": {
+                      "ComparisonKind": 0,
+                      "Left": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Source": "c"
                             }
-                          }
-                        ]
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          ]
-        },
-        "objects": {
-          "general": [
-            {
-              "properties": {
-                "isInvertedSelectionMode": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "true"
+                          },
+                          "Property": "ano"
+                        }
+                      },
+                      "Right": {
+                        "Literal": {
+                          "Value": "null"
+                        }
+                      }
                     }
                   }
                 }
