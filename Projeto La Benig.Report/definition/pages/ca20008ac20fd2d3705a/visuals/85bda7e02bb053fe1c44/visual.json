@@ -122,7 +122,7 @@
             "centerLatitude": {
               "expr": {
                 "Literal": {
-                  "Value": "-14.554862357176319D"
+                  "Value": "-17.058983917556745D"
                 }
               }
             },
@@ -136,7 +136,7 @@
             "zoom": {
               "expr": {
                 "Literal": {
-                  "Value": "3.37D"
+                  "Value": "3.07D"
                 }
               }
             }
