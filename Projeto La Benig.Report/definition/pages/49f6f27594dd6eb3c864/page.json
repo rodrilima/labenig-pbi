@@ -72,6 +72,20 @@
                         [
                           {
                             "Literal": {
+                              "Value": "'GARDO ATACADO'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'GABRIEL SCHERR MARTI'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
                               "Value": "'GARDO FILIAL'"
                             }
                           }
