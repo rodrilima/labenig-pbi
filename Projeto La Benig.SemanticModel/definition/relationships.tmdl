@@ -78,11 +78,6 @@ relationship AutoDetected_783b8d81-1a87-4683-b74a-349664cd9ee2
 	fromColumn: fato_logistica_pedidos.pedido_id
 	toColumn: fato_pedidos.pedido_id
 
-relationship 7f29ed70-543f-4e29-8301-a1c2c36a7b56
-	joinOnDateBehavior: datePartOnly
-	fromColumn: protheus_contasBancarias.data_atualizacao_warehouse
-	toColumn: LocalDateTable_d846c162-cd31-4113-b127-17808b8e2812.Date
-
 relationship 259cfc75-d627-4def-b888-15316b1e9686
 	joinOnDateBehavior: datePartOnly
 	fromColumn: protheus_contasPagar.data_emissao
@@ -147,10 +142,6 @@ relationship 2300cb19-d410-454c-b114-ccd8dfbcf064
 	joinOnDateBehavior: datePartOnly
 	fromColumn: protheus_movimentosBancarios.data_digitacao
 	toColumn: LocalDateTable_fa06e6ad-0680-42f3-980a-d2b67c531a16.Date
-
-relationship 4279e88c-b87c-bec7-f822-8bf263f97a21
-	fromColumn: protheus_movimentosBancarios.banco
-	toColumn: protheus_contasBancarias.codigo
 
 relationship 64d9ffa4-a02e-436c-a292-281af62aaafc
 	joinOnDateBehavior: datePartOnly
@@ -295,4 +286,9 @@ relationship eeedd304-7060-4092-aeba-b6421ab0fcdc
 	joinOnDateBehavior: datePartOnly
 	fromColumn: protheus_itensPedidosVendas.data_emissao
 	toColumn: LocalDateTable_a5e673d5-385f-4234-828e-8cc1898355dd.Date
+
+relationship 761d00fe-bb37-45ef-82bd-8a634d7fb8f8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_clientes.data_cadastro
+	toColumn: LocalDateTable_cf8d8225-c68e-442b-81bb-eac9fd29d9ff.Date
 

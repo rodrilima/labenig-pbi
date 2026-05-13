@@ -16,7 +16,7 @@ table dim_clientes
 		dataType: int64
 		formatString: 0
 		lineageTag: c4a1b7bf-ef34-4687-a7bd-65dbe2e37ee5
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: cliente_id
 
 		annotation SummarizationSetBy = Automatic
@@ -73,7 +73,7 @@ table dim_clientes
 		dataType: double
 		lineageTag: 4a4e1c31-0438-41b7-8514-1ed1fb2e9f9b
 		dataCategory: Latitude
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: latitude
 
 		annotation SummarizationSetBy = Automatic
@@ -84,7 +84,7 @@ table dim_clientes
 		dataType: double
 		lineageTag: d871698c-f642-4f08-9b97-f7b5bd568511
 		dataCategory: Longitude
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: longitude
 
 		annotation SummarizationSetBy = Automatic
@@ -97,6 +97,11 @@ table dim_clientes
 		lineageTag: 190509e9-daf7-4d11-8648-dfd82c804368
 		summarizeBy: none
 		sourceColumn: data_cadastro
+
+		variation Variation
+			isDefault
+			relationship: 761d00fe-bb37-45ef-82bd-8a634d7fb8f8
+			defaultHierarchy: LocalDateTable_cf8d8225-c68e-442b-81bb-eac9fd29d9ff.'Hierarquia de datas'
 
 		annotation SummarizationSetBy = Automatic
 
@@ -136,6 +141,9 @@ table dim_clientes
 			)
 		dataType: string
 		lineageTag: 18601e68-5cd3-49e2-bba4-5a7f2508e0bc
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
 
 	partition Partition = m
 		mode: import

@@ -4,10 +4,10 @@
   "position": {
     "x": 536.89969604863222,
     "y": 0,
-    "z": 22000,
+    "z": 20000,
     "height": 65.167173252279639,
     "width": 121.58054711246201,
-    "tabOrder": 22000
+    "tabOrder": 20000
   },
   "visual": {
     "visualType": "slicer",
@@ -89,7 +89,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'abril'"
+                                "Value": "'maio'"
                               }
                             }
                           ]

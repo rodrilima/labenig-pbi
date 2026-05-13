@@ -1,13 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
-  "name": "196df7cc2b047db84003",
+  "name": "e0aabbccddee00000005",
   "position": {
-    "x": 301.51975683890578,
-    "y": 3.8905775075987843,
-    "z": 19000,
-    "height": 46.68693009118541,
-    "width": 235.37993920972644,
-    "tabOrder": 19000
+    "x": 19.368179251091206,
+    "y": 9.61964392489737,
+    "z": 25500,
+    "height": 33.1290107841832,
+    "width": 330.06310744241779
   },
   "visual": {
     "visualType": "slicer",
@@ -27,8 +26,9 @@
                 }
               },
               "queryRef": "calendario.ano",
-              "nativeQueryRef": "ano",
-              "active": true
+              "nativeQueryRef": "Ano",
+              "active": true,
+              "displayName": "Ano"
             }
           ]
         }
@@ -44,6 +44,13 @@
                   "Value": "'Basic'"
                 }
               }
+            },
+            "isInvertedSelectionMode": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
             }
           }
         }
@@ -54,7 +61,7 @@
             "orientation": {
               "expr": {
                 "Literal": {
-                  "Value": "1D"
+                  "Value": "'horizontal'"
                 }
               }
             },
@@ -88,6 +95,13 @@
                           [
                             {
                               "Literal": {
+                                "Value": "2025L"
+                              }
+                            }
+                          ],
+                          [
+                            {
+                              "Literal": {
                                 "Value": "2026L"
                               }
                             }
@@ -105,30 +119,28 @@
       "header": [
         {
           "properties": {
-            "textSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "10D"
-                }
-              }
-            },
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "pendingChangesIcon": [
-        {
-          "properties": {
             "show": {
               "expr": {
                 "Literal": {
                   "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Ano'"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#1B3042'"
+                    }
+                  }
                 }
               }
             }
@@ -138,10 +150,14 @@
       "items": [
         {
           "properties": {
-            "textSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "8D"
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#1B3042'"
+                    }
+                  }
                 }
               }
             }
@@ -150,40 +166,6 @@
       ]
     },
     "visualContainerObjects": {
-      "padding": [
-        {
-          "properties": {
-            "top": {
-              "expr": {
-                "Literal": {
-                  "Value": "0D"
-                }
-              }
-            },
-            "bottom": {
-              "expr": {
-                "Literal": {
-                  "Value": "0D"
-                }
-              }
-            },
-            "right": {
-              "expr": {
-                "Literal": {
-                  "Value": "0D"
-                }
-              }
-            },
-            "left": {
-              "expr": {
-                "Literal": {
-                  "Value": "0D"
-                }
-              }
-            }
-          }
-        }
-      ],
       "background": [
         {
           "properties": {
@@ -198,17 +180,13 @@
         }
       ]
     },
-    "syncGroup": {
-      "groupName": "ano",
-      "fieldChanges": true,
-      "filterChanges": true
-    },
     "drillFilterOtherVisuals": true
   },
+  "parentGroupName": "e0aabbccddee00000001",
   "filterConfig": {
     "filters": [
       {
-        "name": "d340b943aa0b788c031e",
+        "name": "ef4e3c7b3e4f679ad90e",
         "field": {
           "Column": {
             "Expression": {
@@ -219,65 +197,7 @@
             "Property": "ano"
           }
         },
-        "type": "Categorical",
-        "filter": {
-          "Version": 2,
-          "From": [
-            {
-              "Name": "c",
-              "Entity": "calendario",
-              "Type": 0
-            }
-          ],
-          "Where": [
-            {
-              "Condition": {
-                "Not": {
-                  "Expression": {
-                    "In": {
-                      "Expressions": [
-                        {
-                          "Column": {
-                            "Expression": {
-                              "SourceRef": {
-                                "Source": "c"
-                              }
-                            },
-                            "Property": "ano"
-                          }
-                        }
-                      ],
-                      "Values": [
-                        [
-                          {
-                            "Literal": {
-                              "Value": "null"
-                            }
-                          }
-                        ]
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          ]
-        },
-        "objects": {
-          "general": [
-            {
-              "properties": {
-                "isInvertedSelectionMode": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "true"
-                    }
-                  }
-                }
-              }
-            }
-          ]
-        }
+        "type": "Advanced"
       }
     ]
   }

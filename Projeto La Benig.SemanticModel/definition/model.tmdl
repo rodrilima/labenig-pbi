@@ -27,7 +27,7 @@ annotation __PBI_TimeIntelligenceEnabled = 1
 
 annotation PBI_ProTooling = ["MCP-PBIModeling","DevMode"]
 
-annotation PBI_QueryOrder = ["protheus_contasBancarias","protheus_contasPagar","protheus_contasReceber","protheus_movimentosBancarios","dim_lojas","dim_data","fato_fluxo_caixa","fato_pedidos","fato_sac","fato_resultado_operacional","fato_comportamento_cliente","fato_logistica_pedidos","medidas_financeiro","navegacao_modulos","navegacao_submodulos","_guia_nomenclatura_paginas","projecao_caixa","protheus_naturezas","protheus_numerosTitulos","protheus_filiais","Erros em blingV3_notasFiscais","protheus_pedidosVendas","protheus_contatos","protheus_itensPedidosVendas","dim_clientes"]
+annotation PBI_QueryOrder = ["protheus_contasPagar","protheus_contasReceber","protheus_movimentosBancarios","dim_lojas","dim_data","fato_fluxo_caixa","fato_pedidos","fato_sac","fato_resultado_operacional","fato_comportamento_cliente","fato_logistica_pedidos","medidas_financeiro","navegacao_modulos","navegacao_submodulos","_guia_nomenclatura_paginas","projecao_caixa","protheus_naturezas","protheus_numerosTitulos","protheus_filiais","Erros em blingV3_notasFiscais","protheus_pedidosVendas","protheus_contatos","protheus_itensPedidosVendas","dim_clientes"]
 
 ref table dim_lojas
 ref table dim_data
@@ -51,8 +51,6 @@ ref table LocalDateTable_d296fdeb-93e0-4e9b-9aa8-28b48ea1118f
 ref table LocalDateTable_087242aa-6058-4e87-beaf-1b30cd20a138
 ref table LocalDateTable_7784a5ae-8d40-48f6-a9c5-8796f655a9f6
 ref table LocalDateTable_dc2dc54f-9c45-458c-aec4-c5cfeffc9e6f
-ref table protheus_contasBancarias
-ref table LocalDateTable_d846c162-cd31-4113-b127-17808b8e2812
 ref table protheus_contasPagar
 ref table LocalDateTable_b519e84d-9581-4c72-9812-aa12a9ef6e20
 ref table LocalDateTable_64bf4b89-8d97-45a0-b90d-789842ad8ae2
@@ -96,6 +94,7 @@ ref table LocalDateTable_a5e673d5-385f-4234-828e-8cc1898355dd
 ref table dim_dfc_linhas
 ref table mapa_natureza_dfc_auto
 ref table dim_clientes
+ref table LocalDateTable_cf8d8225-c68e-442b-81bb-eac9fd29d9ff
 
 ref cultureInfo pt-BR
 

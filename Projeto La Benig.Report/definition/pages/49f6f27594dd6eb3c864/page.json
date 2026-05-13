@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
   "name": "49f6f27594dd6eb3c864",
   "displayName": "FIN - Contas a Receber",
   "displayOption": "FitToPage",
@@ -155,5 +155,37 @@
         }
       }
     ]
-  }
+  },
+  "visualInteractions": [
+    {
+      "source": "5d74f42ce97115128b9a",
+      "target": "e0aabbccddee00000004",
+      "type": "NoFilter"
+    },
+    {
+      "source": "1f42bb1f041e0d823e65",
+      "target": "e0aabbccddee00000004",
+      "type": "NoFilter"
+    },
+    {
+      "source": "196df7cc2b047db84003",
+      "target": "e0aabbccddee00000004",
+      "type": "NoFilter"
+    },
+    {
+      "source": "5d74f42ce97115128b9a",
+      "target": "e0aabbccddee00000005",
+      "type": "NoFilter"
+    },
+    {
+      "source": "1f42bb1f041e0d823e65",
+      "target": "e0aabbccddee00000005",
+      "type": "NoFilter"
+    },
+    {
+      "source": "196df7cc2b047db84003",
+      "target": "e0aabbccddee00000005",
+      "type": "NoFilter"
+    }
+  ]
 }

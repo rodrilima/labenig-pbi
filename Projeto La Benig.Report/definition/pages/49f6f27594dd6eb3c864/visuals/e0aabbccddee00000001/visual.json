@@ -1,16 +1,15 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
-  "name": "43aa08147a0018029841",
+  "name": "e0aabbccddee00000001",
   "position": {
-    "x": 1083.8645696602873,
-    "y": 0,
-    "z": 22000,
-    "height": 720.55473704701694,
-    "width": 196.13543033971271,
-    "tabOrder": 22000
+    "x": 93.252030355478638,
+    "y": 69.939022766608971,
+    "z": 23000,
+    "height": 579.14418852349888,
+    "width": 1132.5213686592997
   },
   "visualGroup": {
-    "displayName": "Filtros",
+    "displayName": "Overlay Inadimplencia",
     "groupMode": "ScaleMode"
   },
   "isHidden": true
