@@ -506,6 +506,20 @@
             }
           ]
         }
+      },
+      {
+        "name": "01aec2ed875785fc9902",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "medidas_financeiro"
+              }
+            },
+            "Property": "CR Total a Receber"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

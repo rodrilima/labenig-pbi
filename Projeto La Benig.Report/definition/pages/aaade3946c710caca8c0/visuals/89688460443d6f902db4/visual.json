@@ -442,5 +442,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "74c0051b8434addf6ad5",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "medidas_financeiro"
+              }
+            },
+            "Property": "CP Total a Pagar"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

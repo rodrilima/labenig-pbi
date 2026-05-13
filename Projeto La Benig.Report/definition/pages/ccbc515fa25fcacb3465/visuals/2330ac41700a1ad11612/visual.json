@@ -1,12 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
-  "name": "e0aabbccddee00000005",
+  "name": "2330ac41700a1ad11612",
   "position": {
-    "x": 19.368179251091206,
-    "y": 9.61964392489737,
-    "z": 25500,
-    "height": 33.1290107841832,
-    "width": 330.06310744241779
+    "x": 148.79999999999998,
+    "y": 4.8,
+    "z": 20000,
+    "height": 46.8,
+    "width": 182.4,
+    "tabOrder": 20000
   },
   "visual": {
     "visualType": "slicer",
@@ -19,16 +20,15 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "calendario"
+                      "Entity": "protheus_movimentosBancarios"
                     }
                   },
-                  "Property": "ano"
+                  "Property": "Receita ou Despesa"
                 }
               },
-              "queryRef": "calendario.ano",
-              "nativeQueryRef": "Ano",
-              "active": true,
-              "displayName": "Ano"
+              "queryRef": "protheus_movimentosBancarios.Receita ou Despesa",
+              "nativeQueryRef": "Receita ou Despesa",
+              "active": true
             }
           ]
         }
@@ -44,13 +44,6 @@
                   "Value": "'Basic'"
                 }
               }
-            },
-            "isInvertedSelectionMode": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
             }
           }
         }
@@ -61,7 +54,7 @@
             "orientation": {
               "expr": {
                 "Literal": {
-                  "Value": "'horizontal'"
+                  "Value": "1D"
                 }
               }
             },
@@ -70,8 +63,8 @@
                 "Version": 2,
                 "From": [
                   {
-                    "Name": "c",
-                    "Entity": "calendario",
+                    "Name": "p",
+                    "Entity": "protheus_movimentosBancarios",
                     "Type": 0
                   }
                 ],
@@ -84,10 +77,10 @@
                             "Column": {
                               "Expression": {
                                 "SourceRef": {
-                                  "Source": "c"
+                                  "Source": "p"
                                 }
                               },
-                              "Property": "ano"
+                              "Property": "Receita ou Despesa"
                             }
                           }
                         ],
@@ -95,14 +88,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "2025L"
-                              }
-                            }
-                          ],
-                          [
-                            {
-                              "Literal": {
-                                "Value": "2026L"
+                                "Value": "'Despesas'"
                               }
                             }
                           ]
@@ -119,28 +105,30 @@
       "header": [
         {
           "properties": {
+            "textSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "pendingChangesIcon": [
+        {
+          "properties": {
             "show": {
               "expr": {
                 "Literal": {
                   "Value": "true"
-                }
-              }
-            },
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Ano'"
-                }
-              }
-            },
-            "fontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#1B3042'"
-                    }
-                  }
                 }
               }
             }
@@ -150,14 +138,10 @@
       "items": [
         {
           "properties": {
-            "fontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#1B3042'"
-                    }
-                  }
+            "textSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
                 }
               }
             }
@@ -166,6 +150,40 @@
       ]
     },
     "visualContainerObjects": {
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
       "background": [
         {
           "properties": {
@@ -182,22 +200,21 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "e0aabbccddee00000001",
   "filterConfig": {
     "filters": [
       {
-        "name": "ef4e3c7b3e4f679ad90e",
+        "name": "8cdf8bd677a789a07d5b",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "calendario"
+                "Entity": "protheus_movimentosBancarios"
               }
             },
-            "Property": "ano"
+            "Property": "Receita ou Despesa"
           }
         },
-        "type": "Advanced"
+        "type": "Categorical"
       }
     ]
   }

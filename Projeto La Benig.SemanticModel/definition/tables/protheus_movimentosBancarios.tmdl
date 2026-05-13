@@ -441,6 +441,37 @@ table protheus_movimentosBancarios
 
 		annotation SummarizationSetBy = Automatic
 
+	column 'Receita ou Despesa' =
+			
+			SWITCH(
+			    protheus_movimentosBancarios[receb_pagto],
+			    "R", "Receitas",
+			    "P", "Despesas",
+			    "Outros"
+			)
+		dataType: string
+		lineageTag: fb73dad6-94ee-4d66-9578-6b08757c59f4
+		summarizeBy: none
+		sortByColumn: ordem_receita_despesa
+
+		annotation SummarizationSetBy = Automatic
+
+	column ordem_receita_despesa =
+			
+			SWITCH(
+			    protheus_movimentosBancarios[receb_pagto],
+			    "R", 1,
+			    "P", 2,
+			    99
+			)
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 857293fc-1acd-476a-935a-55f8e4135443
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
 	partition protheus_movimentosBancarios = m
 		mode: import
 		queryGroup: datalake

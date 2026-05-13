@@ -2,15 +2,15 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "699b672b77bfe3258065",
   "position": {
-    "x": 157.21161825726142,
-    "y": 211.38589211618256,
+    "x": 148.79999999999998,
+    "y": 203.90082644628097,
     "z": 5000,
-    "height": 224.13278008298755,
-    "width": 544.92946058091286,
+    "height": 231.6694214876033,
+    "width": 545.05785123966939,
     "tabOrder": 5000
   },
   "visual": {
-    "visualType": "pieChart",
+    "visualType": "clusteredBarChart",
     "query": {
       "queryState": {
         "Category": {
@@ -23,13 +23,12 @@
                       "Entity": "protheus_naturezas"
                     }
                   },
-                  "Property": "descricao_pai"
+                  "Property": "descricao_pai_abrev"
                 }
               },
-              "queryRef": "protheus_naturezas.descricao_pai",
-              "nativeQueryRef": "Natureza",
-              "active": true,
-              "displayName": "Natureza"
+              "queryRef": "protheus_naturezas.descricao_pai_abrev",
+              "nativeQueryRef": "descricao_pai_abrev",
+              "active": true
             }
           ]
         },
@@ -83,9 +82,16 @@
       }
     },
     "objects": {
-      "legend": [
+      "labels": [
         {
           "properties": {
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            },
             "show": {
               "expr": {
                 "Literal": {
@@ -110,196 +116,19 @@
                 }
               }
             }
-          },
-          "selector": {
-            "data": [
-              {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "fato_resultado_operacional"
-                          }
-                        },
-                        "Property": "categoria"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "'Tributária'"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
           }
-        },
+        }
+      ],
+      "categoryAxis": [
         {
           "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#E4A34B'"
-                    }
-                  }
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
-          },
-          "selector": {
-            "data": [
-              {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "fato_resultado_operacional"
-                          }
-                        },
-                        "Property": "categoria"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "'Pessoal'"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#D56E38'"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "fato_resultado_operacional"
-                          }
-                        },
-                        "Property": "categoria"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "'Operacional'"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#2B4000'"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "fato_resultado_operacional"
-                          }
-                        },
-                        "Property": "categoria"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "'Marketing'"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#99373D'"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "fato_resultado_operacional"
-                          }
-                        },
-                        "Property": "categoria"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "'Vendas'"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
           }
         }
       ]
@@ -310,19 +139,25 @@
           "properties": {
             "text": {
               "expr": {
-                "Literal": {
-                  "Value": "'Categorias'"
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "protheus_movimentosBancarios"
+                        }
+                      },
+                      "Property": "Receita ou Despesa"
+                    }
+                  },
+                  "Function": 3
                 }
               }
             },
-            "fontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#1B3042'"
-                    }
-                  }
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             },
@@ -330,13 +165,6 @@
               "expr": {
                 "Literal": {
                   "Value": "'center'"
-                }
-              }
-            },
-            "fontFamily": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Arial'"
                 }
               }
             },
@@ -353,6 +181,53 @@
                   "Value": "true"
                 }
               }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Arial'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
             }
           }
         }
@@ -363,7 +238,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "fc8d1fc72170308a03c5",
+        "name": "c4129eeb9ccaa8772e01",
         "field": {
           "Column": {
             "Expression": {
@@ -371,7 +246,7 @@
                 "Entity": "protheus_movimentosBancarios"
               }
             },
-            "Property": "receb_pagto"
+            "Property": "Receita ou Despesa"
           }
         },
         "type": "Categorical",
@@ -396,7 +271,7 @@
                             "Source": "p"
                           }
                         },
-                        "Property": "receb_pagto"
+                        "Property": "Receita ou Despesa"
                       }
                     }
                   ],
@@ -404,7 +279,14 @@
                     [
                       {
                         "Literal": {
-                          "Value": "'P'"
+                          "Value": "'Despesas'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Receitas'"
                         }
                       }
                     ]
@@ -415,6 +297,39 @@
           ]
         },
         "howCreated": "User"
+      },
+      {
+        "name": "fc0e867311aa974497df",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_naturezas"
+              }
+            },
+            "Property": "descricao_pai_abrev"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "c5a7ca905e414fbbebaf",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "protheus_movimentosBancarios"
+                  }
+                },
+                "Property": "valor"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

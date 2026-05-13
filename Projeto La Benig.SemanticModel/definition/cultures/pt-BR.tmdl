@@ -1241,16 +1241,6 @@ cultureInfo pt-BR
 			          }
 			        },
 			        {
-			          "Natureza": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
-			          }
-			        },
-			        {
 			          "Categoria": {
 			            "State": "Suggested",
 			            "Source": {
