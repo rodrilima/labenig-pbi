@@ -1198,9 +1198,11 @@ table medidas_financeiro
 			)
 			
 			```
-		formatString: 0.0%
+		formatString: 0.00%
 		displayFolder: Saldos Bancários
 		lineageTag: d9836a07-1049-4a12-a87b-2b9b498f0fa2
+
+		annotation PBI_FormatHint = {"isCustom":true}
 
 	/// SVG para coluna de Tabela — barra proporcional ao maior saldo + valor + % do total
 	/// Retorna data URI (funciona em tableEx com dataCategory ImageUrl)

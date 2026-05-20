@@ -38103,19 +38103,7 @@ cultureInfo pt-BR
 			          "ConceptualProperty": "FIN Saldo Bancário Total"
 			        }
 			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "FIN Saldo Bancário Total": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
-			          }
-			        }
-			      ]
+			      "State": "Generated"
 			    },
 			    "medidas_financeiro.fin_entradas_projetadas": {
 			      "Definition": {
@@ -38145,19 +38133,7 @@ cultureInfo pt-BR
 			          "ConceptualProperty": "FIN Saídas Projetadas"
 			        }
 			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "FIN Saídas Projetadas": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
-			          }
-			        }
-			      ]
+			      "State": "Generated"
 			    },
 			    "medidas_financeiro.fin_resultado_líquido_projetado": {
 			      "Definition": {
