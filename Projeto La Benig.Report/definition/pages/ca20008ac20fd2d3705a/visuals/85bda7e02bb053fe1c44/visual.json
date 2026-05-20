@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "85bda7e02bb053fe1c44",
   "position": {
     "x": 158.63636363636363,
@@ -345,65 +345,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "7e37a2313034062813ba",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_clientes"
-              }
-            },
-            "Property": "tipo_cliente"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "84d077086aed3b5a614d",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fato_pedidos"
-              }
-            },
-            "Property": "Faturamento Total"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "3b4229bcc0068580b8e0",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_clientes"
-              }
-            },
-            "Property": "longitude"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "b51366c0ec6b23a456d9",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_clientes"
-              }
-            },
-            "Property": "latitude"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

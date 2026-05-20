@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "7d53ea5897b5198f75df",
   "position": {
     "x": 719.16666666666674,
@@ -256,51 +256,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "caec26e5c9e30608e604",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_clientes"
-              }
-            },
-            "Property": "estado"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "e42906c7000bb0bb5155",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_clientes"
-              }
-            },
-            "Property": "tipo_cliente"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "0e8d1b3b501461a11780",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fato_pedidos"
-              }
-            },
-            "Property": "Ticket Medio por Estado"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

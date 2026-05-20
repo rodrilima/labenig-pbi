@@ -1,0 +1,238 @@
+// ================================================================
+// MEDIDAS CORRIGIDAS — FIN - Contas Bancárias
+// Tabela: medidas_financeiro | Pasta: Saldos Bancários
+//
+// COMO ATUALIZAR: no PBI Desktop, clique na medida no painel
+// Dados → edite a fórmula na barra de fórmula → Enter
+// ================================================================
+
+
+// ── KPI 1: Saldo Total ─────────────────────────────────────────
+// FIX: ALL(Contas) ignora o filtro de linha da tabela,
+// garantindo que o total seja sempre o grand total.
+FIN CB Saldo Total =
+CALCULATE (
+    SUMX (
+        DISTINCT ( Saldos[ID_Conta] ),
+        VAR UltimaData = CALCULATE ( MAX ( Saldos[Data] ) )
+        RETURN CALCULATE ( SUM ( Saldos[Saldo] ), Saldos[Data] = UltimaData )
+    ),
+    ALL ( Contas )
+)
+// formatString: R$ #,##0.00
+
+
+// ── KPI 2: Maior Saldo ─────────────────────────────────────────
+// FIX: ALL(Saldos[ID_Conta]) garante que olha todas as contas.
+FIN CB Maior Saldo =
+MAXX (
+    ADDCOLUMNS (
+        ALL ( Saldos[ID_Conta] ),
+        "@Saldo",
+            VAR UltimaData = CALCULATE ( MAX ( Saldos[Data] ) )
+            RETURN CALCULATE ( SUM ( Saldos[Saldo] ), Saldos[Data] = UltimaData )
+    ),
+    [@Saldo]
+)
+// formatString: R$ #,##0.00
+
+
+// ── KPI 3: Contas Negativas ────────────────────────────────────
+// FIX: COALESCE retorna 0 quando COUNTX recebe tabela vazia.
+FIN CB Contas Negativas =
+COALESCE (
+    COUNTX (
+        FILTER (
+            ADDCOLUMNS (
+                ALL ( Saldos[ID_Conta] ),
+                "@Saldo",
+                    VAR UltimaData = CALCULATE ( MAX ( Saldos[Data] ) )
+                    RETURN CALCULATE ( SUM ( Saldos[Saldo] ), Saldos[Data] = UltimaData )
+            ),
+            [@Saldo] < 0
+        ),
+        Saldos[ID_Conta]
+    ),
+    0
+)
+// formatString: 0
+
+
+// ── KPI 4: Liquidez Imediata % ────────────────────────────────
+FIN CB Liquidez % =
+VAR Positivo =
+    SUMX (
+        FILTER (
+            ADDCOLUMNS (
+                ALL ( Saldos[ID_Conta] ),
+                "@Saldo",
+                    VAR UltimaData = CALCULATE ( MAX ( Saldos[Data] ) )
+                    RETURN CALCULATE ( SUM ( Saldos[Saldo] ), Saldos[Data] = UltimaData )
+            ),
+            [@Saldo] > 0
+        ),
+        [@Saldo]
+    )
+RETURN DIVIDE ( Positivo, [FIN CB Saldo Total], 0 )
+// formatString: 0.0%
+
+
+// ── Para visuais de tabela/barras (filtrável por banco) ────────
+FIN CB Saldo Atual =
+VAR UltimaData = CALCULATE ( MAX ( Saldos[Data] ) )
+RETURN CALCULATE ( SUM ( Saldos[Saldo] ), Saldos[Data] = UltimaData )
+// formatString: R$ #,##0.00
+
+
+// ── % do caixa — FIX: usa Total com ALL explícito ─────────────
+// Como FIN CB Saldo Total já usa ALL(Contas), basta dividir.
+FIN CB % Caixa =
+DIVIDE (
+    ABS ( [FIN CB Saldo Atual] ),
+    ABS ( [FIN CB Saldo Total] ),
+    0
+)
+// formatString: 0.0%
+
+
+// ── SVG BARRA DE PROGRESSO — New Card Nativo ──────────────────
+// Técnica: medida retorna SVG puro → New Card renderiza como imagem
+//
+// COMO USAR NO PBI DESKTOP:
+//   1. Crie um visual "Novo Card" na página
+//   2. Campo "Valores de texto explicativo" → arraste FIN CB SVG Barra
+//   3. Campo "Página" (ou "Categoria") → arraste Contas[Banco]
+//   4. No painel Formatar → "Valor do texto explicativo"
+//      → ative "Imagem SVG" = Ativado
+//   5. O card vai mostrar saldo + barra proporcional para cada banco
+//   6. Redimensione o visual para ver todos os bancos de uma vez
+//
+FIN CB SVG Barra =
+VAR _saldo = [FIN CB Saldo Atual]
+VAR _pct   = [FIN CB % Caixa]
+VAR _abs   = ABS ( _saldo )
+
+VAR _fmt =
+    SWITCH ( TRUE (),
+        _abs >= 1000000, FORMAT ( _saldo / 1000000, "R$ 0.00" ) & " Mi",
+        _abs >= 1000,    FORMAT ( _saldo / 1000,    "R$ 0.0"  ) & " K",
+                         FORMAT ( _saldo, "R$ #,##0" )
+    )
+
+VAR _pctStr = FORMAT ( _pct * 100, "0.0" ) & "%"
+
+// barra: máximo 160px de largura proporcional ao %
+VAR _barW   = FORMAT ( MIN ( ROUND ( _pct * 160, 0 ), 160 ), "0" )
+VAR _barClr = IF ( _saldo < 0, "#DC2626", "#3B6CF4" )
+VAR _txtClr = IF ( _saldo < 0, "#DC2626", "#111827" )
+
+RETURN
+"<svg xmlns='http://www.w3.org/2000/svg' width='200' height='56'>"
+& "<rect width='200' height='56' rx='0' fill='white'/>"
+& "<text x='0' y='18' font-family='Segoe UI,Arial' font-size='16'"
+& " font-weight='700' fill='" & _txtClr & "'>" & _fmt & "</text>"
+& "<text x='0' y='32' font-family='Segoe UI,Arial' font-size='9'"
+& " fill='#9CA3AF'>" & _pctStr & " do total</text>"
+& "<rect x='0' y='40' width='160' height='6' rx='3' fill='#E5E7EB'/>"
+& "<rect x='0' y='40' width='" & _barW & "' height='6' rx='3'"
+& " fill='" & _barClr & "'/>"
+& "</svg>"
+// formatString: General
+// displayFolder: Saldos Bancários
+
+
+// ── HTML Viewer (Opção 2) ─────────────────────────────────────
+CB HTML Saldos =
+VAR TotalGeral = [FIN CB Saldo Total]
+
+VAR Tabela =
+    TOPN (
+        30,
+        FILTER (
+            ADDCOLUMNS (
+                ALL ( Saldos[ID_Conta] ),
+                "@Saldo",
+                    VAR UltimaData = CALCULATE ( MAX ( Saldos[Data] ) )
+                    RETURN CALCULATE ( SUM ( Saldos[Saldo] ), Saldos[Data] = UltimaData ),
+                "@Banco",   LOOKUPVALUE ( Contas[Banco],   Contas[ID_Conta], Saldos[ID_Conta] ),
+                "@Apelido", LOOKUPVALUE ( Contas[Apelido], Contas[ID_Conta], Saldos[ID_Conta] ),
+                "@Ativa",   LOOKUPVALUE ( Contas[Ativa],   Contas[ID_Conta], Saldos[ID_Conta] )
+            ),
+            [@Ativa] = "Sim"
+        ),
+        [@Saldo], DESC
+    )
+
+VAR Linhas =
+    CONCATENATEX (
+        Tabela,
+        VAR _saldo    = [@Saldo]
+        VAR _banco    = [@Banco]
+        VAR _apelido  = [@Apelido]
+        VAR _pct      = DIVIDE ( ABS ( _saldo ), ABS ( TotalGeral ), 0 )
+        VAR _pctStr   = FORMAT ( _pct * 100, "0.0" ) & "%"
+        VAR _abs      = ABS ( _saldo )
+        VAR _fmt      =
+            SWITCH ( TRUE (),
+                _abs >= 1000000, IF ( _saldo < 0, "-", "" ) & "R$ " & FORMAT ( _abs / 1000000, "0.00" ) & "Mi",
+                _abs >= 1000,    IF ( _saldo < 0, "-", "" ) & "R$ " & FORMAT ( _abs / 1000, "0.0" ) & "K",
+                                 IF ( _saldo < 0, "-", "" ) & "R$ " & FORMAT ( _abs, "#,##0" )
+            )
+        VAR _cor      = IF ( _saldo < 0, "#DC2626", "#111827" )
+        VAR _badge    =
+            SWITCH ( _banco,
+                "itau",             "#E07A20",
+                "itaucad",          "#E07A20",
+                "sicoob",           "#1B6B3A",
+                "sicob",            "#1B6B3A",
+                "sicred",           "#1A7A3B",
+                "bradesco",         "#CC0000",
+                "caixa",            "#005B9A",
+                "banestes",         "#2C3E8C",
+                "banespa",          "#2C3E8C",
+                "nubank",           "#7C3AED",
+                "mercado livre",    "#FFE600",
+                "conta digital",    "#0EA5E9",
+                "picpay",           "#11C76F",
+                "#3B6CF4"
+            )
+        VAR _txt      = IF ( _badge = "#FFE600", "#1A1A1A", "#FFFFFF" )
+        VAR _barW     = FORMAT ( MIN ( _pct * 100, 100 ), "0.0" )
+        VAR _ini      = UPPER ( LEFT ( _banco, 2 ) )
+        VAR _nome     = IF ( _apelido <> "" && _apelido <> "Itaú Matriz", _apelido, _banco )
+        RETURN
+            "<div style='display:flex;align-items:center;gap:10px;padding:8px 12px;"
+            & "border-bottom:1px solid #F3F4F6;font-family:Inter,system-ui,sans-serif'>"
+            & "<div style='width:38px;height:38px;border-radius:8px;background:" & _badge & ";"
+            & "display:flex;align-items:center;justify-content:center;"
+            & "color:" & _txt & ";font-size:12px;font-weight:700;flex-shrink:0'>" & _ini & "</div>"
+            & "<div style='flex:1;min-width:0'>"
+            & "<div style='font-size:11px;color:#6B7280;margin-bottom:3px'>" & _nome & "</div>"
+            & "<div style='height:3px;background:#F0F0F0;border-radius:3px'>"
+            & "<div style='height:3px;width:" & _barW & "%;background:" & _badge & ";border-radius:3px'></div>"
+            & "</div></div>"
+            & "<div style='text-align:right;flex-shrink:0'>"
+            & "<div style='font-size:14px;font-weight:700;color:" & _cor & "'>" & _fmt & "</div>"
+            & "<div style='font-size:10px;color:#9CA3AF'>" & _pctStr & "</div>"
+            & "</div></div>",
+        NEWLINE, [@Saldo], DESC
+    )
+
+VAR TotalFmt =
+    IF ( ABS ( TotalGeral ) >= 1000000,
+        "R$ " & FORMAT ( TotalGeral / 1000000, "0.00" ) & "Mi",
+        "R$ " & FORMAT ( TotalGeral / 1000, "0.0" ) & "K" )
+
+VAR NumContas =
+    COUNTROWS ( FILTER ( ALL ( Contas ), Contas[Ativa] = "Sim" ) )
+
+RETURN
+    "<div style='font-family:Inter,system-ui,sans-serif;height:100%;overflow:auto;background:#fff'>"
+    & "<div style='padding:10px 12px;background:#F8F7F5;border-bottom:2px solid #E5E7EB;"
+    & "display:flex;justify-content:space-between;align-items:center'>"
+    & "<span style='font-size:12px;font-weight:700;color:#111827'>SALDOS BANCÁRIOS</span>"
+    & "<span style='font-size:11px;color:#6B7280'>" & TotalFmt & " · " & NumContas & " contas ativas</span>"
+    & "</div>"
+    & Linhas
+    & "</div>"
+// formatString: General

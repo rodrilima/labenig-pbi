@@ -25049,16 +25049,6 @@ cultureInfo pt-BR
 			            },
 			            "Weight": 0.582
 			          }
-			        },
-			        {
-			          "Realizado": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
-			          }
 			        }
 			      ]
 			    },
@@ -25094,16 +25084,6 @@ cultureInfo pt-BR
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.582
-			          }
-			        },
-			        {
-			          "Realizado": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
 			          }
 			        }
 			      ]
@@ -25207,16 +25187,6 @@ cultureInfo pt-BR
 			          "fluxo liquido projetado": {
 			            "State": "Generated"
 			          }
-			        },
-			        {
-			          "Projetado": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
-			          }
 			        }
 			      ]
 			    },
@@ -25232,16 +25202,6 @@ cultureInfo pt-BR
 			        {
 			          "fluxo liquido real": {
 			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "Realizado": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
 			          }
 			        }
 			      ]
@@ -38135,6 +38095,279 @@ cultureInfo pt-BR
 			          }
 			        }
 			      ]
+			    },
+			    "medidas_financeiro.fin_saldo_bancário_total": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "FIN Saldo Bancário Total"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "FIN Saldo Bancário Total": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medidas_financeiro.fin_entradas_projetadas": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "FIN Entradas Projetadas"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "FIN Entradas Projetadas": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medidas_financeiro.fin_saídas_projetadas": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "FIN Saídas Projetadas"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "FIN Saídas Projetadas": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medidas_financeiro.fin_resultado_líquido_projetado": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "FIN Resultado Líquido Projetado"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "FIN Resultado Líquido Projetado": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medidas_financeiro.fin_saldo_sicredi": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "FIN Saldo Sicredi"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "medidas_financeiro.fin_saldo_sicoob": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "FIN Saldo Sicoob"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "medidas_financeiro.fin__caixa_sicoob": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "FIN % Caixa Sicoob"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "medidas_financeiro.fin_saldo_mercado_pago": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "FIN Saldo Mercado Pago"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "medidas_financeiro.fin__caixa_mercado_pago": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "FIN % Caixa Mercado Pago"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "medidas_financeiro.fin_saldo_caixa_loja": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "FIN Saldo Caixa Loja"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "medidas_financeiro.fin__caixa_caixa_loja": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "FIN % Caixa Caixa Loja"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "medidas_financeiro.fin_saldo_caixa_geral": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "FIN Saldo Caixa Geral"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "medidas_financeiro.fin__caixa_caixa_geral": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "FIN % Caixa Caixa Geral"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "medidas_financeiro.fin_saldo_banestes": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "FIN Saldo Banestes"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "medidas_financeiro.fin__caixa_banestes": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "FIN % Caixa Banestes"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "medidas_financeiro.cb_html_saldos": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "CB HTML Saldos"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "contas.banco": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Contas",
+			          "ConceptualProperty": "Banco"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "contas.apelido": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Contas",
+			          "ConceptualProperty": "Apelido"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "medidas_financeiro.fin_cb_saldo_total": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "FIN CB Saldo Total"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "medidas_financeiro.fin_cb_maior_saldo": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "FIN CB Maior Saldo"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "medidas_financeiro.fin_cb_contas_negativas": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "FIN CB Contas Negativas"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "medidas_financeiro.fin_cb_liquidez_": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "FIN CB Menor Saldo"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "medidas_financeiro.fin_cb_saldo_atual": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "FIN CB Saldo Atual"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "medidas_financeiro.fin_cb__caixa": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "FIN CB % Caixa"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "medidas_financeiro.fin_cb_svg_barra": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "FIN CB SVG Barra"
+			        }
+			      },
+			      "State": "Generated"
 			    }
 			  },
 			  "Relationships": {

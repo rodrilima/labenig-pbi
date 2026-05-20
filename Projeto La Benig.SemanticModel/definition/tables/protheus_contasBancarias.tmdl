@@ -197,11 +197,12 @@ table protheus_contasBancarias
 				    Fonte = GoogleBigQuery.Database([Implementation="2.0"]),
 				    #"coherent-window-444219-c1_Database" = Fonte{[Name="coherent-window-444219-c1",Kind="Database"]}[Data],
 				    datalake_Schema = #"coherent-window-444219-c1_Database"{[Name="datalake",Kind="Schema"]}[Data],
-				    protheus_contasBancarias_Table = datalake_Schema{[Name="protheus_contasBancarias",Kind="Table"]}[Data]
+				    protheus_contasBancarias_Table = datalake_Schema{[Name="protheus_contasBancarias",Kind="Table"]}[Data],
+				    #"Duplicatas Removidas" = Table.Distinct(protheus_contasBancarias_Table, {"codigo"})
 				in
-				    protheus_contasBancarias_Table
+				    #"Duplicatas Removidas"
 
 	annotation PBI_NavigationStepName = Navegação
 
-	annotation PBI_ResultType = Table
+	annotation PBI_ResultType = Exception
 

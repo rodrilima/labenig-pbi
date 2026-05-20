@@ -1,0 +1,69 @@
+table Contas
+	lineageTag: 162791e1-b6bd-42b3-a43b-d61cbad13175
+
+	column ID_Conta
+		dataType: string
+		lineageTag: 5dface79-b2fe-41cb-8959-dc8b4698effd
+		summarizeBy: none
+		sourceColumn: ID_Conta
+
+		annotation SummarizationSetBy = Automatic
+
+	column Filial
+		dataType: int64
+		formatString: 0
+		lineageTag: 7b9e6073-724f-47ea-87b4-f36b439af448
+		summarizeBy: none
+		sourceColumn: Filial
+
+		annotation SummarizationSetBy = Automatic
+
+	column Banco
+		dataType: string
+		lineageTag: 6c4fee42-031c-4ae6-b166-3cba86924601
+		summarizeBy: none
+		sourceColumn: Banco
+
+		annotation SummarizationSetBy = Automatic
+
+	column Agência/Conta
+		dataType: string
+		lineageTag: 1ce29fe7-3e84-42e4-9dd4-ad0319e11bbb
+		summarizeBy: none
+		sourceColumn: Agência/Conta
+
+		annotation SummarizationSetBy = Automatic
+
+	column Apelido
+		dataType: string
+		lineageTag: b9392b34-a553-4dca-b5c9-b12ad5991df3
+		summarizeBy: none
+		sourceColumn: Apelido
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ativa
+		dataType: string
+		lineageTag: cfc43372-e8aa-4972-8e21-f8f9f6075ddc
+		summarizeBy: none
+		sourceColumn: Ativa
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Contas = m
+		mode: import
+		source =
+				let
+				    Fonte = GoogleSheets.Contents("https://docs.google.com/spreadsheets/d/1E9d7egBLrXnIFULDyiaSm0nKrK99kt4UDUrfom8WJW4/edit?gid=786634137#gid=786634137"),
+				    Contas_Table = Fonte{[name="Contas",ItemKind="Table"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Contas_Table, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"ID_Conta", type text}, {"Filial", Int64.Type}, {"Banco", type text}, {"Agência/Conta", type text}, {"Apelido", type text}, {"Ativa", type text}}),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Tipo Alterado", each [ID_Conta] <> null and [ID_Conta] <> ""),
+				    #"Duplicatas Removidas" = Table.Distinct(#"Linhas Filtradas", {"ID_Conta"})
+				in
+				    #"Duplicatas Removidas"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

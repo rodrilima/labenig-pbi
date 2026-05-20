@@ -296,3 +296,17 @@ relationship eeedd304-7060-4092-aeba-b6421ab0fcdc
 	fromColumn: protheus_itensPedidosVendas.data_emissao
 	toColumn: LocalDateTable_a5e673d5-385f-4234-828e-8cc1898355dd.Date
 
+relationship 5be4f1e6-b8ec-42d1-956e-afd2d2d45854
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_clientes.data_cadastro
+	toColumn: LocalDateTable_74651988-520c-414b-86ab-86e47c66e2d6.Date
+
+relationship ee630735-6c39-49a7-ac12-973a097498a7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Saldos.Data
+	toColumn: LocalDateTable_f3eaa16f-51d1-499e-98a0-c3054aa7afcb.Date
+
+relationship 7f33368a-1bed-b212-9456-f44000f3f545
+	fromColumn: Saldos.ID_Conta
+	toColumn: Contas.ID_Conta
+

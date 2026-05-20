@@ -1,0 +1,1468 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.1.0/schema.json",
+  "displayName": "Indicador 7",
+  "name": "3fb20008c129b895183f",
+  "options": {
+    "targetVisualNames": [
+      "c8d5a2f4b1e9c7d3a6f8"
+    ]
+  },
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "49f6f27594dd6eb3c864",
+    "sections": {
+      "49f6f27594dd6eb3c864": {
+        "filters": {
+          "byExpr": [
+            {
+              "name": "a1b2c3d4e5f6a1b2c3d4",
+              "type": "Advanced",
+              "filter": {
+                "Version": 2,
+                "From": [
+                  {
+                    "Name": "cr",
+                    "Entity": "protheus_contasReceber",
+                    "Type": 0
+                  }
+                ],
+                "Where": [
+                  {
+                    "Condition": {
+                      "Not": {
+                        "Expression": {
+                          "In": {
+                            "Expressions": [
+                              {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "cr"
+                                    }
+                                  },
+                                  "Property": "nome_cliente"
+                                }
+                              }
+                            ],
+                            "Values": [
+                              [
+                                {
+                                  "Literal": {
+                                    "Value": "'BEAUTY BOMB COSMETIC'"
+                                  }
+                                }
+                              ],
+                              [
+                                {
+                                  "Literal": {
+                                    "Value": "'ELEVE BEAUTY LTDA'"
+                                  }
+                                }
+                              ],
+                              [
+                                {
+                                  "Literal": {
+                                    "Value": "'GARDO'"
+                                  }
+                                }
+                              ],
+                              [
+                                {
+                                  "Literal": {
+                                    "Value": "'GARDO ATACADO'"
+                                  }
+                                }
+                              ],
+                              [
+                                {
+                                  "Literal": {
+                                    "Value": "'GABRIEL SCHERR MARTI'"
+                                  }
+                                }
+                              ],
+                              [
+                                {
+                                  "Literal": {
+                                    "Value": "'GARDO FILIAL'"
+                                  }
+                                }
+                              ],
+                              [
+                                {
+                                  "Literal": {
+                                    "Value": "'GS INDUSTRIA DE COSM'"
+                                  }
+                                }
+                              ],
+                              [
+                                {
+                                  "Literal": {
+                                    "Value": "'S SCHERR COSMETICOS'"
+                                  }
+                                }
+                              ]
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "protheus_contasReceber"
+                    }
+                  },
+                  "Property": "nome_cliente"
+                }
+              },
+              "howCreated": 0
+            }
+          ]
+        },
+        "visualContainers": {
+          "02bc9716e122a17dcfc6": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "b5e3f1f80d0bff76ec1e",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "medidas_financeiro"
+                        }
+                      },
+                      "Property": "CR Inadimplência %"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "cardVisual",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "medidas_financeiro"
+                        }
+                      },
+                      "Property": "CR Inadimplência %"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "196df7cc2b047db84003": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "d340b943aa0b788c031e",
+                  "type": "Categorical",
+                  "filter": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "c",
+                        "Entity": "calendario",
+                        "Type": 0
+                      }
+                    ],
+                    "Where": [
+                      {
+                        "Condition": {
+                          "Not": {
+                            "Expression": {
+                              "In": {
+                                "Expressions": [
+                                  {
+                                    "Column": {
+                                      "Expression": {
+                                        "SourceRef": {
+                                          "Source": "c"
+                                        }
+                                      },
+                                      "Property": "ano"
+                                    }
+                                  }
+                                ],
+                                "Values": [
+                                  [
+                                    {
+                                      "Literal": {
+                                        "Value": "null"
+                                      }
+                                    }
+                                  ]
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "calendario"
+                        }
+                      },
+                      "Property": "ano"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Basic'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "calendario"
+                        }
+                      },
+                      "Property": "ano"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "1b5d53d5e5ab10eed89c": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "f6753e406ac5c40483d9",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "protheus_contasReceber"
+                            }
+                          },
+                          "Property": "pk"
+                        }
+                      },
+                      "Function": 5
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "d55c2960ed87fd702fce",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "protheus_contasReceber"
+                        }
+                      },
+                      "Property": "numero_titulo"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "c6aa8b9e41d58dd527e2",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "protheus_contasReceber"
+                        }
+                      },
+                      "Property": "parcela"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "4de5518edadb1b478ac8",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "protheus_contasReceber"
+                        }
+                      },
+                      "Property": "cod_cliente"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "31e54a52eee26d767787",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "protheus_contasReceber"
+                        }
+                      },
+                      "Property": "nome_cliente"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "06feaab0f48faf670fb9",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "protheus_contasReceber"
+                            }
+                          },
+                          "Property": "valor_titulo"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "0ba6e75a49be0a729c67",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "protheus_contasReceber"
+                        }
+                      },
+                      "Property": "Status Descrição"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "ed04deb0337e94c55be2",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "protheus_contasReceber"
+                        }
+                      },
+                      "Property": "historico"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "tableEx",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "protheus_contasReceber"
+                            }
+                          },
+                          "Property": "valor_titulo"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "1f42bb1f041e0d823e65": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "48648a0039e8245f93a2",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "calendario"
+                        }
+                      },
+                      "Property": "Date"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "general": [
+                    {
+                      "properties": {
+                        "filter": {
+                          "filter": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "c",
+                                "Entity": "calendario",
+                                "Type": 0
+                              }
+                            ],
+                            "Where": [
+                              {
+                                "Condition": {
+                                  "And": {
+                                    "Left": {
+                                      "Comparison": {
+                                        "ComparisonKind": 2,
+                                        "Left": {
+                                          "Column": {
+                                            "Expression": {
+                                              "SourceRef": {
+                                                "Source": "c"
+                                              }
+                                            },
+                                            "Property": "Date"
+                                          }
+                                        },
+                                        "Right": {
+                                          "Literal": {
+                                            "Value": "datetime'2024-01-01T00:00:00'"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "Right": {
+                                      "Comparison": {
+                                        "ComparisonKind": 3,
+                                        "Left": {
+                                          "Column": {
+                                            "Expression": {
+                                              "SourceRef": {
+                                                "Source": "c"
+                                              }
+                                            },
+                                            "Property": "Date"
+                                          }
+                                        },
+                                        "Right": {
+                                          "Literal": {
+                                            "Value": "datetime'2026-05-01T00:00:00'"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "data": [
+                    {
+                      "properties": {
+                        "startDate": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "datetime'2024-01-01T00:00:00'"
+                            }
+                          }
+                        },
+                        "endDate": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "datetime'2026-04-30T00:00:00'"
+                            }
+                          }
+                        },
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Between'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "orderBy": [
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "calendario"
+                        }
+                      },
+                      "Property": "Date"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "calendario"
+                        }
+                      },
+                      "Property": "Date"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "213fcabb2da191cecc6d": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "1223cddf05d8ef779670",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "protheus_contasReceber"
+                        }
+                      },
+                      "Property": "faixa_aging"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "d90df7a4a95d508f98b4",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "medidas_financeiro"
+                        }
+                      },
+                      "Property": "CR Valor Aging"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "clusteredColumnChart",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "medidas_financeiro"
+                        }
+                      },
+                      "Property": "CR Valor Aging"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "protheus_contasReceber"
+                        }
+                      },
+                      "Property": "faixa_aging"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "2cecc997eb5354505147": {
+            "singleVisual": {
+              "visualType": "image",
+              "objects": {}
+            }
+          },
+          "2f595880c1c2bd04920b": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "34badfd955fe1438616d": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "49c7b53de2f4e0e7a6a8",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "medidas_financeiro"
+                        }
+                      },
+                      "Property": "CR Recebido no Período"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "cardVisual",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "medidas_financeiro"
+                        }
+                      },
+                      "Property": "CR Recebido no Período"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "368cc3a9c10a19786e46": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "19a8a80f8fb2e66331da",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "protheus_contasReceber"
+                        }
+                      },
+                      "Property": "nome_cliente"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "textFilter25A4896A83E0487089E2B90C9AE57C8A",
+              "objects": {}
+            }
+          },
+          "370c97411bb91cd0ac56": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "58a95ef013119d241810": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "5d74f42ce97115128b9a": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "7017fcf87b1171690fa8",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "calendario"
+                        }
+                      },
+                      "Property": "mes_nome"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "calendario"
+                        }
+                      },
+                      "Property": "mes_nome"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "63e2f3759b93a06dee75": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "668ad69048c5e2306f92": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "870b0232d52b9c034add",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "medidas_financeiro"
+                        }
+                      },
+                      "Property": "CR PMR (dias)"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "cardVisual",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "medidas_financeiro"
+                        }
+                      },
+                      "Property": "CR PMR (dias)"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "696c2f336d8cb707c480": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "26ec62678df1aee2c0b5",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "protheus_contasReceber"
+                        }
+                      },
+                      "Property": "Status Descrição"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "general": [
+                    {
+                      "properties": {
+                        "filter": {
+                          "filter": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "p",
+                                "Entity": "protheus_contasReceber",
+                                "Type": 0
+                              }
+                            ],
+                            "Where": [
+                              {
+                                "Condition": {
+                                  "In": {
+                                    "Expressions": [
+                                      {
+                                        "Column": {
+                                          "Expression": {
+                                            "SourceRef": {
+                                              "Source": "p"
+                                            }
+                                          },
+                                          "Property": "Status Descrição"
+                                        }
+                                      }
+                                    ],
+                                    "Values": [
+                                      [
+                                        {
+                                          "Literal": {
+                                            "Value": "'Aberto'"
+                                          }
+                                        }
+                                      ]
+                                    ]
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "protheus_contasReceber"
+                        }
+                      },
+                      "Property": "Status Descrição"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "75177a464c80c4ac387a": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "e75f11fbb8410412cabe",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "protheus_contasReceber"
+                        }
+                      },
+                      "Property": "tipo"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "315ba4d04b45b77ef32d",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "medidas_financeiro"
+                        }
+                      },
+                      "Property": "CR Total a Receber"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "cardVisual",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "medidas_financeiro"
+                        }
+                      },
+                      "Property": "CR Total a Receber"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "790523e17579808809a7": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "891fe420c00b040dc028": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "89470ecfa299a869b6cc": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "93b0b411dd3d606e9200": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "9f9268fd80a20673f339": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "08ff7f102a9b284e9438",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "protheus_contasReceber"
+                        }
+                      },
+                      "Property": "cod_cliente"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "bf4e57b06d06c0b8e51d",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "medidas_financeiro"
+                        }
+                      },
+                      "Property": "CR Dias em Atraso"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "417360322eeaf090ca13",
+                  "type": "TopN",
+                  "filter": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "subquery",
+                        "Expression": {
+                          "Subquery": {
+                            "Query": {
+                              "Version": 2,
+                              "From": [
+                                {
+                                  "Name": "p1",
+                                  "Entity": "protheus_contasReceber",
+                                  "Type": 0
+                                },
+                                {
+                                  "Name": "m",
+                                  "Entity": "medidas_financeiro",
+                                  "Type": 0
+                                }
+                              ],
+                              "Select": [
+                                {
+                                  "Column": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Source": "p1"
+                                      }
+                                    },
+                                    "Property": "cod_cliente"
+                                  },
+                                  "Name": "field"
+                                }
+                              ],
+                              "OrderBy": [
+                                {
+                                  "Direction": 2,
+                                  "Expression": {
+                                    "Measure": {
+                                      "Expression": {
+                                        "SourceRef": {
+                                          "Source": "m"
+                                        }
+                                      },
+                                      "Property": "CR Valor em Aberto por Cliente"
+                                    }
+                                  }
+                                }
+                              ],
+                              "Top": 10
+                            }
+                          }
+                        },
+                        "Type": 2
+                      },
+                      {
+                        "Name": "p1",
+                        "Entity": "protheus_contasReceber",
+                        "Type": 0
+                      }
+                    ],
+                    "Where": [
+                      {
+                        "Condition": {
+                          "In": {
+                            "Expressions": [
+                              {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "p1"
+                                    }
+                                  },
+                                  "Property": "cod_cliente"
+                                }
+                              }
+                            ],
+                            "Table": {
+                              "SourceRef": {
+                                "Source": "subquery"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "protheus_contasReceber"
+                        }
+                      },
+                      "Property": "cod_cliente"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "6e16470f96920be66c70",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "protheus_contasReceber"
+                        }
+                      },
+                      "Property": "nome_cliente"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "552fb690a022475b9b78",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "medidas_financeiro"
+                        }
+                      },
+                      "Property": "CR Status do Cliente"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "cfa2562ca3930e6e4020",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "medidas_financeiro"
+                        }
+                      },
+                      "Property": "CR Valor em Aberto por Cliente"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "tableEx",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "medidas_financeiro"
+                        }
+                      },
+                      "Property": "CR Valor em Aberto por Cliente"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "a5f8bf1635ba9658d098": {
+            "singleVisual": {
+              "visualType": "image",
+              "objects": {}
+            }
+          },
+          "c8d5a2f4b1e9c7d3a6f8": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "d9e6b3a7c4f2e8d1b5a9",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "protheus_contasReceber"
+                        }
+                      },
+                      "Property": "Status Maior devedor"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "general": [
+                    {
+                      "properties": {
+                        "filter": {
+                          "filter": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "p",
+                                "Entity": "protheus_contasReceber",
+                                "Type": 0
+                              }
+                            ],
+                            "Where": [
+                              {
+                                "Condition": {
+                                  "In": {
+                                    "Expressions": [
+                                      {
+                                        "Column": {
+                                          "Expression": {
+                                            "SourceRef": {
+                                              "Source": "p"
+                                            }
+                                          },
+                                          "Property": "Status Maior devedor"
+                                        }
+                                      }
+                                    ],
+                                    "Values": [
+                                      [
+                                        {
+                                          "Literal": {
+                                            "Value": "'Atraso Moderado'"
+                                          }
+                                        }
+                                      ]
+                                    ]
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "selection": [
+                    {
+                      "properties": {
+                        "strictSingleSelect": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "false"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "protheus_contasReceber"
+                        }
+                      },
+                      "Property": "Status Maior devedor"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "d1a58b812cba05ec470d": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "d57bd7c283dc01a00759": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "d306ba492e5b47511924",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "protheus_filiais"
+                        }
+                      },
+                      "Property": "Filial"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "protheus_filiais"
+                        }
+                      },
+                      "Property": "Filial"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "db686e86e6ec8dc5b950": {
+            "singleVisual": {
+              "visualType": "textbox",
+              "objects": {}
+            }
+          },
+          "f437201110aed82d00b5": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "fc6af1401e1bac959044": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "65d8165315c81c344f18",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "protheus_numerosTitulos"
+                        }
+                      },
+                      "Property": "numero"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "textFilter25A4896A83E0487089E2B90C9AE57C8A",
+              "objects": {}
+            }
+          },
+          "ff6a2f90b860100c01cb": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          }
+        },
+        "visualContainerGroups": {
+          "43aa08147a0018029841": {
+            "isHidden": true
+          }
+        }
+      }
+    },
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "true"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "df77fddcf76d619d4e35",
+  "position": {
+    "x": 11.971940763834761,
+    "y": 183.56975837879966,
+    "z": 0,
+    "height": 536.74201091192515,
+    "width": 849.01013250194853,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "autoSelectVisualType": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Contas"
+                    }
+                  },
+                  "Property": "Agência/Conta"
+                }
+              },
+              "queryRef": "Contas.Agência/Conta",
+              "nativeQueryRef": "Agência/Conta"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Contas"
+                    }
+                  },
+                  "Property": "Apelido"
+                }
+              },
+              "queryRef": "Contas.Apelido",
+              "nativeQueryRef": "Apelido"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Contas"
+                    }
+                  },
+                  "Property": "Ativa"
+                }
+              },
+              "queryRef": "Contas.Ativa",
+              "nativeQueryRef": "Ativa"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Contas"
+                    }
+                  },
+                  "Property": "Banco"
+                }
+              },
+              "queryRef": "Contas.Banco",
+              "nativeQueryRef": "Banco"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Contas"
+                    }
+                  },
+                  "Property": "ID_Conta"
+                }
+              },
+              "queryRef": "Contas.ID_Conta",
+              "nativeQueryRef": "ID_Conta"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Contas"
+                        }
+                      },
+                      "Property": "Filial"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Contas.Filial)",
+              "nativeQueryRef": "Soma de Filial"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Contas"
+                      }
+                    },
+                    "Property": "Filial"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

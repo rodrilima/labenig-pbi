@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.1.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.3.0/schema.json",
   "themeCollection": {
     "baseTheme": {
       "name": "CY25SU12",
@@ -31,7 +31,7 @@
           "expanded": {
             "expr": {
               "Literal": {
-                "Value": "true"
+                "Value": "false"
               }
             }
           }
@@ -41,7 +41,8 @@
   },
   "publicCustomVisuals": [
     "textFilter25A4896A83E0487089E2B90C9AE57C8A",
-    "PowerSlicerA96234ADB8D143D1837FEC426BB34781"
+    "PowerSlicerA96234ADB8D143D1837FEC426BB34781",
+    "deneb7E15AEF80B9E4D4F8E12924291ECE89A"
   ],
   "resourcePackages": [
     {
@@ -60,43 +61,8 @@
       "type": "RegisteredResources",
       "items": [
         {
-          "name": "VisaoExecutiva6913977648699906.png",
-          "path": "VisaoExecutiva6913977648699906.png",
-          "type": "Image"
-        },
-        {
-          "name": "Icone_Fechar_Branco19743687552510203.png",
-          "path": "Icone_Fechar_Branco19743687552510203.png",
-          "type": "Image"
-        },
-        {
           "name": "_cone_Ativar_Painel_Filtro_Pre7584149044277076.png",
           "path": "_cone_Ativar_Painel_Filtro_Pre7584149044277076.png",
-          "type": "Image"
-        },
-        {
-          "name": "SAC002144903569654688.png",
-          "path": "SAC002144903569654688.png",
-          "type": "Image"
-        },
-        {
-          "name": "LogisticaSLAS8610342599002149.png",
-          "path": "LogisticaSLAS8610342599002149.png",
-          "type": "Image"
-        },
-        {
-          "name": "LogisticaPedidos13327011403951627.png",
-          "path": "LogisticaPedidos13327011403951627.png",
-          "type": "Image"
-        },
-        {
-          "name": "EcommerceBaseClientes6882302220899952.png",
-          "path": "EcommerceBaseClientes6882302220899952.png",
-          "type": "Image"
-        },
-        {
-          "name": "EcommercePerfomanceVendas7460693933677751.png",
-          "path": "EcommercePerfomanceVendas7460693933677751.png",
           "type": "Image"
         },
         {
@@ -110,13 +76,8 @@
           "type": "Image"
         },
         {
-          "name": "ResultadoOperacional0830661278001168.png",
-          "path": "ResultadoOperacional0830661278001168.png",
-          "type": "Image"
-        },
-        {
-          "name": "ContasPagar8761236834936577.png",
-          "path": "ContasPagar8761236834936577.png",
+          "name": "Caixa&Liquidez0972366353612849.png",
+          "path": "Caixa&Liquidez0972366353612849.png",
           "type": "Image"
         },
         {
@@ -125,13 +86,58 @@
           "type": "Image"
         },
         {
-          "name": "Caixa&Liquidez0972366353612849.png",
-          "path": "Caixa&Liquidez0972366353612849.png",
+          "name": "ContasPagar8761236834936577.png",
+          "path": "ContasPagar8761236834936577.png",
+          "type": "Image"
+        },
+        {
+          "name": "EcommerceBaseClientes6882302220899952.png",
+          "path": "EcommerceBaseClientes6882302220899952.png",
+          "type": "Image"
+        },
+        {
+          "name": "EcommercePerfomanceVendas7460693933677751.png",
+          "path": "EcommercePerfomanceVendas7460693933677751.png",
           "type": "Image"
         },
         {
           "name": "Home01198556629338332.png",
           "path": "Home01198556629338332.png",
+          "type": "Image"
+        },
+        {
+          "name": "Icone_Fechar_Branco19743687552510203.png",
+          "path": "Icone_Fechar_Branco19743687552510203.png",
+          "type": "Image"
+        },
+        {
+          "name": "LogisticaPedidos13327011403951627.png",
+          "path": "LogisticaPedidos13327011403951627.png",
+          "type": "Image"
+        },
+        {
+          "name": "LogisticaSLAS8610342599002149.png",
+          "path": "LogisticaSLAS8610342599002149.png",
+          "type": "Image"
+        },
+        {
+          "name": "ResultadoOperacional0830661278001168.png",
+          "path": "ResultadoOperacional0830661278001168.png",
+          "type": "Image"
+        },
+        {
+          "name": "SAC002144903569654688.png",
+          "path": "SAC002144903569654688.png",
+          "type": "Image"
+        },
+        {
+          "name": "TV_-_55656110657105601.png",
+          "path": "TV_-_55656110657105601.png",
+          "type": "Image"
+        },
+        {
+          "name": "VisaoExecutiva6913977648699906.png",
+          "path": "VisaoExecutiva6913977648699906.png",
           "type": "Image"
         }
       ]

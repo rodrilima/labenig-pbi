@@ -7,7 +7,8 @@
       "mcp__powerbi-modeling-mcp__table_operations",
       "mcp__powerbi-modeling-mcp__measure_operations",
       "Bash(git config:*)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "WebFetch(domain:raw.githubusercontent.com)"
     ]
   }
 }

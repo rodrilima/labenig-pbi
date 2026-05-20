@@ -968,6 +968,280 @@ table medidas_financeiro
 		displayFolder: DFC Auto
 		lineageTag: 3cf409b0-ef46-48f2-9db4-59db5c2984a0
 
+	/// Soma do saldo mais recente de todas as contas bancárias
+	measure 'FIN Saldo Bancário Total' =
+			CALCULATE(
+			    SUM(Saldos[Saldo]),
+			    Saldos[Data] = MAX(Saldos[Data])
+			)
+		formatString: R$ #,##0.00
+		displayFolder: FIN Contas Bancárias
+		lineageTag: d1e2f3a4-b5c6-7d8e-9f0a-b1c2d3e4f5a6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'FIN Saldo Sicredi' =
+			VAR IDs = CALCULATETABLE(VALUES(Contas[ID_Conta]), Contas[Apelido] = "Sicredi")
+			RETURN CALCULATE(SUM(Saldos[Saldo]), Saldos[Data] = MAX(Saldos[Data]), TREATAS(IDs, Saldos[ID_Conta]))
+		formatString: R$ #,##0.00
+		displayFolder: FIN Contas Bancárias
+		lineageTag: d1e2f3a4-b5c6-7d8e-9f0a-b1c2d3e4f5a7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'FIN Saldo Sicoob' =
+			VAR IDs = CALCULATETABLE(VALUES(Contas[ID_Conta]), Contas[Apelido] = "Sicoob")
+			RETURN CALCULATE(SUM(Saldos[Saldo]), Saldos[Data] = MAX(Saldos[Data]), TREATAS(IDs, Saldos[ID_Conta]))
+		formatString: R$ #,##0.00
+		displayFolder: FIN Contas Bancárias
+		lineageTag: d1e2f3a4-b5c6-7d8e-9f0a-b1c2d3e4f5a8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'FIN Saldo Mercado Pago' =
+			VAR IDs = CALCULATETABLE(VALUES(Contas[ID_Conta]), Contas[Apelido] = "Mercado Pago")
+			RETURN CALCULATE(SUM(Saldos[Saldo]), Saldos[Data] = MAX(Saldos[Data]), TREATAS(IDs, Saldos[ID_Conta]))
+		formatString: R$ #,##0.00
+		displayFolder: FIN Contas Bancárias
+		lineageTag: d1e2f3a4-b5c6-7d8e-9f0a-b1c2d3e4f5a9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'FIN Saldo Caixa Loja' =
+			VAR IDs = CALCULATETABLE(VALUES(Contas[ID_Conta]), Contas[Apelido] = "Caixa Loja")
+			RETURN CALCULATE(SUM(Saldos[Saldo]), Saldos[Data] = MAX(Saldos[Data]), TREATAS(IDs, Saldos[ID_Conta]))
+		formatString: R$ #,##0.00
+		displayFolder: FIN Contas Bancárias
+		lineageTag: d1e2f3a4-b5c6-7d8e-9f0a-b1c2d3e4f5b0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'FIN Saldo Caixa Geral' =
+			VAR IDs = CALCULATETABLE(VALUES(Contas[ID_Conta]), Contas[Apelido] = "Caixa Geral")
+			RETURN CALCULATE(SUM(Saldos[Saldo]), Saldos[Data] = MAX(Saldos[Data]), TREATAS(IDs, Saldos[ID_Conta]))
+		formatString: R$ #,##0.00
+		displayFolder: FIN Contas Bancárias
+		lineageTag: d1e2f3a4-b5c6-7d8e-9f0a-b1c2d3e4f5b1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'FIN Saldo Banestes' =
+			VAR IDs = CALCULATETABLE(VALUES(Contas[ID_Conta]), Contas[Apelido] = "Banestes")
+			RETURN CALCULATE(SUM(Saldos[Saldo]), Saldos[Data] = MAX(Saldos[Data]), TREATAS(IDs, Saldos[ID_Conta]))
+		formatString: R$ #,##0.00
+		displayFolder: FIN Contas Bancárias
+		lineageTag: d1e2f3a4-b5c6-7d8e-9f0a-b1c2d3e4f5b2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'FIN % Caixa Sicoob' = DIVIDE([FIN Saldo Sicoob], [FIN Saldo Bancário Total], 0)
+		formatString: 0.0%
+		displayFolder: FIN Contas Bancárias
+		lineageTag: d1e2f3a4-b5c6-7d8e-9f0a-b1c2d3e4f5b4
+
+	measure 'FIN % Caixa Mercado Pago' = DIVIDE([FIN Saldo Mercado Pago], [FIN Saldo Bancário Total], 0)
+		formatString: 0.0%
+		displayFolder: FIN Contas Bancárias
+		lineageTag: d1e2f3a4-b5c6-7d8e-9f0a-b1c2d3e4f5b5
+
+	measure 'FIN % Caixa Caixa Loja' = DIVIDE([FIN Saldo Caixa Loja], [FIN Saldo Bancário Total], 0)
+		formatString: 0.0%
+		displayFolder: FIN Contas Bancárias
+		lineageTag: d1e2f3a4-b5c6-7d8e-9f0a-b1c2d3e4f5b6
+
+	measure 'FIN % Caixa Caixa Geral' = DIVIDE([FIN Saldo Caixa Geral], [FIN Saldo Bancário Total], 0)
+		formatString: 0.0%
+		displayFolder: FIN Contas Bancárias
+		lineageTag: d1e2f3a4-b5c6-7d8e-9f0a-b1c2d3e4f5b7
+
+	measure 'FIN % Caixa Banestes' = DIVIDE([FIN Saldo Banestes], [FIN Saldo Bancário Total], 0)
+		formatString: 0.0%
+		displayFolder: FIN Contas Bancárias
+		lineageTag: d1e2f3a4-b5c6-7d8e-9f0a-b1c2d3e4f5b8
+
+	/// Total de entradas projetadas (valorpn positivo)
+	measure 'FIN Entradas Projetadas' =
+			CALCULATE(
+			    SUM(projecao_caixa[valorpn]),
+			    projecao_caixa[valorpn] > 0
+			)
+		formatString: R$ #,##0.00
+		displayFolder: FIN Contas Bancárias
+		lineageTag: d1e2f3a4-b5c6-7d8e-9f0a-b1c2d3e4f5b9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Total de saídas projetadas (valorpn negativo)
+	measure 'FIN Saídas Projetadas' =
+			CALCULATE(
+			    SUM(projecao_caixa[valorpn]),
+			    projecao_caixa[valorpn] < 0
+			)
+		formatString: R$ #,##0.00
+		displayFolder: FIN Contas Bancárias
+		lineageTag: d1e2f3a4-b5c6-7d8e-9f0a-b1c2d3e4f5c0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'FIN Resultado Líquido Projetado' = [FIN Entradas Projetadas] + [FIN Saídas Projetadas]
+		formatString: R$ #,##0.00
+		displayFolder: FIN Contas Bancárias
+		lineageTag: d1e2f3a4-b5c6-7d8e-9f0a-b1c2d3e4f5c1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Saldo total bancário — snapshot mais recente por conta, ignora filtro de linha
+	measure 'FIN CB Saldo Total' = ```
+			
+			CALCULATE (
+			    SUMX (
+			        DISTINCT ( Saldos[ID_Conta] ),
+			        VAR UltimaData = CALCULATE ( MAX ( Saldos[Data] ) )
+			        RETURN CALCULATE ( SUM ( Saldos[Saldo] ), Saldos[Data] = UltimaData )
+			    ),
+			    ALL ( Contas )
+			)
+			
+			```
+		formatString: R$ #,##0.00
+		displayFolder: Saldos Bancários
+		lineageTag: 9cd995c0-5a72-448e-99ad-8f30f8e436fc
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Conta com maior saldo atual
+	measure 'FIN CB Maior Saldo' = ```
+			
+			MAXX (
+			    ADDCOLUMNS (
+			        ALL ( Saldos[ID_Conta] ),
+			        "@Saldo",
+			            VAR UltimaData = CALCULATE ( MAX ( Saldos[Data] ) )
+			            RETURN CALCULATE ( SUM ( Saldos[Saldo] ), Saldos[Data] = UltimaData )
+			    ),
+			    [@Saldo]
+			)
+			
+			```
+		formatString: R$ #,##0.00
+		displayFolder: Saldos Bancários
+		lineageTag: 780382a1-c76d-48f5-8dc9-a7804799a670
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Quantidade de contas com saldo negativo — retorna 0 se nenhuma
+	measure 'FIN CB Contas Negativas' = ```
+			
+			COALESCE (
+			    COUNTX (
+			        FILTER (
+			            ADDCOLUMNS (
+			                ALL ( Saldos[ID_Conta] ),
+			                "@Saldo",
+			                    VAR UltimaData = CALCULATE ( MAX ( Saldos[Data] ) )
+			                    RETURN CALCULATE ( SUM ( Saldos[Saldo] ), Saldos[Data] = UltimaData )
+			            ),
+			            [@Saldo] < 0
+			        ),
+			        Saldos[ID_Conta]
+			    ),
+			    0
+			)
+			
+			```
+		formatString: 0
+		displayFolder: Saldos Bancários
+		lineageTag: 141294b4-d086-4f2f-818f-fc69d7103a91
+
+	/// Percentual do saldo total composto por contas positivas
+	measure 'FIN CB Menor Saldo' =
+			
+			MINX (
+			    ADDCOLUMNS (
+			        ALL ( Saldos[ID_Conta] ),
+			        "@Saldo",
+			            VAR UltimaData = CALCULATE ( MAX ( Saldos[Data] ) )
+			            RETURN CALCULATE ( SUM ( Saldos[Saldo] ), Saldos[Data] = UltimaData )
+			    ),
+			    [@Saldo]
+			)
+		formatString: R$ #,##0.00
+		displayFolder: Saldos Bancários
+		lineageTag: 0d67f55d-1433-40d5-884e-7136905fe1d9
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	/// Saldo atual de uma conta — usa Total quando não há filtro de banco (ex: linha Total da tabela)
+	measure 'FIN CB Saldo Atual' = ```
+			
+			IF (
+			    ISINSCOPE ( Contas[Banco] ),
+			    VAR UltimaData = CALCULATE ( MAX ( Saldos[Data] ) )
+			    RETURN CALCULATE ( SUM ( Saldos[Saldo] ), Saldos[Data] = UltimaData ),
+			    [FIN CB Saldo Total]
+			)
+			
+			```
+		formatString: R$ #,##0.00
+		displayFolder: Saldos Bancários
+		lineageTag: dcd1371b-4b43-4ba4-8d2a-0395d38321a4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Participação percentual de cada banco no total — BLANK na linha Total
+	measure 'FIN CB % Caixa' = ```
+			
+			IF (
+			    ISINSCOPE ( Contas[Banco] ),
+			    DIVIDE ( ABS ( [FIN CB Saldo Atual] ), ABS ( [FIN CB Saldo Total] ), 0 ),
+			    BLANK ()
+			)
+			
+			```
+		formatString: 0.0%
+		displayFolder: Saldos Bancários
+		lineageTag: d9836a07-1049-4a12-a87b-2b9b498f0fa2
+
+	/// SVG para coluna de Tabela — barra proporcional ao maior saldo + valor + % do total
+	/// Retorna data URI (funciona em tableEx com dataCategory ImageUrl)
+	/// Barra: proporcional ao MAIOR banco (quem tem mais = barra cheia)
+	measure 'FIN CB SVG Barra' = ```
+			
+			VAR _saldo    = [FIN CB Saldo Atual]
+			VAR _maxSaldo = MAXX ( ALL ( Contas[Banco] ), [FIN CB Saldo Atual] )
+			VAR _pctMax   = DIVIDE ( ABS ( _saldo ), ABS ( _maxSaldo ), 0 )
+			VAR _pctTotal = COALESCE ( [FIN CB % Caixa], 0 )
+			VAR _barW     = FORMAT ( MIN ( ROUND ( _pctMax * 110, 0 ), 110 ), "0" )
+			VAR _abs      = ABS ( _saldo )
+			VAR _fmt =
+			    SWITCH ( TRUE (),
+			        _abs >= 1000000, FORMAT ( _saldo / 1000000, "R$ 0.00" ) & " Mi",
+			        _abs >= 1000,    FORMAT ( _saldo / 1000,    "R$ 0.0"  ) & " K",
+			                         FORMAT ( _saldo, "R$ #,##0" )
+			    )
+			VAR _pctStr = FORMAT ( _pctTotal * 100, "0.0" ) & "%25"
+			VAR _barClr = IF ( _saldo < 0, "%23DC2626", "%2300B050" )
+			RETURN
+			    "data:image/svg+xml,"
+			    & "%3Csvg xmlns='http://www.w3.org/2000/svg' width='210' height='30'%3E"
+			    & "%3Crect x='0' y='9' width='110' height='12' rx='4' fill='%23E5E7EB'/%3E"
+			    & "%3Crect x='0' y='9' width='" & _barW & "' height='12' rx='4' fill='" & _barClr & "'/%3E"
+			    & "%3Ctext x='116' y='17' font-family='Segoe UI,Arial' font-size='11' font-weight='600' fill='%23111827'%3E" & _fmt & "%3C/text%3E"
+			    & "%3Ctext x='116' y='27' font-family='Segoe UI,Arial' font-size='9' fill='%236B7280'%3E" & _pctStr & " do total%3C/text%3E"
+			    & "%3C/svg%3E"
+			
+			```
+		displayFolder: Saldos Bancários
+		lineageTag: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+		dataCategory: ImageUrl
+
+	measure 'Texto Caixa' =
+			
+			"Representa do Caixa: " &
+			FORMAT([FIN CB % Caixa], "0%")
+		displayFolder: Saldos Bancários
+		lineageTag: d83ee6d5-8832-489b-9e18-eaace3d5123d
+
 	partition medidas_financeiro = m
 		mode: import
 		source =

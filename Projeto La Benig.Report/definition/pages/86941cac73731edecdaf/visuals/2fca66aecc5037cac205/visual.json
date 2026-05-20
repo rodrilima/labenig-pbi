@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "2fca66aecc5037cac205",
   "position": {
-    "x": 715.78947368421052,
-    "y": 202.10526315789474,
-    "z": 15000,
-    "height": 235.78947368421055,
-    "width": 549.47368421052636,
-    "tabOrder": 15000
+    "x": 715.50277117973087,
+    "y": 230.055423594616,
+    "z": 16000,
+    "height": 236.13618368962787,
+    "width": 549.29532858273956,
+    "tabOrder": 16000
   },
   "visual": {
     "visualType": "tableEx",
@@ -172,70 +172,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "fcce66ad05937e2d867e",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "calendario"
-              }
-            },
-            "Property": "Date"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "47ffcdcec2f7910001ed",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "protheus_movimentosBancarios"
-              }
-            },
-            "Property": "numero"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "abe3c4877b001d5ee8a9",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "protheus_movimentosBancarios"
-              }
-            },
-            "Property": "beneficiario"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "7dc080fbde192c9514c9",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "protheus_movimentosBancarios"
-                  }
-                },
-                "Property": "valorpn"
-              }
-            },
-            "Function": 0
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

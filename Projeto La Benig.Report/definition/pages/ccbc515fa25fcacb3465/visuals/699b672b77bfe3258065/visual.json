@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "699b672b77bfe3258065",
   "position": {
     "x": 157.21161825726142,
@@ -415,6 +415,39 @@
           ]
         },
         "howCreated": "User"
+      },
+      {
+        "name": "32144b37d275e46a0d95",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "protheus_naturezas"
+              }
+            },
+            "Property": "descricao_pai"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "20fcc5b07a3629ba1d3a",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "protheus_movimentosBancarios"
+                  }
+                },
+                "Property": "valor"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

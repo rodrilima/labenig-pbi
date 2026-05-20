@@ -1,0 +1,53 @@
+table Saldos
+	lineageTag: 8f79d3e6-bfd6-407a-9ea3-d5bfdd8b0515
+
+	column Data
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8fbd2a67-e114-4078-8b34-264377d637d0
+		summarizeBy: none
+		sourceColumn: Data
+
+		variation Variation
+			isDefault
+			relationship: ee630735-6c39-49a7-ac12-973a097498a7
+			defaultHierarchy: LocalDateTable_f3eaa16f-51d1-499e-98a0-c3054aa7afcb.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ID_Conta
+		dataType: string
+		lineageTag: de49e1b8-c248-46d7-b434-144c512fa132
+		summarizeBy: none
+		sourceColumn: ID_Conta
+
+		annotation SummarizationSetBy = Automatic
+
+	column Saldo
+		dataType: double
+		lineageTag: 6cd83638-1503-48c5-8f20-092c2cea25c5
+		summarizeBy: sum
+		sourceColumn: Saldo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Saldos = m
+		mode: import
+		source =
+				let
+				    Fonte = GoogleSheets.Contents("https://docs.google.com/spreadsheets/d/1E9d7egBLrXnIFULDyiaSm0nKrK99kt4UDUrfom8WJW4/edit?gid=786634137#gid=786634137"),
+				    Saldos_Table = Fonte{[name="Saldos",ItemKind="Table"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Saldos_Table, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"Data", type date}, {"ID_Conta", type text}, {"Saldo", type number}}),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Tipo Alterado", each ([Data] <> null))
+				in
+				    #"Linhas Filtradas"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+
