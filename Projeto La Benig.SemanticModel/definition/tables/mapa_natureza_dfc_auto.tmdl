@@ -31,268 +31,178 @@ table mapa_natureza_dfc_auto
 		isNameInferred
 		sourceColumn: [ordem]
 
-	column confianca_classificacao
-		lineageTag: 617abaad-f6b3-4285-b25f-54cf0cae73ff
-		isNameInferred
-		sourceColumn: [confianca_classificacao]
-
-	column regra_utilizada
-		lineageTag: baf14d23-0aff-40e8-a13a-28fe310ea8a7
-		isNameInferred
-		sourceColumn: [regra_utilizada]
-
 	partition mapa_natureza_dfc_auto = calculated
 		mode: import
 		source =
-				VAR BaseNatureza =
-				    DISTINCT (
-				        SELECTCOLUMNS (
-				            protheus_naturezas,
-				            "codigo_natureza", protheus_naturezas[codigo],
-				            "descricao_natureza", protheus_naturezas[descricao],
-				            "descricao_pai_natureza", protheus_naturezas[descricao_pai]
-				        )
-				    )
-				VAR Enriquecida =
-				    ADDCOLUMNS (
-				        BaseNatureza,
-				        "historico_exemplo",
-				            VAR CodNatureza = [codigo_natureza]
-				            RETURN
-				                CALCULATE (
-				                    CONCATENATEX (
-				                        TOPN (
-				                            3,
-				                            FILTER (
-				                                protheus_movimentosBancarios,
-				                                protheus_movimentosBancarios[natureza] = CodNatureza
-				                                    && NOT ISBLANK ( protheus_movimentosBancarios[historico] )
-				                            ),
-				                            protheus_movimentosBancarios[data_movimento],
-				                            DESC
-				                        ),
-				                        protheus_movimentosBancarios[historico],
-				                        " | "
-				                    )
-				                ),
-				        "tipo_lanc_exemplo",
-				            VAR CodNatureza = [codigo_natureza]
-				            RETURN
-				                CALCULATE (
-				                    CONCATENATEX (
-				                        TOPN (
-				                            2,
-				                            FILTER (
-				                                protheus_movimentosBancarios,
-				                                protheus_movimentosBancarios[natureza] = CodNatureza
-				                                    && NOT ISBLANK ( protheus_movimentosBancarios[tipo_lanc_contabil] )
-				                            ),
-				                            protheus_movimentosBancarios[data_movimento],
-				                            DESC
-				                        ),
-				                        protheus_movimentosBancarios[tipo_lanc_contabil],
-				                        " | "
-				                    )
-				                ),
-				        "conta_exemplo",
-				            VAR CodNatureza = [codigo_natureza]
-				            RETURN
-				                CALCULATE (
-				                    CONCATENATEX (
-				                        TOPN (
-				                            1,
-				                            FILTER (
-				                                protheus_movimentosBancarios,
-				                                protheus_movimentosBancarios[natureza] = CodNatureza
-				                            ),
-				                            protheus_movimentosBancarios[data_movimento],
-				                            DESC
-				                        ),
-				                        COALESCE ( protheus_movimentosBancarios[conta_debito], "" ) & " -> " & COALESCE ( protheus_movimentosBancarios[conta_credito], "" ),
-				                        ""
-				                    )
-				                ),
-				        "saldo_liquido_real_natureza",
-				            VAR CodNatureza = [codigo_natureza]
-				            RETURN
-				                CALCULATE (
-				                    SUM ( protheus_movimentosBancarios[valorpn] ),
-				                    protheus_movimentosBancarios[natureza] = CodNatureza
-				                ),
-				        "qtd_entradas",
-				            VAR CodNatureza = [codigo_natureza]
-				            RETURN
-				                CALCULATE (
-				                    COUNTROWS ( protheus_movimentosBancarios ),
-				                    protheus_movimentosBancarios[natureza] = CodNatureza,
-				                    protheus_movimentosBancarios[valorpn] > 0
-				                ),
-				        "qtd_saidas",
-				            VAR CodNatureza = [codigo_natureza]
-				            RETURN
-				                CALCULATE (
-				                    COUNTROWS ( protheus_movimentosBancarios ),
-				                    protheus_movimentosBancarios[natureza] = CodNatureza,
-				                    protheus_movimentosBancarios[valorpn] < 0
-				                )
-				    )
-				VAR ComTexto =
-				    ADDCOLUMNS (
-				        Enriquecida,
-				        "texto_base",
-				            UPPER (
-				                TRIM (
-				                    COALESCE ( [descricao_natureza], "" ) & " "
-				                        & COALESCE ( [descricao_pai_natureza], "" ) & " "
-				                        & COALESCE ( [historico_exemplo], "" ) & " "
-				                        & COALESCE ( [tipo_lanc_exemplo], "" ) & " "
-				                        & COALESCE ( [conta_exemplo], "" )
-				                )
-				            )
-				    )
-				VAR ComGrupo =
-				    ADDCOLUMNS (
-				        ComTexto,
-				        "grupo_dfc",
-				            VAR Texto = [texto_base]
-				            VAR EhTransferencia =
-				                CONTAINSSTRING ( Texto, "TRANSFER" )
-				                    || CONTAINSSTRING ( Texto, "TRANSF" )
-				                    || CONTAINSSTRING ( Texto, "TED" )
-				                    || CONTAINSSTRING ( Texto, "DOC" )
-				                    || CONTAINSSTRING ( Texto, "PIX" )
-				                    || CONTAINSSTRING ( Texto, "ENTRE CONTAS" )
-				            VAR EhFinanciamento =
-				                CONTAINSSTRING ( Texto, "EMPREST" )
-				                    || CONTAINSSTRING ( Texto, "EMPR" )
-				                    || CONTAINSSTRING ( Texto, "FINAN" )
-				                    || CONTAINSSTRING ( Texto, "JUROS" )
-				                    || CONTAINSSTRING ( Texto, "AMORTIZ" )
-				                    || CONTAINSSTRING ( Texto, "BANCO" )
-				            VAR EhInvestimento =
-				                CONTAINSSTRING ( Texto, "IMOBIL" )
-				                    || CONTAINSSTRING ( Texto, "ATIVO" )
-				                    || CONTAINSSTRING ( Texto, "EQUIP" )
-				                    || CONTAINSSTRING ( Texto, "MAQUINA" )
-				                    || CONTAINSSTRING ( Texto, "SOFTWARE" )
-				                    || CONTAINSSTRING ( Texto, "CAPEX" )
-				                    || CONTAINSSTRING ( Texto, "INVEST" )
-				            RETURN
-				                SWITCH (
-				                    TRUE (),
-				                    EhTransferencia, "Transferencias",
-				                    EhFinanciamento, "Financiamentos",
-				                    EhInvestimento, "Investimentos",
-				                    "Operacional"
-				                )
-				    )
-				VAR ComSubgrupo =
-				    ADDCOLUMNS (
-				        ComGrupo,
-				        "subgrupo_dfc",
-				            VAR Grupo = [grupo_dfc]
-				            VAR Saldo = COALESCE ( [saldo_liquido_real_natureza], 0 )
-				            VAR Texto = [texto_base]
-				            RETURN
-				                SWITCH (
-				                    TRUE (),
-				                    Grupo = "Transferencias" && Saldo >= 0, "Transferencias de Entrada",
-				                    Grupo = "Transferencias" && Saldo < 0, "Transferencias de Saida",
-				                    Grupo = "Financiamentos" && CONTAINSSTRING ( Texto, "JUROS" ), "Juros e Encargos",
-				                    Grupo = "Financiamentos" && Saldo >= 0, "Capitacoes",
-				                    Grupo = "Financiamentos" && Saldo < 0, "Amortizacoes",
-				                    Grupo = "Investimentos" && Saldo >= 0, "Desinvestimentos",
-				                    Grupo = "Investimentos" && Saldo < 0, "Aplicacoes em Ativos",
-				                    Grupo = "Operacional" && Saldo >= 0, "Entradas Operacionais",
-				                    "Saidas Operacionais"
-				                )
-				    )
-				VAR ComLinha =
-				    ADDCOLUMNS (
-				        ComSubgrupo,
-				        "linha_dfc",
-				            VAR Grupo = [grupo_dfc]
-				            VAR Texto = [texto_base]
-				            RETURN
-				                SWITCH (
-				                    TRUE (),
-				                    Grupo = "Transferencias" && CONTAINSSTRING ( Texto, "FILIAL" ), "Transferencia entre Filiais",
-				                    Grupo = "Transferencias", "Transferencia entre Contas",
-				                    Grupo = "Financiamentos" && CONTAINSSTRING ( Texto, "JUROS" ), "Juros de Financiamentos",
-				                    Grupo = "Financiamentos" && CONTAINSSTRING ( Texto, "AMORTIZ" ), "Amortizacao de Principal",
-				                    Grupo = "Financiamentos" && CONTAINSSTRING ( Texto, "EMPREST" ), "Capitacao de Emprestimos",
-				                    Grupo = "Investimentos" && CONTAINSSTRING ( Texto, "SOFTWARE" ), "Aquisicao de Software",
-				                    Grupo = "Investimentos" && CONTAINSSTRING ( Texto, "IMOBIL" ), "Aquisicao de Imobilizado",
-				                    Grupo = "Investimentos", "Outros Investimentos",
-				                    Grupo = "Operacional" && COALESCE ( [saldo_liquido_real_natureza], 0 ) >= 0, "Recebimentos Operacionais",
-				                    "Pagamentos Operacionais"
-				                )
-				    )
-				VAR ComOrdem =
-				    ADDCOLUMNS (
-				        ComLinha,
-				        "ordem",
-				            VAR Grupo = [grupo_dfc]
-				            VAR SubGrupo = [subgrupo_dfc]
-				            RETURN
-				                SWITCH (
-				                    TRUE (),
-				                    Grupo = "Operacional" && SubGrupo = "Entradas Operacionais", 110,
-				                    Grupo = "Operacional" && SubGrupo = "Saidas Operacionais", 120,
-				                    Grupo = "Investimentos" && SubGrupo = "Desinvestimentos", 210,
-				                    Grupo = "Investimentos" && SubGrupo = "Aplicacoes em Ativos", 220,
-				                    Grupo = "Financiamentos" && SubGrupo = "Capitacoes", 310,
-				                    Grupo = "Financiamentos" && SubGrupo = "Amortizacoes", 320,
-				                    Grupo = "Financiamentos" && SubGrupo = "Juros e Encargos", 330,
-				                    Grupo = "Transferencias" && SubGrupo = "Transferencias de Entrada", 410,
-				                    Grupo = "Transferencias" && SubGrupo = "Transferencias de Saida", 420,
-				                    990
-				                )
-				    )
-				VAR ComConfianca =
-				    ADDCOLUMNS (
-				        ComOrdem,
-				        "confianca_classificacao",
-				            VAR Texto = [texto_base]
-				            VAR HitsFortes =
-				                INT ( CONTAINSSTRING ( Texto, "EMPREST" ) || CONTAINSSTRING ( Texto, "FINAN" ) )
-				                    + INT ( CONTAINSSTRING ( Texto, "IMOBIL" ) || CONTAINSSTRING ( Texto, "SOFTWARE" ) || CONTAINSSTRING ( Texto, "CAPEX" ) )
-				                    + INT ( CONTAINSSTRING ( Texto, "TRANSFER" ) || CONTAINSSTRING ( Texto, "PIX" ) || CONTAINSSTRING ( Texto, "TED" ) )
-				            VAR TemMov = COALESCE ( [qtd_entradas], 0 ) + COALESCE ( [qtd_saidas], 0 )
-				            RETURN
-				                SWITCH (
-				                    TRUE (),
-				                    HitsFortes >= 1 && TemMov > 0, "Alta",
-				                    TemMov > 0, "Media",
-				                    "Baixa"
-				                )
-				    )
-				VAR FinalComRegra =
-				    ADDCOLUMNS (
-				        ComConfianca,
-				        "regra_utilizada",
-				            VAR Texto = [texto_base]
-				            RETURN
-				                SWITCH (
-				                    TRUE (),
-				                    CONTAINSSTRING ( Texto, "TRANSFER" ) || CONTAINSSTRING ( Texto, "TRANSF" ) || CONTAINSSTRING ( Texto, "PIX" ) || CONTAINSSTRING ( Texto, "TED" ), "descricao/historico contem termo de transferencia",
-				                    CONTAINSSTRING ( Texto, "EMPREST" ) || CONTAINSSTRING ( Texto, "FINAN" ) || CONTAINSSTRING ( Texto, "JUROS" ), "descricao/historico contem termo de financiamento",
-				                    CONTAINSSTRING ( Texto, "IMOBIL" ) || CONTAINSSTRING ( Texto, "ATIVO" ) || CONTAINSSTRING ( Texto, "EQUIP" ) || CONTAINSSTRING ( Texto, "SOFTWARE" ) || CONTAINSSTRING ( Texto, "CAPEX" ), "descricao/historico contem termo de investimento",
-				                    COALESCE ( [qtd_entradas], 0 ) > COALESCE ( [qtd_saidas], 0 ), "fallback por predominancia de entradas",
-				                    COALESCE ( [qtd_saidas], 0 ) >= COALESCE ( [qtd_entradas], 0 ), "fallback por predominancia de saidas",
-				                    "sem evidencias suficientes"
-				                )
-				    )
-				RETURN
-				    SELECTCOLUMNS (
-				        FinalComRegra,
-				        "codigo_natureza", [codigo_natureza],
-				        "descricao_natureza", [descricao_natureza],
-				        "grupo_dfc", [grupo_dfc],
-				        "subgrupo_dfc", [subgrupo_dfc],
-				        "linha_dfc", [linha_dfc],
-				        "ordem", [ordem],
-				        "confianca_classificacao", [confianca_classificacao],
-				        "regra_utilizada", [regra_utilizada]
-				    )
+				DATATABLE (
+				    "codigo_natureza", STRING,
+				    "descricao_natureza", STRING,
+				    "grupo_dfc", STRING,
+				    "subgrupo_dfc", STRING,
+				    "linha_dfc", STRING,
+				    "ordem", INTEGER,
+				    {
+					{ "1", "RECEITAS", "Operacionais", "Outros", "RECEITAS", 10939 },
+					{ "1.1", "RECEITA", "Operacionais", "Outros", "RECEITA", 10938 },
+					{ "101", "RECEITAS DE VENDAS", "Operacionais", "Vendas", "RECEITAS DE VENDAS", 11403 },
+					{ "101001", "RECEITAS DE REVENDA DE MERCADORIA", "Operacionais", "Vendas", "RECEITAS DE REVENDA DE MERCADORIA", 11401 },
+					{ "101002", "RECEITAS DE VENDA DA PRODUCAO", "Operacionais", "Vendas", "RECEITAS DE VENDA DA PRODUCAO", 11402 },
+					{ "101003", "RECEITAS NAO OPERACIONAIS", "Operacionais", "Vendas", "RECEITAS NAO OPERACIONAIS", 11404 },
+					{ "102", "RECEITAS DE EMPRESTIMOS", "Operacionais", "Financiamento", "RECEITAS DE EMPRESTIMOS", 10202 },
+					{ "102001", "EMPRESTIMOS CONTRAIDOS A BANCOS", "Financiamentos", "Outros", "EMPRESTIMOS CONTRAIDOS A BANCOS", 30202 },
+					{ "102002", "EMPRESTIMOS CONTRAIDOS A TERCEIROS", "Operacionais", "Serviços de terceiros", "EMPRESTIMOS CONTRAIDOS A TERCEIROS", 11205 },
+					{ "102003", "EMPRESTIMOS CONTRAIDOS DE SOCIO", "Operacionais", "Financiamento", "EMPRESTIMOS CONTRAIDOS DE SOCIO", 10201 },
+					{ "103", "RECEITAS FINANCEIRAS", "Operacionais", "Receitas Financeiras", "RECEITAS FINANCEIRAS", 11001 },
+					{ "103001", "JUROS RECEBIDOS", "Financiamentos", "Despesas Financeiras", "JUROS RECEBIDOS", 30102 },
+					{ "103002", "RENDIMENTO APLICACAO FINANCEIRA", "Operacionais", "Receitas Financeiras", "RENDIMENTO APLICACAO FINANCEIRA", 11002 },
+					{ "103003", "RESGATE APLICACAO FINANCEIRA", "Operacionais", "Receitas Financeiras", "RESGATE APLICACAO FINANCEIRA", 11003 },
+					{ "104", "RECEITAS DE TRANSFERENCIAS", "Transferências", "Transferência entre contas", "RECEITAS DE TRANSFERENCIAS", 40103 },
+					{ "104001", "ENTRADA DE TROCO NO CAIXA", "Operacionais", "Outros", "ENTRADA DE TROCO NO CAIXA", 10924 },
+					{ "104002", "SANGRIA DO CAIXA", "Operacionais", "Outros", "SANGRIA DO CAIXA", 10942 },
+					{ "104003", "ENTRADA POR TRANSFERÊNCIA ENTRE CONTAS", "Transferências", "Transferência entre contas", "ENTRADA POR TRANSFERÊNCIA ENTRE CONTAS", 40102 },
+					{ "104004", "APORTE FINANCEIRO", "Operacionais", "Outros", "APORTE FINANCEIRO", 10902 },
+					{ "105", "OUTRAS RECEITAS", "Operacionais", "Outras Receitas", "OUTRAS RECEITAS", 10807 },
+					{ "105001", "ADIANTAMENTO DE CLIENTES", "Operacionais", "Outras Receitas", "ADIANTAMENTO DE CLIENTES", 10801 },
+					{ "105002", "CONTRATO DE MUTUO", "Operacionais", "Outras Receitas", "CONTRATO DE MUTUO", 10802 },
+					{ "105003", "DEVOLUCAO DE ADIANTAMENTO DE VIAGENS", "Operacionais", "Outras Receitas", "DEVOLUCAO DE ADIANTAMENTO DE VIAGENS", 10804 },
+					{ "105004", "DEVOLUCAO DE FORNECEDOR", "Operacionais", "Outras Receitas", "DEVOLUCAO DE FORNECEDOR", 10805 },
+					{ "105005", "ESTORNOS A CREDITO", "Operacionais", "Outras Receitas", "ESTORNOS A CREDITO", 10806 },
+					{ "105006", "RECEITA VENDA DE SUCATA", "Operacionais", "Outras Receitas", "RECEITA VENDA DE SUCATA", 10808 },
+					{ "105007", "DEVOLUCAO CLIENTE", "Operacionais", "Outras Receitas", "DEVOLUCAO CLIENTE", 10803 },
+					{ "2", "DESPESAS", "Operacionais", "Outros", "DESPESAS", 10913 },
+					{ "201", "DESPESAS COM PESSOAL", "Operacionais", "Salários e encargos", "DESPESAS COM PESSOAL", 11110 },
+					{ "201001", "13. SALARIO", "Operacionais", "Salários e encargos", "13. SALARIO", 11101 },
+					{ "201002", "ADIANTAMENTO 13. SALARIO", "Operacionais", "Salários e encargos", "ADIANTAMENTO 13. SALARIO", 11102 },
+					{ "201003", "ADIANTAMENTO SALARIAL", "Operacionais", "Salários e encargos", "ADIANTAMENTO SALARIAL", 11103 },
+					{ "201004", "AJUDA DE CUSTO", "Operacionais", "Salários e encargos", "AJUDA DE CUSTO", 11104 },
+					{ "201005", "ALIMENTACAO DO TRABALHADOR", "Operacionais", "Salários e encargos", "ALIMENTACAO DO TRABALHADOR", 11105 },
+					{ "201006", "COMISSOES COLABORADORES", "Operacionais", "Salários e encargos", "COMISSOES COLABORADORES", 11107 },
+					{ "201007", "DISTRIBUICAO DE LUCROS", "Operacionais", "Salários e encargos", "DISTRIBUICAO DE LUCROS", 11111 },
+					{ "201008", "EMPRESTIMO CONSIGNADO", "Operacionais", "Salários e encargos", "EMPRESTIMO CONSIGNADO", 11112 },
+					{ "201009", "ESTAGIO REMUNERADO", "Operacionais", "Salários e encargos", "ESTAGIO REMUNERADO", 11113 },
+					{ "201010", "FERIAS", "Operacionais", "Salários e encargos", "FERIAS", 11114 },
+					{ "201011", "FGTS", "Operacionais", "Salários e encargos", "FGTS", 11115 },
+					{ "201012", "FGTS RESCISORIO", "Operacionais", "Salários e encargos", "FGTS RESCISORIO", 11116 },
+					{ "201013", "INDENIZACAO TRABALHISTA /  JUDICIAL", "Operacionais", "Salários e encargos", "INDENIZACAO TRABALHISTA /  JUDICIAL", 11117 },
+					{ "201014", "INSS S/FOLHA", "Operacionais", "Salários e encargos", "INSS S/FOLHA", 11118 },
+					{ "201015", "IRRF S/FOLHA", "Operacionais", "Salários e encargos", "IRRF S/FOLHA", 11119 },
+					{ "201016", "ORDENADOS E SALARIOS", "Operacionais", "Salários e encargos", "ORDENADOS E SALARIOS", 11121 },
+					{ "201017", "PENSAO JUDICIAL", "Operacionais", "Salários e encargos", "PENSAO JUDICIAL", 11122 },
+					{ "201018", "PRO-LABORE", "Operacionais", "Salários e encargos", "PRO-LABORE", 11123 },
+					{ "201019", "RECISOES TRABALHISTAS", "Operacionais", "Salários e encargos", "RECISOES TRABALHISTAS", 11124 },
+					{ "201020", "SEGURO DE VIDA EM GRUPO", "Operacionais", "Salários e encargos", "SEGURO DE VIDA EM GRUPO", 11125 },
+					{ "201021", "VALE ALIMENTACAO", "Operacionais", "Salários e encargos", "VALE ALIMENTACAO", 11126 },
+					{ "201022", "VALE TRANSPORTE", "Operacionais", "Salários e encargos", "VALE TRANSPORTE", 11127 },
+					{ "201023", "CONTRIBUIÇAO SINDICAL", "Operacionais", "Salários e encargos", "CONTRIBUIÇAO SINDICAL", 11108 },
+					{ "201024", "MEDICINA DO TRABALHO", "Operacionais", "Salários e encargos", "MEDICINA DO TRABALHO", 11120 },
+					{ "201025", "ASSISTENCIA MÉDICA/ODONTOLOGICA", "Operacionais", "Salários e encargos", "ASSISTENCIA MÉDICA/ODONTOLOGICA", 11106 },
+					{ "201026", "DESPESAS COM ESTAGIARIOS", "Operacionais", "Salários e encargos", "DESPESAS COM ESTAGIARIOS", 11109 },
+					{ "202", "DESPESAS ADMINISTRATIVAS", "Operacionais", "Outros", "DESPESAS ADMINISTRATIVAS", 10914 },
+					{ "202001", "AGUA", "Operacionais", "Ocupação e utilidades", "AGUA", 10701 },
+					{ "202002", "ALUGUEIS DE IMOVEIS", "Operacionais", "Ocupação e utilidades", "ALUGUEIS DE IMOVEIS", 10702 },
+					{ "202003", "ALUGUEIS DE MAQUINAS E EQUIPAMENTOS", "Operacionais", "Ocupação e utilidades", "ALUGUEIS DE MAQUINAS E EQUIPAMENTOS", 10703 },
+					{ "202006", "COMBUSTIVEIS E LUBRIFICANTES", "Operacionais", "Materiais", "COMBUSTIVEIS E LUBRIFICANTES", 10501 },
+					{ "202007", "CONSERVACAO E MANUTECAO DE IMOVEIS", "Operacionais", "Materiais", "CONSERVACAO E MANUTECAO DE IMOVEIS", 10502 },
+					{ "202008", "CONSULTA SPC / SERASA / CDL", "Operacionais", "Outros", "CONSULTA SPC / SERASA / CDL", 10907 },
+					{ "202009", "CORREIOS E MALOTES", "Operacionais", "Fretes e transportes", "CORREIOS E MALOTES", 10301 },
+					{ "202010", "CURSOS E TREINAMENTOS", "Operacionais", "Serviços de terceiros", "CURSOS E TREINAMENTOS", 11202 },
+					{ "202011", "DESPESA COM ALIMENTACAO", "Operacionais", "Outros", "DESPESA COM ALIMENTACAO", 10912 },
+					{ "202012", "DESPESA COM VIAGENS", "Operacionais", "Transportes e Viagens", "DESPESA COM VIAGENS", 11301 },
+					{ "202013", "DESPESAS COM  CARTORIOS E JUDICIAIS", "Operacionais", "Outros", "DESPESAS COM  CARTORIOS E JUDICIAIS", 10916 },
+					{ "202014", "ENERGIA ELETRICA", "Operacionais", "Ocupação e utilidades", "ENERGIA ELETRICA", 10704 },
+					{ "202015", "FARDAMENTO / EPI", "Operacionais", "Materiais", "FARDAMENTO / EPI", 10503 },
+					{ "202017", "FRETES E CARRETOS", "Operacionais", "Fretes e transportes", "FRETES E CARRETOS", 10304 },
+					{ "202018", "INTERNET", "Operacionais", "Ocupação e utilidades", "INTERNET", 10705 },
+					{ "202019", "JORNAIS REVISTAS E LIVROS", "Operacionais", "Outros", "JORNAIS REVISTAS E LIVROS", 10928 },
+					{ "202020", "LOCACAO DE VEICULOS", "Operacionais", "Ocupação e utilidades", "LOCACAO DE VEICULOS", 10706 },
+					{ "202021", "MATERIAL DE EXPEDIENTE", "Operacionais", "Materiais", "MATERIAL DE EXPEDIENTE", 10507 },
+					{ "202022", "MATERIAL DE LIMPEZA", "Operacionais", "Materiais", "MATERIAL DE LIMPEZA", 10508 },
+					{ "202023", "MATERIAL DE USO E CONSUMO", "Operacionais", "Materiais", "MATERIAL DE USO E CONSUMO", 10509 },
+					{ "202024", "TELEFONE FIXO", "Operacionais", "Ocupação e utilidades", "TELEFONE FIXO", 10707 },
+					{ "202025", "TELEFONE MOVEL", "Operacionais", "Ocupação e utilidades", "TELEFONE MOVEL", 10708 },
+					{ "202026", "USO E LICENCA DE SOFTWARE", "Operacionais", "Serviços de terceiros", "USO E LICENCA DE SOFTWARE", 11214 },
+					{ "202027", "BENS DE PEQUENO VALOR", "Operacionais", "Outros", "BENS DE PEQUENO VALOR", 10903 },
+					{ "202028", "FRETE VENDA DE MERCADORIA", "Operacionais", "Fretes e transportes", "FRETE VENDA DE MERCADORIA", 10303 },
+					{ "202029", "FRETE COMPRA DE MERCADORIA", "Operacionais", "Fretes e transportes", "FRETE COMPRA DE MERCADORIA", 10302 },
+					{ "202030", "ANTECIPAÇÃO DE TÍTULOS DE CLIENTES", "Operacionais", "Outros", "ANTECIPAÇÃO DE TÍTULOS DE CLIENTES", 10901 },
+					{ "203", "DESPESAS OPERACIONAIS", "Operacionais", "Outros", "DESPESAS OPERACIONAIS", 10919 },
+					{ "203001", "INSUMOS DE PRODUCAO", "Operacionais", "Materiais", "INSUMOS DE PRODUCAO", 10504 },
+					{ "203002", "MATERIA PRIMA", "Operacionais", "Materiais", "MATERIA PRIMA", 10505 },
+					{ "203003", "MATERIAL DE EMBALAGEM", "Operacionais", "Materiais", "MATERIAL DE EMBALAGEM", 10506 },
+					{ "203004", "BONIFICACAO, BRINDES E DOACOES", "Operacionais", "Material de Distribuição Gratuita", "BONIFICACAO, BRINDES E DOACOES", 10601 },
+					{ "203005", "DESPESAS DE COMISSAO DE VENDAS", "Operacionais", "Comissões de Vendas", "DESPESAS DE COMISSAO DE VENDAS", 10101 },
+					{ "203006", "DESPESAS COM MARKETPLACE", "Operacionais", "Serviços de terceiros", "DESPESAS COM MARKETPLACE", 11204 },
+					{ "203007", "TRAFEGO PAGO ( FACEBOOK E INSTAGRAM )", "Operacionais", "Serviços de terceiros", "TRAFEGO PAGO ( FACEBOOK E INSTAGRAM )", 11213 },
+					{ "203008", "DESPESAS COM INFLUENCER E PARCEIROS", "Operacionais", "Serviços de terceiros", "DESPESAS COM INFLUENCER E PARCEIROS", 11203 },
+					{ "203009", "FEIRA E EVENTOS", "Operacionais", "Outros", "FEIRA E EVENTOS", 10925 },
+					{ "203010", "MERCADORIA PARA REVENDA", "Operacionais", "Outros", "MERCADORIA PARA REVENDA", 10929 },
+					{ "204", "SERVICOS TOMADOS", "Operacionais", "Serviços de terceiros", "SERVICOS TOMADOS", 11210 },
+					{ "204001", "SERVICOS DE ASSESSORIA CONTABIL", "Operacionais", "Serviços de terceiros", "SERVICOS DE ASSESSORIA CONTABIL", 11206 },
+					{ "204002", "SERVICOS DE MANUTENCAO INDUSTRIAL", "Operacionais", "Serviços de terceiros", "SERVICOS DE MANUTENCAO INDUSTRIAL", 11207 },
+					{ "204003", "SERVICOS DE MANUTENCAO PATRIMONIAL", "Operacionais", "Serviços de terceiros", "SERVICOS DE MANUTENCAO PATRIMONIAL", 11208 },
+					{ "204004", "SERVICOS DE MANUTENCAO VEICULOS", "Operacionais", "Serviços de terceiros", "SERVICOS DE MANUTENCAO VEICULOS", 11209 },
+					{ "204005", "SERVIÇOS DE LIMPEZA E CONSERVAÇÃO", "Operacionais", "Serviços de terceiros", "SERVIÇOS DE LIMPEZA E CONSERVAÇÃO", 11211 },
+					{ "204006", "ASSESSORIA JURIDICA", "Operacionais", "Serviços de terceiros", "ASSESSORIA JURIDICA", 11201 },
+					{ "204007", "SERVIÇOS PRESTAÇÕES DE TERCEIROS - PJ", "Operacionais", "Serviços de terceiros", "SERVIÇOS PRESTAÇÕES DE TERCEIROS - PJ", 11212 },
+					{ "205", "TRIBUTOS FEDERAIS", "Operacionais", "Impostos e taxas", "TRIBUTOS FEDERAIS", 10417 },
+					{ "205001", "ICMS", "Operacionais", "Impostos e taxas", "ICMS", 10403 },
+					{ "205002", "IPVA", "Operacionais", "Impostos e taxas", "IPVA", 10409 },
+					{ "205003", "INSS", "Operacionais", "Impostos e taxas", "INSS", 10406 },
+					{ "205004", "LICENCIAMENTO E SEGURO", "Operacionais", "Impostos e taxas", "LICENCIAMENTO E SEGURO", 10411 },
+					{ "205005", "TAXA DE LICENCA", "Operacionais", "Impostos e taxas", "TAXA DE LICENCA", 10413 },
+					{ "205006", "IOF", "Operacionais", "Impostos e taxas", "IOF", 10407 },
+					{ "205020", "CSLL", "Operacionais", "Impostos e taxas", "CSLL", 10402 },
+					{ "205040", "IRRJ", "Operacionais", "Impostos e taxas", "IRRJ", 10410 },
+					{ "206", "TRIBUTOS ESTADUAIS", "Operacionais", "Impostos e taxas", "TRIBUTOS ESTADUAIS", 10416 },
+					{ "207", "TRIBUTOS MUNICIPAIS", "Operacionais", "Impostos e taxas", "TRIBUTOS MUNICIPAIS", 10418 },
+					{ "207001", "IPTU", "Operacionais", "Impostos e taxas", "IPTU", 10408 },
+					{ "207003", "TAXA JUNTA COMERCIAL", "Operacionais", "Impostos e taxas", "TAXA JUNTA COMERCIAL", 10414 },
+					{ "207004", "TAXAS MUNICIPAIS", "Operacionais", "Impostos e taxas", "TAXAS MUNICIPAIS", 10415 },
+					{ "208", "EMPRESTIMOS / FINANCIAMENTOS", "Financiamentos", "Outros", "EMPRESTIMOS / FINANCIAMENTOS", 30201 },
+					{ "208001", "CONTRATO DE MUTUO", "Operacionais", "Outros", "CONTRATO DE MUTUO", 10908 },
+					{ "208002", "FINANCIAMENTO CAPITAL DE GIRO", "Financiamentos", "Outros", "FINANCIAMENTO CAPITAL DE GIRO", 30203 },
+					{ "208003", "JUROS / DESPESAS BANCARIAS", "Financiamentos", "Despesas Financeiras", "JUROS / DESPESAS BANCARIAS", 30101 },
+					{ "208004", "JUROS SOB DUPLICATAS DESCONTADAS", "Financiamentos", "Outros", "JUROS SOB DUPLICATAS DESCONTADAS", 30204 },
+					{ "208005", "JUROS SOB FINANCIAMENTO", "Financiamentos", "Outros", "JUROS SOB FINANCIAMENTO", 30205 },
+					{ "208006", "PAGAMENTO DE EMPRESTIMOS", "Operacionais", "Outros", "PAGAMENTO DE EMPRESTIMOS", 10934 },
+					{ "208007", "VARIACAO CAMBIAL", "Operacionais", "Outros", "VARIACAO CAMBIAL", 10945 },
+					{ "208008", "EMPRESTIMO A SOCIO", "Operacionais", "Outros", "EMPRESTIMO A SOCIO", 10923 },
+					{ "209", "DESPESAS NAO DEDUTIVEIS", "Operacionais", "Outros", "DESPESAS NAO DEDUTIVEIS", 10918 },
+					{ "209001", "DIÁRIAS", "Operacionais", "Outros", "DIÁRIAS", 10922 },
+					{ "209002", "REEMBOLSO CAIXINHA", "Operacionais", "Outros", "REEMBOLSO CAIXINHA", 10940 },
+					{ "209003", "DESPESAS DIVERSAS NÃO DEDUTIVEIS", "Operacionais", "Outros", "DESPESAS DIVERSAS NÃO DEDUTIVEIS", 10917 },
+					{ "210", "DESPESAS DE TRANSFERÊNCIAS", "Transferências", "Transferência entre contas", "DESPESAS DE TRANSFERÊNCIAS", 40101 },
+					{ "210001", "SAÍDA POR TRANSFERÊNCIA ENTRE CONTAS", "Transferências", "Transferência entre contas", "SAÍDA POR TRANSFERÊNCIA ENTRE CONTAS", 40104 },
+					{ "211", "IMOBILIZADO", "Operacionais", "Outros", "IMOBILIZADO", 10927 },
+					{ "2110001", "MAQUINA E EQUIPAMENTOS", "Investimentos", "Máquinas e Equipamentos", "MAQUINA E EQUIPAMENTOS", 20201 },
+					{ "2110002", "COMPUTADORES E ACESSÓRIOS", "Investimentos", "Equipamentos de Informática", "COMPUTADORES E ACESSÓRIOS", 20101 },
+					{ "2110003", "VEICULOS", "Operacionais", "Outros", "VEICULOS", 10946 },
+					{ "CARTAO", "CARTAO", "Operacionais", "Outros", "CARTAO", 10904 },
+					{ "CHEQUE", "CHEQUE", "Operacionais", "Outros", "CHEQUE", 10905 },
+					{ "COFINS", "COFINS", "Operacionais", "Impostos e taxas", "COFINS", 10401 },
+					{ "COMISSOES", "COMISSOES DE VENDEDORES", "Operacionais", "Outros", "COMISSOES DE VENDEDORES", 10906 },
+					{ "CONVENIO", "CONVENIO", "Operacionais", "Outros", "CONVENIO", 10910 },
+					{ "CREDITO", "CREDITO", "Operacionais", "Outros", "CREDITO", 10911 },
+					{ "CSLL", "CONTRIB.S/LUCRO LIQUIDO", "Operacionais", "Outros", "CONTRIB.S/LUCRO LIQUIDO", 10909 },
+					{ "DESP BANC", "DESPESAS BANCÁRIAS - CNAB", "Operacionais", "Outros", "DESPESAS BANCÁRIAS - CNAB", 10915 },
+					{ "DEV./TROCA", "DEV./TROCA", "Operacionais", "Outros", "DEV./TROCA", 10920 },
+					{ "DINHEIRO", "DINHEIRO", "Operacionais", "Outros", "DINHEIRO", 10921 },
+					{ "FINAN", "FINAN", "Operacionais", "Outros", "FINAN", 10926 },
+					{ "INSS", "RETENCAO P/ SEGURIDADE SOCIAL", "Operacionais", "Outros", "RETENCAO P/ SEGURIDADE SOCIAL", 10941 },
+					{ "IRF", "IMPOSTO RENDA RETIDO NA FONTE", "Operacionais", "Impostos e taxas", "IMPOSTO RENDA RETIDO NA FONTE", 10404 },
+					{ "ISS", "IMPOSTO SOBRE SERVICOS", "Operacionais", "Impostos e taxas", "IMPOSTO SOBRE SERVICOS", 10405 },
+					{ "NATMOVP", "MOVIMENTO BANCÁRIO PAGAR", "Operacionais", "Outros", "MOVIMENTO BANCÁRIO PAGAR", 10930 },
+					{ "NATMOVR", "MOVIMENTO BANCÁRIO RECEBER", "Operacionais", "Outros", "MOVIMENTO BANCÁRIO RECEBER", 10931 },
+					{ "NOTA DE CR", "NOTA DE CREDITO", "Operacionais", "Outros", "NOTA DE CREDITO", 10932 },
+					{ "OUTROS", "OUTROS", "Operacionais", "Outros", "OUTROS", 10933 },
+					{ "PAGDIGITAL", "PAGAMENTO DIGITAL", "Operacionais", "Outros", "PAGAMENTO DIGITAL", 10935 },
+					{ "PIS", "PIS", "Operacionais", "Impostos e taxas", "PIS", 10412 },
+					{ "PIX", "PIX", "Operacionais", "Outros", "PIX", 10936 },
+					{ "RECEBIMENT", "RECEBIMENTO", "Operacionais", "Outros", "RECEBIMENTO", 10937 },
+					{ "SANGRIA", "SANGRIA DO CAIXA", "Operacionais", "Outros", "SANGRIA DO CAIXA", 10942 },
+					{ "TEF", "TEF", "Operacionais", "Outros", "TEF", 10943 },
+					{ "TROCO", "ENTRADA DE TROCO NO CAIXA", "Operacionais", "Outros", "ENTRADA DE TROCO NO CAIXA", 10924 },
+					{ "VALE", "VALE", "Operacionais", "Outros", "VALE", 10944 }
+				    }
+				)
 

@@ -37,14 +37,15 @@ table _guia_nomenclatura_paginas
 				        [modulo = "Financeiro", pagina = "FIN - Contas a Receber", ordem = 3],
 				        [modulo = "Financeiro", pagina = "FIN - Contas a Pagar", ordem = 4],
 				        [modulo = "Financeiro", pagina = "FIN - Resultado Operacional", ordem = 5],
-				        [modulo = "Vendas", pagina = "VEN - Atacado Visão Geral", ordem = 6],
-				        [modulo = "Vendas", pagina = "VEN - Atacado Mapa Geográfico", ordem = 7],
-				        [modulo = "Vendas", pagina = "VEN - E-commerce Performance", ordem = 8],
-				        [modulo = "Vendas", pagina = "VEN - E-commerce Base Clientes", ordem = 9],
-				        [modulo = "Logística", pagina = "LOG - Pedidos", ordem = 10],
-				        [modulo = "Logística", pagina = "LOG - SLAs", ordem = 11],
-				        [modulo = "SAC", pagina = "SAC - Atendimento", ordem = 12],
-				        [modulo = "Visão Executiva", pagina = "Visão Executiva", ordem = 13]
+				        [modulo = "Financeiro", pagina = "FIN - DFC", ordem = 6],
+				        [modulo = "Vendas", pagina = "VEN - Atacado Visão Geral", ordem = 7],
+				        [modulo = "Vendas", pagina = "VEN - Atacado Mapa Geográfico", ordem = 8],
+				        [modulo = "Vendas", pagina = "VEN - E-commerce Performance", ordem = 9],
+				        [modulo = "Vendas", pagina = "VEN - E-commerce Base Clientes", ordem = 10],
+				        [modulo = "Logística", pagina = "LOG - Pedidos", ordem = 11],
+				        [modulo = "Logística", pagina = "LOG - SLAs", ordem = 12],
+				        [modulo = "SAC", pagina = "SAC - Atendimento", ordem = 13],
+				        [modulo = "Visão Executiva", pagina = "Visão Executiva", ordem = 14]
 				    })
 				in
 				    Fonte

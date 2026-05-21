@@ -65,7 +65,8 @@ table navegacao_submodulos
 				        [modulo_id = "Financeiro", ordem = 2, submodulo_nome = "Contas a Receber", pagina_destino = "FIN - Contas a Receber"],
 				        [modulo_id = "Financeiro", ordem = 3, submodulo_nome = "Contas a Pagar", pagina_destino = "FIN - Contas a Pagar"],
 				        [modulo_id = "Financeiro", ordem = 4, submodulo_nome = "Resultado Operacional", pagina_destino = "FIN - Resultado Operacional"],
-				        
+				        [modulo_id = "Financeiro", ordem = 5, submodulo_nome = "DFC", pagina_destino = "FIN - DFC"],
+				
 				        // Vendas
 				        [modulo_id = "Vendas", ordem = 1, submodulo_nome = "Atacado - Visão Geral", pagina_destino = "VEN - Atacado Visão Geral"],
 				        [modulo_id = "Vendas", ordem = 2, submodulo_nome = "Atacado - Mapa", pagina_destino = "VEN - Atacado Mapa Geográfico"],

@@ -932,11 +932,26 @@ table medidas_financeiro
 		displayFolder: DFC Auto
 		lineageTag: 91206416-690e-420b-9593-cba1281a540b
 
-	measure 'DFC Total Linha' = [DFC Valor Real]
+	/// Valor da linha no DFC. Realiza por mês: meses passados/atual = Real (movimentosBancarios), meses futuros = Projetado (projecao_caixa). SUMX por ano_mes garante total correto em períodos mistos.
+	measure 'DFC Total Linha' =
+			VAR HojePrimeiroDia = DATE ( YEAR ( TODAY() ), MONTH ( TODAY() ), 1 )
+			RETURN
+			    SUMX (
+			        VALUES ( calendario[ano_mes_ordenacao] ),
+			        VAR PrimeiroDiaMes =
+			            CALCULATE ( MIN ( calendario[Date] ) )
+			        RETURN
+			            IF (
+			                PrimeiroDiaMes < HojePrimeiroDia,
+			                [DFC Valor Real],
+			                [DFC Valor Projetado]
+			            )
+			    )
 		formatString: R$ #,##0.00
 		displayFolder: DFC Auto
 		lineageTag: 9deb16db-8b29-45ee-a229-f061657e9d34
 
+	/// Subtotal por grupo/subgrupo. Soma DFC Total Linha por linha do contexto.
 	measure 'DFC Subtotal' =
 			IF (
 			    ISINSCOPE ( dim_dfc_linhas[linha] ),
@@ -947,19 +962,28 @@ table medidas_financeiro
 		displayFolder: DFC Auto
 		lineageTag: d23d121f-0182-4fbe-b304-224bf4669ede
 
-	measure 'DFC Fluxo Líquido' = CALCULATE ( [DFC Valor Real], REMOVEFILTERS ( dim_dfc_linhas ) )
+	/// Fluxo líquido do período, ignorando filtros de linha DFC. Real+Projetado por mês.
+	measure 'DFC Fluxo Líquido' = CALCULATE ( [DFC Total Linha], REMOVEFILTERS ( dim_dfc_linhas ) )
 		formatString: R$ #,##0.00
 		displayFolder: DFC Auto
 		lineageTag: 1f610723-94f1-41f3-a41e-d4d42f205ffb
 
+	/// Saldo inicial do período = Saldo bancário atual - Fluxo realizado de DataInicial até hoje. Anchored em FIN CB Saldo Total.
 	measure 'DFC Saldo Inicial' =
 			VAR DataInicial = MIN ( calendario[Date] )
-			RETURN
+			VAR SaldoHoje = [FIN CB Saldo Total]
+			VAR FluxoRealizadoDeInicialAteHoje =
 			    CALCULATE (
 			        SUM ( protheus_movimentosBancarios[valorpn] ),
 			        REMOVEFILTERS ( dim_dfc_linhas ),
-			        FILTER ( ALL ( calendario[Date] ), calendario[Date] < DataInicial )
+			        FILTER (
+			            ALL ( calendario[Date] ),
+			            calendario[Date] >= DataInicial
+			                && calendario[Date] <= TODAY()
+			        )
 			    )
+			RETURN
+			    SaldoHoje - FluxoRealizadoDeInicialAteHoje
 		formatString: R$ #,##0.00
 		displayFolder: DFC Auto
 		lineageTag: 2e51e292-d700-43e1-bf84-39399f9e182c
@@ -1317,6 +1341,81 @@ table medidas_financeiro
 		lineageTag: e1f2a3b4-c5d6-7e8f-9a0b-c1d2e3f4a5b6
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Saldo acumulado mês a mês = Saldo Inicial + soma do fluxo líquido até o mês corrente do contexto.
+	measure 'DFC Saldo Acumulado' =
+			[DFC Saldo Inicial]
+			    + CALCULATE (
+			        [DFC Fluxo Líquido],
+			        FILTER (
+			            ALLSELECTED ( calendario[Date] ),
+			            calendario[Date] <= MAX ( calendario[Date] )
+			        )
+			    )
+		formatString: R$ #,##0.00
+		displayFolder: DFC Auto
+		lineageTag: 4ef519a3-1c0e-4d2f-9a47-b6c45f3d2e10
+
+	/// Indica se o mês do contexto é Realizado (passado/atual) ou Projetado (futuro). Útil para conditional formatting.
+	measure 'DFC Indicador Tipo' =
+			VAR HojePrimeiroDia = DATE ( YEAR ( TODAY() ), MONTH ( TODAY() ), 1 )
+			VAR MesContexto = MIN ( calendario[Date] )
+			RETURN
+			    IF ( MesContexto < HojePrimeiroDia, "Real", "Projetado" )
+		displayFolder: DFC Auto
+		lineageTag: 7af820b3-9d2e-4521-a839-5e3b1c2f4d20
+
+	/// Total de entradas (valorpn > 0) do DFC. Real+Projetado por mês.
+	measure 'DFC Entradas' =
+			VAR HojePrimeiroDia = DATE ( YEAR ( TODAY() ), MONTH ( TODAY() ), 1 )
+			RETURN
+			    SUMX (
+			        VALUES ( calendario[ano_mes_ordenacao] ),
+			        VAR PrimeiroDiaMes = CALCULATE ( MIN ( calendario[Date] ) )
+			        RETURN
+			            IF (
+			                PrimeiroDiaMes < HojePrimeiroDia,
+			                CALCULATE (
+			                    SUM ( protheus_movimentosBancarios[valorpn] ),
+			                    protheus_movimentosBancarios[valorpn] > 0,
+			                    REMOVEFILTERS ( dim_dfc_linhas )
+			                ),
+			                CALCULATE (
+			                    SUM ( projecao_caixa[valorpn] ),
+			                    projecao_caixa[valorpn] > 0,
+			                    REMOVEFILTERS ( dim_dfc_linhas )
+			                )
+			            )
+			    )
+		formatString: R$ #,##0.00
+		displayFolder: DFC Auto
+		lineageTag: 8bc931c4-ae3f-4632-b94a-6f4c2d3e5f31
+
+	/// Total de saídas (valorpn < 0) do DFC. Real+Projetado por mês.
+	measure 'DFC Saídas' =
+			VAR HojePrimeiroDia = DATE ( YEAR ( TODAY() ), MONTH ( TODAY() ), 1 )
+			RETURN
+			    SUMX (
+			        VALUES ( calendario[ano_mes_ordenacao] ),
+			        VAR PrimeiroDiaMes = CALCULATE ( MIN ( calendario[Date] ) )
+			        RETURN
+			            IF (
+			                PrimeiroDiaMes < HojePrimeiroDia,
+			                CALCULATE (
+			                    SUM ( protheus_movimentosBancarios[valorpn] ),
+			                    protheus_movimentosBancarios[valorpn] < 0,
+			                    REMOVEFILTERS ( dim_dfc_linhas )
+			                ),
+			                CALCULATE (
+			                    SUM ( projecao_caixa[valorpn] ),
+			                    projecao_caixa[valorpn] < 0,
+			                    REMOVEFILTERS ( dim_dfc_linhas )
+			                )
+			            )
+			    )
+		formatString: R$ #,##0.00
+		displayFolder: DFC Auto
+		lineageTag: 9cda42d5-bf40-4743-ca5b-7f5d3e4f6042
 
 	partition medidas_financeiro = m
 		mode: import

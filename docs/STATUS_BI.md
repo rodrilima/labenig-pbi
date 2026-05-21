@@ -26,7 +26,7 @@ Documento de acompanhamento da construção do relatório Power BI da La Benig. 
 
 - Apenas visuais que **apresentam ou filtram dados** estão listados. Botões de navegação, imagens, formas e caixas de texto foram omitidos para manter o documento focado.
 - A coluna **Tabelas/Medidas** lista as entidades referenciadas pelo visual. `medidas_financeiro` é uma tabela apenas de medidas — herda a origem das tabelas que ela referencia internamente.
-- Um visual é marcado ✅ na coluna **Fonte** quando todas as suas tabelas-base (excluindo `medidas_financeiro`, `calendario` e outras tabelas DAX) são produção. `protheus_filiais` é considerada produção mesmo sendo hardcoded — é uma decisão de design aceita.
+- Um visual é marcado ✅ na coluna **Fonte** quando todas as suas tabelas-base (excluindo `medidas_financeiro`, `calendario` e outras tabelas DAX) são produção. `protheus_filiais` é considerada produção mesmo sendo hardcoded — é uma decisão de design aceita. `Contas` e `Saldos`, carregadas de Google Sheets oficial da operação, também são consideradas produção.
 - As três colunas de status são **independentes**: um visual pode estar em BigQuery (✅ Fonte) e ainda assim aguardar ambas as validações (❌ Validação Visual, ❌ Validação Dados).
 
 ---
@@ -35,14 +35,16 @@ Documento de acompanhamento da construção do relatório Power BI da La Benig. 
 
 | Indicador | Valor |
 |---|---|
-| Páginas oficiais entregues | **13** de 13 |
-| Visuais de dados rastreados | **127** |
-| Visuais com fonte BigQuery (produção) | **82 (65%)** |
-| Visuais com validação visual concluída | **52 (41%)** — todo o módulo Financeiro |
+| Páginas oficiais entregues | **14** de 14 |
+| Visuais de dados rastreados | **132** |
+| Visuais com fonte BigQuery (produção) | **82 (62%)** |
+| Visuais com fonte Google Sheets (produção) | **5 (4%)** — toda a página FIN - Contas Bancárias |
+| Visuais com validação visual concluída | **52 (39%)** — todo o módulo Financeiro, exceto Contas Bancárias |
 | Visuais com validação de dados concluída | **0 (0%)** — a preencher |
-| Páginas **100% BigQuery** | **4** — todas as do módulo Financeiro |
-| Páginas predominantemente BigQuery (≥ 80%) | **6** — 4 FIN + 2 VEN Atacado |
-| Páginas com validação visual 100% concluída | **4** — todas as do módulo Financeiro |
+| Páginas **100% BigQuery** | **4** — Caixa & Liquidez, Contas a Receber, Contas a Pagar, Resultado Operacional |
+| Páginas **100% Google Sheets** | **1** — FIN - Contas Bancárias |
+| Páginas predominantemente produção (≥ 80%) | **7** — 4 FIN BigQuery + 2 VEN Atacado + Contas Bancárias |
+| Páginas com validação visual 100% concluída | **4** — Caixa & Liquidez, Contas a Receber, Contas a Pagar, Resultado Operacional |
 | Páginas inteiramente em mock | **4** — LOG - Pedidos, LOG - SLAs, SAC - Atendimento, Visão Executiva |
 
 > **Próximas entregas previstas:** _preencher conforme planejamento (ex.: migração de `fato_pedidos` → `protheus_pedidosVendas` na página E-commerce Performance, revisão da medida `CR Inadimplência`, validação financeira pelo gestor X até DD/MM)._
@@ -88,6 +90,23 @@ Documento de acompanhamento da construção do relatório Power BI da La Benig. 
 | 9 | Número Título | Filtro de texto | `protheus_numerosTitulos` | ✅ | ✅ | ❌ | |
 | 10 | Filtro de período | Slicer | `calendario` | ✅ | ✅ | ❌ | |
 | 11 | Filtro de período | Slicer | `calendario` | ✅ | ✅ | ❌ | |
+
+---
+
+### FIN - Contas Bancárias
+
+**Módulo:** Financeiro
+**Filtros da página:** —
+
+| # | Visual | Tipo | Tabelas/Medidas | Fonte | Validação Visual | Validação Dados | Notas |
+|---|---|---|---|:---:|:---:|:---:|---|
+| 1 | Saldo Total | Card | `medidas_financeiro` · `Saldos` · `Contas` | ✅ | ❌ | ❌ | Snapshot do saldo mais recente por conta (Google Sheets) |
+| 2 | Saldo Atual por Banco | Gráfico customizado (Deneb) | `Contas` · `medidas_financeiro` · `Saldos` | ✅ | ❌ | ❌ | Visual customizado |
+| 3 | Maior Saldo | Card | `medidas_financeiro` · `Saldos` | ✅ | ❌ | ❌ | |
+| 4 | Menor Saldo | Card | `medidas_financeiro` · `Saldos` | ✅ | ❌ | ❌ | |
+| 5 | Contas Negativas | Card | `medidas_financeiro` · `Saldos` | ✅ | ❌ | ❌ | Quantidade de contas com saldo negativo |
+
+> Página alimentada por **Google Sheets** (planilha oficial de saldos bancários). Medidas com prefixo `FIN CB ` agregam `Saldos` por `Contas`.
 
 ---
 
@@ -337,6 +356,8 @@ Tabelas referenciadas por pelo menos um visual oficial deste documento.
 | `protheus_itensPedidosVendas` | ERP — Vendas (itens) | ✅ BigQuery | ⚠️ Mesma inconsistência de `queryGroup` — corrigir label |
 | `projecao_caixa` | Projeção (derivada) | ✅ BigQuery | Combina `protheus_contasPagar` + `protheus_contasReceber` |
 | `protheus_filiais` | Filiais | ✅ Produção | Hardcoded no modelo por decisão de design — conjunto pequeno e estável de filiais. Considerada tabela de produção. |
+| `Contas` | Cadastro de contas bancárias | ✅ Produção (Google Sheets) | Planilha oficial de operação — cadastro de contas com filial, banco, agência, ID_Conta. Usada por medidas `FIN CB *` |
+| `Saldos` | Snapshots diários de saldo | ✅ Produção (Google Sheets) | Histórico de saldos por data e conta. Relacionada com `Contas` via `ID_Conta` |
 | `fato_pedidos` | Vendas | ❌ Mock | Substituir por `protheus_pedidosVendas` / `protheus_itensPedidosVendas` |
 | `fato_sac` | SAC | ❌ Mock | Aguarda integração da fonte de SAC |
 | `fato_logistica_pedidos` | Logística | ❌ Mock | Aguarda integração da fonte de logística |
