@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
-  "name": "5b2d192108c0ee33b392",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "2330ac41700a1ad11612",
   "position": {
-    "x": 301.93078324225866,
-    "y": 9.326047358834245,
-    "z": 15000,
-    "height": 46.630236794171225,
-    "width": 235.48269581056468,
-    "tabOrder": 15000
+    "x": 148.79999999999998,
+    "y": 4.8,
+    "z": 20000,
+    "height": 46.8,
+    "width": 182.4,
+    "tabOrder": 20000
   },
   "visual": {
     "visualType": "slicer",
@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "calendario"
+                      "Entity": "protheus_movimentosBancarios"
                     }
                   },
-                  "Property": "ano"
+                  "Property": "Receita ou Despesa"
                 }
               },
-              "queryRef": "calendario.ano",
-              "nativeQueryRef": "ano",
+              "queryRef": "protheus_movimentosBancarios.Receita ou Despesa",
+              "nativeQueryRef": "Receita ou Despesa",
               "active": true
             }
           ]
@@ -56,6 +56,47 @@
                 "Literal": {
                   "Value": "1D"
                 }
+              }
+            },
+            "filter": {
+              "filter": {
+                "Version": 2,
+                "From": [
+                  {
+                    "Name": "p",
+                    "Entity": "protheus_movimentosBancarios",
+                    "Type": 0
+                  }
+                ],
+                "Where": [
+                  {
+                    "Condition": {
+                      "In": {
+                        "Expressions": [
+                          {
+                            "Column": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Source": "p"
+                                }
+                              },
+                              "Property": "Receita ou Despesa"
+                            }
+                          }
+                        ],
+                        "Values": [
+                          [
+                            {
+                              "Literal": {
+                                "Value": "'Despesas'"
+                              }
+                            }
+                          ]
+                        ]
+                      }
+                    }
+                  }
+                ]
               }
             }
           }
@@ -157,86 +198,23 @@
         }
       ]
     },
-    "syncGroup": {
-      "groupName": "ano",
-      "fieldChanges": true,
-      "filterChanges": true
-    },
     "drillFilterOtherVisuals": true
   },
   "filterConfig": {
     "filters": [
       {
-        "name": "d340b943aa0b788c031e",
+        "name": "8cdf8bd677a789a07d5b",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "calendario"
+                "Entity": "protheus_movimentosBancarios"
               }
             },
-            "Property": "ano"
+            "Property": "Receita ou Despesa"
           }
         },
-        "type": "Categorical",
-        "filter": {
-          "Version": 2,
-          "From": [
-            {
-              "Name": "c",
-              "Entity": "calendario",
-              "Type": 0
-            }
-          ],
-          "Where": [
-            {
-              "Condition": {
-                "Not": {
-                  "Expression": {
-                    "In": {
-                      "Expressions": [
-                        {
-                          "Column": {
-                            "Expression": {
-                              "SourceRef": {
-                                "Source": "c"
-                              }
-                            },
-                            "Property": "ano"
-                          }
-                        }
-                      ],
-                      "Values": [
-                        [
-                          {
-                            "Literal": {
-                              "Value": "null"
-                            }
-                          }
-                        ]
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          ]
-        },
-        "objects": {
-          "general": [
-            {
-              "properties": {
-                "isInvertedSelectionMode": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "true"
-                    }
-                  }
-                }
-              }
-            }
-          ]
-        }
+        "type": "Categorical"
       }
     ]
   }

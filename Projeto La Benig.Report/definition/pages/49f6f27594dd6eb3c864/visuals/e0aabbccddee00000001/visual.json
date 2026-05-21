@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "e0aabbccddee00000001",
+  "position": {
+    "x": 93.252030355478638,
+    "y": 69.939022766608971,
+    "z": 23000,
+    "height": 579.14418852349888,
+    "width": 1132.5213686592997
+  },
+  "visualGroup": {
+    "displayName": "Overlay Inadimplencia",
+    "groupMode": "ScaleMode"
+  },
+  "isHidden": true
+}

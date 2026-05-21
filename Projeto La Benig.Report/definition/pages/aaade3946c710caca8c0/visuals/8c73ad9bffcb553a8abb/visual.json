@@ -428,5 +428,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "20fa3cda66abdc8188fd",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "medidas_financeiro"
+              }
+            },
+            "Property": "CP PMP (dias)"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

@@ -112,7 +112,8 @@ table medidas_financeiro
 			
 			CALCULATE(
 			    SUM(protheus_contasReceber[saldo]),
-			    protheus_contasReceber[saldo] > 0
+			    protheus_contasReceber[saldo] > 0,
+			    protheus_contasReceber[tipo] <> "RA"
 			)
 		formatString: R$ #,##0.00
 		displayFolder: Status Cliente

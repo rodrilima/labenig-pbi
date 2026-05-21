@@ -104,6 +104,35 @@ table protheus_naturezas
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Versão abreviada de descricao_pai para uso na legenda do gráfico
+	column descricao_pai_abrev =
+			SWITCH(
+			    TRUE(),
+			    protheus_naturezas[descricao_pai] = "DESPESAS ADMINISTRATIVAS",    "Desp. Admin.",
+			    protheus_naturezas[descricao_pai] = "DESPESAS COM PESSOAL",         "Desp. Pessoal",
+			    protheus_naturezas[descricao_pai] = "DESPESAS NAO DEDUTIVEIS",      "Desp. Não Dedut.",
+			    protheus_naturezas[descricao_pai] = "DESPESAS OPERACIONAIS",        "Desp. Operac.",
+			    CONTAINSSTRING(protheus_naturezas[descricao_pai], "TRANSFER") && CONTAINSSTRING(protheus_naturezas[descricao_pai], "DESP"), "Transf. Desp.",
+			    protheus_naturezas[descricao_pai] = "EMPRESTIMOS / FINANCIAMENTOS", "Empr./Financ.",
+			    protheus_naturezas[descricao_pai] = "IMOBILIZADO",                  "Imobilizado",
+			    protheus_naturezas[descricao_pai] = "OUTRAS RECEITAS",              "Outras Rec.",
+			    protheus_naturezas[descricao_pai] = "RECEITAS DE EMPRESTIMOS",      "Rec. Empr.",
+			    CONTAINSSTRING(protheus_naturezas[descricao_pai], "TRANSFER") && CONTAINSSTRING(protheus_naturezas[descricao_pai], "REC"), "Transf. Rec.",
+			    protheus_naturezas[descricao_pai] = "RECEITAS DE VENDAS",           "Rec. Vendas",
+			    protheus_naturezas[descricao_pai] = "SERVICOS TOMADOS",             "Serv. Tomados",
+			    protheus_naturezas[descricao_pai] = "TRIBUTOS FEDERAIS",            "Trib. Federais",
+			    protheus_naturezas[descricao_pai] = "TRIBUTOS MUNICIPAIS",          "Trib. Munic.",
+			    protheus_naturezas[descricao_pai] = "DESPESAS",                     "Despesas",
+			    protheus_naturezas[descricao_pai] = "RECEITAS",                     "Receitas"
+			    ,
+			    protheus_naturezas[descricao_pai]
+			)
+		dataType: string
+		lineageTag: fe0ccf6b-c4cb-4ea0-b138-332172605e02
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
 	partition protheus_naturezas = m
 		mode: import
 		queryGroup: datalake
