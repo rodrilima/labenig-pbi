@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "b2c3d4e5f6a7b8c9d0e1",
+  "position": {
+    "x": 78.077634011090566,
+    "y": 486.21072088724583,
+    "z": 25000,
+    "height": 299.29759704251387,
+    "width": 1139.2236598890943,
+    "tabOrder": 20002
+  },
+  "visualGroup": {
+    "displayName": "Fluxo Semanal",
+    "groupMode": "ScaleMode"
+  },
+  "isHidden": true
+}

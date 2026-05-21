@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
-  "name": "cc1dd2ee3ff4aa5bb602",
+  "name": "6b653cf8101de8f82bc4",
   "position": {
-    "x": 411.25,
+    "x": 703.75,
     "y": 95,
-    "z": 9000,
+    "z": 24000,
     "height": 111.25,
     "width": 262.5,
-    "tabOrder": 8000
+    "tabOrder": 20001
   },
   "visual": {
     "visualType": "cardVisual",
@@ -23,16 +23,32 @@
                       "Entity": "medidas_financeiro"
                     }
                   },
-                  "Property": "FIN Entradas Projetadas"
+                  "Property": "FIN Saídas Projetadas"
                 }
               },
-              "queryRef": "medidas_financeiro.FIN Entradas Projetadas",
-              "nativeQueryRef": "FIN Entradas Projetadas",
-              "displayName": "FIN Entradas Projetadas",
-              "format": "R$ #,##0.00"
+              "queryRef": "medidas_financeiro.FIN Saídas Projetadas",
+              "nativeQueryRef": "FIN Saídas Projetadas"
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "medidas_financeiro"
+                  }
+                },
+                "Property": "FIN Saídas Projetadas"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
       }
     },
     "objects": {
@@ -118,7 +134,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Entradas Projetadas'"
+                  "Value": "'Saídas Projetadas'"
                 }
               }
             },

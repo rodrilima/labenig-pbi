@@ -1,14 +1,15 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
-  "name": "c68cce93c796090c3c2c",
+  "name": "cdd511641f6d953aef45",
   "position": {
     "x": 0,
     "y": 0,
-    "z": 14000,
-    "height": 252.35154394299289,
-    "width": 1169.532858273951,
-    "tabOrder": 14000
+    "z": 21002,
+    "height": 299.29759704251387,
+    "width": 1139.2236598890943,
+    "tabOrder": 20002
   },
+  "parentGroupName": "b2c3d4e5f6a7b8c9d0e1",
   "visual": {
     "visualType": "lineClusteredColumnComboChart",
     "query": {
@@ -28,8 +29,7 @@
               },
               "queryRef": "projecao_caixa.data_vencimento_ajustada",
               "nativeQueryRef": "data_vencimento_ajustada",
-              "active": true,
-              "displayName": "Data"
+              "active": true
             }
           ]
         },
@@ -43,12 +43,11 @@
                       "Entity": "medidas_financeiro"
                     }
                   },
-                  "Property": "FIN Entradas Projetadas"
+                  "Property": "Entradas Projetadas"
                 }
               },
-              "queryRef": "medidas_financeiro.FIN Entradas Projetadas",
-              "nativeQueryRef": "Entradas Projetadas",
-              "displayName": "Entradas Projetadas"
+              "queryRef": "medidas_financeiro.Entradas Projetadas",
+              "nativeQueryRef": "Entradas Projetadas"
             },
             {
               "field": {
@@ -58,12 +57,11 @@
                       "Entity": "medidas_financeiro"
                     }
                   },
-                  "Property": "FIN Saídas Projetadas"
+                  "Property": "Saídas Projetadas"
                 }
               },
-              "queryRef": "medidas_financeiro.FIN Saídas Projetadas",
-              "nativeQueryRef": "Saídas Projetadas",
-              "displayName": "Saídas Projetadas"
+              "queryRef": "medidas_financeiro.Saídas Projetadas",
+              "nativeQueryRef": "Saídas Projetadas"
             }
           ]
         },
@@ -77,12 +75,11 @@
                       "Entity": "medidas_financeiro"
                     }
                   },
-                  "Property": "FIN Saldo Acumulado"
+                  "Property": "Saldo Acumulado"
                 }
               },
-              "queryRef": "medidas_financeiro.FIN Saldo Acumulado",
-              "nativeQueryRef": "Saldo Acumulado",
-              "displayName": "Saldo Acumulado"
+              "queryRef": "medidas_financeiro.Saldo Acumulado",
+              "nativeQueryRef": "Saldo Acumulado"
             }
           ]
         }
@@ -107,90 +104,27 @@
       }
     },
     "objects": {
-      "dataPoint": [
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#404040'"
-                    }
-                  }
-                }
-              }
-            },
-            "fillTransparency": {
-              "expr": {
-                "Literal": {
-                  "Value": "20D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "medidas_financeiro.FIN Entradas Projetadas"
-          }
-        },
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#C0504D'"
-                    }
-                  }
-                }
-              }
-            },
-            "fillTransparency": {
-              "expr": {
-                "Literal": {
-                  "Value": "20D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "medidas_financeiro.FIN Saídas Projetadas"
-          }
-        },
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#E26B0A'"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "medidas_financeiro.FIN Saldo Acumulado"
-          }
-        }
-      ],
       "lineStyles": [
         {
           "properties": {
             "lineStyle": {
               "expr": {
                 "Literal": {
-                  "Value": "'solid'"
+                  "Value": "'dotted'"
                 }
               }
             },
-            "strokeWidth": {
+            "strokeShow": {
               "expr": {
                 "Literal": {
-                  "Value": "2D"
+                  "Value": "true"
+                }
+              }
+            },
+            "strokeAutoScale": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             },
@@ -200,154 +134,22 @@
                   "Value": "false"
                 }
               }
-            }
-          },
-          "selector": {
-            "metadata": "medidas_financeiro.FIN Saldo Acumulado"
-          }
-        }
-      ],
-      "legend": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
             },
-            "position": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Top'"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "valueAxis": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "showAxisTitle": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "gridlineShow": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "labelDisplayUnits": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
-                }
-              }
-            },
-            "secLogAxisScale": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "alignZeros": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "secShow": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "secLabelDisplayUnits": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "categoryAxis": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "gridlineShow": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "concatenateLabels": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "axisType": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Scalar'"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "labels": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "labelDisplayUnits": {
+            "strokeTransparency": {
               "expr": {
                 "Literal": {
                   "Value": "0D"
                 }
               }
             },
-            "labelPrecision": {
+            "strokeWidth": {
               "expr": {
                 "Literal": {
-                  "Value": "0L"
+                  "Value": "5D"
                 }
               }
             },
-            "enableDetailDataLabel": {
+            "areaMatchStrokeColor": {
               "expr": {
                 "Literal": {
                   "Value": "true"
@@ -369,10 +171,8 @@
             }
           }
         }
-      ]
-    },
-    "visualContainerObjects": {
-      "title": [
+      ],
+      "labels": [
         {
           "properties": {
             "show": {
@@ -382,10 +182,198 @@
                 }
               }
             },
-            "text": {
+            "optimizeLabelDisplay": {
               "expr": {
                 "Literal": {
-                  "Value": "'Fluxo Diário — Entradas vs Saídas Projetadas'"
+                  "Value": "false"
+                }
+              }
+            },
+            "labelPosition": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Above'"
+                }
+              }
+            },
+            "enableTitleDataLabel": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableBackground": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "labelContentLayout": {
+              "expr": {
+                "Literal": {
+                  "Value": "'SingleLine'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "secLogAxisScale": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "alignZeros": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "secShow": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "gridlineShow": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "gridlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFFFFF'"
+                    }
+                  }
+                }
+              }
+            },
+            "logAxisScale": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "invertAxis": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            },
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "titleText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'entradas e saídas'"
+                }
+              }
+            },
+            "secLabelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            },
+            "secLabelPrecision": {
+              "expr": {
+                "Literal": {
+                  "Value": "2L"
+                }
+              }
+            },
+            "secShowAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "labelColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "titleText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Data vencimento'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "legend": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "showTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
@@ -395,11 +383,38 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "a1b2c3d4e5f6a7b8c9d0",
   "filterConfig": {
     "filters": [
       {
-        "name": "4db5e5bfcb141e66e9e1",
+        "name": "7c52461fcbac9cb43534",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "medidas_financeiro"
+              }
+            },
+            "Property": "Saldo Acumulado"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "627c60bee45ee6dcf789",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "medidas_financeiro"
+              }
+            },
+            "Property": "Saídas Projetadas"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "8b7945a103bbded6161b",
         "field": {
           "Column": {
             "Expression": {
@@ -447,7 +462,7 @@
                               "TimeUnit": 0
                             }
                           },
-                          "Amount": -10,
+                          "Amount": -5,
                           "TimeUnit": 0
                         }
                       },
@@ -469,7 +484,7 @@
         }
       },
       {
-        "name": "bf3572ce98017b3db694",
+        "name": "089b8b64e0f267c02fc4",
         "field": {
           "Measure": {
             "Expression": {
@@ -477,35 +492,7 @@
                 "Entity": "medidas_financeiro"
               }
             },
-            "Property": "FIN Entradas Projetadas"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "d1371c8aaeac519e4fe6",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "medidas_financeiro"
-              }
-            },
-            "Property": "FIN Saídas Projetadas"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "62db7fc5cd70e11dd300",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "medidas_financeiro"
-              }
-            },
-            "Property": "FIN Saldo Acumulado"
+            "Property": "Entradas Projetadas"
           }
         },
         "type": "Advanced"

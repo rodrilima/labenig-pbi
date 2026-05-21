@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "a1b2c3d4e5f6a7b8c9d0",
+  "position": {
+    "x": 104.00021170663746,
+    "y": 498.00113588753561,
+    "z": 14000,
+    "height": 252.35154394299289,
+    "width": 1169.532858273951,
+    "tabOrder": 14000
+  },
+  "visualGroup": {
+    "displayName": "Fluxo Histórico",
+    "groupMode": "ScaleMode"
+  }
+}

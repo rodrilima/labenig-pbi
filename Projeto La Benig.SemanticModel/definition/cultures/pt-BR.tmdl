@@ -30365,6 +30365,16 @@ cultureInfo pt-BR
 			            },
 			            "Weight": 0.591
 			          }
+			        },
+			        {
+			          "Data": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ],
 			      "SemanticType": "Time"
@@ -38115,6 +38125,16 @@ cultureInfo pt-BR
 			      "State": "Generated",
 			      "Terms": [
 			        {
+			          "Entradas Projetadas": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
 			          "FIN Entradas Projetadas": {
 			            "State": "Suggested",
 			            "Source": {
@@ -38133,7 +38153,19 @@ cultureInfo pt-BR
 			          "ConceptualProperty": "FIN Saídas Projetadas"
 			        }
 			      },
-			      "State": "Generated"
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Saídas Projetadas": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
 			    },
 			    "medidas_financeiro.fin_resultado_líquido_projetado": {
 			      "Definition": {
@@ -38344,6 +38376,27 @@ cultureInfo pt-BR
 			        }
 			      },
 			      "State": "Generated"
+			    },
+			    "medidas_financeiro.fin_saldo_acumulado": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "medidas_financeiro",
+			          "ConceptualProperty": "FIN Saldo Acumulado"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Saldo Acumulado": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
 			    }
 			  },
 			  "Relationships": {

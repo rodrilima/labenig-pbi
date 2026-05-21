@@ -1244,6 +1244,79 @@ table medidas_financeiro
 		displayFolder: Saldos Bancários
 		lineageTag: d83ee6d5-8832-489b-9e18-eaace3d5123d
 
+	measure 'Entradas Projetadas' = ```
+			CALCULATE(
+			    SUM(projecao_caixa[valorpn]),
+			    projecao_caixa[PR] = "R"
+			)
+			 
+			```
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: FIN Contas Bancárias
+		lineageTag: 40c42b82-1fd5-4eb8-9bdd-f22f17a71be2
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Saídas Projetadas' =
+			ABS(CALCULATE(
+			    SUM(projecao_caixa[valorpn]),
+			    projecao_caixa[PR] = "P"
+			))
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: FIN Contas Bancárias
+		lineageTag: 2252dd47-4447-41ac-aaca-d15a1ff09f49
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure Medida
+		displayFolder: FIN Contas Bancárias
+		lineageTag: 1846c6c4-086e-49e0-b2e9-99945ff179c9
+
+		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
+
+	measure 'Saldo Acumulado' =
+			VAR SaldoBase = CALCULATE(SUM(Saldos[Saldo]), ALL(Contas[Banco]))
+			VAR DataEixo = MAX(projecao_caixa[data_vencimento_ajustada])
+			VAR DataInicio = DATE(2026,4,27)
+			VAR FluxoAcumulado =
+			    CALCULATE(
+			        SUM(projecao_caixa[valorpn]),
+			        FILTER(
+			            ALL(projecao_caixa[data_vencimento_ajustada]),
+			            projecao_caixa[data_vencimento_ajustada] >= DataInicio
+			            && projecao_caixa[data_vencimento_ajustada] <= DataEixo
+			        )
+			    )
+			RETURN IF(ISBLANK(FluxoAcumulado), BLANK(), SaldoBase + FluxoAcumulado)
+		displayFolder: FIN Contas Bancárias
+		lineageTag: ef231ea9-03a4-458c-a925-77559b4036e4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Saldo acumulado projetado usando data_vencimento_ajustada como contexto de eixo (sem depender de calendario)
+	measure 'FIN Saldo Acumulado' =
+			VAR DataAtual = MAX(projecao_caixa[data_vencimento_ajustada])
+			VAR SaldoBase =
+			    CALCULATE(
+			        SUM(protheus_contasBancarias[saldo_atual]),
+			        REMOVEFILTERS(projecao_caixa)
+			    )
+			VAR AcumAteDia =
+			    CALCULATE(
+			        SUM(projecao_caixa[valorpn]),
+			        FILTER(
+			            ALLSELECTED(projecao_caixa[data_vencimento_ajustada]),
+			            projecao_caixa[data_vencimento_ajustada] <= DataAtual
+			        )
+			    )
+			RETURN
+			    IF(ISBLANK(DataAtual), BLANK(), SaldoBase + AcumAteDia)
+		formatString: R$ #,##0.00
+		displayFolder: FIN Contas Bancárias
+		lineageTag: e1f2a3b4-c5d6-7e8f-9a0b-c1d2e3f4a5b6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	partition medidas_financeiro = m
 		mode: import
 		source =

@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
-  "name": "823a55e700cc9623196a",
+  "name": "606861e752f897678192",
   "position": {
-    "x": 809.46814470441041,
-    "y": 45.6295459247131,
-    "z": 20000,
-    "height": 21.902182043862286,
-    "width": 32.853273065793431,
-    "tabOrder": 17000
+    "x": 841.10905730129389,
+    "y": 22.476894639556377,
+    "z": 0,
+    "height": 53.234750462107208,
+    "width": 438.89094269870611,
+    "tabOrder": 20003
   },
   "visual": {
     "visualType": "image",
@@ -20,7 +20,7 @@
                 "name": {
                   "expr": {
                     "Literal": {
-                      "Value": "'╓cone Ativar Painel Filtro Preto.png'"
+                      "Value": "'Screenshot_10.png'"
                     }
                   }
                 },
@@ -29,7 +29,7 @@
                     "ResourcePackageItem": {
                       "PackageName": "RegisteredResources",
                       "PackageType": 1,
-                      "ItemName": "_cone_Ativar_Painel_Filtro_Pre7584149044277076.png"
+                      "ItemName": "Screenshot_108821233787376404.png"
                     }
                   }
                 },
@@ -39,35 +39,6 @@
                       "Value": "'Normal'"
                     }
                   }
-                }
-              }
-            }
-          }
-        }
-      ]
-    },
-    "visualContainerObjects": {
-      "visualLink": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "type": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Bookmark'"
-                }
-              }
-            },
-            "bookmark": {
-              "expr": {
-                "Literal": {
-                  "Value": "'b70e1ab27210d0de7c38'"
                 }
               }
             }
