@@ -124,7 +124,7 @@
             "fillTransparency": {
               "expr": {
                 "Literal": {
-                  "Value": "20D"
+                  "Value": "0D"
                 }
               }
             }
@@ -149,7 +149,7 @@
             "fillTransparency": {
               "expr": {
                 "Literal": {
-                  "Value": "20D"
+                  "Value": "0D"
                 }
               }
             }
@@ -285,6 +285,13 @@
                   "Value": "1D"
                 }
               }
+            },
+            "switchAxisPosition": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
             }
           }
         }
@@ -333,24 +340,43 @@
                 }
               }
             },
-            "labelDisplayUnits": {
+            "labelPosition": {
               "expr": {
                 "Literal": {
-                  "Value": "0D"
+                  "Value": "'Above'"
                 }
               }
             },
-            "labelPrecision": {
-              "expr": {
-                "Literal": {
-                  "Value": "0L"
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
                 }
               }
             },
-            "enableDetailDataLabel": {
+            "enableBackground": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
+                }
+              }
+            },
+            "labelContentLayout": {
+              "expr": {
+                "Literal": {
+                  "Value": "'SingleLine'"
+                }
+              }
+            },
+            "enableTitleDataLabel": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
@@ -368,6 +394,11 @@
               }
             }
           }
+        }
+      ],
+      "plotArea": [
+        {
+          "properties": {}
         }
       ]
     },
