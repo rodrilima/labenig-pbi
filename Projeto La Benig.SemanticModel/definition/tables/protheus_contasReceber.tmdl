@@ -369,6 +369,20 @@ table protheus_contasReceber
 
 		annotation SummarizationSetBy = Automatic
 
+	column 'Status Maior devedor' =
+			
+			SWITCH(
+			    TRUE(),
+			    ISBLANK(protheus_contasReceber[dias_em_aberto]) || protheus_contasReceber[dias_em_aberto] <= 0, "Em Dia",
+			    protheus_contasReceber[dias_em_aberto] <= 30, "Atraso Leve",
+			    protheus_contasReceber[dias_em_aberto] <= 90, "Atraso Moderado",
+			    "Atraso Grave"
+			)
+		lineageTag: a9f2e7b3-c140-4d58-8e73-1f5c2d69a4b0
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
 	column PR
 		dataType: string
 		lineageTag: caba3d0f-8393-446f-aaef-19e78da7f9c9
@@ -404,20 +418,6 @@ table protheus_contasReceber
 		lineageTag: 8b3c8c4c-7049-44cd-9b1f-a573a06d68f9
 		summarizeBy: none
 		sourceColumn: stamp
-
-		annotation SummarizationSetBy = Automatic
-
-	column 'Status Maior devedor' =
-			
-			SWITCH(
-			    TRUE(),
-			    ISBLANK(protheus_contasReceber[dias_em_aberto]) || protheus_contasReceber[dias_em_aberto] <= 0, "Em Dia",
-			    protheus_contasReceber[dias_em_aberto] <= 30, "Atraso Leve",
-			    protheus_contasReceber[dias_em_aberto] <= 90, "Atraso Moderado",
-			    "Atraso Grave"
-			)
-		lineageTag: a9f2e7b3-c140-4d58-8e73-1f5c2d69a4b0
-		summarizeBy: none
 
 		annotation SummarizationSetBy = Automatic
 

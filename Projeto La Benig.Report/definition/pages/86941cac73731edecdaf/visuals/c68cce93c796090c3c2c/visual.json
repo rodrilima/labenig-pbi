@@ -467,48 +467,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "bf3572ce98017b3db694",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "medidas_financeiro"
-              }
-            },
-            "Property": "FIN Entradas Projetadas"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "d1371c8aaeac519e4fe6",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "medidas_financeiro"
-              }
-            },
-            "Property": "FIN Saídas Projetadas"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "62db7fc5cd70e11dd300",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "medidas_financeiro"
-              }
-            },
-            "Property": "FIN Saldo Acumulado"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

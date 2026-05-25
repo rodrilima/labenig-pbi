@@ -1,12 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "e0aabbccddee00000004",
   "position": {
-    "x": 31.742340663123521,
-    "y": 45.31471704096078,
+    "x": 32.552552552552562,
+    "y": 44.152126499454738,
     "z": 25400,
-    "height": 471.9361994265916,
-    "width": 1063.3684122146378
+    "height": 459.82824427480915,
+    "width": 1090.5105105105108,
+    "tabOrder": 1000
   },
   "visual": {
     "visualType": "lineChart",
@@ -325,51 +326,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "e0aabbccddee00000001",
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "42795749234910715dde",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "calendario"
-              }
-            },
-            "Property": "mes_nome"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "94e24cfe169e633cb39d",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "calendario"
-              }
-            },
-            "Property": "ano"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "5f04f801815ce780b735",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "medidas_financeiro"
-              }
-            },
-            "Property": "CR Inadimplência %"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
-  }
+  "parentGroupName": "e0aabbccddee00000001"
 }

@@ -31,7 +31,7 @@
           "expanded": {
             "expr": {
               "Literal": {
-                "Value": "true"
+                "Value": "false"
               }
             }
           }
@@ -73,6 +73,16 @@
         {
           "name": "AtacadoVisaoGeral9577774634960096.png",
           "path": "AtacadoVisaoGeral9577774634960096.png",
+          "type": "Image"
+        },
+        {
+          "name": "Caixa&Liquidez37475393054087314.png",
+          "path": "Caixa&Liquidez37475393054087314.png",
+          "type": "Image"
+        },
+        {
+          "name": "ContaReceber_(4)06095185395198677.png",
+          "path": "ContaReceber_(4)06095185395198677.png",
           "type": "Image"
         },
         {
@@ -126,13 +136,13 @@
           "type": "Image"
         },
         {
-          "name": "Screenshot_108821233787376404.png",
-          "path": "Screenshot_108821233787376404.png",
+          "name": "Screenshot_39620113366493687.png",
+          "path": "Screenshot_39620113366493687.png",
           "type": "Image"
         },
         {
-          "name": "TV_-_55656110657105601.png",
-          "path": "TV_-_55656110657105601.png",
+          "name": "Screenshot_433454519120007087.png",
+          "path": "Screenshot_433454519120007087.png",
           "type": "Image"
         },
         {

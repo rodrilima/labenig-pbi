@@ -7,7 +7,7 @@
     "z": 18000,
     "height": 246.25,
     "width": 561.25,
-    "tabOrder": 16000
+    "tabOrder": 17000
   },
   "visual": {
     "visualType": "tableEx",
@@ -88,16 +88,21 @@
         "sort": [
           {
             "field": {
-              "Column": {
+              "Aggregation": {
                 "Expression": {
-                  "SourceRef": {
-                    "Entity": "calendario"
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "protheus_movimentosBancarios"
+                      }
+                    },
+                    "Property": "valorpn"
                   }
                 },
-                "Property": "Date"
+                "Function": 0
               }
             },
-            "direction": "Ascending"
+            "direction": "Descending"
           }
         ]
       }

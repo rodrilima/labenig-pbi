@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "9a63dea33d49ad05cc27",
   "position": {
     "x": 718.18028643639423,
     "y": 207.04296545914067,
-    "z": 23000,
+    "z": 20000,
     "height": 229.6882898062342,
     "width": 537.01769165964618,
-    "tabOrder": 23000
+    "tabOrder": 19000
   },
   "visual": {
     "visualType": "tableEx",
@@ -343,34 +343,6 @@
               }
             },
             "Property": "CP Dias em Atraso"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "e987be6d1b92de0b761e",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "protheus_contasPagar"
-              }
-            },
-            "Property": "cod_fornecedor"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "1006651c147857275c67",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "medidas_financeiro"
-              }
-            },
-            "Property": "CP Status do Fornecedor"
           }
         },
         "type": "Advanced"
