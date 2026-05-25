@@ -14,7 +14,7 @@
               "name": {
                 "expr": {
                   "Literal": {
-                    "Value": "'TV - 5.png'"
+                    "Value": "'ContaReceber (4).png'"
                   }
                 }
               },
@@ -23,7 +23,7 @@
                   "ResourcePackageItem": {
                     "PackageName": "RegisteredResources",
                     "PackageType": 1,
-                    "ItemName": "TV_-_55656110657105601.png"
+                    "ItemName": "ContaReceber_(4)06095185395198677.png"
                   }
                 }
               },

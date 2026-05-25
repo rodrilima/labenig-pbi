@@ -1,10 +1,10 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "8c73ad9bffcb553a8abb",
   "position": {
     "x": 1000.9756097560976,
     "y": 64.097560975609753,
-    "z": 1000,
+    "z": 2000,
     "height": 117.65853658536587,
     "width": 266.04878048780489,
     "tabOrder": 1000
@@ -428,23 +428,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "20fa3cda66abdc8188fd",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "medidas_financeiro"
-              }
-            },
-            "Property": "CP PMP (dias)"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

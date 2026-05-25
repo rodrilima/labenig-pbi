@@ -4,7 +4,7 @@
   "position": {
     "x": 148.79999999999998,
     "y": 203.90082644628097,
-    "z": 5000,
+    "z": 6000,
     "height": 231.6694214876033,
     "width": 545.05785123966939,
     "tabOrder": 5000
@@ -297,39 +297,6 @@
           ]
         },
         "howCreated": "User"
-      },
-      {
-        "name": "fc0e867311aa974497df",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "protheus_naturezas"
-              }
-            },
-            "Property": "descricao_pai_abrev"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "c5a7ca905e414fbbebaf",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "protheus_movimentosBancarios"
-                  }
-                },
-                "Property": "valor"
-              }
-            },
-            "Function": 0
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

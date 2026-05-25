@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "3a9ecaeae59fd098f2b4",
   "position": {
-    "x": 104.26687354538402,
-    "y": 233.35919317300232,
-    "z": 8000,
-    "height": 522.32738557020946,
-    "width": 1168.7820015515904,
-    "tabOrder": 8000
+    "x": 152.36686390532546,
+    "y": 131.06508875739647,
+    "z": 2000,
+    "height": 609.17159763313612,
+    "width": 1112.7218934911243,
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "pivotTable",
@@ -110,52 +110,12 @@
                     "Entity": "dim_dfc_linhas"
                   }
                 },
-                "Property": "ordem_grupo"
-              }
-            },
-            "direction": "Ascending"
-          },
-          {
-            "field": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "dim_dfc_linhas"
-                  }
-                },
-                "Property": "ordem_subgrupo"
-              }
-            },
-            "direction": "Ascending"
-          },
-          {
-            "field": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "dim_dfc_linhas"
-                  }
-                },
-                "Property": "ordem_linha"
-              }
-            },
-            "direction": "Ascending"
-          },
-          {
-            "field": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "calendario"
-                  }
-                },
-                "Property": "ano_mes_ordenacao"
+                "Property": "grupo"
               }
             },
             "direction": "Ascending"
           }
-        ],
-        "isDefaultSort": true
+        ]
       }
     },
     "expansionStates": [
@@ -222,16 +182,6 @@
               "identityValues": [
                 {
                   "Literal": {
-                    "Value": "'Operacionais'"
-                  }
-                }
-              ],
-              "isToggled": true
-            },
-            {
-              "identityValues": [
-                {
-                  "Literal": {
                     "Value": "'Transferências'"
                   }
                 }
@@ -277,8 +227,9 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#D8D8D8'"
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
                     }
                   }
                 }
@@ -401,6 +352,33 @@
           "selector": {
             "metadata": "dim_dfc_linhas.subgrupo"
           }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "118.04348155739518D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "dim_dfc_linhas.grupo"
+          }
+        }
+      ],
+      "blankRows": [
+        {
+          "properties": {
+            "showBlankRows": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
         }
       ]
     },
@@ -436,7 +414,7 @@
             "alignment": {
               "expr": {
                 "Literal": {
-                  "Value": "'left'"
+                  "Value": "'center'"
                 }
               }
             },
@@ -451,6 +429,25 @@
               "expr": {
                 "Literal": {
                   "Value": "12D"
+                }
+              }
+            },
+            "background": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Segoe UI'', wf_segoe-ui_normal, helvetica, arial, sans-serif'"
                 }
               }
             }
@@ -487,6 +484,30 @@
             }
           }
         }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "border": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#1B3042'"
+                    }
+                  }
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "drillFilterOtherVisuals": true
@@ -494,49 +515,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "5a60715044beac2f93ed",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_dfc_linhas"
-              }
-            },
-            "Property": "grupo"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "67d91e0d0785018be49b",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_dfc_linhas"
-              }
-            },
-            "Property": "subgrupo"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "f5347a10a2aed408d310",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_dfc_linhas"
-              }
-            },
-            "Property": "linha"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "4e1b88d1eeb501be918c",
+        "name": "e05efea6f926662d85c2",
         "field": {
           "Column": {
             "Expression": {
@@ -550,7 +529,49 @@
         "type": "Categorical"
       },
       {
-        "name": "00d7af98e3513258cd3b",
+        "name": "91f098bb6377f3925a99",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_dfc_linhas"
+              }
+            },
+            "Property": "grupo"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "8ca1e14c3292758c3d6a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_dfc_linhas"
+              }
+            },
+            "Property": "subgrupo"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "4aedf7324304ce403668",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_dfc_linhas"
+              }
+            },
+            "Property": "linha"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "3559a2c8eba98596bf84",
         "field": {
           "Measure": {
             "Expression": {

@@ -9,7 +9,6 @@
     "width": 1139.2236598890943,
     "tabOrder": 20002
   },
-  "parentGroupName": "b2c3d4e5f6a7b8c9d0e1",
   "visual": {
     "visualType": "lineClusteredColumnComboChart",
     "query": {
@@ -383,36 +382,9 @@
     },
     "drillFilterOtherVisuals": true
   },
+  "parentGroupName": "b2c3d4e5f6a7b8c9d0e1",
   "filterConfig": {
     "filters": [
-      {
-        "name": "7c52461fcbac9cb43534",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "medidas_financeiro"
-              }
-            },
-            "Property": "Saldo Acumulado"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "627c60bee45ee6dcf789",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "medidas_financeiro"
-              }
-            },
-            "Property": "Saídas Projetadas"
-          }
-        },
-        "type": "Advanced"
-      },
       {
         "name": "8b7945a103bbded6161b",
         "field": {
@@ -482,20 +454,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "089b8b64e0f267c02fc4",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "medidas_financeiro"
-              }
-            },
-            "Property": "Entradas Projetadas"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

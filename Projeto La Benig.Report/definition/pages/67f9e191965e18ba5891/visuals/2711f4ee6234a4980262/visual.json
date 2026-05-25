@@ -1,12 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
-  "name": "53ec40cf8f9a7faadf38",
+  "name": "2711f4ee6234a4980262",
   "position": {
-    "x": 1015.5555555555555,
-    "y": 15.555555555555555,
+    "x": 459.23167511326767,
+    "y": 36.67282809611828,
     "z": 3000,
-    "height": 60,
-    "width": 234.44444444444443,
+    "height": 65.167173252279639,
+    "width": 121.58054711246201,
     "tabOrder": 3000
   },
   "visual": {
@@ -20,15 +20,16 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "protheus_filiais"
+                      "Entity": "calendario"
                     }
                   },
-                  "Property": "Filial"
+                  "Property": "mes_nome"
                 }
               },
-              "queryRef": "protheus_filiais.Filial",
-              "nativeQueryRef": "Filial",
-              "active": true
+              "queryRef": "calendario.mes_nome",
+              "nativeQueryRef": "Mês",
+              "active": true,
+              "displayName": "Mês"
             }
           ]
         }
@@ -64,17 +65,23 @@
       "header": [
         {
           "properties": {
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Filial'"
-                }
-              }
-            },
             "textSize": {
               "expr": {
                 "Literal": {
                   "Value": "10D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "pendingChangesIcon": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }
@@ -111,28 +118,10 @@
       ]
     },
     "syncGroup": {
-      "groupName": "Filial",
+      "groupName": "mes_nome",
       "fieldChanges": true,
       "filterChanges": true
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "f591ddedc076757fe3c8",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "protheus_filiais"
-              }
-            },
-            "Property": "Filial"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

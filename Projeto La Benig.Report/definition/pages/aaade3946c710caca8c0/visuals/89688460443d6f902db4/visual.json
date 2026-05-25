@@ -1,10 +1,10 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "89688460443d6f902db4",
   "position": {
     "x": 158.92682926829269,
     "y": 64.097560975609753,
-    "z": 4000,
+    "z": 5000,
     "height": 117.65853658536587,
     "width": 266.92682926829269,
     "tabOrder": 4000
@@ -442,23 +442,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "74c0051b8434addf6ad5",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "medidas_financeiro"
-              }
-            },
-            "Property": "CP Total a Pagar"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

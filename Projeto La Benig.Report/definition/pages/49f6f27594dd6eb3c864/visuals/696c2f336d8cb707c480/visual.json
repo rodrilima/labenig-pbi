@@ -310,23 +310,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "43aa08147a0018029841",
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "e8ba9012fe5ac13c852a",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "protheus_contasReceber"
-              }
-            },
-            "Property": "Status Descrição"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
-  }
+  "parentGroupName": "43aa08147a0018029841"
 }

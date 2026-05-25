@@ -1,10 +1,10 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "2330ac41700a1ad11612",
   "position": {
     "x": 148.79999999999998,
     "y": 4.8,
-    "z": 20000,
+    "z": 21000,
     "height": 46.8,
     "width": 182.4,
     "tabOrder": 20000
@@ -199,23 +199,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "8cdf8bd677a789a07d5b",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "protheus_movimentosBancarios"
-              }
-            },
-            "Property": "Receita ou Despesa"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

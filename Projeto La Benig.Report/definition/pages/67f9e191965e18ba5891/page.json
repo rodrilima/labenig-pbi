@@ -38,7 +38,7 @@
               "name": {
                 "expr": {
                   "Literal": {
-                    "Value": "'TV - 5.png'"
+                    "Value": "'Caixa&Liquidez.png'"
                   }
                 }
               },
@@ -47,7 +47,7 @@
                   "ResourcePackageItem": {
                     "PackageName": "RegisteredResources",
                     "PackageType": 1,
-                    "ItemName": "TV_-_56678941066150883.png"
+                    "ItemName": "Caixa&Liquidez37475393054087314.png"
                   }
                 }
               },

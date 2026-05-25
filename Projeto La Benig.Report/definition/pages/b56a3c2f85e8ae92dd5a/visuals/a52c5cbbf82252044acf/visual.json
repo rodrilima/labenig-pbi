@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "a52c5cbbf82252044acf",
   "position": {
     "x": 529.14285714285711,
@@ -171,6 +171,11 @@
           "selector": {
             "metadata": "Sum(protheus_itensPedidosVendas.preco_total)"
           }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {}
         }
       ]
     },
