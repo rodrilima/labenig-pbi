@@ -108,7 +108,24 @@
               },
               "queryRef": "protheus_contasReceber.data_vencimento",
               "nativeQueryRef": "Vencimento",
-              "displayName": "Vencimento"
+              "displayName": "Vencimento",
+              "format": "dd/MM/yyyy"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "protheus_contasReceber"
+                    }
+                  },
+                  "Property": "data_baixa"
+                }
+              },
+              "queryRef": "protheus_contasReceber.data_baixa",
+              "nativeQueryRef": "Pagamento",
+              "displayName": "Pagamento",
+              "format": "dd/MM/yyyy"
             },
             {
               "field": {
