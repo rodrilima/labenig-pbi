@@ -97,6 +97,21 @@
             },
             {
               "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "protheus_contasReceber"
+                    }
+                  },
+                  "Property": "data_vencimento"
+                }
+              },
+              "queryRef": "protheus_contasReceber.data_vencimento",
+              "nativeQueryRef": "Vencimento",
+              "displayName": "Vencimento"
+            },
+            {
+              "field": {
                 "Aggregation": {
                   "Expression": {
                     "Column": {
